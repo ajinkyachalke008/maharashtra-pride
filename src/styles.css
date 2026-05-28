@@ -120,6 +120,20 @@
   background: radial-gradient(ellipse at center, #2a2410 0%, #1e1e1e 70%);
 }
 
+/* Marquee band */
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: inline-block;
+  animation: marquee-scroll 40s linear infinite;
+  will-change: transform;
+}
+.marquee-reverse {
+  animation-direction: reverse;
+}
+
 /* Scroll hint pulse line */
 @keyframes scroll-pulse {
   0%, 100% { transform: scaleY(0.3) translateY(-40%); opacity: 0.3; }
