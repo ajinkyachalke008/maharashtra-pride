@@ -117,7 +117,7 @@
 
 /* Radial gold glow */
 .gold-radial {
-  background: radial-gradient(ellipse at center, rgba(42,34,0,0.6) 0%, #0d0d0d 70%);
+  background: radial-gradient(ellipse at center, #2a2410 0%, #1e1e1e 70%);
 }
 
 /* Scroll hint pulse line */
