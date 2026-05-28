@@ -130,7 +130,7 @@ export default function BadgeScroll() {
         </div>
       )}
 
-      <div className="sticky top-0 h-screen w-full overflow-hidden gold-radial">
+      <div className="sticky top-0 h-screen w-full overflow-hidden" style={{ background: "#1e1e1e" }}>
         <div ref={wrapperRef} className="relative mx-auto h-full" style={{ maxWidth: "min(886px, 100vw)", aspectRatio: "886 / 624" }}>
           <canvas ref={canvasRef} className="block w-full h-full" />
 
