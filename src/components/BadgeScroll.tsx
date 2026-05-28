@@ -196,6 +196,19 @@ export default function BadgeScroll() {
             </div>
           </div>
         )}
+        </div>
+
+        {/* Bottom white marquee band */}
+        <div className="relative w-full bg-white overflow-hidden py-2 md:py-3 shrink-0 border-y border-black/10">
+          <div className="marquee-track marquee-reverse font-devanagari text-black font-bold text-base md:text-2xl whitespace-nowrap">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <span key={i} className="inline-flex items-center mx-4">
+                <span className="text-[var(--gold)] mr-3 text-lg md:text-2xl">★</span>
+                महाराष्ट्र पोलीस
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
