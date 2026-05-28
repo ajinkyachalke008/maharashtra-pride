@@ -130,7 +130,20 @@ export default function BadgeScroll() {
         </div>
       )}
 
-      <div className="sticky top-0 h-screen w-full overflow-hidden" style={{ background: "#1e1e1e" }}>
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col" style={{ background: "#1e1e1e" }}>
+        {/* Top white marquee band */}
+        <div className="relative w-full bg-white overflow-hidden py-2 md:py-3 shrink-0 border-y border-black/10">
+          <div className="marquee-track font-devanagari text-black font-bold text-base md:text-2xl whitespace-nowrap">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <span key={i} className="inline-flex items-center mx-4">
+                <span className="text-[var(--gold)] mr-3 text-lg md:text-2xl">★</span>
+                महाराष्ट्र पोलीस
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative flex-1 w-full overflow-hidden">
         <div ref={wrapperRef} className="relative mx-auto h-full" style={{ maxWidth: "min(886px, 100vw)", aspectRatio: "886 / 624" }}>
           <canvas ref={canvasRef} className="block w-full h-full" />
 
