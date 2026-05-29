@@ -130,30 +130,54 @@ export default function BadgeScroll() {
         </div>
       )}
 
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col" style={{ background: "#1e1e1e" }}>
-        {/* Top white marquee band */}
-        <div className="relative w-full bg-white overflow-hidden py-2 md:py-3 shrink-0 border-y border-black/10">
-          <div className="marquee-track font-devanagari text-black font-bold text-base md:text-2xl whitespace-nowrap">
-            {Array.from({ length: 12 }).map((_, i) => (
-              <span key={i} className="inline-flex items-center mx-4">
-                <span className="text-[var(--gold)] mr-3 text-lg md:text-2xl">★</span>
-                महाराष्ट्र पोलीस
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div className="relative flex-1 w-full overflow-hidden">
-        <div ref={wrapperRef} className="relative mx-auto h-full" style={{ maxWidth: "min(886px, 100vw)", aspectRatio: "886 / 624" }}>
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center" style={{ background: "#1e1e1e" }}>
+        <div
+          ref={wrapperRef}
+          className="relative"
+          style={{
+            width: "min(886px, 100vw)",
+            aspectRatio: "886 / 624",
+            maxHeight: "calc(100vh - 2 * clamp(28px, 4.5vw, 56px))",
+          }}
+        >
           <canvas ref={canvasRef} className="block w-full h-full" />
+
+          {/* Top white marquee — flush with canvas top edge, spans full viewport width */}
+          <div
+            className="absolute left-1/2 -translate-x-1/2 bottom-full w-screen bg-white overflow-hidden border-y border-black/10 flex items-center"
+            style={{ height: "clamp(28px, 4.5vw, 56px)" }}
+          >
+            <div className="marquee-track font-devanagari text-black font-bold whitespace-nowrap" style={{ fontSize: "clamp(13px, 1.8vw, 22px)" }}>
+              {Array.from({ length: 16 }).map((_, i) => (
+                <span key={i} className="inline-flex items-center mx-4">
+                  <span className="text-[var(--gold)] mr-3">★</span>
+                  महाराष्ट्र पोलीस
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom white marquee — flush with canvas bottom edge, spans full viewport width */}
+          <div
+            className="absolute left-1/2 -translate-x-1/2 top-full w-screen bg-white overflow-hidden border-y border-black/10 flex items-center"
+            style={{ height: "clamp(28px, 4.5vw, 56px)" }}
+          >
+            <div className="marquee-track marquee-reverse font-devanagari text-black font-bold whitespace-nowrap" style={{ fontSize: "clamp(13px, 1.8vw, 22px)" }}>
+              {Array.from({ length: 16 }).map((_, i) => (
+                <span key={i} className="inline-flex items-center mx-4">
+                  <span className="text-[var(--gold)] mr-3">★</span>
+                  महाराष्ट्र पोलीस
+                </span>
+              ))}
+            </div>
+          </div>
 
           {/* Overlays */}
           <Overlay progress={progress} start={0.00} end={0.15} className="top-[8%] left-1/2 -translate-x-1/2 w-full text-center px-6">
             <h2 className="font-display text-2xl md:text-5xl text-white/85 tracking-wide">Witness the Birth of an Icon</h2>
           </Overlay>
 
-          <Overlay progress={progress} start={0.18} end={0.33} className="top-1/2 -translate-y-1/2 left-4 md:left-8 max-w-[45%]"
-          >
+          <Overlay progress={progress} start={0.18} end={0.33} className="top-1/2 -translate-y-1/2 left-4 md:left-8 max-w-[45%]">
             <div className="font-devanagari text-3xl md:text-5xl text-[var(--gold)] font-bold" style={{ textShadow: "0 0 30px rgba(201,168,76,0.4)" }}>महाराष्ट्र</div>
             <div className="mt-3 text-xs md:text-sm text-white/55 tracking-widest uppercase">Founded 1843 · Maharashtra State</div>
           </Overlay>
@@ -172,42 +196,29 @@ export default function BadgeScroll() {
             <div className="font-devanagari text-2xl md:text-4xl text-[var(--gold)]" style={{ letterSpacing: "0.3em" }}>खलनिग्रहणाय</div>
             <div className="mt-2 text-xs md:text-base text-white/60 italic">To Punish the Wicked</div>
           </Overlay>
-        </div>
 
-        {/* Final reveal */}
-        {progress >= 0.9 && (
-          <div className="absolute bottom-[6%] left-0 right-0 text-center">
-            <h3 className="font-display text-2xl md:text-4xl gold-shimmer tracking-[0.2em]">THE BADGE. THE PROMISE.</h3>
-            <div className="relative h-0 w-0 mx-auto">
-              {Array.from({ length: 10 }).map((_, i) => {
-                const angle = (i / 10) * Math.PI * 2;
-                return (
-                  <span
-                    key={i}
-                    className="burst-p"
-                    style={{
-                      ["--bx" as any]: `${Math.cos(angle) * 80}px`,
-                      ["--by" as any]: `${Math.sin(angle) * 80}px`,
-                      animationDelay: `${i * 0.05}s`,
-                    }}
-                  />
-                );
-              })}
+          {/* Final reveal */}
+          {progress >= 0.9 && (
+            <div className="absolute bottom-[6%] left-0 right-0 text-center">
+              <h3 className="font-display text-2xl md:text-4xl gold-shimmer tracking-[0.2em]">THE BADGE. THE PROMISE.</h3>
+              <div className="relative h-0 w-0 mx-auto">
+                {Array.from({ length: 10 }).map((_, i) => {
+                  const angle = (i / 10) * Math.PI * 2;
+                  return (
+                    <span
+                      key={i}
+                      className="burst-p"
+                      style={{
+                        ["--bx" as any]: `${Math.cos(angle) * 80}px`,
+                        ["--by" as any]: `${Math.sin(angle) * 80}px`,
+                        animationDelay: `${i * 0.05}s`,
+                      }}
+                    />
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        )}
-        </div>
-
-        {/* Bottom white marquee band */}
-        <div className="relative w-full bg-white overflow-hidden py-2 md:py-3 shrink-0 border-y border-black/10">
-          <div className="marquee-track marquee-reverse font-devanagari text-black font-bold text-base md:text-2xl whitespace-nowrap">
-            {Array.from({ length: 12 }).map((_, i) => (
-              <span key={i} className="inline-flex items-center mx-4">
-                <span className="text-[var(--gold)] mr-3 text-lg md:text-2xl">★</span>
-                महाराष्ट्र पोलीस
-              </span>
-            ))}
-          </div>
+          )}
         </div>
       </div>
     </section>
