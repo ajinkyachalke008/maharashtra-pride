@@ -9,7 +9,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 const StatsSection = lazy(() => import("@/components/StatsSection"));
 const ValuesSection = lazy(() => import("@/components/ValuesSection"));
 const TimelineSection = lazy(() => import("@/components/TimelineSection"));
-const CommissioneratesSection = lazy(() => import("@/components/CommissioneratesSection"));
+const CommissioneratesSection = lazy(() => import("@/components/CommissioneratesCloth"));
 const ContactSection = lazy(() => import("@/components/ContactSection"));
 
 export const Route = createFileRoute("/")({
