@@ -36,6 +36,7 @@ function Index() {
         <StatsSection />
         <ValuesSection />
         <TimelineSection />
+        <CommissioneratesSection />
         <ContactSection />
       </Suspense>
     </main>
