@@ -170,6 +170,7 @@ class Cloth {
       }
     }
     for (let x = 0; x < cols; x++) this.pinned[x] = 1; // hang from top row
+    this.initial = new Float32Array(this.positions);
     const addC = (a: number, b: number) => {
       const dx = this.positions[a * 3] - this.positions[b * 3];
       const dy = this.positions[a * 3 + 1] - this.positions[b * 3 + 1];
