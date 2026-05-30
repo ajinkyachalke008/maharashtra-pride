@@ -337,6 +337,13 @@ export default function CommissioneratesCloth() {
     const totalW = cols * cardW + (cols - 1) * gapX;
     const totalH = rows * cardH + (rows - 1) * gapY;
 
+    // Size the canvas to the grid aspect ratio so all 12 cards always fit on screen.
+    const margin = Math.max(cardW, cardH) * 0.35;
+    const gridAspect = (totalW + margin * 2) / (totalH + margin * 2);
+    const containerW = container.clientWidth;
+    const desiredH = Math.min(window.innerHeight * 1.6, containerW / gridAspect);
+    container.style.height = `${desiredH}px`;
+
     const cloths: Cloth[] = [];
     CITIES.forEach((city, idx) => {
       const cx = idx % cols, cy = Math.floor(idx / cols);
