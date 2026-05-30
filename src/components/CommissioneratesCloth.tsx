@@ -216,7 +216,7 @@ class Cloth {
       this.positions[ix + 1] += vy + gravity * dt * dt * 60;
       this.positions[ix + 2] += vz + wind.z * dt;
     }
-    for (let iter = 0; iter < 3; iter++) {
+    for (let iter = 0; iter < this.iterations; iter++) {
       for (const c of this.constraints) {
         const a3 = c.a * 3, b3 = c.b * 3;
         const dx = this.positions[b3] - this.positions[a3];
