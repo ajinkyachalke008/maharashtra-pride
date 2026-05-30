@@ -255,6 +255,12 @@ class Cloth {
     return best;
   }
 
+  reset() {
+    this.positions.set(this.initial);
+    this.prev.set(this.initial);
+    this.posAttr.needsUpdate = true;
+  }
+
   dispose() {
     this.geo.dispose();
     const mat = this.mesh.material as THREE.MeshStandardMaterial;
