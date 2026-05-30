@@ -341,7 +341,8 @@ export default function CommissioneratesCloth() {
     const margin = Math.max(cardW, cardH) * 0.35;
     const gridAspect = (totalW + margin * 2) / (totalH + margin * 2);
     const containerW = container.clientWidth;
-    const desiredH = Math.min(window.innerHeight * 1.6, containerW / gridAspect);
+    // Fit all 12 banners within the viewport — cap height so nothing is offscreen.
+    const desiredH = Math.min(window.innerHeight * 0.9, containerW / gridAspect, 1400);
     container.style.height = `${desiredH}px`;
 
     const cloths: Cloth[] = [];
