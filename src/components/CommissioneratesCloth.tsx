@@ -363,7 +363,6 @@ export default function CommissioneratesCloth() {
       camera.aspect = w / h;
       const vFov = camera.fov * Math.PI / 180;
       // Margin scaled so banners never clip at any breakpoint
-      const margin = Math.max(cardW, cardH) * 0.35;
       const distH = (totalH / 2 + margin) / Math.tan(vFov / 2);
       const distW = (totalW / 2 + margin) / (Math.tan(vFov / 2) * camera.aspect);
       camera.position.set(0, 0, Math.max(distH, distW));
