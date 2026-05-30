@@ -337,6 +337,13 @@ export default function CommissioneratesCloth() {
     const totalW = cols * cardW + (cols - 1) * gapX;
     const totalH = rows * cardH + (rows - 1) * gapY;
 
+    // Size the canvas to the grid aspect ratio so all 12 cards always fit on screen.
+    const margin = Math.max(cardW, cardH) * 0.35;
+    const gridAspect = (totalW + margin * 2) / (totalH + margin * 2);
+    const containerW = container.clientWidth;
+    const desiredH = Math.min(window.innerHeight * 1.6, containerW / gridAspect);
+    container.style.height = `${desiredH}px`;
+
     const cloths: Cloth[] = [];
     CITIES.forEach((city, idx) => {
       const cx = idx % cols, cy = Math.floor(idx / cols);
@@ -356,7 +363,6 @@ export default function CommissioneratesCloth() {
       camera.aspect = w / h;
       const vFov = camera.fov * Math.PI / 180;
       // Margin scaled so banners never clip at any breakpoint
-      const margin = Math.max(cardW, cardH) * 0.35;
       const distH = (totalH / 2 + margin) / Math.tan(vFov / 2);
       const distW = (totalW / 2 + margin) / (Math.tan(vFov / 2) * camera.aspect);
       camera.position.set(0, 0, Math.max(distH, distW));
@@ -494,7 +500,7 @@ export default function CommissioneratesCloth() {
         <div
           ref={containerRef}
           className="relative w-full rounded-lg overflow-hidden"
-          style={{ height: "min(160vh, 1600px)" }}
+          style={{ minHeight: "60vh" }}
         />
         <div className="absolute top-3 right-3 flex items-center gap-2 z-10">
           <span className="text-[10px] uppercase tracking-[0.25em] text-white/45 px-2 py-1 rounded bg-black/40 backdrop-blur-sm border border-white/10">
