@@ -418,7 +418,7 @@ export default function CommissioneratesCloth() {
       <div
         ref={containerRef}
         className="relative w-full mx-auto rounded-lg overflow-hidden"
-        style={{ height: "min(85vh, 880px)", maxWidth: "1400px" }}
+        style={{ height: "min(160vh, 1600px)", maxWidth: "1600px" }}
       />
       <div className="text-center text-xs text-white/40 mt-3 tracking-wider">
         🖱️ / 👆 drag a banner — verlet cloth, real-time
