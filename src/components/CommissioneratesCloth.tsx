@@ -142,14 +142,17 @@ function drawParchment(city: City): HTMLCanvasElement {
 class Cloth {
   cols: number; rows: number; w: number; h: number;
   positions: Float32Array; prev: Float32Array; pinned: Uint8Array;
+  initial: Float32Array;
+  iterations: number;
   constraints: { a: number; b: number; rest: number }[] = [];
   origin: THREE.Vector3;
   mesh: THREE.Mesh;
   geo: THREE.BufferGeometry;
   posAttr: THREE.BufferAttribute;
 
-  constructor(origin: THREE.Vector3, w: number, h: number, cols: number, rows: number, texture: THREE.Texture) {
+  constructor(origin: THREE.Vector3, w: number, h: number, cols: number, rows: number, texture: THREE.Texture, iterations = 3) {
     this.origin = origin; this.w = w; this.h = h; this.cols = cols; this.rows = rows;
+    this.iterations = iterations;
     const N = cols * rows;
     this.positions = new Float32Array(N * 3);
     this.prev = new Float32Array(N * 3);
