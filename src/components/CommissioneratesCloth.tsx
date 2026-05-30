@@ -500,7 +500,7 @@ export default function CommissioneratesCloth() {
         <div
           ref={containerRef}
           className="relative w-full rounded-lg overflow-hidden"
-          style={{ height: "min(160vh, 1600px)" }}
+          style={{ minHeight: "60vh" }}
         />
         <div className="absolute top-3 right-3 flex items-center gap-2 z-10">
           <span className="text-[10px] uppercase tracking-[0.25em] text-white/45 px-2 py-1 rounded bg-black/40 backdrop-blur-sm border border-white/10">
