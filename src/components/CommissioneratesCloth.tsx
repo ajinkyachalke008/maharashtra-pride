@@ -290,10 +290,10 @@ export default function CommissioneratesCloth() {
 
     // Responsive grid: 4×3 wide, 3×4 narrow, 2×6 mobile
     const aspect = container.clientWidth / container.clientHeight;
-    const cols = aspect > 1.2 ? 4 : aspect > 0.7 ? 3 : 2;
+    const cols = aspect > 1.4 ? 3 : aspect > 0.7 ? 2 : 1;
     const rows = Math.ceil(CITIES.length / cols);
-    const cardW = 2.0, cardH = 2.5;
-    const gapX = 0.7, gapY = 1.1;
+    const cardW = 4.2, cardH = 5.25;
+    const gapX = 1.2, gapY = 1.8;
     const totalW = cols * cardW + (cols - 1) * gapX;
     const totalH = rows * cardH + (rows - 1) * gapY;
 
@@ -305,7 +305,7 @@ export default function CommissioneratesCloth() {
       const tex = new THREE.CanvasTexture(drawParchment(city));
       tex.colorSpace = THREE.SRGBColorSpace;
       tex.anisotropy = 8;
-      const cloth = new Cloth(new THREE.Vector3(x, y, 0), cardW, cardH, 11, 14, tex);
+      const cloth = new Cloth(new THREE.Vector3(x, y, 0), cardW, cardH, 14, 18, tex);
       cloths.push(cloth);
       scene.add(cloth.mesh);
     });
@@ -418,7 +418,7 @@ export default function CommissioneratesCloth() {
       <div
         ref={containerRef}
         className="relative w-full mx-auto rounded-lg overflow-hidden"
-        style={{ height: "min(85vh, 880px)", maxWidth: "1400px" }}
+        style={{ height: "min(160vh, 1600px)", maxWidth: "1600px" }}
       />
       <div className="text-center text-xs text-white/40 mt-3 tracking-wider">
         🖱️ / 👆 drag a banner — verlet cloth, real-time
