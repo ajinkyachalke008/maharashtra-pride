@@ -327,10 +327,10 @@ export default function CommissioneratesCloth() {
     // ---- Responsive grid: keep 12 cards uniform, no clipping ----
     // cols by container width; pick card size from cols so all fit cleanly.
     const cw = container.clientWidth;
-    const cols = cw >= 1100 ? 4 : cw >= 720 ? 3 : cw >= 460 ? 2 : 1;
+    const cols = cw >= 1100 ? 4 : cw >= 720 ? 3 : cw >= 380 ? 3 : 2;
     const rows = Math.ceil(CITIES.length / cols);
-    // Constant aspect 4:5 banners. Size scales with column count so larger cells appear on phones.
-    const cardW = cols === 4 ? 3.6 : cols === 3 ? 4.2 : cols === 2 ? 4.8 : 5.4;
+    // Constant aspect 4:5 banners. Size scales with column count so cells stay readable.
+    const cardW = cols === 4 ? 3.6 : cols === 3 ? 4.2 : 4.8;
     const cardH = cardW * 1.25;
     const gapX = cardW * 0.28;
     const gapY = cardH * 0.32;
