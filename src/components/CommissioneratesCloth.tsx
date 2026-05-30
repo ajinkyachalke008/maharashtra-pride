@@ -270,13 +270,39 @@ class Cloth {
 }
 
 // ---------- Component ----------
+type PerfTier = "high" | "medium" | "low";
+
+function detectPerfTier(): PerfTier {
+  if (typeof navigator === "undefined") return "high";
+  const nav = navigator as Navigator & { deviceMemory?: number };
+  const mem = nav.deviceMemory ?? 8;
+  const cores = nav.hardwareConcurrency ?? 8;
+  const coarse = typeof window !== "undefined" && window.matchMedia?.("(pointer: coarse)").matches;
+  const reduced = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  if (reduced || mem <= 2 || cores <= 2) return "low";
+  if (mem <= 4 || cores <= 4 || coarse) return "medium";
+  return "high";
+}
+
 export default function CommissioneratesCloth() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const resetAllRef = useRef<() => void>(() => {});
+  const [tier, setTier] = useState<PerfTier>("high");
 
   useEffect(() => {
     const container = containerRef.current!;
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    const perfTier = detectPerfTier();
+    setTier(perfTier);
+
+    // Mesh density + solver iterations per tier (large card look preserved across tiers)
+    const meshCols = perfTier === "high" ? 14 : perfTier === "medium" ? 11 : 8;
+    const meshRows = perfTier === "high" ? 18 : perfTier === "medium" ? 14 : 10;
+    const iterations = perfTier === "high" ? 3 : perfTier === "medium" ? 2 : 2;
+    const maxDPR = perfTier === "high" ? 2 : perfTier === "medium" ? 1.5 : 1;
+    const antialias = perfTier !== "low";
+
+    const renderer = new THREE.WebGLRenderer({ antialias, alpha: false, powerPreference: "high-performance" });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxDPR));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     container.appendChild(renderer.domElement);
     const dom = renderer.domElement;
@@ -288,7 +314,7 @@ export default function CommissioneratesCloth() {
 
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x0d0d0d);
-    scene.fog = new THREE.Fog(0x0d0d0d, 18, 42);
+    scene.fog = new THREE.Fog(0x0d0d0d, 22, 60);
 
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
 
@@ -298,12 +324,16 @@ export default function CommissioneratesCloth() {
     const rim = new THREE.DirectionalLight(0xc9a84c, 0.35);
     rim.position.set(-5, 2, -3); scene.add(rim);
 
-    // Responsive grid: 4×3 wide, 3×4 narrow, 2×6 mobile
-    const aspect = container.clientWidth / container.clientHeight;
-    const cols = aspect > 1.4 ? 3 : aspect > 0.7 ? 2 : 1;
+    // ---- Responsive grid: keep 12 cards uniform, no clipping ----
+    // cols by container width; pick card size from cols so all fit cleanly.
+    const cw = container.clientWidth;
+    const cols = cw >= 1100 ? 4 : cw >= 720 ? 3 : cw >= 460 ? 2 : 1;
     const rows = Math.ceil(CITIES.length / cols);
-    const cardW = 4.2, cardH = 5.25;
-    const gapX = 1.2, gapY = 1.8;
+    // Constant aspect 4:5 banners. Size scales with column count so larger cells appear on phones.
+    const cardW = cols === 4 ? 3.6 : cols === 3 ? 4.2 : cols === 2 ? 4.8 : 5.4;
+    const cardH = cardW * 1.25;
+    const gapX = cardW * 0.28;
+    const gapY = cardH * 0.32;
     const totalW = cols * cardW + (cols - 1) * gapX;
     const totalH = rows * cardH + (rows - 1) * gapY;
 
@@ -314,8 +344,8 @@ export default function CommissioneratesCloth() {
       const y = totalH / 2 - cy * (cardH + gapY) - cardH / 2;
       const tex = new THREE.CanvasTexture(drawParchment(city));
       tex.colorSpace = THREE.SRGBColorSpace;
-      tex.anisotropy = 8;
-      const cloth = new Cloth(new THREE.Vector3(x, y, 0), cardW, cardH, 14, 18, tex);
+      tex.anisotropy = perfTier === "low" ? 2 : 8;
+      const cloth = new Cloth(new THREE.Vector3(x, y, 0), cardW, cardH, meshCols, meshRows, tex, iterations);
       cloths.push(cloth);
       scene.add(cloth.mesh);
     });
@@ -325,8 +355,10 @@ export default function CommissioneratesCloth() {
       renderer.setSize(w, h, false);
       camera.aspect = w / h;
       const vFov = camera.fov * Math.PI / 180;
-      const distH = (totalH / 2 + 0.6) / Math.tan(vFov / 2);
-      const distW = (totalW / 2 + 0.6) / (Math.tan(vFov / 2) * camera.aspect);
+      // Margin scaled so banners never clip at any breakpoint
+      const margin = Math.max(cardW, cardH) * 0.35;
+      const distH = (totalH / 2 + margin) / Math.tan(vFov / 2);
+      const distW = (totalW / 2 + margin) / (Math.tan(vFov / 2) * camera.aspect);
       camera.position.set(0, 0, Math.max(distH, distW));
       camera.lookAt(0, 0, 0);
       camera.updateProjectionMatrix();
@@ -335,9 +367,13 @@ export default function CommissioneratesCloth() {
     const ro = new ResizeObserver(fit);
     ro.observe(container);
 
+    // ---- Reset ----
+    resetAllRef.current = () => { for (const c of cloths) c.reset(); };
+
     // ---- Pointer / Touch ----
     const raycaster = new THREE.Raycaster();
     const ndc = new THREE.Vector2();
+    const zPlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
     let drag: { cloth: Cloth; idx: number; plane: THREE.Plane } | null = null;
 
     const setNDC = (e: PointerEvent) => {
@@ -346,18 +382,40 @@ export default function CommissioneratesCloth() {
       ndc.y = -((e.clientY - r.top) / r.height) * 2 + 1;
     };
 
+    // Pick a banner reliably: precise raycast first, fall back to nearest banner
+    // along the ray's z=0 intersection so any tap inside the canvas grabs something.
+    const pickCloth = (): { cloth: Cloth; point: THREE.Vector3 } | null => {
+      const hits = raycaster.intersectObjects(cloths.map(c => c.mesh), false);
+      if (hits.length) {
+        const cloth = cloths.find(c => c.mesh === hits[0].object)!;
+        return { cloth, point: hits[0].point };
+      }
+      const p = new THREE.Vector3();
+      if (!raycaster.ray.intersectPlane(zPlane, p)) return null;
+      // Find closest banner center within a tolerance proportional to card size.
+      let best: Cloth | null = null, bestD = Infinity;
+      for (const c of cloths) {
+        const dx = c.origin.x - p.x;
+        const dy = c.origin.y - p.y;
+        const d = dx * dx + dy * dy;
+        if (d < bestD) { bestD = d; best = c; }
+      }
+      if (!best) return null;
+      const tol = Math.max(cardW, cardH) * 0.9;
+      if (bestD > tol * tol) return null;
+      return { cloth: best, point: p };
+    };
+
     const onDown = (e: PointerEvent) => {
       setNDC(e);
       raycaster.setFromCamera(ndc, camera);
-      const hits = raycaster.intersectObjects(cloths.map(c => c.mesh), false);
-      if (!hits.length) return;
-      const hit = hits[0];
-      const cloth = cloths.find(c => c.mesh === hit.object)!;
-      const idx = cloth.findNearest(hit.point);
+      const picked = pickCloth();
+      if (!picked) return;
+      const idx = picked.cloth.findNearest(picked.point);
       if (idx < 0) return;
-      const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -cloth.origin.z);
-      drag = { cloth, idx, plane };
-      dom.setPointerCapture(e.pointerId);
+      const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -picked.cloth.origin.z);
+      drag = { cloth: picked.cloth, idx, plane };
+      try { dom.setPointerCapture(e.pointerId); } catch { /* ignore */ }
       dom.style.cursor = "grabbing";
     };
     const onMove = (e: PointerEvent) => {
@@ -389,11 +447,18 @@ export default function CommissioneratesCloth() {
     let raf = 0;
     let last = performance.now();
     const wind = new THREE.Vector3();
+    const targetDt = perfTier === "low" ? 1 / 30 : 1 / 60;
+    let acc = 0;
     const tick = (now: number) => {
-      const dt = Math.min(0.033, (now - last) / 1000); last = now;
-      wind.x = Math.sin(now * 0.0005) * 0.25;
-      wind.z = Math.cos(now * 0.0007) * 0.15;
-      for (const c of cloths) c.step(dt, -0.012, wind);
+      const dt = Math.min(0.05, (now - last) / 1000); last = now;
+      acc += dt;
+      // Cap simulation rate on low-tier devices to keep fps smooth
+      if (acc >= targetDt) {
+        wind.x = Math.sin(now * 0.0005) * 0.25;
+        wind.z = Math.cos(now * 0.0007) * 0.15;
+        for (const c of cloths) c.step(Math.min(acc, 0.05), -0.012, wind);
+        acc = 0;
+      }
       renderer.render(scene, camera);
       raf = requestAnimationFrame(tick);
     };
@@ -425,14 +490,29 @@ export default function CommissioneratesCloth() {
           Twelve cloth banners hung in the wind. Drag any scroll to feel the fabric move.
         </p>
       </div>
-      <div
-        ref={containerRef}
-        className="relative w-full mx-auto rounded-lg overflow-hidden"
-        style={{ height: "min(160vh, 1600px)", maxWidth: "1600px" }}
-      />
+      <div className="relative mx-auto" style={{ maxWidth: "1600px" }}>
+        <div
+          ref={containerRef}
+          className="relative w-full rounded-lg overflow-hidden"
+          style={{ height: "min(160vh, 1600px)" }}
+        />
+        <div className="absolute top-3 right-3 flex items-center gap-2 z-10">
+          <span className="text-[10px] uppercase tracking-[0.25em] text-white/45 px-2 py-1 rounded bg-black/40 backdrop-blur-sm border border-white/10">
+            {tier} perf
+          </span>
+          <button
+            type="button"
+            onClick={() => resetAllRef.current()}
+            className="text-[11px] uppercase tracking-[0.2em] text-[var(--gold)] px-3 py-1.5 rounded border border-[var(--gold)]/40 bg-black/40 backdrop-blur-sm hover:bg-[var(--gold)]/10 transition-colors"
+          >
+            Reset Cloth
+          </button>
+        </div>
+      </div>
       <div className="text-center text-xs text-white/40 mt-3 tracking-wider">
-        🖱️ / 👆 drag a banner — verlet cloth, real-time
+        🖱️ / 👆 drag any banner — tap reset to restore the hang
       </div>
     </section>
   );
 }
+
