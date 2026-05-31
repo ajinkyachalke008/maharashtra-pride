@@ -78,9 +78,9 @@ function drawParchment(city: City): HTMLCanvasElement {
   c.width = W; c.height = H;
   const ctx = c.getContext("2d")!;
   const g = ctx.createRadialGradient(W / 2, H * 0.2, 40, W / 2, H / 2, W);
-  g.addColorStop(0, "#f7ecc8");
-  g.addColorStop(0.55, "#ecd9a0");
-  g.addColorStop(1, "#c9a865");
+  g.addColorStop(0, "#fff6d8");
+  g.addColorStop(0.55, "#f5e3ac");
+  g.addColorStop(1, "#d9b878");
   ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
   // grain
   const img = ctx.getImageData(0, 0, W, H);
@@ -195,7 +195,7 @@ class Cloth {
     this.geo.setIndex(indices);
     this.geo.computeVertexNormals();
     const mat = new THREE.MeshStandardMaterial({
-      map: texture, side: THREE.DoubleSide, roughness: 0.78, metalness: 0.04,
+      map: texture, side: THREE.DoubleSide, roughness: 0.6, metalness: 0.0, emissive: 0x000000, emissiveIntensity: 0, color: 0xffffff,
     });
     this.mesh = new THREE.Mesh(this.geo, mat);
   }
@@ -318,11 +318,13 @@ export default function CommissioneratesCloth() {
 
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
 
-    scene.add(new THREE.AmbientLight(0xffffff, 0.55));
-    const key = new THREE.DirectionalLight(0xfff1c8, 1.1);
+    scene.add(new THREE.AmbientLight(0xffffff, 1.1));
+    const key = new THREE.DirectionalLight(0xfff6dc, 1.4);
     key.position.set(5, 8, 6); scene.add(key);
-    const rim = new THREE.DirectionalLight(0xc9a84c, 0.35);
+    const rim = new THREE.DirectionalLight(0xffe7a8, 0.6);
     rim.position.set(-5, 2, -3); scene.add(rim);
+    const front = new THREE.DirectionalLight(0xffffff, 0.7);
+    front.position.set(0, 0, 10); scene.add(front);
 
     // ---- Responsive grid: keep 12 cards uniform, no clipping ----
     // cols by container width; pick card size from cols so all fit cleanly.
@@ -461,8 +463,8 @@ export default function CommissioneratesCloth() {
       acc += dt;
       // Cap simulation rate on low-tier devices to keep fps smooth
       if (acc >= targetDt) {
-        wind.x = Math.sin(now * 0.0005) * 0.25;
-        wind.z = Math.cos(now * 0.0007) * 0.15;
+        wind.x = Math.sin(now * 0.0003) * 0.06;
+        wind.z = Math.cos(now * 0.0004) * 0.04;
         for (const c of cloths) c.step(Math.min(acc, 0.05), -0.012, wind);
         acc = 0;
       }
