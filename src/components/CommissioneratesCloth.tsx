@@ -78,9 +78,9 @@ function drawParchment(city: City): HTMLCanvasElement {
   c.width = W; c.height = H;
   const ctx = c.getContext("2d")!;
   const g = ctx.createRadialGradient(W / 2, H * 0.2, 40, W / 2, H / 2, W);
-  g.addColorStop(0, "#f7ecc8");
-  g.addColorStop(0.55, "#ecd9a0");
-  g.addColorStop(1, "#c9a865");
+  g.addColorStop(0, "#fff6d8");
+  g.addColorStop(0.55, "#f5e3ac");
+  g.addColorStop(1, "#d9b878");
   ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
   // grain
   const img = ctx.getImageData(0, 0, W, H);
