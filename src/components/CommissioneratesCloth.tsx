@@ -201,7 +201,7 @@ class Cloth {
   }
 
   step(dt: number, gravity: number, wind: THREE.Vector3) {
-    const damp = 0.985;
+    const damp = 0.94;
     const N = this.cols * this.rows;
     for (let i = 0; i < N; i++) {
       if (this.pinned[i]) continue;
@@ -463,8 +463,8 @@ export default function CommissioneratesCloth() {
       acc += dt;
       // Cap simulation rate on low-tier devices to keep fps smooth
       if (acc >= targetDt) {
-        wind.x = Math.sin(now * 0.0003) * 0.06;
-        wind.z = Math.cos(now * 0.0004) * 0.04;
+        wind.x = Math.sin(now * 0.00015) * 0.02;
+        wind.z = Math.cos(now * 0.0002) * 0.015;
         for (const c of cloths) c.step(Math.min(acc, 0.05), -0.012, wind);
         acc = 0;
       }
