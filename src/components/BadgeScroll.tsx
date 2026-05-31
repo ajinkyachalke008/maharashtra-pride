@@ -40,7 +40,7 @@ export default function BadgeScroll() {
   const frameIndexRef = useRef(0);
   const dirtyRef = useRef(true);
   const [progress, setProgress] = useState(0);
-  const { images, loaded, total, progress: loadProgress, done } = useImagePreloader(FRAME_URLS);
+  const { images, done } = useImagePreloader(FRAME_URLS);
 
   // Draw loop
   useEffect(() => {
