@@ -201,7 +201,7 @@ class Cloth {
   }
 
   step(dt: number, gravity: number, wind: THREE.Vector3) {
-    const damp = 0.985;
+    const damp = 0.94;
     const N = this.cols * this.rows;
     for (let i = 0; i < N; i++) {
       if (this.pinned[i]) continue;
