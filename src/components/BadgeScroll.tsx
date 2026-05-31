@@ -40,7 +40,7 @@ export default function BadgeScroll() {
   const frameIndexRef = useRef(0);
   const dirtyRef = useRef(true);
   const [progress, setProgress] = useState(0);
-  const { images, loaded, total, progress: loadProgress, done } = useImagePreloader(FRAME_URLS);
+  const { images, done } = useImagePreloader(FRAME_URLS);
 
   // Draw loop
   useEffect(() => {
@@ -118,17 +118,7 @@ export default function BadgeScroll() {
 
   return (
     <section ref={containerRef} className="relative" style={{ height: "2700px" }}>
-      {/* Loader */}
-      {!done && (
-        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0d0d0d]">
-          <div className="absolute top-0 left-0 h-[2px] bg-[var(--gold)]" style={{ width: `${loadProgress * 100}%`, boxShadow: "0 0 10px var(--gold-bright)" }} />
-          <div className="star-spinner" />
-          <div className="mt-8 font-display text-[var(--gold)] text-lg tracking-[0.3em]">
-            LOADING... {Math.round(loadProgress * 100)}%
-          </div>
-          <div className="mt-2 text-xs text-white/40">{loaded} / {total} frames</div>
-        </div>
-      )}
+      {/* Loader removed */}
 
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center" style={{ background: "#1e1e1e" }}>
         <div
