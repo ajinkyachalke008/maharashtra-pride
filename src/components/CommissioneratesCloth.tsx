@@ -318,11 +318,13 @@ export default function CommissioneratesCloth() {
 
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
 
-    scene.add(new THREE.AmbientLight(0xffffff, 0.55));
-    const key = new THREE.DirectionalLight(0xfff1c8, 1.1);
+    scene.add(new THREE.AmbientLight(0xffffff, 1.1));
+    const key = new THREE.DirectionalLight(0xfff6dc, 1.4);
     key.position.set(5, 8, 6); scene.add(key);
-    const rim = new THREE.DirectionalLight(0xc9a84c, 0.35);
+    const rim = new THREE.DirectionalLight(0xffe7a8, 0.6);
     rim.position.set(-5, 2, -3); scene.add(rim);
+    const front = new THREE.DirectionalLight(0xffffff, 0.7);
+    front.position.set(0, 0, 10); scene.add(front);
 
     // ---- Responsive grid: keep 12 cards uniform, no clipping ----
     // cols by container width; pick card size from cols so all fit cleanly.
