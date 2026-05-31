@@ -77,63 +77,63 @@ function drawParchment(city: City): HTMLCanvasElement {
   const c = document.createElement("canvas");
   c.width = W; c.height = H;
   const ctx = c.getContext("2d")!;
-  const g = ctx.createRadialGradient(W / 2, H * 0.2, 40, W / 2, H / 2, W);
-  g.addColorStop(0, "#fff6d8");
-  g.addColorStop(0.55, "#f5e3ac");
-  g.addColorStop(1, "#d9b878");
+  const g = ctx.createLinearGradient(0, 0, W, H);
+  g.addColorStop(0, "#FFF9ED");
+  g.addColorStop(1, "#F3E5C9");
   ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
-  // grain
+  // subtle grain (toned down for readability)
   const img = ctx.getImageData(0, 0, W, H);
   for (let i = 0; i < img.data.length; i += 4) {
-    const n = (Math.random() - 0.5) * 22;
+    const n = (Math.random() - 0.5) * 8;
     img.data[i] += n; img.data[i + 1] += n; img.data[i + 2] += n;
   }
   ctx.putImageData(img, 0, 0);
   // borders
-  ctx.strokeStyle = "#7a5e1f"; ctx.lineWidth = 4;
+  ctx.strokeStyle = "#8b6914"; ctx.lineWidth = 5;
   ctx.strokeRect(24, 24, W - 48, H - 48);
-  ctx.strokeStyle = "rgba(122,94,31,0.45)"; ctx.lineWidth = 1;
-  ctx.strokeRect(38, 38, W - 76, H - 76);
-  // tag
+  ctx.strokeStyle = "rgba(69,26,3,0.35)"; ctx.lineWidth = 1;
+  ctx.strokeRect(40, 40, W - 80, H - 80);
+  // tag ribbon
   if (city.tag) {
-    const tw = 110, tx = (W - tw) / 2, ty = 56;
-    ctx.fillStyle = city.tag === "RAILWAY" ? "#1d3a6b" : "#1a1a1a";
-    ctx.fillRect(tx, ty, tw, 30);
-    ctx.fillStyle = city.tag === "RAILWAY" ? "#e8d98a" : "#e8c87a";
-    ctx.font = "bold 16px sans-serif"; ctx.textAlign = "center";
-    ctx.fillText(city.tag, W / 2, ty + 21);
+    const label = city.tag === "RAILWAY" ? "RAILWAY" : "POLICE";
+    const tw = 150, tx = (W - tw) / 2, ty = 58;
+    ctx.fillStyle = city.tag === "RAILWAY" ? "#1d3a6b" : "#1E1E1E";
+    ctx.fillRect(tx, ty, tw, 36);
+    ctx.fillStyle = "#FFFFFF";
+    ctx.font = "bold 18px sans-serif"; ctx.textAlign = "center";
+    ctx.fillText(label, W / 2, ty + 24);
   }
-  // name
-  ctx.fillStyle = "#1a1208";
-  const nameFont = city.name.length > 14 ? 32 : 40;
-  ctx.font = `bold ${nameFont}px Georgia, serif`;
+  // name — dark ink, extrabold
+  ctx.fillStyle = "#451A03";
+  const nameFont = city.name.length > 14 ? 34 : 44;
+  ctx.font = `900 ${nameFont}px Georgia, serif`;
   ctx.textAlign = "center";
-  ctx.fillText(city.name, W / 2, 150);
+  ctx.fillText(city.name, W / 2, 172);
   // marathi
-  ctx.fillStyle = "#3a2812";
-  ctx.font = "28px serif";
-  ctx.fillText(city.marathi, W / 2, 192);
+  ctx.fillStyle = "#1C1917";
+  ctx.font = "bold 30px serif";
+  ctx.fillText(city.marathi, W / 2, 214);
   // divider
-  ctx.strokeStyle = "#7a5e1f"; ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(W / 2 - 70, 218); ctx.lineTo(W / 2 + 70, 218); ctx.stroke();
-  ctx.fillStyle = "#7a5e1f"; ctx.font = "14px serif"; ctx.fillText("◆", W / 2, 222);
+  ctx.strokeStyle = "#8b6914"; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(W / 2 - 80, 240); ctx.lineTo(W / 2 + 80, 240); ctx.stroke();
+  ctx.fillStyle = "#8b6914"; ctx.font = "bold 16px serif"; ctx.fillText("◆", W / 2, 246);
   // fields
-  let yy = 260;
+  let yy = 286;
   ctx.textAlign = "left";
   for (const f of city.fields) {
-    ctx.fillStyle = "#3a2208"; ctx.font = "bold 15px sans-serif";
+    ctx.fillStyle = "#292524"; ctx.font = "600 15px sans-serif";
     ctx.fillText(f.label.toUpperCase() + ":", 56, yy);
-    yy += 22;
-    ctx.fillStyle = "#231706"; ctx.font = "18px Georgia, serif";
+    yy += 24;
+    ctx.fillStyle = "#1C1917"; ctx.font = "bold 19px Georgia, serif";
     const words = f.value.split(" "); let line = "";
     for (const w of words) {
       const test = line ? line + " " + w : w;
       if (ctx.measureText(test).width > W - 112) {
-        ctx.fillText(line, 56, yy); line = w; yy += 22;
+        ctx.fillText(line, 56, yy); line = w; yy += 24;
       } else line = test;
     }
     ctx.fillText(line, 56, yy);
-    yy += 30;
+    yy += 32;
   }
   return c;
 }
