@@ -195,7 +195,7 @@ class Cloth {
     this.geo.setIndex(indices);
     this.geo.computeVertexNormals();
     const mat = new THREE.MeshStandardMaterial({
-      map: texture, side: THREE.DoubleSide, roughness: 0.78, metalness: 0.04,
+      map: texture, side: THREE.DoubleSide, roughness: 0.6, metalness: 0.0, emissive: 0x000000, emissiveIntensity: 0, color: 0xffffff,
     });
     this.mesh = new THREE.Mesh(this.geo, mat);
   }
