@@ -145,8 +145,10 @@ export default function PortalGate() {
           className="absolute inset-y-0 left-0 w-[55%]"
           style={{
             backgroundImage: `url(${curtainLeft})`,
-            backgroundSize: "cover",
-            backgroundPosition: "right center",
+            backgroundSize: "auto 100%",
+            backgroundPosition: "left center",
+            backgroundRepeat: "no-repeat",
+            backgroundColor: "#1a0808",
             transition: curtainTransition,
             willChange: "transform",
           }}
@@ -156,8 +158,10 @@ export default function PortalGate() {
           className="absolute inset-y-0 right-0 w-[55%]"
           style={{
             backgroundImage: `url(${curtainRight})`,
-            backgroundSize: "cover",
-            backgroundPosition: "left center",
+            backgroundSize: "auto 100%",
+            backgroundPosition: "right center",
+            backgroundRepeat: "no-repeat",
+            backgroundColor: "#1a0808",
             transition: curtainTransition,
             willChange: "transform",
           }}
