@@ -5,6 +5,7 @@ import BadgeScroll from "@/components/BadgeScroll";
 import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
+import PortalGate from "@/components/PortalGate";
 
 const StatsSection = lazy(() => import("@/components/StatsSection"));
 const ValuesSection = lazy(() => import("@/components/ValuesSection"));
