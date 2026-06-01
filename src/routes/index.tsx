@@ -31,6 +31,7 @@ function Index() {
       <CustomCursor />
       <ScrollProgress />
       <Navbar />
+      <PortalGate />
       <HeroSection />
       <BadgeScroll />
       <Suspense fallback={<div className="h-32" />}>
