@@ -117,7 +117,7 @@ export default function BadgeScroll() {
   }, [done]);
 
   return (
-    <section ref={containerRef} className="relative" style={{ height: "2700px" }}>
+    <section ref={containerRef} className="relative" style={{ height: "3000px" }}>
       {/* Loader removed */}
 
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center" style={{ background: "#1e1e1e" }}>
