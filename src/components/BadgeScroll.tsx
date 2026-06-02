@@ -162,53 +162,32 @@ export default function BadgeScroll() {
             </div>
           </div>
 
-          {/* Overlays */}
-          <Overlay progress={progress} start={0.00} end={0.15} className="top-[8%] left-1/2 -translate-x-1/2 w-full text-center px-6">
-            <h2 className="font-display text-2xl md:text-5xl text-white/85 tracking-wide">Witness the Birth of an Icon</h2>
+          {/* Cinematic institutional overlays */}
+          <Overlay progress={progress} start={0.00} end={0.18} className="bottom-[14%] left-1/2 -translate-x-1/2 w-full text-center px-6">
+            <div className="text-[10px] md:text-xs tracking-[0.5em] text-[var(--gold)]/90 uppercase mb-3">Stage I</div>
+            <h2 className="font-display text-3xl md:text-6xl text-white tracking-wide" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.85)" }}>Gateway to Service</h2>
           </Overlay>
 
-          <Overlay progress={progress} start={0.18} end={0.33} className="top-1/2 -translate-y-1/2 left-4 md:left-8 max-w-[45%]">
-            <div className="font-devanagari text-3xl md:text-5xl text-[var(--gold)] font-bold" style={{ textShadow: "0 0 30px rgba(201,168,76,0.4)" }}>महाराष्ट्र</div>
-            <div className="mt-3 text-xs md:text-sm text-white/55 tracking-widest uppercase">Founded 1843 · Maharashtra State</div>
+          <Overlay progress={progress} start={0.22} end={0.38} className="bottom-[14%] left-1/2 -translate-x-1/2 w-full text-center px-6">
+            <div className="text-[10px] md:text-xs tracking-[0.5em] text-[var(--gold)]/90 uppercase mb-3">Stage II</div>
+            <h2 className="font-display text-3xl md:text-6xl text-white tracking-wide" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.85)" }}>Protecting Citizens</h2>
           </Overlay>
 
-          <Overlay progress={progress} start={0.36} end={0.52} className="top-1/2 -translate-y-1/2 right-4 md:right-8 max-w-[45%] text-right">
-            <div className="font-devanagari text-3xl md:text-5xl text-[var(--gold)] font-bold" style={{ textShadow: "0 0 30px rgba(201,168,76,0.4)" }}>पोलीस</div>
-            <div className="mt-3 text-xs md:text-sm text-white/55 tracking-widest uppercase">185,000+ Officers · 130M Citizens</div>
+          <Overlay progress={progress} start={0.42} end={0.58} className="bottom-[14%] left-1/2 -translate-x-1/2 w-full text-center px-6">
+            <div className="text-[10px] md:text-xs tracking-[0.5em] text-[var(--gold)]/90 uppercase mb-3">Stage III</div>
+            <h2 className="font-display text-3xl md:text-6xl text-white tracking-wide" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.85)" }}>Preserving Heritage</h2>
           </Overlay>
 
-          <Overlay progress={progress} start={0.55} end={0.70} className="bottom-[12%] left-1/2 -translate-x-1/2 w-full text-center px-6">
-            <div className="font-devanagari text-2xl md:text-4xl text-[var(--gold)]" style={{ letterSpacing: "0.3em" }}>सद्रक्षणाय</div>
-            <div className="mt-2 text-xs md:text-base text-white/60 italic">To Protect the Good</div>
+          <Overlay progress={progress} start={0.62} end={0.78} className="bottom-[14%] left-1/2 -translate-x-1/2 w-full text-center px-6">
+            <div className="text-[10px] md:text-xs tracking-[0.5em] text-[var(--gold)]/90 uppercase mb-3">Stage IV</div>
+            <h2 className="font-display text-3xl md:text-6xl text-white tracking-wide" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.85)" }}>Serving Maharashtra</h2>
           </Overlay>
 
-          <Overlay progress={progress} start={0.72} end={0.87} className="bottom-[12%] left-1/2 -translate-x-1/2 w-full text-center px-6">
-            <div className="font-devanagari text-2xl md:text-4xl text-[var(--gold)]" style={{ letterSpacing: "0.3em" }}>खलनिग्रहणाय</div>
-            <div className="mt-2 text-xs md:text-base text-white/60 italic">To Punish the Wicked</div>
+          <Overlay progress={progress} start={0.82} end={1.0} className="bottom-[12%] left-1/2 -translate-x-1/2 w-full text-center px-6">
+            <div className="font-devanagari text-4xl md:text-6xl gold-shimmer font-bold tracking-wide" style={{ textShadow: "0 4px 30px rgba(0,0,0,0.9)" }}>महाराष्ट्र पोलीस</div>
+            <div className="mt-3 text-xs md:text-sm text-white/80 tracking-[0.35em] uppercase">Serving with Honor Since 1843</div>
           </Overlay>
 
-          {/* Final reveal */}
-          {progress >= 0.9 && (
-            <div className="absolute bottom-[6%] left-0 right-0 text-center">
-              <h3 className="font-display text-2xl md:text-4xl gold-shimmer tracking-[0.2em]">THE BADGE. THE PROMISE.</h3>
-              <div className="relative h-0 w-0 mx-auto">
-                {Array.from({ length: 10 }).map((_, i) => {
-                  const angle = (i / 10) * Math.PI * 2;
-                  return (
-                    <span
-                      key={i}
-                      className="burst-p"
-                      style={{
-                        ["--bx" as any]: `${Math.cos(angle) * 80}px`,
-                        ["--by" as any]: `${Math.sin(angle) * 80}px`,
-                        animationDelay: `${i * 0.05}s`,
-                      }}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </section>
