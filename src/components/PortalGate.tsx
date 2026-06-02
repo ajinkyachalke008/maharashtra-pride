@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import portalBg from "@/assets/portal-gate.jpg";
 import curtainLeft from "@/assets/curtain-left.png";
 import curtainRight from "@/assets/curtain-right.png";
-import worldBg from "@/assets/world-bg.jpg";
 import { useIsMobile } from "@/hooks/use-mobile";
+
+const GATE_BG = "/frames/ezgif-frame-001.jpg";
+const WORLD_BG = "/frames/ezgif-frame-150.jpg";
 
 const easeInOut = (t: number) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
