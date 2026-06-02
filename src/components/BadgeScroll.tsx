@@ -7,7 +7,7 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const FRAME_COUNT = 270;
+const FRAME_COUNT = 300;
 const FRAME_URLS = Array.from({ length: FRAME_COUNT }, (_, i) =>
   `/frames/ezgif-frame-${String(i + 1).padStart(3, "0")}.jpg`
 );

@@ -117,7 +117,7 @@ export default function PortalGate() {
           ref={worldRef}
           className="absolute inset-0"
           style={{
-            backgroundImage: `url(${worldBg})`,
+            backgroundImage: `url(${WORLD_BG})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             willChange: "transform",
@@ -131,9 +131,9 @@ export default function PortalGate() {
           ref={portalRef}
           className="absolute inset-0"
           style={{
-            backgroundImage: `url(${portalBg})`,
-            backgroundSize: "contain",
-            backgroundPosition: "center 60%",
+            backgroundImage: `url(${GATE_BG})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             transformOrigin: "50% 55%",
             willChange: "transform, opacity",
