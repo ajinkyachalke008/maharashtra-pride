@@ -17,12 +17,55 @@ const FRAME_URLS = Array.from({ length: FRAME_COUNT }, (_, i) =>
 
 const clamp = (v: number, mn: number, mx: number) => Math.max(mn, Math.min(mx, v));
 
+// Cinematic easing — slow start at the gate, smooth approach,
+// quick pass-through, gentle settle on the HQ reveal.
+// Piecewise cubic-like curve over scroll progress [0,1] -> frame progress [0,1].
+function cinematicEase(p: number): number {
+  if (p < 0.27) {
+    // Stage I — gate dominates: slow, contemplative
+    const t = p / 0.27;
+    return (t * t * 0.8) * (80 / FRAME_COUNT) / 0.27 * 0.27 + 0; // map to frames 0..80
+    // simplified below
+  }
+  return p;
+}
+
+// Cleaner mapping: directly compute target frame index from scroll progress.
+function progressToFrameIndex(p: number): number {
+  // Anchor points: (scrollProgress, frameIndex)
+  // 0.00 -> 0,  0.27 -> 80 (gate hold)
+  // 0.55 -> 160 (approach), 0.73 -> 220 (pass through)
+  // 0.93 -> 280 (HQ reveal), 1.00 -> 299 (final)
+  const stops: Array<[number, number]> = [
+    [0.00, 0],
+    [0.27, 80],
+    [0.55, 160],
+    [0.73, 220],
+    [0.93, 280],
+    [1.00, FRAME_COUNT - 1],
+  ];
+  for (let i = 1; i < stops.length; i++) {
+    const [p0, f0] = stops[i - 1];
+    const [p1, f1] = stops[i];
+    if (p <= p1) {
+      const t = (p - p0) / (p1 - p0);
+      // smoothstep within segment
+      const e = t * t * (3 - 2 * t);
+      return Math.round(f0 + (f1 - f0) * e);
+    }
+  }
+  return FRAME_COUNT - 1;
+}
+
+// suppress unused-warning for the kept reference impl above
+void cinematicEase;
+
 type Stage = {
   start: number; end: number; eyebrow: string; title: string; sub?: string; devanagari?: boolean;
 };
 
 const STAGES: Stage[] = [
-  { start: 0.00, end: 0.24, eyebrow: "Stage I", title: "Gateway to Service" },
+  { start: 0.00, end: 0.22, eyebrow: "Stage I", title: "Gateway to Service" },
   { start: 0.28, end: 0.50, eyebrow: "Stage II", title: "Approaching the Threshold" },
   { start: 0.55, end: 0.70, eyebrow: "Stage III", title: "Crossing the Gate" },
   { start: 0.74, end: 0.90, eyebrow: "Stage IV", title: "The Headquarters" },
@@ -73,9 +116,10 @@ export default function PortalGate() {
   const [uiIn, setUiIn] = useState(false);
   const [allowTransition, setAllowTransition] = useState(true);
 
-  const { images, done } = useImagePreloader(FRAME_URLS);
+  // Higher concurrency for faster initial paint
+  const { images, loaded } = useImagePreloader(FRAME_URLS, 48);
 
-  // Curtain choreography on mount
+  // Curtain choreography on mount — independent of frame loading
   useEffect(() => {
     const t1 = setTimeout(() => setOpened(true), 200);
     const t2 = setTimeout(() => setUiIn(true), 700);
@@ -83,9 +127,8 @@ export default function PortalGate() {
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, []);
 
-  // Canvas draw loop (cover-fit, fills the viewport)
+  // Canvas draw loop — runs immediately; picks nearest available frame
   useEffect(() => {
-    if (!done) return;
     const canvas = canvasRef.current;
     const wrapper = wrapperRef.current;
     if (!canvas || !wrapper) return;
@@ -105,17 +148,28 @@ export default function PortalGate() {
     resize();
     window.addEventListener("resize", resize);
 
+    const pickNearest = (target: number): HTMLImageElement | undefined => {
+      const arr = images.current;
+      if (arr[target]) return arr[target];
+      // search outwards
+      for (let d = 1; d < FRAME_COUNT; d++) {
+        if (arr[target - d]) return arr[target - d];
+        if (arr[target + d]) return arr[target + d];
+      }
+      return undefined;
+    };
+
     let rafId = 0;
     const draw = () => {
       if (dirtyRef.current) {
-        const img = images.current[frameIndexRef.current];
+        const img = pickNearest(frameIndexRef.current);
         const rect = wrapper.getBoundingClientRect();
         ctx.clearRect(0, 0, rect.width, rect.height);
         if (img) {
           const iw = img.naturalWidth || 1920;
           const ih = img.naturalHeight || 1080;
-          // cover fit
-          const scale = Math.max(rect.width / iw, rect.height / ih);
+          // cover fit, matches BadgeScroll cinematic feel
+          const scale = Math.max(rect.width / iw, rect.height / ih) * 1.02;
           const w = iw * scale;
           const h = ih * scale;
           const x = (rect.width - w) / 2;
@@ -132,11 +186,15 @@ export default function PortalGate() {
       window.removeEventListener("resize", resize);
       cancelAnimationFrame(rafId);
     };
-  }, [done, images]);
+  }, [images]);
 
-  // ScrollTrigger driving frame index + hero fade
+  // Mark dirty as new frames stream in so the current view upgrades
   useEffect(() => {
-    if (!done) return;
+    dirtyRef.current = true;
+  }, [loaded]);
+
+  // ScrollTrigger driving cinematic frame mapping + hero fade
+  useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
 
@@ -144,10 +202,10 @@ export default function PortalGate() {
       trigger: el,
       start: "top top",
       end: "bottom bottom",
-      scrub: 0.4,
+      scrub: 0.5,
       onUpdate: (self) => {
         const p = self.progress;
-        const idx = Math.max(0, Math.min(FRAME_COUNT - 1, Math.floor(p * (FRAME_COUNT - 1))));
+        const idx = progressToFrameIndex(p);
         if (idx !== frameIndexRef.current) {
           frameIndexRef.current = idx;
           dirtyRef.current = true;
@@ -159,7 +217,7 @@ export default function PortalGate() {
       },
     });
     return () => { trigger.kill(); };
-  }, [done]);
+  }, []);
 
   const curtainTransition = allowTransition
     ? `transform ${isMobile ? 1.6 : 2}s cubic-bezier(0.7, 0, 0.2, 1)`
@@ -179,7 +237,7 @@ export default function PortalGate() {
           style={{ background: "radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,0.65) 100%)" }}
         />
 
-        {/* Curtains — reveal on load only */}
+        {/* Curtains — open on load, never removed */}
         <div
           ref={leftRef}
           className="absolute inset-y-0 left-0 w-[55%]"
