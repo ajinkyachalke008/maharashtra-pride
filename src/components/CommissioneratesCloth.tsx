@@ -581,7 +581,7 @@ export default function CommissioneratesCloth() {
     const rows = Math.ceil(CITIES.length / cols);
     // Constant aspect 4:5 banners. Size scales with column count so cells stay readable.
     const cardW = cols === 4 ? 3.6 : cols === 3 ? 4.2 : 4.8;
-    const cardH = cardW * 1.25;
+    const cardH = cardW * 1.406; // match parchment texture aspect (512x720)
     const gapX = cardW * 0.28;
     const gapY = cardH * 0.32;
     const totalW = cols * cardW + (cols - 1) * gapX;
