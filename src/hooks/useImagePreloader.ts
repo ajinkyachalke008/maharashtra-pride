@@ -16,8 +16,7 @@ export function useImagePreloader(urls: string[], concurrency = 32) {
       const i = cursor++;
       return new Promise<void>((resolve) => {
         const img = new Image();
-        // @ts-expect-error fetchPriority is valid HTML
-        img.fetchPriority = i < 12 ? "high" : "low";
+        (img as unknown as { fetchPriority?: string }).fetchPriority = i < 12 ? "high" : "low";
         img.decoding = "async";
         img.onload = img.onerror = () => {
           if (cancelled) return resolve();
