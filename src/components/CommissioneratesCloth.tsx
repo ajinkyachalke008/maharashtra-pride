@@ -347,13 +347,42 @@ function drawParchment(city: City): HTMLCanvasElement {
     const words = f.value.split(" "); let line = "";
     for (const w of words) {
       const test = line ? line + " " + w : w;
-      if (ctx.measureText(test).width > W - 112) {
-        ctx.fillText(line, 56, yy); line = w; yy += 24;
+      if (ctx.measureText(test).width > W - 180) {
+        ctx.fillText(line, leftX, yy); line = w; yy += 24;
       } else line = test;
     }
-    ctx.fillText(line, 56, yy);
-    yy += 32;
+    ctx.fillText(line, leftX, yy);
+    yy += 30;
   }
+
+  // ===== Top brass rod =====
+  drawBrassRod(ctx, 36, topRodY, W - 72, rodH);
+
+  // ===== Bottom brass rod =====
+  drawBrassRod(ctx, 36, botRodY, W - 72, rodH);
+
+  // ===== Maroon velvet fringe =====
+  ctx.fillStyle = "#5a1717";
+  ctx.fillRect(40, fringeY - 2, W - 80, 4);
+  drawFringe(ctx, 40, fringeY, W - 80, fringeH);
+
+  // ===== Tassels (hanging from top rod) =====
+  drawTassel(ctx, 78, topRodY + rodH, 150);
+  drawTassel(ctx, W - 78, topRodY + rodH, 150);
+
+  // ===== Badge (overlapping top rod, centered) =====
+  drawBadge(ctx, W / 2, topRodY + rodH * 0.5, 52);
+  // Badge shadow on parchment
+  ctx.save();
+  ctx.globalAlpha = 0.25;
+  const sg = ctx.createRadialGradient(W / 2, topRodY + rodH + 8, 4, W / 2, topRodY + rodH + 8, 60);
+  sg.addColorStop(0, "#000"); sg.addColorStop(1, "rgba(0,0,0,0)");
+  ctx.fillStyle = sg;
+  ctx.beginPath(); ctx.ellipse(W / 2, topRodY + rodH + 12, 55, 14, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+  // Suppress unused var warning
+  void tag;
+
   return c;
 }
 
