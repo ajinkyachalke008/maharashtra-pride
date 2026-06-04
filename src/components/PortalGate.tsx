@@ -38,10 +38,10 @@ function progressToFrameIndex(p: number): number {
   // 0.93 -> 280 (HQ reveal), 1.00 -> 299 (final)
   const stops: Array<[number, number]> = [
     [0.00, 0],
-    [0.27, 80],
-    [0.55, 160],
-    [0.73, 220],
-    [0.93, 280],
+    [0.22, 80],
+    [0.48, 160],
+    [0.66, 220],
+    [0.85, FRAME_COUNT - 1],
     [1.00, FRAME_COUNT - 1],
   ];
   for (let i = 1; i < stops.length; i++) {
@@ -226,7 +226,7 @@ export default function PortalGate() {
     : "none";
 
   // Mobile: shorter runway
-  const SCROLL_VH = isMobile ? 360 : 520;
+  const SCROLL_VH = isMobile ? 280 : 400;
 
   return (
     <section ref={sectionRef} style={{ height: `${SCROLL_VH}vh`, position: "relative", background: "#0a0608" }}>
