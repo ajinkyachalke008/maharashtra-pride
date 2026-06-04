@@ -38,10 +38,10 @@ function progressToFrameIndex(p: number): number {
   // 0.93 -> 280 (HQ reveal), 1.00 -> 299 (final)
   const stops: Array<[number, number]> = [
     [0.00, 0],
-    [0.22, 80],
-    [0.48, 160],
-    [0.66, 220],
-    [0.85, FRAME_COUNT - 1],
+    [0.20, 80],
+    [0.45, 160],
+    [0.65, 220],
+    [0.90, 280],
     [1.00, FRAME_COUNT - 1],
   ];
   for (let i = 1; i < stops.length; i++) {
