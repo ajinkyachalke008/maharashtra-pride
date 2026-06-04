@@ -51,14 +51,16 @@ export default function BadgeScroll() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = Math.min(window.devicePixelRatio || 1, 3);
     const resize = () => {
       const rect = wrapper.getBoundingClientRect();
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
+      canvas.width = Math.round(rect.width * dpr);
+      canvas.height = Math.round(rect.height * dpr);
       canvas.style.width = `${rect.width}px`;
       canvas.style.height = `${rect.height}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = "high";
       dirtyRef.current = true;
     };
     resize();
@@ -102,7 +104,7 @@ export default function BadgeScroll() {
       trigger: el,
       start: "top top",
       end: "bottom bottom",
-      scrub: 0.4,
+      scrub: 1.2,
       onUpdate: (self) => {
         const p = self.progress;
         const idx = Math.max(0, Math.min(FRAME_COUNT - 1, Math.floor(p * (FRAME_COUNT - 1))));
