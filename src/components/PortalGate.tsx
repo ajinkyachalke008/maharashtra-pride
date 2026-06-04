@@ -236,16 +236,17 @@ export default function PortalGate() {
 
   return (
     <section ref={sectionRef} style={{ height: `${SCROLL_VH}vh`, position: "relative", background: "#0f0f0f" }}>
-      {/* Handoff fade — bleeds into HeroSection bg in the last 8% of scroll */}
-      <div
-        className="pointer-events-none fixed inset-0 z-[6]"
-        style={{
-          background: "#0f0f0f",
-          opacity: clamp((progress - 0.92) / 0.08, 0, 1),
-        }}
-      />
       <div ref={wrapperRef} className="sticky top-0 w-full h-screen overflow-hidden">
         <canvas ref={canvasRef} className="absolute inset-0 block w-full h-full" />
+
+        {/* Handoff fade — bleeds into HeroSection bg over the final ~8% of scroll for a seamless cut */}
+        <div
+          className="absolute inset-0 pointer-events-none z-[15]"
+          style={{
+            background: "#0f0f0f",
+            opacity: clamp((progress - 0.92) / 0.08, 0, 1),
+          }}
+        />
 
         {/* Vignette */}
         <div
