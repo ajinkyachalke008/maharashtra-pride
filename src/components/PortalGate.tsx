@@ -204,7 +204,7 @@ export default function PortalGate() {
       trigger: el,
       start: "top top",
       end: "bottom bottom",
-      scrub: 0.5,
+      scrub: 1.2,
       onUpdate: (self) => {
         const p = self.progress;
         const idx = progressToFrameIndex(p);
