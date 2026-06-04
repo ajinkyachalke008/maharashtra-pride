@@ -38,10 +38,10 @@ function progressToFrameIndex(p: number): number {
   // 0.93 -> 280 (HQ reveal), 1.00 -> 299 (final)
   const stops: Array<[number, number]> = [
     [0.00, 0],
-    [0.22, 80],
-    [0.48, 160],
-    [0.66, 220],
-    [0.85, FRAME_COUNT - 1],
+    [0.20, 80],
+    [0.45, 160],
+    [0.65, 220],
+    [0.90, 280],
     [1.00, FRAME_COUNT - 1],
   ];
   for (let i = 1; i < stops.length; i++) {
@@ -205,6 +205,12 @@ export default function PortalGate() {
       start: "top top",
       end: "bottom bottom",
       scrub: 1.2,
+      snap: {
+        snapTo: (value) => (value > 0.96 ? 1 : value < 0.02 ? 0 : value),
+        duration: { min: 0.1, max: 0.35 },
+        delay: 0,
+        ease: "power2.out",
+      },
       onUpdate: (self) => {
         const p = self.progress;
         const idx = progressToFrameIndex(p);
@@ -229,9 +235,18 @@ export default function PortalGate() {
   const SCROLL_VH = isMobile ? 280 : 400;
 
   return (
-    <section ref={sectionRef} style={{ height: `${SCROLL_VH}vh`, position: "relative", background: "#0a0608" }}>
+    <section ref={sectionRef} style={{ height: `${SCROLL_VH}vh`, position: "relative", background: "#0f0f0f" }}>
       <div ref={wrapperRef} className="sticky top-0 w-full h-screen overflow-hidden">
         <canvas ref={canvasRef} className="absolute inset-0 block w-full h-full" />
+
+        {/* Handoff fade — bleeds into HeroSection bg over the final ~8% of scroll for a seamless cut */}
+        <div
+          className="absolute inset-0 pointer-events-none z-[15]"
+          style={{
+            background: "#0f0f0f",
+            opacity: clamp((progress - 0.92) / 0.08, 0, 1),
+          }}
+        />
 
         {/* Vignette */}
         <div
