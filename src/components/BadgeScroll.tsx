@@ -104,7 +104,7 @@ export default function BadgeScroll() {
       trigger: el,
       start: "top top",
       end: "bottom bottom",
-      scrub: 0.4,
+      scrub: 1.2,
       onUpdate: (self) => {
         const p = self.progress;
         const idx = Math.max(0, Math.min(FRAME_COUNT - 1, Math.floor(p * (FRAME_COUNT - 1))));
