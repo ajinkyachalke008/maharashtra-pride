@@ -205,6 +205,12 @@ export default function PortalGate() {
       start: "top top",
       end: "bottom bottom",
       scrub: 1.2,
+      snap: {
+        snapTo: (value) => (value > 0.96 ? 1 : value < 0.02 ? 0 : value),
+        duration: { min: 0.1, max: 0.35 },
+        delay: 0,
+        ease: "power2.out",
+      },
       onUpdate: (self) => {
         const p = self.progress;
         const idx = progressToFrameIndex(p);
