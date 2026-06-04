@@ -226,7 +226,7 @@ export default function PortalGate() {
     : "none";
 
   // Mobile: shorter runway
-  const SCROLL_VH = isMobile ? 360 : 520;
+  const SCROLL_VH = isMobile ? 280 : 400;
 
   return (
     <section ref={sectionRef} style={{ height: `${SCROLL_VH}vh`, position: "relative", background: "#0a0608" }}>
