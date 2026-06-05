@@ -12,26 +12,6 @@ const FRAME_URLS = Array.from({ length: FRAME_COUNT }, (_, i) =>
   `/frames/ezgif-frame-${String(i + 1).padStart(3, "0")}.jpg`
 );
 
-function Overlay({ progress, start, end, children, className = "" }: {
-  progress: number; start: number; end: number; children: React.ReactNode; className?: string;
-}) {
-  const fadeIn = 0.04;
-  let opacity = 0;
-  if (progress >= start && progress <= end) {
-    if (progress < start + fadeIn) opacity = (progress - start) / fadeIn;
-    else if (progress > end - fadeIn) opacity = (end - progress) / fadeIn;
-    else opacity = 1;
-  }
-  opacity = Math.max(0, Math.min(1, opacity));
-  return (
-    <div
-      className={`absolute pointer-events-none ${className}`}
-      style={{ opacity, transition: "opacity 0.1s linear" }}
-    >
-      {children}
-    </div>
-  );
-}
 
 export default function BadgeScroll() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -164,31 +144,6 @@ export default function BadgeScroll() {
             </div>
           </div>
 
-          {/* Cinematic institutional overlays */}
-          <Overlay progress={progress} start={0.00} end={0.18} className="bottom-[14%] left-1/2 -translate-x-1/2 w-full text-center px-6">
-            <div className="text-[10px] md:text-xs tracking-[0.5em] text-[var(--gold)]/90 uppercase mb-3">Stage I</div>
-            <h2 className="font-display text-3xl md:text-6xl text-white tracking-wide" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.85)" }}>Gateway to Service</h2>
-          </Overlay>
-
-          <Overlay progress={progress} start={0.22} end={0.38} className="bottom-[14%] left-1/2 -translate-x-1/2 w-full text-center px-6">
-            <div className="text-[10px] md:text-xs tracking-[0.5em] text-[var(--gold)]/90 uppercase mb-3">Stage II</div>
-            <h2 className="font-display text-3xl md:text-6xl text-white tracking-wide" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.85)" }}>Protecting Citizens</h2>
-          </Overlay>
-
-          <Overlay progress={progress} start={0.42} end={0.58} className="bottom-[14%] left-1/2 -translate-x-1/2 w-full text-center px-6">
-            <div className="text-[10px] md:text-xs tracking-[0.5em] text-[var(--gold)]/90 uppercase mb-3">Stage III</div>
-            <h2 className="font-display text-3xl md:text-6xl text-white tracking-wide" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.85)" }}>Preserving Heritage</h2>
-          </Overlay>
-
-          <Overlay progress={progress} start={0.62} end={0.78} className="bottom-[14%] left-1/2 -translate-x-1/2 w-full text-center px-6">
-            <div className="text-[10px] md:text-xs tracking-[0.5em] text-[var(--gold)]/90 uppercase mb-3">Stage IV</div>
-            <h2 className="font-display text-3xl md:text-6xl text-white tracking-wide" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.85)" }}>Serving Maharashtra</h2>
-          </Overlay>
-
-          <Overlay progress={progress} start={0.82} end={1.0} className="bottom-[12%] left-1/2 -translate-x-1/2 w-full text-center px-6">
-            <div className="font-devanagari text-4xl md:text-6xl gold-shimmer font-bold tracking-wide" style={{ textShadow: "0 4px 30px rgba(0,0,0,0.9)" }}>महाराष्ट्र पोलीस</div>
-            <div className="mt-3 text-xs md:text-sm text-white/80 tracking-[0.35em] uppercase">Serving with Honor Since 1843</div>
-          </Overlay>
 
         </div>
       </div>

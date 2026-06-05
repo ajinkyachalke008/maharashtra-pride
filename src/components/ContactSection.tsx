@@ -1,9 +1,24 @@
 import { Facebook, Twitter, Youtube, Instagram } from "lucide-react";
+import { WaveAnimation } from "@/components/ui/wave-animation";
 
 export default function ContactSection() {
   return (
-    <footer className="relative bg-[#0a0a0a] border-t border-[var(--gold)]/15 py-16 md:py-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <footer className="relative bg-[#0a0a0a] border-t border-[var(--gold)]/15 py-24 md:py-32 overflow-hidden">
+      {/* Wave animation background */}
+      <div className="absolute inset-0 z-0 opacity-70">
+        <WaveAnimation />
+      </div>
+
+      {/* Top gradient fade from previous section */}
+      <div
+        className="absolute top-0 left-0 right-0 h-24 pointer-events-none z-[1]"
+        style={{
+          background: "linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)",
+        }}
+      />
+
+      {/* Content */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-3 gap-12 items-start">
           <div className="flex items-center gap-4">
             <img src="/frames/ezgif-frame-270.jpg" alt="Maharashtra Police badge" className="w-16 h-16 object-cover rounded" />

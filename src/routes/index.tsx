@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
-import HeroSection from "@/components/HeroSection";
 import BadgeScroll from "@/components/BadgeScroll";
 import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
@@ -32,7 +31,6 @@ function Index() {
       <ScrollProgress />
       <Navbar />
       <PortalGate />
-      <HeroSection />
       <BadgeScroll />
       <Suspense fallback={<div className="h-32" />}>
         <StatsSection />

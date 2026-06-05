@@ -5,6 +5,8 @@ import curtainLeft from "@/assets/curtain-left.png";
 import curtainRight from "@/assets/curtain-right.png";
 import { useImagePreloader } from "@/hooks/useImagePreloader";
 import { useIsMobile } from "@/hooks/use-mobile";
+import HeroSection from "@/components/HeroSection";
+import { ShaderAnimation } from "@/components/ui/shader-animation";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -20,28 +22,19 @@ const clamp = (v: number, mn: number, mx: number) => Math.max(mn, Math.min(mx, v
 // Cinematic easing — slow start at the gate, smooth approach,
 // quick pass-through, gentle settle on the HQ reveal.
 // Piecewise cubic-like curve over scroll progress [0,1] -> frame progress [0,1].
-function cinematicEase(p: number): number {
-  if (p < 0.27) {
-    // Stage I — gate dominates: slow, contemplative
-    const t = p / 0.27;
-    return (t * t * 0.8) * (80 / FRAME_COUNT) / 0.27 * 0.27 + 0; // map to frames 0..80
-    // simplified below
-  }
-  return p;
-}
+void clamp;
 
 // Cleaner mapping: directly compute target frame index from scroll progress.
 function progressToFrameIndex(p: number): number {
   // Anchor points: (scrollProgress, frameIndex)
-  // 0.00 -> 0,  0.27 -> 80 (gate hold)
-  // 0.55 -> 160 (approach), 0.73 -> 220 (pass through)
-  // 0.93 -> 280 (HQ reveal), 1.00 -> 299 (final)
+  // Shifted to allow a massive scroll holding zone at the end (0.60 -> 1.00)
   const stops: Array<[number, number]> = [
     [0.00, 0],
-    [0.20, 80],
-    [0.45, 160],
-    [0.65, 220],
-    [0.90, 280],
+    [0.12, 80],
+    [0.25, 160],
+    [0.37, 220],
+    [0.50, 280],
+    [0.60, FRAME_COUNT - 1],
     [1.00, FRAME_COUNT - 1],
   ];
   for (let i = 1; i < stops.length; i++) {
@@ -57,19 +50,15 @@ function progressToFrameIndex(p: number): number {
   return FRAME_COUNT - 1;
 }
 
-// suppress unused-warning for the kept reference impl above
-void cinematicEase;
-
 type Stage = {
   start: number; end: number; eyebrow: string; title: string; sub?: string; devanagari?: boolean;
 };
 
 const STAGES: Stage[] = [
-  { start: 0.00, end: 0.22, eyebrow: "Stage I", title: "Gateway to Service" },
-  { start: 0.28, end: 0.50, eyebrow: "Stage II", title: "Approaching the Threshold" },
-  { start: 0.55, end: 0.70, eyebrow: "Stage III", title: "Crossing the Gate" },
-  { start: 0.74, end: 0.90, eyebrow: "Stage IV", title: "The Headquarters" },
-  { start: 0.93, end: 1.00, eyebrow: "Est. 1843", title: "महाराष्ट्र पोलीस", sub: "Serving with Honor", devanagari: true },
+  { start: 0.00, end: 0.12, eyebrow: "Stage I", title: "Gateway to Service" },
+  { start: 0.14, end: 0.25, eyebrow: "Stage II", title: "Approaching the Threshold" },
+  { start: 0.27, end: 0.37, eyebrow: "Stage III", title: "Crossing the Gate" },
+  { start: 0.40, end: 0.50, eyebrow: "Stage IV", title: "The Headquarters" },
 ];
 
 function Overlay({ progress, stage }: { progress: number; stage: Stage }) {
@@ -81,6 +70,7 @@ function Overlay({ progress, stage }: { progress: number; stage: Stage }) {
     else opacity = 1;
   }
   opacity = clamp(opacity, 0, 1);
+  if (opacity <= 0) return null;
   return (
     <div
       className="absolute bottom-[14%] left-1/2 -translate-x-1/2 w-full text-center px-6 pointer-events-none"
@@ -115,17 +105,21 @@ export default function PortalGate() {
   const [opened, setOpened] = useState(false);
   const [uiIn, setUiIn] = useState(false);
   const [allowTransition, setAllowTransition] = useState(true);
+  const [firstFrameDrawn, setFirstFrameDrawn] = useState(false);
+  const firstFrameDrawnRef = useRef(false);
 
   // Higher concurrency for faster initial paint
   const { images, loaded } = useImagePreloader(FRAME_URLS, 48);
 
-  // Curtain choreography on mount — independent of frame loading
+  // Curtain choreography - strictly wait for first frame to be drawn
   useEffect(() => {
-    const t1 = setTimeout(() => setOpened(true), 200);
-    const t2 = setTimeout(() => setUiIn(true), 700);
-    const t3 = setTimeout(() => setAllowTransition(false), 2400);
-    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
-  }, []);
+    if (firstFrameDrawn) {
+      const t1 = setTimeout(() => setOpened(true), 50); // Wait for paint
+      const t2 = setTimeout(() => setUiIn(true), 500);
+      const t3 = setTimeout(() => setAllowTransition(false), 2400);
+      return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+    }
+  }, [firstFrameDrawn]);
 
   // Canvas draw loop — runs immediately; picks nearest available frame
   useEffect(() => {
@@ -177,6 +171,11 @@ export default function PortalGate() {
           const x = (rect.width - w) / 2;
           const y = (rect.height - h) / 2;
           ctx.drawImage(img, x, y, w, h);
+          
+          if (!firstFrameDrawnRef.current) {
+            firstFrameDrawnRef.current = true;
+            setFirstFrameDrawn(true);
+          }
         }
         dirtyRef.current = false;
       }
@@ -227,34 +226,63 @@ export default function PortalGate() {
     return () => { trigger.kill(); };
   }, []);
 
+  // HeroSection opacity calculation with a clean fade-out at the end of the PortalGate scroll
+  // so it does not overlap with the BadgeScroll marquee.
+  let heroOpacity = 0;
+  if (progress >= 0.50 && progress <= 0.60) {
+    heroOpacity = (progress - 0.50) / 0.10;
+  } else if (progress > 0.60 && progress < 0.90) {
+    heroOpacity = 1; // 30% of 800vh = 240vh hold (more than 2 full scrolls)
+  } else if (progress >= 0.90 && progress <= 0.95) {
+    heroOpacity = 1 - (progress - 0.90) / 0.05;
+  } else {
+    heroOpacity = 0;
+  }
+  heroOpacity = Math.max(0, Math.min(1, heroOpacity));
+
   const curtainTransition = allowTransition
     ? `transform ${isMobile ? 1.6 : 2}s cubic-bezier(0.7, 0, 0.2, 1)`
     : "none";
 
-  // Mobile: shorter runway
-  const SCROLL_VH = isMobile ? 280 : 400;
+  // Extended to 800vh on desktop to give the user a massive 2.5x scroll holding zone on the Hero text
+  const SCROLL_VH = isMobile ? 500 : 800;
 
   return (
     <section ref={sectionRef} style={{ height: `${SCROLL_VH}vh`, position: "relative", background: "#0f0f0f" }}>
       <div ref={wrapperRef} className="sticky top-0 w-full h-screen overflow-hidden">
-        <canvas ref={canvasRef} className="absolute inset-0 block w-full h-full" />
+        {/* Shader Animation Background — directly behind the canvas */}
+        <div className="absolute inset-0 z-0">
+          <ShaderAnimation />
+        </div>
 
-        {/* Handoff fade — bleeds into HeroSection bg over the final ~8% of scroll for a seamless cut */}
-        <div
-          className="absolute inset-0 pointer-events-none z-[15]"
+        {/* Canvas with fading opacity near the end of scroll */}
+        <canvas 
+          ref={canvasRef} 
+          className="absolute inset-0 block w-full h-full z-10" 
           style={{
-            background: "#0f0f0f",
-            opacity: clamp((progress - 0.92) / 0.08, 0, 1),
+            opacity: clamp(1 - (progress - 0.50) / 0.10, 0, 1),
           }}
         />
 
+        {/* Seamless inline transition to HeroSection overlay */}
+        <div
+          className="absolute inset-0 z-30 pointer-events-none"
+          style={{
+            opacity: heroOpacity,
+          }}
+        >
+          {heroOpacity > 0 && (
+            <HeroSection isActive={progress >= 0.55} hideBackground={true} />
+          )}
+        </div>
+
         {/* Vignette */}
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0 pointer-events-none z-[12]"
           style={{ background: "radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,0.65) 100%)" }}
         />
 
-        {/* Curtains — open on load, never removed */}
+        {/* Curtains — Original styling */}
         <div
           ref={leftRef}
           className="absolute inset-y-0 left-0 w-[55%]"
@@ -263,11 +291,10 @@ export default function PortalGate() {
             backgroundSize: "auto 100%",
             backgroundPosition: "left center",
             backgroundRepeat: "no-repeat",
-            backgroundColor: "#1a0808",
             transform: opened ? "translateX(-100%)" : "translateX(0)",
             transition: curtainTransition,
             willChange: "transform",
-            zIndex: 5,
+            zIndex: 15,
           }}
         />
         <div
@@ -278,11 +305,10 @@ export default function PortalGate() {
             backgroundSize: "auto 100%",
             backgroundPosition: "right center",
             backgroundRepeat: "no-repeat",
-            backgroundColor: "#1a0808",
             transform: opened ? "translateX(100%)" : "translateX(0)",
             transition: curtainTransition,
             willChange: "transform",
-            zIndex: 5,
+            zIndex: 15,
           }}
         />
 
@@ -299,7 +325,7 @@ export default function PortalGate() {
             opacity: uiIn ? 1 : 0,
             transform: uiIn ? "translateY(0)" : "translateY(20px)",
             transition: "opacity 0.9s ease 300ms, transform 0.9s ease 300ms",
-            zIndex: 10,
+            zIndex: 20,
           }}
         >
           <div className="text-[10px] md:text-xs tracking-[0.5em] text-[var(--gold)]/90 uppercase mb-5">Est. 1843</div>

@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Shield, Star, Heart } from "lucide-react";
+import { GlowCard } from "@/components/ui/spotlight-card";
 
 const VALUES = [
   { icon: Shield, marathi: "कर्तव्य", english: "Duty", desc: "An unwavering commitment to the constitution and to every citizen of Maharashtra. Service before self, in every shift, every street, every call." },
@@ -22,7 +23,7 @@ function TiltCard({ children }: { children: React.ReactNode }) {
     if (ref.current) ref.current.style.transform = "perspective(900px) rotateX(0) rotateY(0)";
   };
   return (
-    <div ref={ref} onMouseMove={handle} onMouseLeave={reset} className="tilt-card">
+    <div ref={ref} onMouseMove={handle} onMouseLeave={reset} className="tilt-card h-full">
       {children}
     </div>
   );
@@ -36,25 +37,29 @@ export default function ValuesSection() {
           <div className="text-xs tracking-[0.4em] text-[var(--gold)]/70 uppercase mb-3">Our Pillars</div>
           <h2 className="font-display text-3xl md:text-5xl text-white/90 tracking-wide">Three Words. One Oath.</h2>
         </div>
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8 items-stretch">
           {VALUES.map((v, i) => (
             <motion.div
               key={v.english}
+              className="h-full"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
             >
               <TiltCard>
-                <div
-                  className="relative bg-[#161616] p-8 md:p-10 h-full"
-                  style={{ borderTop: "3px solid var(--gold)" }}
+                <GlowCard 
+                  customSize={true} 
+                  glowColor={i === 1 ? "amber" : "gold"} 
+                  className="w-full h-full p-8 md:p-10 border-t border-[var(--gold)]/30"
                 >
-                  <v.icon className="w-10 h-10 text-[var(--gold)]" strokeWidth={1.4} />
-                  <div className="font-devanagari text-[var(--gold)] mt-6 text-lg">{v.marathi}</div>
-                  <h3 className="font-display text-3xl text-white mt-1 tracking-wider">{v.english}</h3>
-                  <p className="text-sm text-white/55 mt-4 leading-relaxed">{v.desc}</p>
-                </div>
+                  <div className="relative h-full flex flex-col z-30 pointer-events-none">
+                    <v.icon className="w-10 h-10 text-[var(--gold)]" strokeWidth={1.4} />
+                    <div className="font-devanagari text-[var(--gold)] mt-6 text-lg">{v.marathi}</div>
+                    <h3 className="font-display text-3xl text-white mt-1 tracking-wider">{v.english}</h3>
+                    <p className="text-sm text-white/55 mt-4 leading-relaxed">{v.desc}</p>
+                  </div>
+                </GlowCard>
               </TiltCard>
             </motion.div>
           ))}
