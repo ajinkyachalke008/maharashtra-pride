@@ -1,6 +1,8 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ajinkyachalke008/maharashtra-pride/main/public/maharashtra_police_logo.png" alt="Maharashtra Police Logo" width="150" />
-</p>
+<div align="center">
+
+![Maharashtra Police Logo](public/maharashtra_police_logo.png)
+
+</div>
 
 <h1 align="center">
   <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Inter&weight=800&size=30&pause=1000&color=000000&center=true&vCenter=true&width=800&lines=Maharashtra+Police+Pride;FraudLens+Intelligence+Platform;AI-Driven+Cybercrime+Investigation" alt="Typing SVG" /></a>
