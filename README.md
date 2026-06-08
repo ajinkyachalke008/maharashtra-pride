@@ -1,23 +1,48 @@
-# Maharashtra Police Pride & FraudLens Intelligence Platform
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/fa/Maharashtra_Police_Logo.png/220px-Maharashtra_Police_Logo.png" alt="Maharashtra Police Logo" width="150" />
+</p>
 
-![Maharashtra Police & FraudLens](https://upload.wikimedia.org/wikipedia/en/thumb/f/fa/Maharashtra_Police_Logo.png/220px-Maharashtra_Police_Logo.png)
+<h1 align="center">
+  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Inter&weight=800&size=30&pause=1000&color=000000&center=true&vCenter=true&width=800&lines=Maharashtra+Police+Pride;FraudLens+Intelligence+Platform;AI-Driven+Cybercrime+Investigation" alt="Typing SVG" /></a>
+</h1>
+
+<p align="center">
+  <em>सद्रक्षणाय खलनिग्रहणाय (To protect the good and to destroy the evil)</em>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" />
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
+</p>
+
+<br/>
 
 A comprehensive, dual-purpose digital platform developed as an homage to the **Maharashtra Police** force and as a cutting-edge operational tool for the **Pune Police Cybercrime Cell**. This repository houses both a stunning public-facing cinematic tribute and a secure, highly advanced financial fraud intelligence dashboard.
 
+<div align="center">
+  
 ### 🌍 Live Deployment
-*   **Live Web Application (Frontend)**: [https://maharashtra-pride-1.vercel.app](https://maharashtra-pride-1.vercel.app)
-*   **Live AI Engine (Backend)**: `https://backend-wine-zeta-81.vercel.app`
+[![Live App](https://img.shields.io/badge/Live_Web_Application-maharashtra--pride--1.vercel.app-000000?style=for-the-badge&logo=vercel)](https://maharashtra-pride-1.vercel.app)
+[![API Status](https://img.shields.io/badge/Backend_API-Online-10B981?style=for-the-badge&logo=fastapi)](https://backend-wine-zeta-81.vercel.app)
+
+</div>
+
 ---
 
 ## 🌟 Part I: Maharashtra Police Pride (The Cinematic Landing)
 
 The root application serves as a high-fidelity, scroll-driven interactive web experience honoring the history and scale of India's largest state police force.
 
-### Key Visual & Interactive Features
-*   **Immersive Scrollytelling**: Powered by Framer Motion, elements fade and slide dynamically as the user navigates the rich history.
-*   **The 36 Districts & 185,000 Officers**: A narrative tribute that visually represents the sheer scale of the force defending 11.42 crore citizens.
-*   **Interactive Commissionerates Cloth**: A physics-simulated, interactive grid showcasing the 12 primary Police Commissionerates across the state.
-*   **Cinematic Aesthetics**: Deep dark themes `#0d0d0d`, ambient glassmorphism panels, and bespoke cursor trackers.
+### ✨ Key Visual & Interactive Features
+- 🎬 **Immersive Scrollytelling**: Powered by Framer Motion, elements fade and slide dynamically as the user navigates the rich history.
+- 🛡️ **The 36 Districts & 185,000 Officers**: A narrative tribute that visually represents the sheer scale of the force defending 11.42 crore citizens.
+- 🗺️ **Interactive Commissionerates Cloth**: A physics-simulated, interactive grid showcasing the 12 primary Police Commissionerates across the state.
+- 🌌 **Cinematic Aesthetics**: Deep dark themes (`#0d0d0d`), ambient glassmorphism panels, and bespoke cursor trackers.
 
 ---
 
@@ -25,7 +50,7 @@ The root application serves as a high-fidelity, scroll-driven interactive web ex
 
 Hidden behind the "Portal Gate" is **FraudLens**, a production-ready, AI-driven financial intelligence platform. It is engineered to transform unstructured cybercrime data into interactive 3D threat graphs to track money mules, crypto syndicates, and organized financial fraud.
 
-### Core Architecture & Capabilities
+### 🧠 Core Architecture & Capabilities
 
 #### 1. Zero-Mock Data Engine (Local Graph DB)
 The platform operates on a completely functional Python-native `networkx` graph engine. Instead of relying on heavy Dockerized Neo4j containers, the backend natively commits accounts as nodes and transactions as edges directly to a persisted `graph_store.json`.
@@ -49,23 +74,6 @@ The platform operates on a completely functional Python-native `networkx` graph 
 
 ---
 
-## 🛠️ Comprehensive Technology Stack
-
-### Frontend (React & Vite)
-*   **Framework**: React 18 powered by Vite.
-*   **Routing**: `@tanstack/react-router` for robust, type-safe navigation.
-*   **Styling**: Tailwind CSS combined with Framer Motion for complex animations.
-*   **Data Visualization**: `react-force-graph-3d` (Three.js) and `lucide-react` for iconography.
-*   **State Management**: `@tanstack/react-query` for API synchronisation and custom WebSocket hooks.
-
-### Backend (Python FastAPI)
-*   **Framework**: FastAPI (Async API).
-*   **Database**: NetworkX (Graph Engine) + Pydantic (Schema validation).
-*   **AI Integration**: `openai` python SDK (configured for OpenRouter).
-*   **Parsing Parsers**: `pdfplumber`, `python-docx`, `pandas`.
-
----
-
 ## 📁 Directory Structure Overview
 
 ```text
@@ -80,13 +88,13 @@ maharashtra-pride-1/
 │
 ├── src/                            # React Frontend
 │   ├── components/                 
-│   │   ├── fraudlens/              # Intelligence App Components (Kanban, 3D Graph, Sidebar)
+│   │   ├── fraudlens/              # Intelligence App Components (Kanban, 3D Graph)
 │   │   └── ui/                     # Reusable UI primitives (Animations, Modals)
 │   ├── routes/                     # TanStack File-Based Routing
 │   │   ├── index.tsx               # Maharashtra Police Pride Landing Page
 │   │   └── fraudlens/              # Dashboard, Cases, Map, ML, Ingest
-│   ├── data/                       # Regulatory frameworks, bank branches, static content
-│   ├── hooks/                      # Custom React hooks (useDashboardData, useAuth)
+│   ├── data/                       # Regulatory frameworks, bank branches
+│   ├── hooks/                      # Custom React hooks
 │   ├── styles.css                  # Global Tailwind & Custom Fonts
 │   └── config.ts                   # Environment variable mappings
 │
@@ -127,13 +135,13 @@ npm install
 # Start the Vite Development Server
 npm run dev
 ```
-*The frontend will now be running on `http://localhost:8080` (or `http://localhost:5173`).*
+*The frontend will now be running on `http://localhost:8080`.*
 
 ---
 
 ## 🌍 Live Production Deployment
 
-This project is currently fully deployed and hosted globally on **Vercel's Edge Network** and **Serverless Functions**.
+This project is currently fully deployed and hosted globally on **Vercel**.
 
 *   **Live Web Application (Frontend)**: [https://maharashtra-pride-1.vercel.app](https://maharashtra-pride-1.vercel.app)
 *   **Live AI Engine (Backend)**: `https://backend-wine-zeta-81.vercel.app`
@@ -141,4 +149,6 @@ This project is currently fully deployed and hosted globally on **Vercel's Edge 
 *(Note: The backend runs as a stateless Vercel Serverless Function, so the mock graph database resets after periods of inactivity. This makes it perfect for zero-cost demonstrations!)*
 
 ---
-### *सद्रक्षणाय खलनिग्रहणाय* (To protect the good and to destroy the evil)
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=150&section=footer" />
+</p>
