@@ -128,17 +128,14 @@ npm run dev
 
 ---
 
-## 🌍 Production Deployment Strategy
+## 🌍 Live Production Deployment
 
-This codebase is fully pre-configured for modern serverless deployment.
+This project is currently fully deployed and hosted globally on **Vercel's Edge Network** and **Serverless Functions**.
 
-1.  **Backend (Render.com)**:
-    *   Connect this GitHub repository to Render as a "Blueprint".
-    *   Render will automatically read the `render.yaml` file, install `requirements.txt`, and boot the `uvicorn` server securely.
-2.  **Frontend (Vercel.com)**:
-    *   Connect this repository to Vercel.
-    *   Set the Environment Variable `VITE_API_URL` to your live Render backend URL.
-    *   Deploy.
+*   **Live Web Application (Frontend)**: [https://maharashtra-pride-1.vercel.app](https://maharashtra-pride-1.vercel.app)
+*   **Live AI Engine (Backend)**: `https://backend-wine-zeta-81.vercel.app`
+
+*(Note: The backend runs as a stateless Vercel Serverless Function, so the mock graph database resets after periods of inactivity. This makes it perfect for zero-cost demonstrations!)*
 
 ---
 ### *सद्रक्षणाय खलनिग्रहणाय* (To protect the good and to destroy the evil)
