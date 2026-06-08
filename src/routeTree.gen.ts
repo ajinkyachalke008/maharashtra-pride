@@ -9,38 +9,216 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as FraudlensRouteRouteImport } from './routes/fraudlens/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FraudlensIndexRouteImport } from './routes/fraudlens/index'
+import { Route as FraudlensWatchlistRouteImport } from './routes/fraudlens/watchlist'
+import { Route as FraudlensReportsRouteImport } from './routes/fraudlens/reports'
+import { Route as FraudlensPatternsRouteImport } from './routes/fraudlens/patterns'
+import { Route as FraudlensOsintRouteImport } from './routes/fraudlens/osint'
+import { Route as FraudlensMlRouteImport } from './routes/fraudlens/ml'
+import { Route as FraudlensMapRouteImport } from './routes/fraudlens/map'
+import { Route as FraudlensIntelligenceRouteImport } from './routes/fraudlens/intelligence'
+import { Route as FraudlensIngestRouteImport } from './routes/fraudlens/ingest'
+import { Route as FraudlensGraphRouteImport } from './routes/fraudlens/graph'
+import { Route as FraudlensEntitiesRouteImport } from './routes/fraudlens/entities'
+import { Route as FraudlensCasesRouteImport } from './routes/fraudlens/cases'
+import { Route as FraudlensAlertsRouteImport } from './routes/fraudlens/alerts'
 
+const FraudlensRouteRoute = FraudlensRouteRouteImport.update({
+  id: '/fraudlens',
+  path: '/fraudlens',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FraudlensIndexRoute = FraudlensIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => FraudlensRouteRoute,
+} as any)
+const FraudlensWatchlistRoute = FraudlensWatchlistRouteImport.update({
+  id: '/watchlist',
+  path: '/watchlist',
+  getParentRoute: () => FraudlensRouteRoute,
+} as any)
+const FraudlensReportsRoute = FraudlensReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => FraudlensRouteRoute,
+} as any)
+const FraudlensPatternsRoute = FraudlensPatternsRouteImport.update({
+  id: '/patterns',
+  path: '/patterns',
+  getParentRoute: () => FraudlensRouteRoute,
+} as any)
+const FraudlensOsintRoute = FraudlensOsintRouteImport.update({
+  id: '/osint',
+  path: '/osint',
+  getParentRoute: () => FraudlensRouteRoute,
+} as any)
+const FraudlensMlRoute = FraudlensMlRouteImport.update({
+  id: '/ml',
+  path: '/ml',
+  getParentRoute: () => FraudlensRouteRoute,
+} as any)
+const FraudlensMapRoute = FraudlensMapRouteImport.update({
+  id: '/map',
+  path: '/map',
+  getParentRoute: () => FraudlensRouteRoute,
+} as any)
+const FraudlensIntelligenceRoute = FraudlensIntelligenceRouteImport.update({
+  id: '/intelligence',
+  path: '/intelligence',
+  getParentRoute: () => FraudlensRouteRoute,
+} as any)
+const FraudlensIngestRoute = FraudlensIngestRouteImport.update({
+  id: '/ingest',
+  path: '/ingest',
+  getParentRoute: () => FraudlensRouteRoute,
+} as any)
+const FraudlensGraphRoute = FraudlensGraphRouteImport.update({
+  id: '/graph',
+  path: '/graph',
+  getParentRoute: () => FraudlensRouteRoute,
+} as any)
+const FraudlensEntitiesRoute = FraudlensEntitiesRouteImport.update({
+  id: '/entities',
+  path: '/entities',
+  getParentRoute: () => FraudlensRouteRoute,
+} as any)
+const FraudlensCasesRoute = FraudlensCasesRouteImport.update({
+  id: '/cases',
+  path: '/cases',
+  getParentRoute: () => FraudlensRouteRoute,
+} as any)
+const FraudlensAlertsRoute = FraudlensAlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => FraudlensRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/fraudlens': typeof FraudlensRouteRouteWithChildren
+  '/fraudlens/alerts': typeof FraudlensAlertsRoute
+  '/fraudlens/cases': typeof FraudlensCasesRoute
+  '/fraudlens/entities': typeof FraudlensEntitiesRoute
+  '/fraudlens/graph': typeof FraudlensGraphRoute
+  '/fraudlens/ingest': typeof FraudlensIngestRoute
+  '/fraudlens/intelligence': typeof FraudlensIntelligenceRoute
+  '/fraudlens/map': typeof FraudlensMapRoute
+  '/fraudlens/ml': typeof FraudlensMlRoute
+  '/fraudlens/osint': typeof FraudlensOsintRoute
+  '/fraudlens/patterns': typeof FraudlensPatternsRoute
+  '/fraudlens/reports': typeof FraudlensReportsRoute
+  '/fraudlens/watchlist': typeof FraudlensWatchlistRoute
+  '/fraudlens/': typeof FraudlensIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/fraudlens/alerts': typeof FraudlensAlertsRoute
+  '/fraudlens/cases': typeof FraudlensCasesRoute
+  '/fraudlens/entities': typeof FraudlensEntitiesRoute
+  '/fraudlens/graph': typeof FraudlensGraphRoute
+  '/fraudlens/ingest': typeof FraudlensIngestRoute
+  '/fraudlens/intelligence': typeof FraudlensIntelligenceRoute
+  '/fraudlens/map': typeof FraudlensMapRoute
+  '/fraudlens/ml': typeof FraudlensMlRoute
+  '/fraudlens/osint': typeof FraudlensOsintRoute
+  '/fraudlens/patterns': typeof FraudlensPatternsRoute
+  '/fraudlens/reports': typeof FraudlensReportsRoute
+  '/fraudlens/watchlist': typeof FraudlensWatchlistRoute
+  '/fraudlens': typeof FraudlensIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/fraudlens': typeof FraudlensRouteRouteWithChildren
+  '/fraudlens/alerts': typeof FraudlensAlertsRoute
+  '/fraudlens/cases': typeof FraudlensCasesRoute
+  '/fraudlens/entities': typeof FraudlensEntitiesRoute
+  '/fraudlens/graph': typeof FraudlensGraphRoute
+  '/fraudlens/ingest': typeof FraudlensIngestRoute
+  '/fraudlens/intelligence': typeof FraudlensIntelligenceRoute
+  '/fraudlens/map': typeof FraudlensMapRoute
+  '/fraudlens/ml': typeof FraudlensMlRoute
+  '/fraudlens/osint': typeof FraudlensOsintRoute
+  '/fraudlens/patterns': typeof FraudlensPatternsRoute
+  '/fraudlens/reports': typeof FraudlensReportsRoute
+  '/fraudlens/watchlist': typeof FraudlensWatchlistRoute
+  '/fraudlens/': typeof FraudlensIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/fraudlens'
+    | '/fraudlens/alerts'
+    | '/fraudlens/cases'
+    | '/fraudlens/entities'
+    | '/fraudlens/graph'
+    | '/fraudlens/ingest'
+    | '/fraudlens/intelligence'
+    | '/fraudlens/map'
+    | '/fraudlens/ml'
+    | '/fraudlens/osint'
+    | '/fraudlens/patterns'
+    | '/fraudlens/reports'
+    | '/fraudlens/watchlist'
+    | '/fraudlens/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/fraudlens/alerts'
+    | '/fraudlens/cases'
+    | '/fraudlens/entities'
+    | '/fraudlens/graph'
+    | '/fraudlens/ingest'
+    | '/fraudlens/intelligence'
+    | '/fraudlens/map'
+    | '/fraudlens/ml'
+    | '/fraudlens/osint'
+    | '/fraudlens/patterns'
+    | '/fraudlens/reports'
+    | '/fraudlens/watchlist'
+    | '/fraudlens'
+  id:
+    | '__root__'
+    | '/'
+    | '/fraudlens'
+    | '/fraudlens/alerts'
+    | '/fraudlens/cases'
+    | '/fraudlens/entities'
+    | '/fraudlens/graph'
+    | '/fraudlens/ingest'
+    | '/fraudlens/intelligence'
+    | '/fraudlens/map'
+    | '/fraudlens/ml'
+    | '/fraudlens/osint'
+    | '/fraudlens/patterns'
+    | '/fraudlens/reports'
+    | '/fraudlens/watchlist'
+    | '/fraudlens/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FraudlensRouteRoute: typeof FraudlensRouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/fraudlens': {
+      id: '/fraudlens'
+      path: '/fraudlens'
+      fullPath: '/fraudlens'
+      preLoaderRoute: typeof FraudlensRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +226,139 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/fraudlens/': {
+      id: '/fraudlens/'
+      path: '/'
+      fullPath: '/fraudlens/'
+      preLoaderRoute: typeof FraudlensIndexRouteImport
+      parentRoute: typeof FraudlensRouteRoute
+    }
+    '/fraudlens/watchlist': {
+      id: '/fraudlens/watchlist'
+      path: '/watchlist'
+      fullPath: '/fraudlens/watchlist'
+      preLoaderRoute: typeof FraudlensWatchlistRouteImport
+      parentRoute: typeof FraudlensRouteRoute
+    }
+    '/fraudlens/reports': {
+      id: '/fraudlens/reports'
+      path: '/reports'
+      fullPath: '/fraudlens/reports'
+      preLoaderRoute: typeof FraudlensReportsRouteImport
+      parentRoute: typeof FraudlensRouteRoute
+    }
+    '/fraudlens/patterns': {
+      id: '/fraudlens/patterns'
+      path: '/patterns'
+      fullPath: '/fraudlens/patterns'
+      preLoaderRoute: typeof FraudlensPatternsRouteImport
+      parentRoute: typeof FraudlensRouteRoute
+    }
+    '/fraudlens/osint': {
+      id: '/fraudlens/osint'
+      path: '/osint'
+      fullPath: '/fraudlens/osint'
+      preLoaderRoute: typeof FraudlensOsintRouteImport
+      parentRoute: typeof FraudlensRouteRoute
+    }
+    '/fraudlens/ml': {
+      id: '/fraudlens/ml'
+      path: '/ml'
+      fullPath: '/fraudlens/ml'
+      preLoaderRoute: typeof FraudlensMlRouteImport
+      parentRoute: typeof FraudlensRouteRoute
+    }
+    '/fraudlens/map': {
+      id: '/fraudlens/map'
+      path: '/map'
+      fullPath: '/fraudlens/map'
+      preLoaderRoute: typeof FraudlensMapRouteImport
+      parentRoute: typeof FraudlensRouteRoute
+    }
+    '/fraudlens/intelligence': {
+      id: '/fraudlens/intelligence'
+      path: '/intelligence'
+      fullPath: '/fraudlens/intelligence'
+      preLoaderRoute: typeof FraudlensIntelligenceRouteImport
+      parentRoute: typeof FraudlensRouteRoute
+    }
+    '/fraudlens/ingest': {
+      id: '/fraudlens/ingest'
+      path: '/ingest'
+      fullPath: '/fraudlens/ingest'
+      preLoaderRoute: typeof FraudlensIngestRouteImport
+      parentRoute: typeof FraudlensRouteRoute
+    }
+    '/fraudlens/graph': {
+      id: '/fraudlens/graph'
+      path: '/graph'
+      fullPath: '/fraudlens/graph'
+      preLoaderRoute: typeof FraudlensGraphRouteImport
+      parentRoute: typeof FraudlensRouteRoute
+    }
+    '/fraudlens/entities': {
+      id: '/fraudlens/entities'
+      path: '/entities'
+      fullPath: '/fraudlens/entities'
+      preLoaderRoute: typeof FraudlensEntitiesRouteImport
+      parentRoute: typeof FraudlensRouteRoute
+    }
+    '/fraudlens/cases': {
+      id: '/fraudlens/cases'
+      path: '/cases'
+      fullPath: '/fraudlens/cases'
+      preLoaderRoute: typeof FraudlensCasesRouteImport
+      parentRoute: typeof FraudlensRouteRoute
+    }
+    '/fraudlens/alerts': {
+      id: '/fraudlens/alerts'
+      path: '/alerts'
+      fullPath: '/fraudlens/alerts'
+      preLoaderRoute: typeof FraudlensAlertsRouteImport
+      parentRoute: typeof FraudlensRouteRoute
+    }
   }
 }
 
+interface FraudlensRouteRouteChildren {
+  FraudlensAlertsRoute: typeof FraudlensAlertsRoute
+  FraudlensCasesRoute: typeof FraudlensCasesRoute
+  FraudlensEntitiesRoute: typeof FraudlensEntitiesRoute
+  FraudlensGraphRoute: typeof FraudlensGraphRoute
+  FraudlensIngestRoute: typeof FraudlensIngestRoute
+  FraudlensIntelligenceRoute: typeof FraudlensIntelligenceRoute
+  FraudlensMapRoute: typeof FraudlensMapRoute
+  FraudlensMlRoute: typeof FraudlensMlRoute
+  FraudlensOsintRoute: typeof FraudlensOsintRoute
+  FraudlensPatternsRoute: typeof FraudlensPatternsRoute
+  FraudlensReportsRoute: typeof FraudlensReportsRoute
+  FraudlensWatchlistRoute: typeof FraudlensWatchlistRoute
+  FraudlensIndexRoute: typeof FraudlensIndexRoute
+}
+
+const FraudlensRouteRouteChildren: FraudlensRouteRouteChildren = {
+  FraudlensAlertsRoute: FraudlensAlertsRoute,
+  FraudlensCasesRoute: FraudlensCasesRoute,
+  FraudlensEntitiesRoute: FraudlensEntitiesRoute,
+  FraudlensGraphRoute: FraudlensGraphRoute,
+  FraudlensIngestRoute: FraudlensIngestRoute,
+  FraudlensIntelligenceRoute: FraudlensIntelligenceRoute,
+  FraudlensMapRoute: FraudlensMapRoute,
+  FraudlensMlRoute: FraudlensMlRoute,
+  FraudlensOsintRoute: FraudlensOsintRoute,
+  FraudlensPatternsRoute: FraudlensPatternsRoute,
+  FraudlensReportsRoute: FraudlensReportsRoute,
+  FraudlensWatchlistRoute: FraudlensWatchlistRoute,
+  FraudlensIndexRoute: FraudlensIndexRoute,
+}
+
+const FraudlensRouteRouteWithChildren = FraudlensRouteRoute._addFileChildren(
+  FraudlensRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FraudlensRouteRoute: FraudlensRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

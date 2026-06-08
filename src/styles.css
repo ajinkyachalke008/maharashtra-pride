@@ -37,6 +37,21 @@
   --font-display: "Cinzel", serif;
   --font-body: "Inter", sans-serif;
   --font-devanagari: "Noto Sans Devanagari", "Inter", sans-serif;
+
+  /* FraudLens Colors */
+  --color-background-base: #020408;
+  --color-background-surface: #080e14;
+  --color-background-card: #0d1520;
+  --color-background-overlay: #121c28;
+  --color-primary-400: #38bdf8;
+  --color-primary-500: #0ea5e9;
+  --color-primary-600: #0284c7;
+  --color-danger-400: #f87171;
+  --color-danger-500: #ef4444;
+  --color-warning-400: #fbbf24;
+  --color-warning-500: #f59e0b;
+  --color-safe-400: #34d399;
+  --color-safe-500: #10b981;
 }
 
 :root {
@@ -80,6 +95,41 @@
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
+  }
+  
+  /* Global text selection */
+  ::selection {
+    background: rgba(56, 189, 248, 0.25);
+    color: white;
+    text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+  }
+
+  /* Custom Webkit Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0d0d0d;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    border: 2px solid #0d0d0d;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  /* Cinematic Film Grain Overlay */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
   }
 }
 
@@ -197,10 +247,94 @@
   transform: translate(-50%, -50%);
   mix-blend-mode: difference;
 }
-.cursor-dot { width: 6px; height: 6px; background: #ffd700; }
-.cursor-ring { width: 28px; height: 28px; border: 1px solid rgba(255,215,0,0.6); transition: transform 0.18s ease-out, width 0.18s, height 0.18s; }
+.cursor-dot { width: 6px; height: 6px; background: #ffd700; box-shadow: 0 0 10px #ffd700; }
+.cursor-ring { 
+  width: 28px; height: 28px; 
+  border: 1px solid rgba(255,215,0,0.6); 
+  transition: transform 0.18s ease-out, width 0.18s, height 0.18s; 
+  box-shadow: 0 0 15px rgba(255,215,0,0.15), inset 0 0 15px rgba(255,215,0,0.15);
+}
 @media (hover: none) { .cursor-dot, .cursor-ring { display: none; } }
 
 /* Page fade in */
 @keyframes page-fade { from { opacity: 0; } to { opacity: 1; } }
 .page-fade { animation: page-fade 0.8s ease-out both; }
+
+/* ── FraudLens Section ── */
+
+/* Pulsing connector dot for pipeline */
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(56,189,248,0.5); }
+  70% { box-shadow: 0 0 0 10px rgba(56,189,248,0); }
+  100% { box-shadow: 0 0 0 0 rgba(56,189,248,0); }
+}
+.pulse-dot {
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+/* Floating tech badges */
+@keyframes float-badge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.float-badge {
+  animation: float-badge 4s ease-in-out infinite;
+}
+
+/* Cyber blue glow utility */
+.cyber-glow {
+  box-shadow: 0 0 30px rgba(56,189,248,0.15), 0 0 60px rgba(56,189,248,0.05);
+}
+.cyber-glow-text {
+  text-shadow: 0 0 40px rgba(56,189,248,0.3), 0 0 80px rgba(56,189,248,0.1);
+}
+
+/* Risk gauge arc animation */
+@keyframes gauge-fill {
+  from { stroke-dashoffset: 251; }
+  to { stroke-dashoffset: var(--gauge-target, 80); }
+}
+.risk-gauge-arc {
+  stroke-dasharray: 251;
+  stroke-dashoffset: 251;
+  animation: gauge-fill 2s ease-out forwards;
+  animation-play-state: paused;
+}
+.risk-gauge-arc.active {
+  animation-play-state: running;
+}
+
+/* Cyber grid background */
+.cyber-grid {
+  background-image:
+    linear-gradient(rgba(56,189,248,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56,189,248,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Typing cursor blink */
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: #38bdf8;
+  margin-left: 2px;
+  animation: blink-cursor 1s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+/* Scan sweep for demo preview */
+@keyframes cyber-scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}
+.cyber-scan-line {
+  position: absolute; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(56,189,248,0.6), transparent);
+  animation: cyber-scan 3s linear infinite;
+  pointer-events: none;
+}

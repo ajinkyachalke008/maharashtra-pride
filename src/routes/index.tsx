@@ -1,14 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 import BadgeScroll from "@/components/BadgeScroll";
-import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
+import FullscreenToggle from "@/components/FullscreenToggle";
 import PortalGate from "@/components/PortalGate";
 
-const StatsSection = lazy(() => import("@/components/StatsSection"));
-const ValuesSection = lazy(() => import("@/components/ValuesSection"));
-const TimelineSection = lazy(() => import("@/components/TimelineSection"));
+const FraudLensSection = lazy(() => import("@/components/FraudLensSection"));
 const CommissioneratesSection = lazy(() => import("@/components/CommissioneratesCloth"));
 const ContactSection = lazy(() => import("@/components/ContactSection"));
 
@@ -29,13 +27,11 @@ function Index() {
     <main className="bg-[#0d0d0d] text-white page-fade">
       <CustomCursor />
       <ScrollProgress />
-      <Navbar />
+      <FullscreenToggle />
       <PortalGate />
       <BadgeScroll />
       <Suspense fallback={<div className="h-32" />}>
-        <StatsSection />
-        <ValuesSection />
-        <TimelineSection />
+        <FraudLensSection />
         <CommissioneratesSection />
         <ContactSection />
       </Suspense>

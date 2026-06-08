@@ -4,6 +4,7 @@ const LINKS = [
   { label: "मुखपृष्ठ", en: "Home" },
   { label: "इतिहास", en: "History" },
   { label: "मूल्ये", en: "Values" },
+  { label: "फ्रॉडलेन्स", en: "FraudLens" },
   { label: "संपर्क", en: "Contact" },
 ];
 
