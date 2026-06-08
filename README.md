@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://img.icons8.com/color/480/police-badge.png" alt="Police Badge Logo" width="150" />
+  <img src="./public/maharashtra_police_logo.png" alt="Maharashtra Police Logo" width="150" />
 </p>
 
 <h1 align="center">
