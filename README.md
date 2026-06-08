@@ -1,5 +1,7 @@
 <p align="center">
   <img src="public/maharashtra_police_logo.png" alt="Maharashtra Police Logo" width="150" />
+  <br />
+  <strong>सद्रक्षणाय खलनिग्रहणाय</strong>
 </p>
 
 <h1 align="center">
