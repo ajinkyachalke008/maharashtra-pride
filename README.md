@@ -4,6 +4,9 @@
 
 A comprehensive, dual-purpose digital platform developed as an homage to the **Maharashtra Police** force and as a cutting-edge operational tool for the **Pune Police Cybercrime Cell**. This repository houses both a stunning public-facing cinematic tribute and a secure, highly advanced financial fraud intelligence dashboard.
 
+### 🌍 Live Deployment
+*   **Live Web Application (Frontend)**: [https://maharashtra-pride-1.vercel.app](https://maharashtra-pride-1.vercel.app)
+*   **Live AI Engine (Backend)**: `https://backend-wine-zeta-81.vercel.app`
 ---
 
 ## 🌟 Part I: Maharashtra Police Pride (The Cinematic Landing)
