@@ -3,7 +3,9 @@ import os
 import networkx as nx
 from networkx.readwrite import json_graph
 
-STORE_FILE = "graph_store.json"
+import tempfile
+
+STORE_FILE = os.path.join(tempfile.gettempdir(), "graph_store.json") if os.environ.get("VERCEL") else "graph_store.json"
 
 class Database:
     def __init__(self):

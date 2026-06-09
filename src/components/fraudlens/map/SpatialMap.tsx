@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import DeckGL from '@deck.gl/react';
 import { Map } from 'react-map-gl/maplibre';
+import 'maplibre-gl/dist/maplibre-gl.css';
 import { ScatterplotLayer, TextLayer } from '@deck.gl/layers';
 import { Layers, Building2, X, MapPin, AlertTriangle, Database, Server, ExternalLink, Shield } from 'lucide-react';
 import type { BankBranch } from '@/data/bankBranches';
@@ -33,7 +34,9 @@ export default function SpatialMap({ banks = [] }: Props) {
   const handleBankClick = useCallback((info: any) => {
     if (info.object && info.object.name && info.object.bank) {
       setSelectedBranch(info.object as BankBranch);
+      return true;
     }
+    return false;
   }, []);
 
   const layers = useMemo(() => {

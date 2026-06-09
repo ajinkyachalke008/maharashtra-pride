@@ -57,7 +57,7 @@ async def shutdown_event():
 
 @app.get("/api/v1/health")
 async def health_check():
-    return {"status": "online", "database": "connected" if db.driver else "disconnected"}
+    return {"status": "online", "database": "connected"}
 
 @app.websocket("/api/v1/ws/stream")
 async def websocket_endpoint(websocket: WebSocket):

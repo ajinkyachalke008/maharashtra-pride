@@ -196,6 +196,28 @@ export const BANK_REG_INFO: BankRegInfo[] = [
     foundedYear: 2015,
     website: 'https://www.bandhanbank.com',
   },
+  {
+    bankCode: 'Federal',
+    fullName: 'Federal Bank Limited',
+    cin: 'L65191KL1931PLC000368',
+    bseCode: '500469',
+    nseSymbol: 'FEDERALBNK',
+    rbiRegType: 'Scheduled Commercial Bank',
+    headquarters: 'Aluva, Kerala',
+    foundedYear: 1931,
+    website: 'https://www.federalbank.co.in',
+  },
+  {
+    bankCode: 'SIB',
+    fullName: 'South Indian Bank Limited',
+    cin: 'L65191KL1929PLC001017',
+    bseCode: '532218',
+    nseSymbol: 'SOUTHBANK',
+    rbiRegType: 'Scheduled Commercial Bank',
+    headquarters: 'Thrissur, Kerala',
+    foundedYear: 1929,
+    website: 'https://www.southindianbank.com',
+  },
 ];
 
 // ── UPI / Digital Payment Infrastructure (NPCI published data) ──
