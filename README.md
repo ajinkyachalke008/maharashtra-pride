@@ -48,109 +48,383 @@ The root application serves as a high-fidelity, scroll-driven interactive web ex
 
 ---
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=80&section=header" width="100%"/>
-
-# 🛡️ Part II: FraudLens Portal (The Intelligence Application)
-
-> [!IMPORTANT]  
-> **RESTRICTED ACCESS**: Hidden behind the "Portal Gate" is **FraudLens**, a production-ready, AI-driven financial intelligence platform. It is engineered specifically for law enforcement to transform unstructured cybercrime data into actionable insights.
-
 <div align="center">
-  <img src="https://img.shields.io/badge/Module_Count-13_Dashboards-FF1493?style=for-the-badge&logo=react&logoColor=white" />
-  <img src="https://img.shields.io/badge/Architecture-Dual_Engine-00C957?style=for-the-badge&logo=neo4j&logoColor=white" />
-  <img src="https://img.shields.io/badge/AI_Core-Gemini_2.5_Pro-FF8C00?style=for-the-badge&logo=googlebard&logoColor=white" />
-  <img src="https://img.shields.io/badge/Compliance-BNS_2023_Ready-1E90FF?style=for-the-badge&logo=scales&logoColor=white" />
+
+# 🕵️‍♂️ FRAUDLENS PORTAL
+
+### ⚡ THE FINANCIAL INTELLIGENCE APPLICATION
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=800&size=28&duration=2500&pause=800&color=00E5FF&center=true&vCenter=true&width=1200&lines=Transforming+Evidence+Into+Intelligence;Uncovering+Hidden+Criminal+Networks;AI-Powered+Financial+Crime+Investigation;3D+Syndicate+Visualization+Engine;Court-Ready+Digital+Evidence+Automation"/>
+
+<br>
+
+<img src="https://img.shields.io/badge/🟢_STATUS-PRODUCTION_READY-00FFB3?style=for-the-badge&labelColor=0B1020"/>
+<img src="https://img.shields.io/badge/🤖_AI-GEMINI_2.5_PRO-7C3AED?style=for-the-badge&labelColor=0B1020"/>
+<img src="https://img.shields.io/badge/🌐_GRAPH-NEO4J_&_NETWORKX-00E5FF?style=for-the-badge&labelColor=0B1020"/>
+<img src="https://img.shields.io/badge/⚖️_LEGAL-BNS_2023-FFB300?style=for-the-badge&labelColor=0B1020"/>
+<img src="https://img.shields.io/badge/📜_COMPLIANCE-SECTION_65B-FF5252?style=for-the-badge&labelColor=0B1020"/>
+
 </div>
-
-<br/>
-
-### 🧩 1. The 13 Specialized Modules (React Frontend)
-
-The frontend is heavily stylized and built on `TanStack Router`, offering 13 distinct investigative dashboards:
-
-| Module | Core Functionality | Tech Badge |
-| :--- | :--- | :--- |
-| 📥 **`ingest.tsx`** (Dropzone) | Drag-and-drop file ingestion and LLM parsing interface. | ![Dropzone](https://img.shields.io/badge/Feature-Drag_&_Drop-6A5ACD?style=flat-square) |
-| 🕸️ **`graph.tsx`** (3D Network) | The 3D webGL visualization of the criminal syndicate graph. | ![WebGL](https://img.shields.io/badge/Render-WebGL_3D-FF4500?style=flat-square) |
-| ⚖️ **`intelligence.tsx`** (Legal) | **BNS 2023** cross-jurisdictional threat mapper. | ![BNS](https://img.shields.io/badge/Legal-BNS_2023-DC143C?style=flat-square) |
-| 📡 **`ml.tsx`** (Latent Space) | Visual clustering of anomalies using Isolation Forests logic. | ![ML](https://img.shields.io/badge/Machine_Learning-Active-00FA9A?style=flat-square) |
-| 🗄️ **`cases.tsx`** (Kanban Board)| Drag-and-drop case management board for officers. | ![Kanban](https://img.shields.io/badge/UI-React_Beautiful_Dnd-4169E1?style=flat-square) |
-| 📜 **`reports.tsx`** (Section 65B)| One-click court-admissible PDF generation. | ![PDF](https://img.shields.io/badge/Export-fpdf2-8A2BE2?style=flat-square) |
-| 🚨 **`alerts.tsx`** (Live Triggers)| Real-time WebSocket event feed for flagged transactions. | ![Live](https://img.shields.io/badge/Stream-WebSockets-FF00FF?style=flat-square) |
-| 🏦 **`entities.tsx`** (Registry)| Tabular view of all tracked bank accounts and risk scores. | ![Data](https://img.shields.io/badge/View-Data_Grid-20B2AA?style=flat-square) |
-| 🗺️ **`map.tsx`** (Geospatial) | MapLibre integration to track IP/transaction geolocations. | ![MapLibre](https://img.shields.io/badge/Map-MapLibre_GL-FFA500?style=flat-square) |
-| 🕵️ **`osint.tsx`** (OSINT) | Dark web and public registry scraping interfaces. | ![OSINT](https://img.shields.io/badge/Intel-Dark_Web-000000?style=flat-square) |
-| 🔄 **`patterns.tsx`** (Typology) | Identifies smurfing, layering, and round-tripping patterns. | ![Typology](https://img.shields.io/badge/Analysis-Typology-B22222?style=flat-square) |
-| ⚠️ **`watchlist.tsx`** (Hotlist)| Manually flagged high-risk accounts and UPI IDs. | ![Hotlist](https://img.shields.io/badge/Alert-High_Risk-FF0000?style=flat-square) |
-| 🖥️ **`index.tsx`** (Command) | The global executive dashboard summarizing all active metrics. | ![Command](https://img.shields.io/badge/Dashboard-Executive-4B0082?style=flat-square) |
 
 ---
 
-### 🧠 2. Deep-Dive: Core Architecture & Capabilities
+# 🌌 Behind The Portal Gate
 
-> [!NOTE]  
-> The backend operates on an advanced decoupling philosophy, ensuring the platform can run in a highly-secure air-gapped environment or deploy instantly to the cloud.
+Beyond the secure access layer lies **FraudLens**, an AI-native financial intelligence platform purpose-built for cybercrime investigators, financial crime units, and law enforcement agencies.
 
-#### 🏢 Dual Graph Engine Architecture (Neo4j & NetworkX)
-The platform operates on a robust dual-engine architecture:
-*   🟢 **Production Engine**: Native `neo4j` integration. Uses Cypher queries (`MATCH path = (a)-[*1..3]-(b)`) for highly scalable, multi-hop subgraph traversals.
-*   🟡 **Portable Zero-Mock Engine**: A fully functional Python-native `networkx` engine. It commits accounts as nodes and transactions as edges directly to a persisted `graph_store.json`. This allows the application to run anywhere completely standalone.
-*   🔴 **Dynamic Risk Scoring**: Accounts exceeding ₹100,000 in total transaction volume are automatically flagged with critical risk thresholds (Risk Score: 0.9).
+FraudLens transforms fragmented evidence sources — bank statements, screenshots, chat exports, transaction logs, and intelligence reports — into a unified investigative intelligence graph capable of exposing criminal syndicates, money mule networks, laundering chains, and organized cyber-fraud operations.
 
-#### 🤖 Multimodal AI Ingestion Pipeline
-The `llm_extractor.py` service handles the heavy lifting of raw police evidence:
-*   📑 **Universal File Parsing**: Accepts unstructured text from PDFs (`pdfplumber`), Excel/CSVs (`pandas`), and Word Documents (`python-docx`).
-*   👁️ **Vision-Language Model (Gemini 2.5 Pro)**: The backend utilizes `google/gemini-2.5-pro` via the OpenRouter API. It leverages zero-shot prompting and multimodal vision capabilities to read screenshots of bank statements or WhatsApp chat logs, extracting structured JSON arrays.
-*   🚦 **Confidence Scoring**: Transactions extracted by the LLM are given a confidence score. Anything `<0.8` is visually flagged in red on the investigator's UI for manual human verification.
-
-#### 🕸️ 3D Threat Network Explorer
-*   🌌 **ForceGraph3D Engine**: Uses `react-force-graph-3d` and `three.js` to render the extracted financial data natively in the browser as an interactive physics-based node-link graph.
-*   🎯 **Sub-Graph Traversal**: Uses `nx.ego_graph` to isolate suspected money mules up to 3 degrees of separation from a central suspect. High-risk entities glow neon red, while safe nodes remain blue.
-
-#### ⚖️ Legal Enforcement Intelligence (BNS 2023)
-The `intelligence.tsx` dashboard polls the backend every 5 seconds for live syndicate detection:
-*   🔗 **Cross-Jurisdictional Mapping**: Automatically detects "Shared Mules"—accounts with critical risk scores (>0.8) that appear across multiple independent FIR case files.
-*   📜 **Automated Charge Targeting**: Automatically tags detected syndicates with the new **Bharatiya Nyaya Sanhita (BNS) 2023** mandates (e.g. BNS 318, BNS 336, and IT Act 66D).
-
-#### 📡 Machine Learning Latent Space (Anomaly Detection)
-*   The `/ml/latent-space` endpoint projects the high-dimensional node data into a 2D geometric latent space using the `spring_layout` algorithm. 
-*   This effectively clusters accounts into Low, Medium, High, and Critical risk zones, mimicking **Isolation Forest** anomaly detection models.
-
-#### 🗄️ Automated Case Management (Kanban)
-*   ⚡ **Trigger Logic**: When the ML pipeline flags multiple high-risk nodes, the system automatically opens a new Case envelope.
-*   📋 **Investigator Board**: Features a drag-and-drop Kanban UI allowing officers to move cases across statuses (*New Alert*, *Investigating*, *Closed*).
-
-#### 📜 Section 65B Compliance Reporting
-*   🏛️ **Automated Court-Ready Reports**: The `/cases/{case_id}/export` API generates formal PDF reports (via `fpdf2`). These reports document the digital trail and chain of custody, ensuring evidence is admissible under **Section 65B of the Indian Evidence Act**.
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=80&section=footer" width="100%"/>
+```text
+📥 RAW EVIDENCE
+        ↓
+🤖 AI EXTRACTION
+        ↓
+🌐 GRAPH INTELLIGENCE
+        ↓
+🧠 RISK ANALYTICS
+        ↓
+⚖️ LEGAL MAPPING
+        ↓
+📜 COURT ADMISSIBLE REPORTS
+```
 
 ---
 
-## 🛠️ Complete Technology Stack
+# ⚡ 13 Specialized Intelligence Modules
 
 <div align="center">
-  <img src="https://img.shields.io/badge/Frontend-React_19_%2B_Vite-000000?style=for-the-badge&logo=react&logoColor=61DAFB" />
-  <img src="https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
-  <img src="https://img.shields.io/badge/Database-Neo4j-018BFF?style=for-the-badge&logo=neo4j&logoColor=white" />
+
+| Intelligence System | Purpose                                                |
+| ------------------- | ------------------------------------------------------ |
+| 📥 Ingest           | AI-powered evidence ingestion & transaction extraction |
+| 🌐 Graph            | Interactive 3D criminal syndicate visualization        |
+| ⚖️ Intelligence     | BNS 2023 legal intelligence & threat mapping           |
+| 🧠 ML Lab           | Latent-space anomaly detection & clustering            |
+| 📂 Cases            | Kanban-based investigation management                  |
+| 📜 Reports          | Section 65B court-ready report generation              |
+| 🚨 Alerts           | Real-time WebSocket intelligence feed                  |
+| 🏦 Entities         | Centralized account intelligence registry              |
+| 🗺️ Maps            | Geospatial transaction analysis                        |
+| 🔍 OSINT            | Open-source intelligence enrichment                    |
+| 🧩 Patterns         | Fraud typology detection engine                        |
+| 🚫 Watchlist        | High-risk entity monitoring                            |
+| 🎯 Command Center   | Executive intelligence dashboard                       |
+
 </div>
 
-<br/>
+---
 
-### Frontend Client
-- **Framework**: React 19, Vite, TypeScript
-- **Routing**: TanStack Router (`@tanstack/react-router`)
-- **State & Data**: Zustand, TanStack Query (`@tanstack/react-query`), Axios
-- **Styling & UI**: Tailwind CSS v4, Radix UI Primitives, Lucide React
-- **Animations**: Framer Motion, GSAP, Tw-animate-css
-- **Visualizations**: `react-force-graph-3d`, `three.js`, `@deck.gl`, `recharts`
+# 🏢 Dual Graph Intelligence Architecture
 
-### Backend API
-- **Framework**: Python FastAPI, Uvicorn Server
-- **Graph Engines**: NetworkX (Portable), Neo4j (Production)
-- **AI Integration**: OpenAI SDK, OpenRouter API (`google/gemini-2.5-pro`)
-- **Data Parsing**: `pdfplumber`, `pandas`, `python-docx`
-- **PDF Generation**: `fpdf2`
+<div align="center">
+
+```mermaid
+flowchart LR
+
+A[📥 Evidence]
+--> B[🤖 AI Extraction]
+
+B --> C[🌐 Neo4j Engine]
+B --> D[🐍 NetworkX Engine]
+
+C --> E[🧠 Intelligence Layer]
+D --> E
+
+E --> F[⚖️ Legal Intelligence]
+
+F --> G[📜 Court Reports]
+```
+
+</div>
+
+## 🌐 Neo4j Production Engine
+
+```cypher
+MATCH path = (a)-[*1..3]-(b)
+RETURN path
+```
+
+✔ Enterprise Graph Analytics
+
+✔ Multi-Hop Syndicate Traversal
+
+✔ Criminal Network Discovery
+
+✔ High-Speed Cypher Queries
+
+✔ Production-Scale Intelligence Operations
+
+---
+
+## 🐍 Portable NetworkX Engine
+
+Unlike traditional intelligence platforms requiring complex infrastructure, FraudLens includes a fully operational standalone graph engine.
+
+```python
+graph_store.json
+```
+
+✔ Zero Database Dependencies
+
+✔ No Docker Requirement
+
+✔ Fully Portable Investigations
+
+✔ Offline Operational Capability
+
+✔ Rapid Field Deployment
+
+---
+
+## 🚨 Dynamic Risk Intelligence
+
+Every entity continuously receives a dynamic behavioral risk score.
+
+```text
+₹100,000+ Volume
+       ↓
+Risk Score ≥ 0.90
+       ↓
+🔴 Critical Threat
+```
+
+High-risk entities automatically surface across investigative dashboards and intelligence pipelines.
+
+---
+
+# 🤖 Multimodal AI Evidence Pipeline
+
+<div align="center">
+
+<img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&weight=700&size=18&duration=3500&pause=700&color=00FFB3&center=true&vCenter=true&width=900&lines=PDFs+➜+Structured+Transactions;Screenshots+➜+Financial+Intelligence;WhatsApp+Chats+➜+Evidence+Correlation;Raw+Evidence+➜+Actionable+Insights"/>
+
+</div>
+
+### Supported Evidence Sources
+
+```text
+📄 PDF Statements
+📊 Excel Files
+📋 CSV Data
+📝 Word Documents
+📷 Screenshots
+💬 WhatsApp Chats
+🏦 Banking Records
+```
+
+### AI Processing Engine
+
+Powered by:
+
+```text
+google/gemini-2.5-pro
+via OpenRouter
+```
+
+Capabilities:
+
+✨ Transaction Extraction
+
+✨ Entity Recognition
+
+✨ Relationship Discovery
+
+✨ Contextual Intelligence
+
+✨ Structured JSON Generation
+
+✨ Confidence Validation
+
+---
+
+## 🎯 Human Verification Layer
+
+Every extracted transaction receives an intelligence confidence score.
+
+```text
+Confidence ≥ 0.80
+      ✅ Approved
+
+Confidence < 0.80
+      🔴 Manual Review
+```
+
+No intelligence enters the graph without verification safeguards.
+
+---
+
+# 🌌 3D Threat Network Explorer
+
+Built using:
+
+```text
+react-force-graph-3d
+three.js
+WebGL
+```
+
+FraudLens renders criminal ecosystems as living, interactive intelligence networks.
+
+### Visual Threat Classification
+
+```text
+🔵 Normal Entity
+
+🟡 Elevated Risk
+
+🟠 High Risk
+
+🔴 Critical Threat
+```
+
+### Investigator Capabilities
+
+🌐 Explore Multi-Hop Networks
+
+🎯 Isolate Money Mule Chains
+
+🕸️ Discover Hidden Relationships
+
+🚀 Orbit Suspicious Actors
+
+🔍 Traverse Up To 3 Degrees
+
+⚡ Real-Time Risk Highlighting
+
+---
+
+# ⚖️ BNS 2023 Legal Intelligence Engine
+
+FraudLens continuously monitors active investigations for syndicate formation.
+
+### Shared Mule Detection
+
+Automatically identifies:
+
+✔ Cross-FIR Connections
+
+✔ Multi-State Operations
+
+✔ Shared Banking Infrastructure
+
+✔ Organized Criminal Ecosystems
+
+---
+
+### Automated Charge Recommendations
+
+```text
+⚖️ BNS 318
+Cheating
+
+⚖️ BNS 336
+Forgery
+
+🛡️ IT Act 66D
+Cyber Fraud
+```
+
+Investigators receive legal intelligence in real-time.
+
+---
+
+# 📡 Machine Learning Intelligence Layer
+
+The platform projects complex graph relationships into a visual risk space.
+
+```text
+🟢 LOW
+      ↓
+🟡 MEDIUM
+      ↓
+🟠 HIGH
+      ↓
+🔴 CRITICAL
+```
+
+### Detection Capabilities
+
+🧠 Isolation Forest Inspired Logic
+
+📊 Latent Space Visualization
+
+🚨 Anomaly Detection
+
+🔍 Behavioral Clustering
+
+⚡ Threat Prioritization
+
+🎯 Investigator Guidance
+
+---
+
+# 📂 Automated Case Management
+
+When multiple critical-risk entities emerge:
+
+```text
+🚨 Alert Triggered
+       ↓
+📂 Case Created
+       ↓
+👮 Investigator Assigned
+       ↓
+🔍 Active Investigation
+       ↓
+📜 Report Generated
+```
+
+The Kanban board provides drag-and-drop operational control while maintaining live synchronization across intelligence services.
+
+---
+
+# 📜 Section 65B Compliance Engine
+
+FraudLens bridges intelligence gathering and prosecution.
+
+### Generated Evidence Packages
+
+📄 Court-Admissible Reports
+
+🕒 Timestamped Evidence Trails
+
+🔗 Chain Of Custody Records
+
+🧠 Intelligence Findings
+
+📊 Transaction Narratives
+
+⚖️ Legal Documentation
+
+All reports are designed for admissibility under Section 65B of the Indian Evidence Act.
+
+---
+
+# 🛠️ Technology Stack
+
+<div align="center">
+
+## Frontend Intelligence Layer
+
+<img src="https://skillicons.dev/icons?i=react,ts,vite,tailwind"/>
+
+## State & Data Layer
+
+<img src="https://skillicons.dev/icons?i=redux"/>
+
+## Visualization Layer
+
+<img src="https://skillicons.dev/icons?i=threejs"/>
+
+## Backend Intelligence Layer
+
+<img src="https://skillicons.dev/icons?i=python,fastapi"/>
+
+## AI & Infrastructure
+
+<img src="https://skillicons.dev/icons?i=docker,redis"/>
+
+</div>
 
 ---
 
@@ -187,6 +461,15 @@ npm run dev
 ```
 
 ---
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=150&section=footer" />
-</p>
+
+<div align="center">
+
+# 🚀 MISSION
+
+### From Evidence → Intelligence → Action
+
+FraudLens empowers investigators to uncover hidden financial syndicates, expose cybercrime infrastructure, accelerate investigations, and generate legally defensible evidence through a unified AI-powered intelligence ecosystem.
+
+<img src="https://capsule-render.vercel.app/api?type=waving&height=220&section=footer&color=0:00E5FF,30:00FFB3,60:7C3AED,100:FFB300"/>
+
+</div>
