@@ -19,7 +19,6 @@
   <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" />
   <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white" />
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
 </p>
 
 <br/>
@@ -41,114 +40,74 @@ A comprehensive, dual-purpose digital platform developed as an homage to the **M
 The root application serves as a high-fidelity, scroll-driven interactive web experience honoring the history and scale of India's largest state police force.
 
 ### ✨ Key Visual & Interactive Features
-- 🎬 **Immersive Scrollytelling**: Powered by Framer Motion, elements fade and slide dynamically as the user navigates the rich history.
-- 🛡️ **The 36 Districts & 185,000 Officers**: A narrative tribute that visually represents the sheer scale of the force defending 11.42 crore citizens.
-- 🗺️ **Interactive Commissionerates Cloth**: A physics-simulated, interactive grid showcasing the 12 primary Police Commissionerates across the state.
+- 🎬 **Immersive Scrollytelling**: Powered by Framer Motion, elements fade and slide dynamically.
+- 🛡️ **The 36 Districts & 185,000 Officers**: A narrative tribute visually representing the scale of the force.
+- 🗺️ **Interactive Commissionerates Cloth**: A physics-simulated, interactive grid showcasing the 12 primary Police Commissionerates.
 - 🌌 **Cinematic Aesthetics**: Deep dark themes (`#0d0d0d`), ambient glassmorphism panels, and bespoke cursor trackers.
 
 ---
 
 ## 🛡️ Part II: FraudLens Portal (The Intelligence Application)
 
-Hidden behind the "Portal Gate" is **FraudLens**, a production-ready, AI-driven financial intelligence platform. It is engineered to transform unstructured cybercrime data into interactive 3D threat graphs to track money mules, crypto syndicates, and organized financial fraud.
+Hidden behind the "Portal Gate" is **FraudLens**, a production-ready, AI-driven financial intelligence platform. It is engineered to transform unstructured cybercrime data into interactive 3D threat graphs.
 
 ### 🧠 Core Architecture & Capabilities
-
-#### 1. Zero-Mock Data Engine (Local Graph DB)
-The platform operates on a completely functional Python-native `networkx` graph engine. Instead of relying on heavy Dockerized Neo4j containers, the backend natively commits accounts as nodes and transactions as edges directly to a persisted `graph_store.json`.
-*   **Dynamic Risk Scoring**: Accounts exceeding ₹100,000 in transaction volume are automatically flagged with critical risk thresholds.
-*   **Sub-Graph Traversal**: The API efficiently queries multi-hop connections (`nx.ego_graph`) to isolate suspected mules.
-
-#### 2. LLM-Powered Data Ingestion
-*   **Dropzone Pipeline**: Investigators can drag-and-drop PDFs, Excel sheets, and CSVs containing unstructured bank statements or FIRs.
-*   **OpenRouter & Gemini Pro**: The backend utilizes the `google/gemini-2.5-pro` LLM model via OpenRouter API. Guided by a strict `SYSTEM_PROMPT`, the AI parses thousands of words of text into structured JSON arrays of transactions (Sender, Receiver, Amount, Type).
-
-#### 3. 3D Network Explorer
-*   **ForceGraph3D Engine**: Renders extracted data natively in the browser as a 3D interactive physics-based node-link graph.
-*   **Visual Threat Mapping**: High-risk entities glow red, safe nodes remain blue. The camera smoothly orbits suspected central actors (money mules).
-
-#### 4. Automated Case Management (Kanban)
-*   **Trigger Logic**: When the ML pipeline flags multiple high-risk nodes, the system automatically opens a Case.
-*   **Investigator Board**: Features an interactive Kanban UI allowing officers to drag cases across statuses (e.g., *New Alert*, *Investigating*, *Closed*), hitting live `PATCH` endpoints to sync state.
-
-#### 5. Machine Learning Telemetry
-*   **Live WebSockets**: The dashboard monitors mock telemetry for theoretical models such as **FraudSAGE GNN** (Structural embeddings) and **Isolation Forests** (Anomaly detection), streaming active alerts across the UI.
+*   **Zero-Mock Data Engine**: Python-native `networkx` graph engine committing natively to a local `graph_store.json`.
+*   **LLM-Powered Data Ingestion**: Uses OpenRouter API to parse drag-and-dropped PDFs/CSVs into structured transaction arrays.
+*   **3D Network Explorer**: `ForceGraph3D` Engine tracking money mules and crypto syndicates via visually glowing high-risk nodes.
+*   **Automated Case Management**: Live Kanban board with reactive triggers for suspicious thresholds.
 
 ---
 
 ## 📁 Directory Structure Overview
 
-```text
-maharashtra-pride-1/
-│
-├── backend/                        # FastAPI Application
-│   ├── api.py                      # REST Endpoints (/ingest, /cases, /graph)
-│   ├── database.py                 # NetworkX Graph Logic & JSON Persistence
-│   ├── llm_extractor.py            # OpenRouter AI parsing logic
-│   ├── main.py                     # App entrypoint & CORS config
-│   └── requirements.txt            # Python dependencies
-│
-├── src/                            # React Frontend
-│   ├── components/                 
-│   │   ├── fraudlens/              # Intelligence App Components (Kanban, 3D Graph)
-│   │   └── ui/                     # Reusable UI primitives (Animations, Modals)
-│   ├── routes/                     # TanStack File-Based Routing
-│   │   ├── index.tsx               # Maharashtra Police Pride Landing Page
-│   │   └── fraudlens/              # Dashboard, Cases, Map, ML, Ingest
-│   ├── data/                       # Regulatory frameworks, bank branches
-│   ├── hooks/                      # Custom React hooks
-│   ├── styles.css                  # Global Tailwind & Custom Fonts
-│   └── config.ts                   # Environment variable mappings
-│
-├── render.yaml                     # Infrastructure-as-Code for Backend deployment
-└── package.json                    # Node dependencies
+*With `-1` (or) `--oneline` : Shows entries one per line*
+
+```ansi
+[44;30m  📁 .../ajinkyachalke008/maharashtra-pride [0m[43;30m 🐙 ⎇ main ✔ v1.0.0 [0m
+↳ [33mcolorls -1[0m
+
+  [36m📁 backend/[0m
+    [32m🐍 api.py[0m
+    [32m🐍 database.py[0m
+    [32m🐍 llm_extractor.py[0m
+    [32m🐍 main.py[0m
+    [32m📜 requirements.txt[0m
+  
+  [36m📁 src/[0m
+    [36m📂 components/[0m                  
+      [36m📂 fraudlens/[0m
+      [36m📂 ui/[0m
+    [36m📂 routes/[0m
+      [32m⚛️ index.tsx[0m
+      [36m📂 fraudlens/[0m
+    [36m📂 data/[0m
+    [36m📂 hooks/[0m
+    [32m🎨 styles.css[0m
+    [32m⚙️ config.ts[0m
+  
+  [32m🐳 docker-compose.yml[0m
+  [32m📦 package.json[0m
+  [32m📜 render.yaml[0m
 ```
 
 ---
 
 ## ⚙️ Local Setup Instructions
 
-### 1. Backend Setup
-You must have **Python 3.11+** installed.
-```bash
-# Navigate to the backend directory
-cd backend
+*With `-d` (or) `--dirs` : Shows only directories*
 
-# Install dependencies
-pip install -r requirements.txt
+```ansi
+[44;30m  📁 .../backend [0m[43;30m 🐙 ⎇ main ✔ v1.0.0 [0m
+↳ [33mpython -m uvicorn main:app --reload[0m
 
-# Export your OpenRouter API Key (Required for the LLM Ingestion feature)
-export OPENROUTER_API_KEY="your-api-key-here"
-
-# Start the FastAPI Server
-uvicorn main:app --host 0.0.0.0 --port 8000
+[32mINFO[0m:     Will watch for changes in these directories: ['/backend']
+[32mINFO[0m:     Uvicorn running on [36mhttp://127.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     Started reloader process [12345] using WatchFiles
+[32mINFO[0m:     Started server process [12347]
+[32mINFO[0m:     Waiting for application startup.
+[32mINFO[0m:     Application startup complete.
 ```
-*The backend API will now be running on `http://localhost:8000`.*
-
-### 2. Frontend Setup
-You must have **Node.js** and **npm** installed.
-```bash
-# Navigate to the project root
-cd maharashtra-pride-1
-
-# Install frontend dependencies
-npm install
-
-# Start the Vite Development Server
-npm run dev
-```
-*The frontend will now be running on `http://localhost:8080`.*
-
----
-
-## 🌍 Live Production Deployment
-
-This project is currently fully deployed and hosted globally on **Vercel**.
-
-*   **Live Web Application (Frontend)**: [https://maharashtra-pride-1.vercel.app](https://maharashtra-pride-1.vercel.app)
-*   **Live AI Engine (Backend)**: `https://backend-wine-zeta-81.vercel.app`
-
-*(Note: The backend runs as a stateless Vercel Serverless Function, so the mock graph database resets after periods of inactivity. This makes it perfect for zero-cost demonstrations!)*
 
 ---
 <p align="center">
