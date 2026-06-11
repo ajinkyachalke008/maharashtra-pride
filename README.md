@@ -68,7 +68,7 @@ The root application serves as a high-fidelity, scroll-driven interactive web ex
 
 ---
 
-# 🌌 Behind The Portal Gate `[Cinematic Scroll Animation]`
+# 🌌 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=800&lines=Behind+The+Portal+Gate"/>
 
 Beyond the secure access layer lies **FraudLens**, an AI-native financial intelligence platform purpose-built for cybercrime investigators, financial crime units, and law enforcement agencies.
 
@@ -90,7 +90,7 @@ FraudLens transforms fragmented evidence sources — bank statements, screenshot
 
 ---
 
-# ⚡ 13 Specialized Intelligence Modules `[Bento Grid Hover Effect]`
+# ⚡ <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=00E5FF&center=false&vCenter=true&width=800&lines=13+Specialized+Intelligence+Modules"/>
 
 <div align="center">
 
@@ -114,7 +114,7 @@ FraudLens transforms fragmented evidence sources — bank statements, screenshot
 
 ---
 
-# 🏢 Dual Graph Intelligence Architecture `[Infinite Grid Animation]`
+# 🏢 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=7C3AED&center=false&vCenter=true&width=800&lines=Dual+Graph+Intelligence+Architecture"/>
 
 <div align="center">
 
@@ -137,7 +137,7 @@ F --> G[📜 Court Reports]
 
 </div>
 
-## 🌐 Neo4j Production Engine `[Data Stream Animation]`
+## 🌐 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=22&duration=2000&pause=1000&color=018bff&center=false&vCenter=true&width=800&lines=Neo4j+Production+Engine"/>
 
 ```cypher
 MATCH path = (a)-[*1..3]-(b)
@@ -156,7 +156,7 @@ RETURN path
 
 ---
 
-## 🐍 Portable NetworkX Engine `[Terminal Command Animation]`
+## 🐍 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=22&duration=2000&pause=1000&color=FFD62E&center=false&vCenter=true&width=800&lines=Portable+NetworkX+Engine"/>
 
 Unlike traditional intelligence platforms requiring complex infrastructure, FraudLens includes a fully operational standalone graph engine.
 
@@ -176,7 +176,7 @@ graph_store.json
 
 ---
 
-## 🚨 Dynamic Risk Intelligence `[Neon Flicker Effect]`
+## 🚨 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=22&duration=2000&pause=1000&color=FF5252&center=false&vCenter=true&width=800&lines=Dynamic+Risk+Intelligence"/>
 
 Every entity continuously receives a dynamic behavioral risk score.
 
@@ -192,7 +192,7 @@ High-risk entities automatically surface across investigative dashboards and int
 
 ---
 
-# 🤖 Multimodal AI Evidence Pipeline `[Cyber Decrypt Reveal]`
+# 🤖 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=00E5FF&center=false&vCenter=true&width=800&lines=Multimodal+AI+Evidence+Pipeline"/>
 
 <div align="center">
 
@@ -200,7 +200,7 @@ High-risk entities automatically surface across investigative dashboards and int
 
 </div>
 
-### Supported Evidence Sources `[Staggered Fade-In]`
+### Supported Evidence Sources
 
 <div align="center">
   <img src="https://img.shields.io/badge/📄_PDF-Statements-D32F2F?style=for-the-badge&labelColor=0B1020"/>
@@ -212,7 +212,7 @@ High-risk entities automatically surface across investigative dashboards and int
   <img src="https://img.shields.io/badge/🏦_Banking-Records-3F51B5?style=for-the-badge&labelColor=0B1020"/>
 </div>
 
-### AI Processing Engine `[Matrix Rain Effect]`
+### AI Processing Engine
 
 Powered by:
 
@@ -237,7 +237,7 @@ Capabilities:
 
 ---
 
-## 🎯 Human Verification Layer `[Glassmorphism Hover]`
+## 🎯 Human Verification Layer
 
 Every extracted transaction receives an intelligence confidence score.
 
@@ -253,7 +253,7 @@ No intelligence enters the graph without verification safeguards.
 
 ---
 
-# 🌌 3D Threat Network Explorer `[WebGL Displacement Effect]`
+# 🌌 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=FFB300&center=false&vCenter=true&width=800&lines=3D+Threat+Network+Explorer"/>
 
 Built using:
 
@@ -267,7 +267,7 @@ WebGL
 
 FraudLens renders criminal ecosystems as living, interactive intelligence networks leveraging a **Particle Network** and **Orbit Animation**.
 
-### Visual Threat Classification `[Chromatic Aberration Effect]`
+### Visual Threat Classification
 
 <div align="center">
   <br>
@@ -278,7 +278,7 @@ FraudLens renders criminal ecosystems as living, interactive intelligence networ
   <br>
 </div>
 
-### Investigator Capabilities `[Orbit Animation]`
+### Investigator Capabilities
 
 🌐 Explore Multi-Hop Networks
 
@@ -294,11 +294,11 @@ FraudLens renders criminal ecosystems as living, interactive intelligence networ
 
 ---
 
-# ⚖️ BNS 2023 Legal Intelligence Engine `[Holographic Effect]`
+# ⚖️ <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=10B981&center=false&vCenter=true&width=800&lines=BNS+2023+Legal+Intelligence+Engine"/>
 
 FraudLens continuously monitors active investigations for syndicate formation.
 
-### Shared Mule Detection `[Noise Distortion]`
+### Shared Mule Detection
 
 Automatically identifies (via **Matrix Rain Effect** & **Neon Flicker Effect** processing logs):
 
@@ -312,7 +312,7 @@ Automatically identifies (via **Matrix Rain Effect** & **Neon Flicker Effect** p
 
 ---
 
-### Automated Charge Recommendations `[Split Text Animation]`
+### Automated Charge Recommendations
 
 ```text
 ⚖️ BNS 318
@@ -329,7 +329,7 @@ Investigators receive legal intelligence in real-time.
 
 ---
 
-# 📡 Machine Learning Intelligence Layer `[AI Data Visualization Animation]`
+# 📡 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=800&lines=Machine+Learning+Intelligence+Layer"/>
 
 The platform projects complex graph relationships into a visual risk space using **AI Data Visualization Animation** and a **Holographic Effect**.
 
@@ -340,7 +340,7 @@ The platform projects complex graph relationships into a visual risk space using
   <img src="https://img.shields.io/badge/🔴_CRITICAL-Risk-F44336?style=for-the-badge&labelColor=0B1020"/>
 </div>
 
-### Detection Capabilities `[Blur-to-Focus Reveal]`
+### Detection Capabilities
 
 🧠 Isolation Forest Inspired Logic (with **Blur-to-Focus Reveal**)
 
@@ -356,7 +356,7 @@ The platform projects complex graph relationships into a visual risk space using
 
 ---
 
-# 📂 Automated Case Management `[Smooth Page Transition]`
+# 📂 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=38B2AC&center=false&vCenter=true&width=800&lines=Automated+Case+Management"/>
 
 When multiple critical-risk entities emerge:
 
@@ -376,11 +376,11 @@ The Kanban board provides drag-and-drop operational control using **Smooth Page 
 
 ---
 
-# 📜 Section 65B Compliance Engine `[Scroll Reveal]`
+# 📜 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=7C3AED&center=false&vCenter=true&width=800&lines=Section+65B+Compliance+Engine"/>
 
 FraudLens bridges intelligence gathering and prosecution.
 
-### Generated Evidence Packages `[Fold/Unfold Animation]`
+### Generated Evidence Packages
 
 📄 Court-Admissible Reports
 
@@ -398,7 +398,7 @@ All reports are designed for admissibility under Section 65B of the Indian Evide
 
 ---
 
-# 🛠️ Technology Stack `[Neumorphic Interaction]`
+# 🛠️ <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=00E5FF&center=false&vCenter=true&width=800&lines=Technology+Stack"/>
 
 <div align="center">
 
@@ -426,7 +426,7 @@ All reports are designed for admissibility under Section 65B of the Indian Evide
 
 ---
 
-## 📁 Directory Structure Overview `[Text Trail Effect]`
+## 📁 Directory Structure Overview
 
 <p align="center">
   <img src="public/terminal_tree.svg" alt="Directory Structure" width="100%" />
@@ -434,7 +434,7 @@ All reports are designed for admissibility under Section 65B of the Indian Evide
 
 ---
 
-## ⚙️ Local Setup Instructions `[Typewriter Effect]`
+## ⚙️ Local Setup Instructions
 
 <p align="center">
   <img src="public/terminal_setup.svg" alt="Setup Instructions" width="100%" />
@@ -462,7 +462,7 @@ npm run dev
 
 <div align="center">
 
-# 🚀 MISSION `[Infinite Zoom Effect]`
+# 🚀 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=32&duration=2000&pause=1000&color=FFB300&center=false&vCenter=true&width=800&lines=MISSION"/>
 
 ### From Evidence → Intelligence → Action
 
