@@ -68,7 +68,7 @@ The root application serves as a high-fidelity, scroll-driven interactive web ex
 
 ---
 
-# 🌌 Behind The Portal Gate
+# 🌌 Behind The Portal Gate `[Cinematic Scroll Animation]`
 
 Beyond the secure access layer lies **FraudLens**, an AI-native financial intelligence platform purpose-built for cybercrime investigators, financial crime units, and law enforcement agencies.
 
@@ -90,7 +90,7 @@ FraudLens transforms fragmented evidence sources — bank statements, screenshot
 
 ---
 
-# ⚡ 13 Specialized Intelligence Modules
+# ⚡ 13 Specialized Intelligence Modules `[Bento Grid Hover Effect]`
 
 <div align="center">
 
@@ -114,7 +114,7 @@ FraudLens transforms fragmented evidence sources — bank statements, screenshot
 
 ---
 
-# 🏢 Dual Graph Intelligence Architecture
+# 🏢 Dual Graph Intelligence Architecture `[Infinite Grid Animation]`
 
 <div align="center">
 
@@ -137,7 +137,7 @@ F --> G[📜 Court Reports]
 
 </div>
 
-## 🌐 Neo4j Production Engine
+## 🌐 Neo4j Production Engine `[Data Stream Animation]`
 
 ```cypher
 MATCH path = (a)-[*1..3]-(b)
@@ -156,7 +156,7 @@ RETURN path
 
 ---
 
-## 🐍 Portable NetworkX Engine
+## 🐍 Portable NetworkX Engine `[Terminal Command Animation]`
 
 Unlike traditional intelligence platforms requiring complex infrastructure, FraudLens includes a fully operational standalone graph engine.
 
@@ -176,7 +176,7 @@ graph_store.json
 
 ---
 
-## 🚨 Dynamic Risk Intelligence
+## 🚨 Dynamic Risk Intelligence `[Neon Flicker Effect]`
 
 Every entity continuously receives a dynamic behavioral risk score.
 
@@ -192,7 +192,7 @@ High-risk entities automatically surface across investigative dashboards and int
 
 ---
 
-# 🤖 Multimodal AI Evidence Pipeline
+# 🤖 Multimodal AI Evidence Pipeline `[Cyber Decrypt Reveal]`
 
 <div align="center">
 
@@ -200,7 +200,7 @@ High-risk entities automatically surface across investigative dashboards and int
 
 </div>
 
-### Supported Evidence Sources
+### Supported Evidence Sources `[Staggered Fade-In]`
 
 <div align="center">
   <img src="https://img.shields.io/badge/📄_PDF-Statements-D32F2F?style=for-the-badge&labelColor=0B1020"/>
@@ -212,7 +212,7 @@ High-risk entities automatically surface across investigative dashboards and int
   <img src="https://img.shields.io/badge/🏦_Banking-Records-3F51B5?style=for-the-badge&labelColor=0B1020"/>
 </div>
 
-### AI Processing Engine
+### AI Processing Engine `[Matrix Rain Effect]`
 
 Powered by:
 
@@ -237,7 +237,7 @@ Capabilities:
 
 ---
 
-## 🎯 Human Verification Layer
+## 🎯 Human Verification Layer `[Glassmorphism Hover]`
 
 Every extracted transaction receives an intelligence confidence score.
 
@@ -253,7 +253,7 @@ No intelligence enters the graph without verification safeguards.
 
 ---
 
-# 🌌 3D Threat Network Explorer
+# 🌌 3D Threat Network Explorer `[WebGL Displacement Effect]`
 
 Built using:
 
@@ -267,7 +267,7 @@ WebGL
 
 FraudLens renders criminal ecosystems as living, interactive intelligence networks leveraging a **Particle Network** and **Orbit Animation**.
 
-### Visual Threat Classification
+### Visual Threat Classification `[Chromatic Aberration Effect]`
 
 <div align="center">
   <br>
@@ -278,7 +278,7 @@ FraudLens renders criminal ecosystems as living, interactive intelligence networ
   <br>
 </div>
 
-### Investigator Capabilities
+### Investigator Capabilities `[Orbit Animation]`
 
 🌐 Explore Multi-Hop Networks
 
@@ -294,11 +294,11 @@ FraudLens renders criminal ecosystems as living, interactive intelligence networ
 
 ---
 
-# ⚖️ BNS 2023 Legal Intelligence Engine
+# ⚖️ BNS 2023 Legal Intelligence Engine `[Holographic Effect]`
 
 FraudLens continuously monitors active investigations for syndicate formation.
 
-### Shared Mule Detection
+### Shared Mule Detection `[Noise Distortion]`
 
 Automatically identifies (via **Matrix Rain Effect** & **Neon Flicker Effect** processing logs):
 
@@ -312,7 +312,7 @@ Automatically identifies (via **Matrix Rain Effect** & **Neon Flicker Effect** p
 
 ---
 
-### Automated Charge Recommendations
+### Automated Charge Recommendations `[Split Text Animation]`
 
 ```text
 ⚖️ BNS 318
@@ -329,7 +329,7 @@ Investigators receive legal intelligence in real-time.
 
 ---
 
-# 📡 Machine Learning Intelligence Layer
+# 📡 Machine Learning Intelligence Layer `[AI Data Visualization Animation]`
 
 The platform projects complex graph relationships into a visual risk space using **AI Data Visualization Animation** and a **Holographic Effect**.
 
@@ -340,7 +340,7 @@ The platform projects complex graph relationships into a visual risk space using
   <img src="https://img.shields.io/badge/🔴_CRITICAL-Risk-F44336?style=for-the-badge&labelColor=0B1020"/>
 </div>
 
-### Detection Capabilities
+### Detection Capabilities `[Blur-to-Focus Reveal]`
 
 🧠 Isolation Forest Inspired Logic (with **Blur-to-Focus Reveal**)
 
@@ -356,7 +356,7 @@ The platform projects complex graph relationships into a visual risk space using
 
 ---
 
-# 📂 Automated Case Management
+# 📂 Automated Case Management `[Smooth Page Transition]`
 
 When multiple critical-risk entities emerge:
 
@@ -376,11 +376,11 @@ The Kanban board provides drag-and-drop operational control using **Smooth Page 
 
 ---
 
-# 📜 Section 65B Compliance Engine
+# 📜 Section 65B Compliance Engine `[Scroll Reveal]`
 
 FraudLens bridges intelligence gathering and prosecution.
 
-### Generated Evidence Packages
+### Generated Evidence Packages `[Fold/Unfold Animation]`
 
 📄 Court-Admissible Reports
 
@@ -398,7 +398,7 @@ All reports are designed for admissibility under Section 65B of the Indian Evide
 
 ---
 
-# 🛠️ Technology Stack
+# 🛠️ Technology Stack `[Neumorphic Interaction]`
 
 <div align="center">
 
@@ -426,7 +426,7 @@ All reports are designed for admissibility under Section 65B of the Indian Evide
 
 ---
 
-## 📁 Directory Structure Overview
+## 📁 Directory Structure Overview `[Text Trail Effect]`
 
 <p align="center">
   <img src="public/terminal_tree.svg" alt="Directory Structure" width="100%" />
@@ -434,7 +434,7 @@ All reports are designed for admissibility under Section 65B of the Indian Evide
 
 ---
 
-## ⚙️ Local Setup Instructions
+## ⚙️ Local Setup Instructions `[Typewriter Effect]`
 
 <p align="center">
   <img src="public/terminal_setup.svg" alt="Setup Instructions" width="100%" />
@@ -462,7 +462,7 @@ npm run dev
 
 <div align="center">
 
-# 🚀 MISSION
+# 🚀 MISSION `[Infinite Zoom Effect]`
 
 ### From Evidence → Intelligence → Action
 
