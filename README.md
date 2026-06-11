@@ -42,9 +42,9 @@ A comprehensive, dual-purpose digital platform developed as an homage to the **M
 The root application serves as a high-fidelity, scroll-driven interactive web experience honoring the history and scale of India's largest state police force. 
 
 ### 🎭 Cinematic Modules
-1. **The Grand Entry**: Framer Motion powered hero sections featuring **Cinematic Scroll Animation** with dynamic typography and **Glassmorphism Hover** panels layered over deep dark themes (`#0d0d0d`).
+1. **The Grand Entry**: Framer Motion powered hero sections featuring <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=286&lines=Cinematic+Scroll+Animation" alt="Cinematic Scroll Animation"/> with dynamic typography and <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=209&lines=Glassmorphism+Hover" alt="Glassmorphism Hover"/> panels layered over deep dark themes (`#0d0d0d`).
 2. **The 36 Districts & 185,000 Officers**: A narrative scrollytelling experience. As the user scrolls, dynamic counters and historical timelines fade into view, explaining the scale of the force defending 11.42 crore citizens.
-3. **Interactive Commissionerates Cloth**: A physics-simulated **Interactive Fluid Simulation** and WebGL grid showcasing the 12 primary Police Commissionerates. Users interact with the cloth via a **Magnetic Cursor** and **Gooey Effect** tracking.
+3. **Interactive Commissionerates Cloth**: A physics-simulated <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=308&lines=Interactive+Fluid+Simulation" alt="Interactive Fluid Simulation"/> and WebGL grid showcasing the 12 primary Police Commissionerates. Users interact with the cloth via a <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=165&lines=Magnetic+Cursor" alt="Magnetic Cursor"/> and <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=150&lines=Gooey+Effect" alt="Gooey Effect"/> tracking.
 
 ---
 
@@ -102,13 +102,13 @@ FraudLens transforms fragmented evidence sources — bank statements, screenshot
 | 🧠 ML Lab           | Latent-space anomaly detection & clustering            | ![ML](https://img.shields.io/badge/Machine_Learning-Active-00FA9A?style=flat-square) |
 | 📂 Cases            | Kanban-based investigation management                  | ![Kanban](https://img.shields.io/badge/UI-React_Beautiful_Dnd-4169E1?style=flat-square) |
 | 📜 Reports          | Section 65B court-ready report generation              | ![PDF](https://img.shields.io/badge/Export-fpdf2-8A2BE2?style=flat-square) |
-| 🚨 Alerts           | Real-time WebSocket intelligence feed featuring **Cyberpunk Scanline Effect** & **Terminal Command Animation** | ![Live](https://img.shields.io/badge/Stream-WebSockets-FF00FF?style=flat-square) |
+| 🚨 Alerts           | Real-time WebSocket intelligence feed featuring <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=275&lines=Cyberpunk+Scanline+Effect" alt="Cyberpunk Scanline Effect"/> & <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=286&lines=Terminal+Command+Animation" alt="Terminal Command Animation"/> | ![Live](https://img.shields.io/badge/Stream-WebSockets-FF00FF?style=flat-square) |
 | 🏦 Entities         | Centralized account intelligence registry              | ![Data](https://img.shields.io/badge/View-Data_Grid-20B2AA?style=flat-square) |
 | 🗺️ Maps            | Geospatial transaction analysis                        | ![MapLibre](https://img.shields.io/badge/Map-MapLibre_GL-FFA500?style=flat-square) |
 | 🔍 OSINT            | Open-source intelligence enrichment                    | ![OSINT](https://img.shields.io/badge/Intel-Dark_Web-000000?style=flat-square) |
 | 🧩 Patterns         | Fraud typology detection engine                        | ![Typology](https://img.shields.io/badge/Analysis-Typology-B22222?style=flat-square) |
 | 🚫 Watchlist        | High-risk entity monitoring                            | ![Hotlist](https://img.shields.io/badge/Alert-High_Risk-FF0000?style=flat-square) |
-| 🎯 Command Center   | Executive intelligence dashboard with **Bento Grid Hover Effect** & **Isometric Hover Effect** | ![Command](https://img.shields.io/badge/Dashboard-Executive-4B0082?style=flat-square) |
+| 🎯 Command Center   | Executive intelligence dashboard with <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=253&lines=Bento+Grid+Hover+Effect" alt="Bento Grid Hover Effect"/> & <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=242&lines=Isometric+Hover+Effect" alt="Isometric Hover Effect"/> | ![Command](https://img.shields.io/badge/Dashboard-Executive-4B0082?style=flat-square) |
 
 </div>
 
@@ -223,13 +223,13 @@ via OpenRouter
 
 Capabilities:
 
-✨ Transaction Extraction (with **Text Scramble Effect**)
+✨ Transaction Extraction (with <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=220&lines=Text+Scramble+Effect" alt="Text Scramble Effect"/>)
 
 ✨ Entity Recognition
 
 ✨ Relationship Discovery
 
-✨ Contextual Intelligence (with **Cyber Decrypt Reveal**)
+✨ Contextual Intelligence (with <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=220&lines=Cyber+Decrypt+Reveal" alt="Cyber Decrypt Reveal"/>)
 
 ✨ Structured JSON Generation
 
@@ -261,11 +261,11 @@ Built using:
 react-force-graph-3d
 three.js
 WebGL
-✨ WebGL Displacement Effect
-✨ Infinite Particle Flow
+✨ <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=275&lines=WebGL+Displacement+Effect" alt="WebGL Displacement Effect"/>
+✨ <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=242&lines=Infinite+Particle+Flow" alt="Infinite Particle Flow"/>
 ```
 
-FraudLens renders criminal ecosystems as living, interactive intelligence networks leveraging a **Particle Network** and **Orbit Animation**.
+FraudLens renders criminal ecosystems as living, interactive intelligence networks leveraging a <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=176&lines=Particle+Network" alt="Particle Network"/> and <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=165&lines=Orbit+Animation" alt="Orbit Animation"/>.
 
 ### Visual Threat Classification
 
@@ -300,7 +300,7 @@ FraudLens continuously monitors active investigations for syndicate formation.
 
 ### Shared Mule Detection
 
-Automatically identifies (via **Matrix Rain Effect** & **Neon Flicker Effect** processing logs):
+Automatically identifies (via <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=198&lines=Matrix+Rain+Effect" alt="Matrix Rain Effect"/> & <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=209&lines=Neon+Flicker+Effect" alt="Neon Flicker Effect"/> processing logs):
 
 ✔ Cross-FIR Connections
 
@@ -331,7 +331,7 @@ Investigators receive legal intelligence in real-time.
 
 # 📡 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=800&lines=Machine+Learning+Intelligence+Layer"/>
 
-The platform projects complex graph relationships into a visual risk space using **AI Data Visualization Animation** and a **Holographic Effect**.
+The platform projects complex graph relationships into a visual risk space using <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=341&lines=AI+Data+Visualization+Animation" alt="AI Data Visualization Animation"/> and a <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=198&lines=Holographic+Effect" alt="Holographic Effect"/>.
 
 <div align="center">
   <img src="https://img.shields.io/badge/🟢_LOW-Risk-4CAF50?style=for-the-badge&labelColor=0B1020"/> ➜ 
@@ -342,7 +342,7 @@ The platform projects complex graph relationships into a visual risk space using
 
 ### Detection Capabilities
 
-🧠 Isolation Forest Inspired Logic (with **Blur-to-Focus Reveal**)
+🧠 Isolation Forest Inspired Logic (with <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=220&lines=Blur-to-Focus+Reveal" alt="Blur-to-Focus Reveal"/>)
 
 📊 Latent Space Visualization
 
@@ -372,7 +372,7 @@ When multiple critical-risk entities emerge:
 📜 Report Generated
 ```
 
-The Kanban board provides drag-and-drop operational control using **Smooth Page Transition** and **Scroll Reveal** mechanics while maintaining live synchronization.
+The Kanban board provides drag-and-drop operational control using <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=242&lines=Smooth+Page+Transition" alt="Smooth Page Transition"/> and <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=16&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=150&lines=Scroll+Reveal" alt="Scroll Reveal"/> mechanics while maintaining live synchronization.
 
 ---
 
