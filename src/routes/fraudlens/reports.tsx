@@ -26,14 +26,7 @@ interface ReportMetadata {
 
 // ──── Mock Data ──────────────────────────────────────────────
 
-const MOCK_REPORTS: ReportMetadata[] = [
-  { id: 'rep-001', title: 'Q2 2026 Syndicate Network Analysis', type: 'Intelligence Brief', status: 'ready', generated_at: '2026-06-05T09:00:00Z', generated_by: 'System Auto', format: 'PDF', size_kb: 4500, tags: ['Q2', 'Syndicate', 'High-Level'] },
-  { id: 'rep-002', title: 'Case CASE-2026-A8F3 Forensic Trace', type: 'Case File', status: 'ready', generated_at: '2026-06-04T14:30:00Z', generated_by: 'Investigator_JS', format: 'PDF', size_kb: 1250, tags: ['CASE-A8F3', 'Trace'] },
-  { id: 'rep-003', title: 'Cross-Bank Smurfing Patterns (May)', type: 'Pattern Report', status: 'ready', generated_at: '2026-06-01T10:15:00Z', generated_by: 'System Auto', format: 'CSV', size_kb: 340, tags: ['May 2026', 'Smurfing'] },
-  { id: 'rep-004', title: 'Watchlist Match Summary - Weekly', type: 'Compliance', status: 'ready', generated_at: '2026-05-31T23:59:00Z', generated_by: 'System Auto', format: 'Excel', size_kb: 890, tags: ['Weekly', 'Watchlist'] },
-  { id: 'rep-005', title: 'Crypto Drainer Exposure Analysis', type: 'OSINT Report', status: 'ready', generated_at: '2026-05-28T16:45:00Z', generated_by: 'Cyber_Team', format: 'PDF', size_kb: 5600, tags: ['Crypto', 'Exposure'] },
-  { id: 'rep-006', title: 'Mule Account Clusters - Mumbai Region', type: 'Intelligence Brief', status: 'generating', generated_at: '2026-06-06T11:00:00Z', generated_by: 'Analyst_MK', format: 'PDF', size_kb: 0, tags: ['Mumbai', 'Mules'] },
-];
+const MOCK_REPORTS: ReportMetadata[] = [];
 
 const TEMPLATES = [
   { id: 't1', name: 'Standard Case Report', desc: 'Full forensic trace, account details, and graph evidence for a specific case.', icon: '📄' },

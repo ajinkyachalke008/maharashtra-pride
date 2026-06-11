@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from '@tanstack/react-router';
-import { ArrowRight, AlertTriangle, ShieldAlert, CircleDot } from 'lucide-react';
+import { ArrowRight, AlertTriangle, ShieldAlert, CircleDot, Download } from 'lucide-react';
+import { API_BASE_URL } from '../../../../config';
 
 interface Case {
   id: string;
@@ -81,9 +82,18 @@ export default function CaseTable({ cases }: Props) {
                   </span>
                 </td>
                 <td className="px-6 py-4 text-center">
-                  <Link to="/fraudlens" className="inline-flex items-center justify-center p-2 rounded-lg bg-primary-600/10 text-primary-400 hover:bg-primary-600 hover:text-white transition-all">
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
+                  <div className="flex items-center justify-center gap-2">
+                    <button 
+                      onClick={() => window.open(`${API_BASE_URL}/api/v1/cases/${c.id}/export`, '_blank')}
+                      className="inline-flex items-center justify-center p-2 rounded-lg bg-background-base border border-white/10 text-white/60 hover:bg-white/10 hover:text-white transition-all"
+                      title="Download Court-Admissible PDF"
+                    >
+                      <Download className="w-4 h-4" />
+                    </button>
+                    <Link to="/fraudlens" className="inline-flex items-center justify-center p-2 rounded-lg bg-primary-600/10 text-primary-400 hover:bg-primary-600 hover:text-white transition-all">
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
                 </td>
               </tr>
             ))}

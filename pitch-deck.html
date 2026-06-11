@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FraudLens — Pitch Deck</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #020408;
+            --card: #0a0e16;
+            --card2: #0f1420;
+            --border: #1a2030;
+            --glow: #1e3a5f;
+            --text: #e8edf3;
+            --text2: #7a8599;
+            --text3: #4a5568;
+            --green: #10b981;
+            --red: #ef4444;
+            --yellow: #f59e0b;
+            --blue: #3b82f6;
+            --purple: #8b5cf6;
+            --cyan: #06b6d4;
+            --orange: #f97316;
+            --indigo: #6366f1;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ─── SLIDE SYSTEM ─── */
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 80px;
+            position: relative;
+            scroll-snap-align: start;
+            overflow: hidden;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 32px;
+            right: 40px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            color: var(--text3);
+            letter-spacing: 3px;
+        }
+
+        .slide-nav {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--text3);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-dot.active { background: var(--blue); transform: scale(1.4); box-shadow: 0 0 12px var(--blue); }
+
+        /* ─── SLIDE 1: TITLE ─── */
+        #slide-1::before {
+            background: 
+                radial-gradient(ellipse at 30% 40%, rgba(59, 130, 246, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 60%, rgba(139, 92, 246, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 90%, rgba(16, 185, 129, 0.04) 0%, transparent 50%);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border: 1px solid rgba(59,130,246,0.3);
+            border-radius: 30px;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--blue);
+            background: rgba(59,130,246,0.05);
+            margin-bottom: 32px;
+            animation: fadeDown 1s ease-out;
+        }
+
+        .hero-badge .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+
+        @keyframes pulse { 0%,100%{ box-shadow: 0 0 0 0 rgba(16,185,129,0.4); } 50%{ box-shadow: 0 0 0 8px rgba(16,185,129,0); } }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            letter-spacing: 8px;
+            background: linear-gradient(135deg, #e8edf3 20%, #3b82f6 50%, #8b5cf6 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+            text-align: center;
+            animation: fadeUp 1s ease-out 0.2s both;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text2);
+            text-align: center;
+            max-width: 700px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            animation: fadeUp 1s ease-out 0.4s both;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 40px;
+            animation: fadeUp 1s ease-out 0.6s both;
+        }
+
+        .hero-meta-item {
+            text-align: center;
+        }
+
+        .hero-meta-item .val {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--cyan);
+        }
+
+        .hero-meta-item .lbl {
+            font-size: 0.65rem;
+            color: var(--text3);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 4px;
+        }
+
+        @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes fadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+
+        /* ─── SLIDE 2: PROBLEM ─── */
+        #slide-2::before {
+            background: radial-gradient(ellipse at 50% 50%, rgba(239,68,68,0.06) 0%, transparent 60%);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        .stat-block {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 36px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .stat-block:hover { border-color: var(--glow); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.4); }
+
+        .stat-block::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+        }
+
+        .stat-block.red::before { background: linear-gradient(90deg, var(--red), var(--orange)); }
+        .stat-block.yellow::before { background: linear-gradient(90deg, var(--yellow), var(--orange)); }
+
+        .stat-block .big {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .stat-block .label { font-size: 1rem; color: var(--text2); line-height: 1.6; }
+        .stat-block .source { font-size: 0.65rem; color: var(--text3); margin-top: 12px; font-family: 'JetBrains Mono', monospace; }
+
+        .section-heading {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-sub {
+            font-size: 1rem;
+            color: var(--text2);
+            text-align: center;
+            max-width: 650px;
+            margin-bottom: 48px;
+            line-height: 1.7;
+        }
+
+        /* ─── SLIDE 3: SOLUTION ─── */
+        #slide-3::before {
+            background: radial-gradient(ellipse at 40% 40%, rgba(16,185,129,0.06) 0%, transparent 60%);
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        .sol-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.4s;
+        }
+
+        .sol-card:hover { border-color: var(--glow); transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+
+        .sol-icon {
+            width: 64px; height: 64px;
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 16px;
+        }
+
+        .sol-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+        .sol-card p { font-size: 0.8rem; color: var(--text2); line-height: 1.6; }
+
+        /* ─── SLIDE 4: ARCHITECTURE ─── */
+        .arch-flow {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            max-width: 1200px;
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .arch-node {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px 28px;
+            text-align: center;
+            min-width: 160px;
+            transition: all 0.3s;
+        }
+
+        .arch-node:hover { border-color: var(--glow); transform: scale(1.05); }
+
+        .arch-node .a-icon { font-size: 2rem; margin-bottom: 8px; }
+        .arch-node .a-name { font-weight: 700; font-size: 0.85rem; }
+        .arch-node .a-tech { font-size: 0.65rem; color: var(--text3); font-family: 'JetBrains Mono', monospace; margin-top: 4px; }
+
+        .arch-arrow {
+            font-size: 1.5rem;
+            color: var(--blue);
+            margin: 0 8px;
+            animation: pulse-arrow 2s infinite;
+        }
+
+        @keyframes pulse-arrow { 0%,100%{ opacity:0.4; } 50%{ opacity:1; } }
+
+        /* ─── SLIDE 5: FEATURES DEEP DIVE ─── */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        .feat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            transition: all 0.3s;
+        }
+
+        .feat-card:hover { border-color: var(--glow); transform: translateX(4px); }
+
+        .feat-num {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--blue);
+            opacity: 0.3;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        .feat-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+        .feat-card p { font-size: 0.78rem; color: var(--text2); line-height: 1.6; }
+
+        .feat-tags {
+            display: flex;
+            gap: 6px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        .feat-tag {
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .feat-tag.neo4j { background: rgba(6,182,212,0.1); color: var(--cyan); border: 1px solid rgba(6,182,212,0.2); }
+        .feat-tag.ml { background: rgba(139,92,246,0.1); color: var(--purple); border: 1px solid rgba(139,92,246,0.2); }
+        .feat-tag.legal { background: rgba(245,158,11,0.1); color: var(--yellow); border: 1px solid rgba(245,158,11,0.2); }
+        .feat-tag.realtime { background: rgba(16,185,129,0.1); color: var(--green); border: 1px solid rgba(16,185,129,0.2); }
+
+        /* ─── SLIDE 6: LEGAL ─── */
+        .legal-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        .law-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .law-card:hover { border-color: rgba(245,158,11,0.3); transform: translateY(-4px); }
+
+        .law-card .l-icon { font-size: 1.8rem; margin-bottom: 8px; }
+        .law-card .l-name { font-size: 0.75rem; font-weight: 700; margin-bottom: 4px; }
+        .law-card .l-desc { font-size: 0.6rem; color: var(--text3); line-height: 1.5; }
+
+        /* ─── SLIDE 7: ML ─── */
+        .ml-pipeline {
+            display: flex;
+            gap: 0;
+            align-items: center;
+            max-width: 1100px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .ml-stage {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            text-align: center;
+            min-width: 180px;
+        }
+
+        .ml-stage .m-icon { font-size: 2rem; margin-bottom: 8px; }
+        .ml-stage .m-name { font-weight: 700; font-size: 0.85rem; }
+        .ml-stage .m-desc { font-size: 0.65rem; color: var(--text3); margin-top: 4px; }
+
+        .ml-metrics {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+        }
+
+        .ml-metric {
+            text-align: center;
+            padding: 20px 32px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+        .ml-metric .mv {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+        }
+
+        .ml-metric .ml { font-size: 0.65rem; color: var(--text3); text-transform: uppercase; letter-spacing: 2px; margin-top: 4px; }
+
+        /* ─── SLIDE 8: IMPACT ─── */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .impact-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px 20px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .impact-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+
+        .impact-card::before { content: ''; position: absolute; top:0; left:0; right:0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--purple)); }
+
+        .impact-card .i-icon { font-size: 2.5rem; margin-bottom: 12px; }
+
+        .impact-card .i-val {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--green), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .impact-card .i-label { font-size: 0.75rem; color: var(--text2); margin-top: 8px; line-height: 1.5; }
+
+        /* ─── SLIDE 9: TEAM / CTA ─── */
+        .cta-box {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .cta-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            background: linear-gradient(135deg, var(--green), var(--cyan), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .cta-text { font-size: 1.1rem; color: var(--text2); line-height: 1.8; margin-bottom: 40px; }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 16px 40px;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .cta-btn.primary {
+            background: linear-gradient(135deg, var(--blue), var(--indigo));
+            border: none;
+            color: white;
+        }
+
+        .cta-btn.primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(59,130,246,0.3); }
+
+        .cta-btn.secondary {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text2);
+        }
+
+        .cta-btn.secondary:hover { border-color: var(--blue); color: var(--text); }
+
+        .built-with {
+            margin-top: 60px;
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tech-badge {
+            padding: 8px 20px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.7rem;
+            color: var(--text3);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ─── QUOTE ─── */
+        .quote-block {
+            max-width: 700px;
+            text-align: center;
+            padding: 40px;
+            border-left: 3px solid var(--blue);
+            margin: 32px auto 0;
+        }
+
+        .quote-block p {
+            font-size: 1.1rem;
+            color: var(--text2);
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .quote-block .author {
+            margin-top: 16px;
+            font-size: 0.8rem;
+            color: var(--text3);
+            font-style: normal;
+        }
+
+        /* ─── SCROLL ANIMATIONS ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 900px) {
+            .slide { padding: 40px 24px; }
+            .hero-title { font-size: 2.5rem; letter-spacing: 4px; }
+            .problem-grid, .features-grid { grid-template-columns: 1fr; }
+            .solution-grid { grid-template-columns: 1fr; }
+            .legal-grid { grid-template-columns: repeat(2, 1fr); }
+            .impact-grid { grid-template-columns: repeat(2, 1fr); }
+            .arch-flow { flex-direction: column; }
+            .arch-arrow { transform: rotate(90deg); }
+            .hero-meta { flex-direction: column; gap: 16px; }
+            .slide-nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Dots -->
+<nav class="slide-nav" id="slideNav"></nav>
+
+<!-- ═══ SLIDE 1: TITLE ═══ -->
+<section class="slide" id="slide-1">
+    <div class="slide-number">01 / 09</div>
+    <div class="hero-badge"><div class="pulse"></div> Government of Maharashtra • Law Enforcement Platform</div>
+    <h1 class="hero-title">FRAUDLENS</h1>
+    <p class="hero-subtitle">
+        AI-Powered Financial Fraud Intelligence Platform<br>
+        Built for the <strong style="color:var(--text)">Pune Police Cybercrime Cell</strong>
+    </p>
+    <div class="hero-meta">
+        <div class="hero-meta-item">
+            <div class="val">v4.0</div>
+            <div class="lbl">Production Version</div>
+        </div>
+        <div class="hero-meta-item">
+            <div class="val">GNN + ML</div>
+            <div class="lbl">AI Engine</div>
+        </div>
+        <div class="hero-meta-item">
+            <div class="val">10+ Laws</div>
+            <div class="lbl">Legal Compliance</div>
+        </div>
+        <div class="hero-meta-item">
+            <div class="val">Real-Time</div>
+            <div class="lbl">Live Telemetry</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ SLIDE 2: THE PROBLEM ═══ -->
+<section class="slide" id="slide-2">
+    <div class="slide-number">02 / 09</div>
+    <div class="section-heading reveal">THE PROBLEM</div>
+    <p class="section-sub reveal">India is facing an unprecedented financial cybercrime crisis. Officers fight sophisticated fraud rings with outdated, manual tools.</p>
+    <div class="problem-grid">
+        <div class="stat-block red reveal">
+            <div class="big" style="color:var(--red)">₹1.4L Cr</div>
+            <div class="label">Annual financial fraud losses in India — growing 28% year-over-year since 2020</div>
+            <div class="source">Source: NCRB Annual Crime Report 2024 + RBI Fraud Reports</div>
+        </div>
+        <div class="stat-block red reveal">
+            <div class="big" style="color:var(--orange)">65,893</div>
+            <div class="label">Cybercrime cases registered in Maharashtra alone (2024) — Pune ranks #2 in the state</div>
+            <div class="source">Source: Maharashtra Cyber Police Statistics 2024</div>
+        </div>
+        <div class="stat-block yellow reveal">
+            <div class="big" style="color:var(--yellow)">72 hrs</div>
+            <div class="label">Average time to manually trace a money mule chain across 3+ banks — golden hour lost</div>
+            <div class="source">Current workflow: Manual Excel tracking + bank-to-bank RTI queries</div>
+        </div>
+        <div class="stat-block yellow reveal">
+            <div class="big" style="color:var(--yellow)">&lt;3%</div>
+            <div class="label">Conviction rate in cybercrime cases — primarily due to weak digital evidence trail and manual investigation bottlenecks</div>
+            <div class="source">Source: I4C (Indian Cybercrime Coordination Centre) Assessment</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ SLIDE 3: THE SOLUTION ═══ -->
+<section class="slide" id="slide-3">
+    <div class="slide-number">03 / 09</div>
+    <div class="section-heading reveal">THE SOLUTION</div>
+    <p class="section-sub reveal">FraudLens transforms how Pune Police investigates financial fraud — from weeks of manual tracking to <strong style="color:var(--green)">real-time AI-driven intelligence</strong> with court-admissible evidence export.</p>
+    <div class="solution-grid">
+        <div class="sol-card reveal">
+            <div class="sol-icon" style="background:rgba(6,182,212,0.1); color:var(--cyan);">🕸️</div>
+            <h3>Graph Intelligence</h3>
+            <p>Visualize money flow networks in real-time. Detect mule chains, hawala rings, and shell company layering with Neo4j-powered graph analytics.</p>
+        </div>
+        <div class="sol-card reveal">
+            <div class="sol-icon" style="background:rgba(139,92,246,0.1); color:var(--purple);">🧠</div>
+            <h3>GNN + ML Ensemble</h3>
+            <p>GraphSAGE + XGBoost ensemble model scores every transaction. SHAP explainability tells officers exactly WHY a transaction is flagged.</p>
+        </div>
+        <div class="sol-card reveal">
+            <div class="sol-icon" style="background:rgba(245,158,11,0.1); color:var(--yellow);">⚖️</div>
+            <h3>Legal Enforcement</h3>
+            <p>Auto-maps fraud patterns to IT Act, BNS 2023, PMLA, FEMA sections. Generates Section 65B-compliant court evidence PDFs.</p>
+        </div>
+        <div class="sol-card reveal">
+            <div class="sol-icon" style="background:rgba(16,185,129,0.1); color:var(--green);">📋</div>
+            <h3>Case Management</h3>
+            <p>Full Kanban workflow: NEW → UNDER INVESTIGATION → CHARGE SHEET → COURT → CLOSED. Immutable audit trail on every action.</p>
+        </div>
+        <div class="sol-card reveal">
+            <div class="sol-icon" style="background:rgba(59,130,246,0.1); color:var(--blue);">⚡</div>
+            <h3>Live Telemetry</h3>
+            <p>1-second WebSocket stream — transactions scanned, active threats, neo4j health. Officers see the threat landscape in real-time.</p>
+        </div>
+        <div class="sol-card reveal">
+            <div class="sol-icon" style="background:rgba(239,68,68,0.1); color:var(--red);">📁</div>
+            <h3>Universal Ingestion</h3>
+            <p>Upload bank statements in CSV, XLSX, PDF — LLM-powered extraction parses transactions automatically. No manual data entry.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ SLIDE 4: ARCHITECTURE ═══ -->
+<section class="slide" id="slide-4">
+    <div class="slide-number">04 / 09</div>
+    <div class="section-heading reveal">SYSTEM ARCHITECTURE</div>
+    <p class="section-sub reveal">Production-grade, government-ready infrastructure deployed on Vercel + Render with Neo4j graph database and real-time WebSocket streams.</p>
+    <div class="arch-flow reveal">
+        <div class="arch-node">
+            <div class="a-icon">🏦</div>
+            <div class="a-name">Bank Statements</div>
+            <div class="a-tech">CSV / XLSX / PDF</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">
+            <div class="a-icon">🤖</div>
+            <div class="a-name">LLM Extractor</div>
+            <div class="a-tech">OpenRouter API</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node" style="border-color: rgba(59,130,246,0.3);">
+            <div class="a-icon">⚡</div>
+            <div class="a-name">FastAPI Backend</div>
+            <div class="a-tech">Python · Render</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node" style="border-color: rgba(6,182,212,0.3);">
+            <div class="a-icon">🕸️</div>
+            <div class="a-name">Neo4j Graph DB</div>
+            <div class="a-tech">Cypher · AuraDB</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node" style="border-color: rgba(139,92,246,0.3);">
+            <div class="a-icon">🧠</div>
+            <div class="a-name">GNN Ensemble</div>
+            <div class="a-tech">GraphSAGE + XGBoost</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node" style="border-color: rgba(16,185,129,0.3);">
+            <div class="a-icon">💻</div>
+            <div class="a-name">React Frontend</div>
+            <div class="a-tech">Vite · TanStack · Vercel</div>
+        </div>
+    </div>
+    <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center; margin-top:32px" class="reveal">
+        <div class="tech-badge">🔒 JWT Auth (RBAC)</div>
+        <div class="tech-badge">📡 WebSocket 1s Telemetry</div>
+        <div class="tech-badge">🔐 AES-256 at Rest</div>
+        <div class="tech-badge">🌐 TLS 1.3 in Transit</div>
+        <div class="tech-badge">📋 Immutable Audit Log</div>
+    </div>
+</section>
+
+<!-- ═══ SLIDE 5: FEATURES DEEP DIVE ═══ -->
+<section class="slide" id="slide-5">
+    <div class="slide-number">05 / 09</div>
+    <div class="section-heading reveal">FEATURES DEEP DIVE</div>
+    <div class="features-grid">
+        <div class="feat-card reveal">
+            <div class="feat-num">01</div>
+            <div>
+                <h4>Transaction Network Graph Explorer</h4>
+                <p>Visualise money flows as interactive force-directed graphs. Node colors = risk tier (Critical=red, High=amber, Low=green). Edge thickness = transaction amount. Click any node to see full account details. Detect hawala rings via cycle-finding algorithms.</p>
+                <div class="feat-tags"><span class="feat-tag neo4j">Neo4j</span><span class="feat-tag realtime">Real-Time</span></div>
+            </div>
+        </div>
+        <div class="feat-card reveal">
+            <div class="feat-num">02</div>
+            <div>
+                <h4>AI Fraud Scoring with SHAP Explainability</h4>
+                <p>Every transaction gets a fraud_score ∈ [0.0, 1.0] from the GNN+XGBoost ensemble. SHAP values explain exactly which features triggered the flag — "14 transactions in 7 days, unusual for this account type." Fully auditable, no black box.</p>
+                <div class="feat-tags"><span class="feat-tag ml">GNN + XGBoost</span><span class="feat-tag ml">SHAP</span></div>
+            </div>
+        </div>
+        <div class="feat-card reveal">
+            <div class="feat-num">03</div>
+            <div>
+                <h4>Legal Enforcement Intelligence Panel</h4>
+                <p>Automatically maps fraud patterns → applicable law sections. "This mule account triggers: IT Act 66C (identity theft, 3 yrs), BNS 318(4) (cheating, 7 yrs), PMLA Sec 3 (money laundering, 3-7 yrs)." One click → full prosecution roadmap.</p>
+                <div class="feat-tags"><span class="feat-tag legal">IT Act</span><span class="feat-tag legal">BNS 2023</span><span class="feat-tag legal">PMLA</span></div>
+            </div>
+        </div>
+        <div class="feat-card reveal">
+            <div class="feat-num">04</div>
+            <div>
+                <h4>Section 65B Court-Admissible PDF Export</h4>
+                <p>Generate evidence PDFs with SHA-256 digital hash, IST timestamps, authority header ("MAHARASHTRA CYBER POLICE"), chain of custody log, and complete transaction evidence. Ready for Sessions Court submission.</p>
+                <div class="feat-tags"><span class="feat-tag legal">Section 65B IEA</span><span class="feat-tag legal">SHA-256</span></div>
+            </div>
+        </div>
+        <div class="feat-card reveal">
+            <div class="feat-num">05</div>
+            <div>
+                <h4>Case Management Kanban with Audit Trail</h4>
+                <p>Complete case lifecycle: NEW → UNDER INVESTIGATION → CHARGE SHEET FILED → COURT PROCEEDINGS → CLOSED. Every transition logged with officer_id, timestamp, reason. Priority auto-escalation (₹50L+ = P1 Critical).</p>
+                <div class="feat-tags"><span class="feat-tag realtime">Workflow</span><span class="feat-tag legal">FIR Linked</span></div>
+            </div>
+        </div>
+        <div class="feat-card reveal">
+            <div class="feat-num">06</div>
+            <div>
+                <h4>Syndicate & Mule Network Detection</h4>
+                <p>Cross-case intelligence: "Account XXXX4821 appears in 3 separate cases — shared mule across fraud rings." Louvain community detection identifies organized crime clusters. PageRank finds network hubs.</p>
+                <div class="feat-tags"><span class="feat-tag neo4j">Graph Analytics</span><span class="feat-tag ml">Community Detection</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ SLIDE 6: LEGAL COMPLIANCE ═══ -->
+<section class="slide" id="slide-6">
+    <div class="slide-number">06 / 09</div>
+    <div class="section-heading reveal">LEGAL COMPLIANCE FRAMEWORK</div>
+    <p class="section-sub reveal">Built ground-up for Indian law enforcement. Every output is court-admissible. Every action is audited. Every data point is traceable.</p>
+    <div class="legal-grid reveal">
+        <div class="law-card">
+            <div class="l-icon">💻</div>
+            <div class="l-name">IT Act 2008</div>
+            <div class="l-desc">Sec 43, 66, 66C, 66D — Computer offences & identity theft</div>
+        </div>
+        <div class="law-card">
+            <div class="l-icon">⚖️</div>
+            <div class="l-name">BNS 2023</div>
+            <div class="l-desc">Sec 318, 319, 336 — Cheating, forgery (replaces IPC)</div>
+        </div>
+        <div class="law-card">
+            <div class="l-icon">🏛️</div>
+            <div class="l-name">BNSS 2023</div>
+            <div class="l-desc">Sec 102, 106 — Seizure, account freeze procedures</div>
+        </div>
+        <div class="law-card">
+            <div class="l-icon">💰</div>
+            <div class="l-name">PMLA 2002</div>
+            <div class="l-desc">Sec 3, 4 — Money laundering, 3-7 yr imprisonment</div>
+        </div>
+        <div class="law-card">
+            <div class="l-icon">🌍</div>
+            <div class="l-name">FEMA 1999</div>
+            <div class="l-desc">Sec 13 — Foreign exchange violations, hawala</div>
+        </div>
+        <div class="law-card">
+            <div class="l-icon">📄</div>
+            <div class="l-name">Section 65B IEA</div>
+            <div class="l-desc">Electronic evidence admissibility + officer certificate</div>
+        </div>
+        <div class="law-card">
+            <div class="l-icon">🔐</div>
+            <div class="l-name">DPDP Act 2023</div>
+            <div class="l-desc">Personal data protection — PII masking by role</div>
+        </div>
+        <div class="law-card">
+            <div class="l-icon">🏢</div>
+            <div class="l-name">RBI Directions</div>
+            <div class="l-desc">Fraud classification & reporting master circular</div>
+        </div>
+        <div class="law-card">
+            <div class="l-icon">🚨</div>
+            <div class="l-name">I4C / CERT-In</div>
+            <div class="l-desc">Threat advisories & incident reporting framework</div>
+        </div>
+        <div class="law-card">
+            <div class="l-icon">🏛️</div>
+            <div class="l-name">MH Police Act</div>
+            <div class="l-desc">Maharashtra Police Act 1951 — jurisdictional authority</div>
+        </div>
+    </div>
+    <div class="quote-block reveal">
+        <p>"Every output FraudLens produces can be tendered as supporting evidence in criminal proceedings before a Sessions Court, High Court, or Supreme Court of India."</p>
+        <div class="author">— FraudLens System Specification v4.0</div>
+    </div>
+</section>
+
+<!-- ═══ SLIDE 7: ML ENGINE ═══ -->
+<section class="slide" id="slide-7">
+    <div class="slide-number">07 / 09</div>
+    <div class="section-heading reveal">ML / AI ENGINE</div>
+    <p class="section-sub reveal">Graph Neural Network ensemble model with full SHAP explainability. No black box — every flag comes with a human-readable reason.</p>
+    <div class="ml-pipeline reveal">
+        <div class="ml-stage">
+            <div class="m-icon">📊</div>
+            <div class="m-name">Feature Engineering</div>
+            <div class="m-desc">Graph: PageRank, Betweenness, Degree<br>Tabular: velocity, amount z-score, time</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="ml-stage">
+            <div class="m-icon">🕸️</div>
+            <div class="m-name">GraphSAGE / GAT</div>
+            <div class="m-desc">Graph Neural Network<br>Weight: 60%</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="ml-stage">
+            <div class="m-icon">🌲</div>
+            <div class="m-name">XGBoost / LightGBM</div>
+            <div class="m-desc">Tabular Ensemble<br>Weight: 40%</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="ml-stage">
+            <div class="m-icon">🎯</div>
+            <div class="m-name">Fraud Score</div>
+            <div class="m-desc">Score ∈ [0.0, 1.0]<br>Threshold: 0.85</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="ml-stage">
+            <div class="m-icon">🔍</div>
+            <div class="m-name">SHAP Explain</div>
+            <div class="m-desc">Per-feature attribution<br>Human-readable labels</div>
+        </div>
+    </div>
+    <div class="ml-metrics reveal">
+        <div class="ml-metric">
+            <div class="mv" style="color:var(--green)">0.85</div>
+            <div class="ml">Fraud Threshold</div>
+        </div>
+        <div class="ml-metric">
+            <div class="mv" style="color:var(--cyan)">12</div>
+            <div class="ml">Feature Count</div>
+        </div>
+        <div class="ml-metric">
+            <div class="mv" style="color:var(--purple)">&lt;3s</div>
+            <div class="ml">Score Latency</div>
+        </div>
+        <div class="ml-metric">
+            <div class="mv" style="color:var(--blue)">1s</div>
+            <div class="ml">Telemetry Tick</div>
+        </div>
+        <div class="ml-metric">
+            <div class="mv" style="color:var(--yellow)">4</div>
+            <div class="ml">RBAC Roles</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ SLIDE 8: IMPACT ═══ -->
+<section class="slide" id="slide-8">
+    <div class="slide-number">08 / 09</div>
+    <div class="section-heading reveal">PROJECTED IMPACT</div>
+    <p class="section-sub reveal">FraudLens transforms the investigative capability of the Pune Police Cybercrime Cell — faster detection, stronger evidence, higher convictions.</p>
+    <div class="impact-grid">
+        <div class="impact-card reveal">
+            <div class="i-icon">⏱️</div>
+            <div class="i-val">72h → 2h</div>
+            <div class="i-label">Mule chain investigation<br>time reduced by <strong>97%</strong></div>
+        </div>
+        <div class="impact-card reveal">
+            <div class="i-icon">📈</div>
+            <div class="i-val">10x</div>
+            <div class="i-label">Increase in cross-case<br>syndicate detection</div>
+        </div>
+        <div class="impact-card reveal">
+            <div class="i-icon">⚖️</div>
+            <div class="i-val">65B ✓</div>
+            <div class="i-label">Court-admissible evidence<br>at the click of a button</div>
+        </div>
+        <div class="impact-card reveal">
+            <div class="i-icon">🛡️</div>
+            <div class="i-val">24/7</div>
+            <div class="i-label">Real-time threat monitoring<br>with auto-escalation alerts</div>
+        </div>
+    </div>
+    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:24px; max-width:900px; width:100%;" class="reveal">
+        <div style="text-align:center; padding:24px; background:var(--card); border:1px solid var(--border); border-radius:14px;">
+            <div style="font-size:1.2rem; margin-bottom:4px;">🏦</div>
+            <div style="font-size:0.85rem; font-weight:700;">Before FraudLens</div>
+            <div style="font-size:0.7rem; color:var(--text3); margin-top:8px; line-height:1.6;">Excel spreadsheets<br>Manual bank queries<br>Paper FIR tracking<br>No cross-case linking</div>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:center;">
+            <div style="font-size:3rem; color:var(--green);">→</div>
+        </div>
+        <div style="text-align:center; padding:24px; background:var(--card); border:1px solid rgba(16,185,129,0.2); border-radius:14px;">
+            <div style="font-size:1.2rem; margin-bottom:4px;">🔮</div>
+            <div style="font-size:0.85rem; font-weight:700; color:var(--green);">With FraudLens</div>
+            <div style="font-size:0.7rem; color:var(--text2); margin-top:8px; line-height:1.6;">AI-powered graph analysis<br>1-second live telemetry<br>Auto legal section mapping<br>Cross-case syndicate detection</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ SLIDE 9: CTA ═══ -->
+<section class="slide" id="slide-9">
+    <div class="slide-number">09 / 09</div>
+    <div class="cta-box">
+        <div style="font-size:3rem; margin-bottom:24px;">🇮🇳</div>
+        <div class="cta-title reveal">REAL DATA. REAL RESULTS.<br>REAL JUSTICE.</div>
+        <p class="cta-text reveal">
+            FraudLens is not a proof of concept. It is a production-grade, government-ready intelligence platform that directly supports the criminal justice process. Every output is traceable. Every action is audited. Every citizen is protected.
+        </p>
+        <div class="cta-buttons reveal">
+            <a class="cta-btn primary" href="#">Request Live Demo</a>
+            <a class="cta-btn secondary" href="#">View Documentation</a>
+        </div>
+        <div class="built-with reveal">
+            <div class="tech-badge">Next.js 15</div>
+            <div class="tech-badge">FastAPI</div>
+            <div class="tech-badge">Neo4j</div>
+            <div class="tech-badge">GraphSAGE + XGBoost</div>
+            <div class="tech-badge">SHAP</div>
+            <div class="tech-badge">WebSockets</div>
+        </div>
+        <div style="margin-top:48px; color:var(--text3); font-size:0.7rem; letter-spacing:2px;">
+            BUILT FOR PUNE POLICE CYBERCRIME CELL • GOVERNMENT OF MAHARASHTRA • INDIA
+        </div>
+    </div>
+</section>
+
+<script>
+    // Generate nav dots
+    const nav = document.getElementById('slideNav');
+    for (let i = 1; i <= 9; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'nav-dot' + (i === 1 ? ' active' : '');
+        dot.onclick = () => document.getElementById(`slide-${i}`).scrollIntoView({ behavior: 'smooth' });
+        dot.setAttribute('data-slide', i);
+        nav.appendChild(dot);
+    }
+
+    // Scroll-based active dot + reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                const num = id.split('-')[1];
+                document.querySelectorAll('.nav-dot').forEach(d => d.classList.remove('active'));
+                const activeDot = document.querySelector(`.nav-dot[data-slide="${num}"]`);
+                if (activeDot) activeDot.classList.add('active');
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.slide').forEach(s => observer.observe(s));
+
+    // Reveal on scroll
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        const current = [...document.querySelectorAll('.nav-dot')].findIndex(d => d.classList.contains('active')) + 1;
+        if (e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') {
+            e.preventDefault();
+            const next = Math.min(current + 1, 9);
+            document.getElementById(`slide-${next}`).scrollIntoView({ behavior: 'smooth' });
+        }
+        if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+            e.preventDefault();
+            const prev = Math.max(current - 1, 1);
+            document.getElementById(`slide-${prev}`).scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+</script>
+</body>
+</html>

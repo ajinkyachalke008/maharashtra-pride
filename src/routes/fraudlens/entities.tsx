@@ -35,24 +35,9 @@ interface BranchData {
 
 // ──── Mock Data ──────────────────────────────────────────────
 
-const MOCK_ENTITIES: EntityData[] = [
-  { entity_id: 'e1', entity_type: 'PHONE', entity_value: '9876543210', accounts: ['ACC-1001', 'ACC-1002', 'ACC-3091'], account_count: 3, cases: ['CASE-2026-A8F3', 'CASE-2026-B1D7'], case_count: 2, risk_assessment: 'CRITICAL', is_cross_case: true },
-  { entity_id: 'e2', entity_type: 'PHONE', entity_value: '8765432109', accounts: ['ACC-1004', 'ACC-1005'], account_count: 2, cases: ['CASE-2026-A8F3'], case_count: 1, risk_assessment: 'MEDIUM', is_cross_case: false },
-  { entity_id: 'e3', entity_type: 'UPI_VPA', entity_value: 'fraud.payments@paytm', accounts: ['ACC-1001', 'ACC-1002', 'ACC-1004'], account_count: 3, cases: ['CASE-2026-A8F3'], case_count: 1, risk_assessment: 'HIGH', is_cross_case: false },
-  { entity_id: 'e4', entity_type: 'UPI_VPA', entity_value: 'collect.money@ybl', accounts: ['ACC-1005', 'ACC-3091'], account_count: 2, cases: ['CASE-2026-B1D7'], case_count: 1, risk_assessment: 'MEDIUM', is_cross_case: false },
-  { entity_id: 'e5', entity_type: 'IFSC', entity_value: 'HDFC0001234', accounts: ['ACC-1001', 'ACC-1004', 'ACC-1005'], account_count: 3, cases: ['CASE-2026-A8F3'], case_count: 1, risk_assessment: 'HIGH', is_cross_case: false },
-  { entity_id: 'e6', entity_type: 'IFSC', entity_value: 'SBIN0009876', accounts: ['ACC-1002', 'ACC-3091'], account_count: 2, cases: ['CASE-2026-B1D7'], case_count: 1, risk_assessment: 'MEDIUM', is_cross_case: false },
-  { entity_id: 'e7', entity_type: 'PAN', entity_value: 'ABCDE1234F', accounts: ['ACC-1001', 'ACC-1004'], account_count: 2, cases: ['CASE-2026-A8F3'], case_count: 1, risk_assessment: 'HIGH', is_cross_case: false },
-  { entity_id: 'e8', entity_type: 'NAME', entity_value: 'Rajesh Kumar / Raj Kumar', accounts: ['ACC-1002', 'ACC-1004'], account_count: 2, cases: ['CASE-2026-A8F3'], case_count: 1, risk_assessment: 'MEDIUM', is_cross_case: false },
-  { entity_id: 'e9', entity_type: 'BENEFICIARY', entity_value: 'ACC-HUB-001', accounts: ['ACC-V001', 'ACC-V002', 'ACC-V003', 'ACC-V004', 'ACC-V005'], account_count: 5, cases: ['CASE-2026-A8F3', 'CASE-2026-B1D7'], case_count: 2, risk_assessment: 'CRITICAL', is_cross_case: true },
-];
+const MOCK_ENTITIES: EntityData[] = [];
 
-const MOCK_BRANCHES: BranchData[] = [
-  { ifsc: 'HDFC0001234', branch_name: 'HDFC Bank Pune Main', city: 'Pune', account_count: 12, fraud_account_count: 5, total_fraud_volume: 2500000, risk_score: 0.85 },
-  { ifsc: 'SBIN0009876', branch_name: 'SBI Camp Branch', city: 'Pune', account_count: 8, fraud_account_count: 3, total_fraud_volume: 1200000, risk_score: 0.65 },
-  { ifsc: 'ICIC0005432', branch_name: 'ICICI Bank Kothrud', city: 'Pune', account_count: 6, fraud_account_count: 2, total_fraud_volume: 800000, risk_score: 0.45 },
-  { ifsc: 'UTIB0003210', branch_name: 'Axis Bank Viman Nagar', city: 'Pune', account_count: 4, fraud_account_count: 1, total_fraud_volume: 350000, risk_score: 0.28 },
-];
+const MOCK_BRANCHES: BranchData[] = [];
 
 const ENTITY_ICONS: Record<string, { icon: string; color: string }> = {
   PHONE: { icon: '📱', color: 'sky' },

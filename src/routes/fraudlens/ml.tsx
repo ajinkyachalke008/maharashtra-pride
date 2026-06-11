@@ -1,7 +1,7 @@
 import React from 'react';
 import { createFileRoute } from '@tanstack/react-router';
 import { Brain, Activity, Target, Network, Zap, Loader2, AlertTriangle } from 'lucide-react';
-import { useStreamMetrics } from '@/hooks/useDashboardData';
+import { useStreamMetrics, useLatentSpace, useSyndicates, LatentNode } from '@/hooks/useDashboardData';
 
 export const Route = createFileRoute('/fraudlens/ml')({
   component: MachineLearningDashboard,
@@ -9,6 +9,8 @@ export const Route = createFileRoute('/fraudlens/ml')({
 
 function MachineLearningDashboard() {
   const { data: metrics, isLoading, isError } = useStreamMetrics();
+  const { data: latentData, isLoading: isLatentLoading } = useLatentSpace();
+  const { data: syndicateData, isLoading: isSyndicatesLoading } = useSyndicates();
 
   return (
     <div className="p-8 max-w-7xl mx-auto space-y-8 animate-in fade-in duration-700">
@@ -61,27 +63,38 @@ function MachineLearningDashboard() {
         <div className="bg-background-card border border-white/5 rounded-lg p-6 shadow-xl">
           <h2 className="text-lg font-display text-primary-400 mb-4 border-b border-white/5 pb-2">LATENT SPACE CLUSTERING (t-SNE Projection)</h2>
           <div className="h-64 bg-background-base rounded border border-white/5 flex items-center justify-center text-white/40 font-mono relative overflow-hidden">
-            {/* Placeholder for actual D3/Canvas t-SNE plot */}
-            <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #3b82f6 2px, transparent 2px)', backgroundSize: '20px 20px' }}></div>
-            <div className="relative z-10 flex flex-col items-center">
-              <Network className="w-8 h-8 mb-2 opacity-50" />
-              <span>Awaiting WebSocket Embedding Stream</span>
-            </div>
-            
-            {/* Mock Clusters */}
-            <div className="absolute top-10 left-10 w-20 h-20 rounded-full bg-danger-500/20 blur-xl"></div>
-            <div className="absolute bottom-10 right-20 w-32 h-32 rounded-full bg-warning-500/20 blur-xl"></div>
-            <div className="absolute top-1/2 left-1/2 w-24 h-24 rounded-full bg-primary-500/20 blur-xl"></div>
+            {isLatentLoading ? (
+              <div className="flex flex-col items-center">
+                <Loader2 className="w-8 h-8 animate-spin mb-2 opacity-50" />
+                <span>Computing Layout...</span>
+              </div>
+            ) : (
+              <LatentSpacePlot nodes={latentData?.nodes || []} />
+            )}
           </div>
         </div>
 
         <div className="bg-background-card border border-white/5 rounded-lg p-6 shadow-xl">
           <h2 className="text-lg font-display text-primary-400 mb-4 border-b border-white/5 pb-2">ACTIVE SYNDICATES</h2>
-          <div className="space-y-4">
-            <SyndicateRow id="SYN-101" risk="High" nodes={145} origin="Cross-border Mules" />
-            <SyndicateRow id="SYN-102" risk="Critical" nodes={32} origin="Phishing Shells" />
-            <SyndicateRow id="SYN-103" risk="Medium" nodes={89} origin="Crypto Layering" />
-            <SyndicateRow id="SYN-104" risk="Low" nodes={12} origin="Unverified" />
+          <div className="space-y-4 max-h-64 overflow-y-auto pr-2 custom-scrollbar">
+            {isSyndicatesLoading ? (
+              <div className="flex items-center gap-2 text-white/40 font-mono p-4">
+                <Loader2 className="w-4 h-4 animate-spin" /> Fetching intel...
+              </div>
+            ) : syndicateData?.mules && syndicateData.mules.length > 0 ? (
+              syndicateData.mules.map((mule, idx) => (
+                <SyndicateRow 
+                  key={mule.account}
+                  id={`SYN-${100 + idx}`} 
+                  risk="Critical" 
+                  nodes={mule.cases.length} 
+                  origin={`Cases: ${mule.cases.join(', ')}`} 
+                  account={mule.account}
+                />
+              ))
+            ) : (
+              <div className="text-white/40 font-mono p-4">No active syndicates detected.</div>
+            )}
           </div>
         </div>
       </div>
@@ -116,9 +129,10 @@ interface SyndicateRowProps {
   risk: string;
   nodes: number;
   origin: string;
+  account?: string;
 }
 
-function SyndicateRow({ id, risk, nodes, origin }: SyndicateRowProps) {
+function SyndicateRow({ id, risk, nodes, origin, account }: SyndicateRowProps) {
   const riskColor = risk === 'Critical' ? 'text-danger-500 bg-danger-500/10 border-danger-500/30' : 
                     risk === 'High' ? 'text-warning-500 bg-warning-500/10 border-warning-500/30' : 
                     risk === 'Medium' ? 'text-primary-400 bg-primary-500/10 border-primary-500/30' : 
@@ -128,7 +142,9 @@ function SyndicateRow({ id, risk, nodes, origin }: SyndicateRowProps) {
     <div className="flex items-center justify-between p-3 bg-background-base rounded border border-white/5 hover:border-white/20 transition-colors cursor-pointer">
       <div className="flex items-center gap-4">
         <div className="font-mono text-primary-300 font-bold">{id}</div>
-        <div className="text-sm text-white/60">{nodes} Accounts</div>
+        <div className="text-sm text-white/60">
+          {account ? `Acc: ${account}` : `${nodes} Accounts`}
+        </div>
       </div>
       <div className="flex items-center gap-4">
         <div className="text-xs text-white/40 italic hidden sm:block">{origin}</div>
@@ -137,5 +153,65 @@ function SyndicateRow({ id, risk, nodes, origin }: SyndicateRowProps) {
         </div>
       </div>
     </div>
+  );
+}
+
+function LatentSpacePlot({ nodes }: { nodes: LatentNode[] }) {
+  if (!nodes || nodes.length === 0) {
+    return (
+      <div className="relative z-10 flex flex-col items-center">
+        <Network className="w-8 h-8 mb-2 opacity-50" />
+        <span>No Data Available for Projection</span>
+      </div>
+    );
+  }
+
+  const xs = nodes.map(n => n.x);
+  const ys = nodes.map(n => n.y);
+  
+  const minX = Math.min(...xs);
+  const maxX = Math.max(...xs);
+  const minY = Math.min(...ys);
+  const maxY = Math.max(...ys);
+
+  const rangeX = (maxX - minX) || 1;
+  const rangeY = (maxY - minY) || 1;
+
+  return (
+    <>
+      <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #3b82f6 2px, transparent 2px)', backgroundSize: '20px 20px' }}></div>
+      <div className="absolute inset-0">
+        {nodes.map(node => {
+          const px = ((node.x - minX) / rangeX) * 90 + 5;
+          const py = ((node.y - minY) / rangeY) * 90 + 5;
+          
+          let colorClass = "bg-safe-400";
+          if (node.cluster === "Critical Risk") colorClass = "bg-danger-500 shadow-[0_0_10px_rgba(239,68,68,0.8)]";
+          else if (node.cluster === "High Risk") colorClass = "bg-warning-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]";
+          else if (node.cluster === "Medium Risk") colorClass = "bg-primary-400 shadow-[0_0_6px_rgba(96,165,250,0.5)]";
+
+          const size = Math.max(4, Math.min(12, 4 + Math.log10(node.volume || 1)));
+
+          return (
+            <div 
+              key={node.id} 
+              className={`absolute rounded-full ${colorClass} transition-all duration-500`}
+              style={{
+                left: `${px}%`,
+                top: `${py}%`,
+                width: `${size}px`,
+                height: `${size}px`,
+                transform: 'translate(-50%, -50%)'
+              }}
+              title={`Account: ${node.id}\nRisk: ${node.risk_score.toFixed(2)}\nVol: ${node.volume}`}
+            />
+          );
+        })}
+      </div>
+      
+      <div className="absolute top-10 left-10 w-20 h-20 rounded-full bg-danger-500/10 blur-xl pointer-events-none"></div>
+      <div className="absolute bottom-10 right-20 w-32 h-32 rounded-full bg-warning-500/10 blur-xl pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 w-24 h-24 rounded-full bg-primary-500/10 blur-xl pointer-events-none"></div>
+    </>
   );
 }

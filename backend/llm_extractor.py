@@ -1,6 +1,7 @@
 import os
 import io
 import json
+import base64
 import pandas as pd
 import pdfplumber
 from docx import Document
@@ -77,26 +78,41 @@ def extract_text_from_file(file_content: bytes, filename: str) -> str:
         
     return text
 
-def parse_financial_text(text: str) -> Dict[str, Any]:
+def process_file_with_llm(file_content: bytes, filename: str) -> Dict[str, Any]:
     if not OPENROUTER_API_KEY:
         raise ValueError("OPENROUTER_API_KEY is not set. Cannot use LLM extraction.")
         
-    # We truncate text if it's wildly long, OpenRouter context window is usually large
-    # but we'll cap at 15000 chars for safety in this demo
-    safe_text = text[:15000]
+    ext = filename.split('.')[-1].lower()
     
-    response = client.chat.completions.create(
-        model="google/gemini-2.5-pro", # A good model for data extraction available on OpenRouter
-        messages=[
+    if ext in ['png', 'jpg', 'jpeg', 'tiff']:
+        # Vision extraction
+        base64_image = base64.b64encode(file_content).decode('utf-8')
+        mime_type = f"image/{ext if ext != 'jpg' else 'jpeg'}"
+        
+        messages = [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": [
+                {"type": "text", "text": "Extract transactions from this image:"},
+                {"type": "image_url", "image_url": {"url": f"data:{mime_type};base64,{base64_image}"}}
+            ]}
+        ]
+    else:
+        # Text extraction
+        text = extract_text_from_file(file_content, filename)
+        safe_text = text[:15000]
+        messages = [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": f"Extract transactions from this text:\n\n{safe_text}"}
-        ],
+        ]
+    
+    response = client.chat.completions.create(
+        model="google/gemini-2.5-pro",
+        messages=messages,
         temperature=0.0
     )
     
     result_text = response.choices[0].message.content.strip()
     
-    # Strip markdown if the model hallucinates it despite instructions
     if result_text.startswith("```json"):
         result_text = result_text[7:]
     if result_text.startswith("```"):
@@ -111,3 +127,4 @@ def parse_financial_text(text: str) -> Dict[str, Any]:
     except json.JSONDecodeError:
         print(f"Failed to parse JSON from LLM: {result_text}")
         return {"transactions": []}
+

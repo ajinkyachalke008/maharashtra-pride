@@ -9,14 +9,7 @@ export const Route = createFileRoute('/fraudlens/osint')({
 
 type EntityType = 'IP' | 'PHONE' | 'EMAIL' | 'DOMAIN' | 'CRYPTO' | 'USERNAME';
 
-const MOCK_DATA = {
-  IP: { entity: '103.45.67.89', type: 'IP', risk_score: 0.85, data: { geolocation: { country: 'Nigeria', latitude: 9.082, longitude: 8.675 }, asn: { number: 'AS37061', organization: 'BICS' }, threat_intel: { is_vpn: true, is_proxy: true, recent_abuse_reports: 14 } } },
-  PHONE: { entity: '9876543210', type: 'PHONE', risk_score: 0.92, data: { caller_id: { name: 'Suspected Scam', carrier: 'Jio', line_type: 'Mobile' }, spam_reputation: { spam_score: 95, user_reports: 342, tags: ['OTP Scam', 'Impersonation'] } } },
-  EMAIL: { entity: 'fraudster@tempmail.com', type: 'EMAIL', risk_score: 0.78, data: { breach_monitoring: { pwned_count: 5, latest_breach: 'LinkedIn 2021' }, domain_reputation: { domain: 'tempmail.com', is_disposable: true }, deliverability: { smtp_reachable: true } } },
-  DOMAIN: { entity: 'secure-hdfc-update.com', type: 'DOMAIN', risk_score: 0.99, data: { whois: { registrar: 'Namecheap', creation_date: '2026-06-01', days_old: 6 }, threat_intel: { phishing_detected: true, malware_hosted: false }, dns: { a_records: ['192.168.1.1'] } } },
-  CRYPTO: { entity: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', type: 'CRYPTO', risk_score: 0.88, data: { blockchain_data: { network: 'Bitcoin', balance: '2.45 BTC', total_transactions: 124, first_seen: '2025-01-10', last_seen: '2026-06-05' }, forensic_attribution: { identified_cluster: 'DarkNet Market X', is_exchange_hot_wallet: false, illicit_exposure_pct: 68 } } },
-  USERNAME: { entity: 'scammer99', type: 'USERNAME', risk_score: 0.45, data: { social_footprint: { platforms_checked: 12, details: [{ name: 'Twitter', found: true }, { name: 'Reddit', found: false }] }, extracted_intel: { possible_real_name: 'John Doe', bio_snippet: 'Crypto enthusiast', associated_locations: ['Dubai'] } } },
-};
+const MOCK_DATA = {};
 
 function OSINTDashboard() {
   const [entityType, setEntityType] = useState<EntityType>('IP');

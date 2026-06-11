@@ -30,15 +30,7 @@ interface WatchlistEntity {
 
 // ──── Mock Data ──────────────────────────────────────────────
 
-const MOCK_WATCHLIST: WatchlistEntity[] = [
-  { id: 'w1', name: 'Vikram Singh (Alias)', type: 'INDIVIDUAL', identifier: 'PAN: ABCDE1234F', risk_level: 'CRITICAL', source: 'CBI Look Out Circular', date_added: '2026-05-10', matched_txns: 14, reason: 'Identified as ringleader in 100Cr investment scam. Absconding.', status: 'ACTIVE' },
-  { id: 'w2', name: 'NexGen Tech Solutions Pvt Ltd', type: 'COMPANY', identifier: 'CIN: U72900MH2025PTC123456', risk_level: 'HIGH', source: 'Internal Pattern Analysis', date_added: '2026-06-01', matched_txns: 42, reason: 'Shell company suspected of layering funds for international exit.', status: 'ACTIVE' },
-  { id: 'w3', name: 'Russian Proxy Exit Node', type: 'IP', identifier: '185.15.59.22', risk_level: 'MEDIUM', source: 'Threat Intel Feed', date_added: '2026-06-05', matched_txns: 8, reason: 'Known VPN exit node used in multiple banking portal login anomalies.', status: 'ACTIVE' },
-  { id: 'w4', name: 'DarkNet Vendor Wallet', type: 'CRYPTO_WALLET', identifier: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', risk_level: 'CRITICAL', source: 'Chainalysis API', date_added: '2026-04-20', matched_txns: 3, reason: 'Direct recipient of converted fiat from compromised accounts.', status: 'ACTIVE' },
-  { id: 'w5', name: 'Rahul Sharma', type: 'INDIVIDUAL', identifier: 'Phone: +91 9876543210', risk_level: 'HIGH', source: 'NCRP Cyber Cell', date_added: '2026-05-25', matched_txns: 0, reason: 'Number flagged in 50+ OTP fraud complaints.', status: 'ACTIVE' },
-  { id: 'w6', name: 'Global Trading FZC', type: 'COMPANY', identifier: 'SWIFT: GTFZAEDX', risk_level: 'CRITICAL', source: 'Interpol Notice', date_added: '2025-11-15', matched_txns: 1, reason: 'Entity blacklisted for hawala operations.', status: 'ACTIVE' },
-  { id: 'w7', name: 'Unknown Mule 099', type: 'INDIVIDUAL', identifier: 'Aadhar: XXXX-XXXX-1122', risk_level: 'MEDIUM', source: 'FraudLens Auto-Detect', date_added: '2026-06-02', matched_txns: 12, reason: 'Pattern match: Rapid transit node in case CASE-2026-A8F3.', status: 'CLEARED' },
-];
+const MOCK_WATCHLIST: WatchlistEntity[] = [];
 
 const ICONS = {
   INDIVIDUAL: UserX,

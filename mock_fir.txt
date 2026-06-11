@@ -1,0 +1,12 @@
+FIRST INFORMATION REPORT (FIR)
+Police Station: Cyber Crime Cell, Mumbai
+Date: 05-June-2026
+
+Complainant: Rahul Sharma
+Subject: Investment Scam via Telegram and UPI
+
+Details:
+I am writing to report a financial fraud. I was contacted on Telegram by an individual claiming to represent "Golden Profit Investments". They promised 200% returns in 7 days. 
+On 1st June 2026, I transferred INR 50,000 from my HDFC account (Rahul Sharma) to their provided account (ACC-MULE-101) via IMPS. The transaction reference was TXN-001. 
+The next day, on 2nd June around 11:30 AM, they asked for a VIP tier upgrade fee, so I sent another INR 150,000 to the same account (ACC-MULE-101) using IMPS with reference TXN-002.
+They are now ignoring my messages and my money is gone. Please investigate.

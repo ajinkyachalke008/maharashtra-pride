@@ -3,7 +3,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import {
   Upload, FileText, FileSpreadsheet, File, CheckCircle2, XCircle,
   AlertTriangle, Loader2, ArrowRight, History, ChevronDown, Eye, Trash2,
-  Edit2, GitCommitHorizontal
+  Edit2, GitCommitHorizontal, Image
 } from 'lucide-react';
 
 export const Route = createFileRoute('/fraudlens/ingest')({
@@ -47,33 +47,8 @@ interface IngestionSession {
   created_at: string;
 }
 
-// ──── Mock Data ──────────────────────────────────────────────────
-
-const MOCK_SESSIONS: IngestionSession[] = [
-  {
-    session_id: 'mock-001', status: 'complete', files_count: 3,
-    transactions_extracted: 847, new_accounts_discovered: 42,
-    created_at: '2026-06-06T14:30:00Z'
-  },
-  {
-    session_id: 'mock-002', status: 'complete', files_count: 1,
-    transactions_extracted: 234, new_accounts_discovered: 18,
-    created_at: '2026-06-05T09:15:00Z'
-  },
-  {
-    session_id: 'mock-003', status: 'partial_error', files_count: 5,
-    transactions_extracted: 1205, new_accounts_discovered: 67,
-    created_at: '2026-06-03T22:00:00Z'
-  },
-];
-
-const MOCK_PREVIEW: ParsedTransaction[] = [
-  { transaction_ref: 'UTR-789456123', timestamp: '2026-06-01T10:30:00Z', amount: 45000, currency: 'INR', direction: 'DEBIT', from_account: 'ACC-1001', to_account: 'ACC-1002', transaction_type: 'UPI', upi_id: 'suspect1@upi', narration: 'UPI/789456123/Payment', source_file: 'HDFC_Statement.pdf', confidence: 0.92 },
-  { transaction_ref: 'UTR-789456124', timestamp: '2026-06-01T11:15:00Z', amount: 48500, currency: 'INR', direction: 'DEBIT', from_account: 'ACC-1001', to_account: 'ACC-1004', transaction_type: 'IMPS', upi_id: null, narration: 'IMPS/Transfer to savings', source_file: 'HDFC_Statement.pdf', confidence: 0.88 },
-  { transaction_ref: 'TXN-DOCX-001', timestamp: '2026-06-02T08:45:00Z', amount: 125000, currency: 'INR', direction: 'DEBIT', from_account: 'ACC-1003', to_account: 'ACC-1001', transaction_type: 'RTGS', upi_id: null, narration: 'Complaint letter — victim payment', source_file: 'Complaint_Letter.docx', confidence: 0.55 },
-  { transaction_ref: 'PDF-L34-49000', timestamp: '2026-06-03T16:20:00Z', amount: 49000, currency: 'INR', direction: 'DEBIT', from_account: 'ACC-1004', to_account: 'ACC-1005', transaction_type: 'UPI', upi_id: 'mule4@ybl', narration: 'UPI/Sub-threshold transfer', source_file: 'SBI_Extract.pdf', confidence: 0.70 },
-  { transaction_ref: 'EXCEL-R5-2400000', timestamp: '2026-06-04T09:00:00Z', amount: 2400000, currency: 'INR', direction: 'CREDIT', from_account: 'ACC-1007', to_account: 'ACC-1001', transaction_type: 'NEFT', upi_id: null, narration: 'NEFT/Bulk collection', source_file: 'Transaction_Dump.xlsx', confidence: 1.0 },
-];
+const MOCK_SESSIONS: IngestionSession[] = [];
+const MOCK_PREVIEW: ParsedTransaction[] = [];
 
 // ──── Helpers ──────────────────────────────────────────────────
 
@@ -83,6 +58,10 @@ const FILE_ICONS: Record<string, typeof FileText> = {
   xls: FileSpreadsheet,
   csv: FileSpreadsheet,
   docx: File,
+  png: Image,
+  jpg: Image,
+  jpeg: Image,
+  tiff: Image,
 };
 
 const FILE_COLORS: Record<string, string> = {
@@ -91,6 +70,10 @@ const FILE_COLORS: Record<string, string> = {
   xls: 'text-emerald-400',
   csv: 'text-sky-400',
   docx: 'text-blue-400',
+  png: 'text-purple-400',
+  jpg: 'text-purple-400',
+  jpeg: 'text-purple-400',
+  tiff: 'text-purple-400',
 };
 
 function getFileExt(name: string): string {
@@ -352,7 +335,7 @@ function IngestPage() {
               ref={fileInputRef}
               type="file"
               multiple
-              accept=".pdf,.xlsx,.xls,.csv,.docx"
+              accept=".pdf,.xlsx,.xls,.csv,.docx,.png,.jpg,.jpeg,.tiff"
               onChange={handleFileSelect}
               className="hidden"
             />
@@ -361,7 +344,7 @@ function IngestPage() {
               {isDragging ? 'Release to upload' : 'Drop files here or click to browse'}
             </p>
             <p className="text-xs text-white/30 mt-2 font-mono">
-              PDF · Excel · CSV · Word — up to 50MB each
+              PDF · Excel · CSV · Word · Images — up to 50MB each
             </p>
           </div>
 

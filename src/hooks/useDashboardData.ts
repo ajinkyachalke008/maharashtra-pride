@@ -84,3 +84,43 @@ export function useCases(status?: string, priority?: string) {
     retry: 1,
   });
 }
+
+export interface LatentNode {
+  id: string;
+  x: number;
+  y: number;
+  cluster: string;
+  risk_score: number;
+  volume: number;
+}
+
+export function useLatentSpace() {
+  return useQuery<{ nodes: LatentNode[]; engine: string }>({
+    queryKey: ['ml', 'latentSpace'],
+    queryFn: async () => {
+      const res = await fetch(`${API_BASE}/ml/latent-space`, { headers: getHeaders() });
+      if (!res.ok) throw new Error('Failed to fetch latent space data');
+      return res.json();
+    },
+    refetchInterval: 10000,
+  });
+}
+
+export interface SyndicateMule {
+  account: string;
+  volume: number;
+  cases: string[];
+  legal_sections: string[];
+}
+
+export function useSyndicates() {
+  return useQuery<{ total_syndicates_detected: number; mules: SyndicateMule[]; engine: string }>({
+    queryKey: ['intelligence', 'syndicates'],
+    queryFn: async () => {
+      const res = await fetch(`${API_BASE}/intelligence/syndicates`, { headers: getHeaders() });
+      if (!res.ok) throw new Error('Failed to fetch syndicates data');
+      return res.json();
+    },
+    refetchInterval: 10000,
+  });
+}

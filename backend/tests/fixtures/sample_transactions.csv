@@ -1,0 +1,6 @@
+Transaction ID,Date,Amount,Sender UPI,Receiver UPI,Bank,IFSC
+TXN-001,15/06/2025,45000,rajesh.kumar@ybl,priya.sharma@sbi,HDFC Bank,HDFC0001234
+TXN-002,16/06/2025,125000,amit.patil@oksbi,sunita.more@ibl,SBI,SBIN0005678
+TXN-003,17/06/2025,8500,deepa.joshi@paytm,vikram.shinde@upi,Kotak,KKBK0009012
+TXN-004,18/06/2025,500000,suspect.user@ybl,unknown@paytm,Yes Bank,YESB0003456
+TXN-005,19/06/2025,2500,normal.user@sbi,shop.owner@ibl,SBI,SBIN0007890
