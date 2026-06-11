@@ -18,6 +18,7 @@ import { Route as FraudlensPatternsRouteImport } from './routes/fraudlens/patter
 import { Route as FraudlensOsintRouteImport } from './routes/fraudlens/osint'
 import { Route as FraudlensMlRouteImport } from './routes/fraudlens/ml'
 import { Route as FraudlensMapRouteImport } from './routes/fraudlens/map'
+import { Route as FraudlensLicensingRouteImport } from './routes/fraudlens/licensing'
 import { Route as FraudlensIntelligenceRouteImport } from './routes/fraudlens/intelligence'
 import { Route as FraudlensIngestRouteImport } from './routes/fraudlens/ingest'
 import { Route as FraudlensGraphRouteImport } from './routes/fraudlens/graph'
@@ -70,6 +71,11 @@ const FraudlensMapRoute = FraudlensMapRouteImport.update({
   path: '/map',
   getParentRoute: () => FraudlensRouteRoute,
 } as any)
+const FraudlensLicensingRoute = FraudlensLicensingRouteImport.update({
+  id: '/licensing',
+  path: '/licensing',
+  getParentRoute: () => FraudlensRouteRoute,
+} as any)
 const FraudlensIntelligenceRoute = FraudlensIntelligenceRouteImport.update({
   id: '/intelligence',
   path: '/intelligence',
@@ -110,6 +116,7 @@ export interface FileRoutesByFullPath {
   '/fraudlens/graph': typeof FraudlensGraphRoute
   '/fraudlens/ingest': typeof FraudlensIngestRoute
   '/fraudlens/intelligence': typeof FraudlensIntelligenceRoute
+  '/fraudlens/licensing': typeof FraudlensLicensingRoute
   '/fraudlens/map': typeof FraudlensMapRoute
   '/fraudlens/ml': typeof FraudlensMlRoute
   '/fraudlens/osint': typeof FraudlensOsintRoute
@@ -126,6 +133,7 @@ export interface FileRoutesByTo {
   '/fraudlens/graph': typeof FraudlensGraphRoute
   '/fraudlens/ingest': typeof FraudlensIngestRoute
   '/fraudlens/intelligence': typeof FraudlensIntelligenceRoute
+  '/fraudlens/licensing': typeof FraudlensLicensingRoute
   '/fraudlens/map': typeof FraudlensMapRoute
   '/fraudlens/ml': typeof FraudlensMlRoute
   '/fraudlens/osint': typeof FraudlensOsintRoute
@@ -144,6 +152,7 @@ export interface FileRoutesById {
   '/fraudlens/graph': typeof FraudlensGraphRoute
   '/fraudlens/ingest': typeof FraudlensIngestRoute
   '/fraudlens/intelligence': typeof FraudlensIntelligenceRoute
+  '/fraudlens/licensing': typeof FraudlensLicensingRoute
   '/fraudlens/map': typeof FraudlensMapRoute
   '/fraudlens/ml': typeof FraudlensMlRoute
   '/fraudlens/osint': typeof FraudlensOsintRoute
@@ -163,6 +172,7 @@ export interface FileRouteTypes {
     | '/fraudlens/graph'
     | '/fraudlens/ingest'
     | '/fraudlens/intelligence'
+    | '/fraudlens/licensing'
     | '/fraudlens/map'
     | '/fraudlens/ml'
     | '/fraudlens/osint'
@@ -179,6 +189,7 @@ export interface FileRouteTypes {
     | '/fraudlens/graph'
     | '/fraudlens/ingest'
     | '/fraudlens/intelligence'
+    | '/fraudlens/licensing'
     | '/fraudlens/map'
     | '/fraudlens/ml'
     | '/fraudlens/osint'
@@ -196,6 +207,7 @@ export interface FileRouteTypes {
     | '/fraudlens/graph'
     | '/fraudlens/ingest'
     | '/fraudlens/intelligence'
+    | '/fraudlens/licensing'
     | '/fraudlens/map'
     | '/fraudlens/ml'
     | '/fraudlens/osint'
@@ -275,6 +287,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FraudlensMapRouteImport
       parentRoute: typeof FraudlensRouteRoute
     }
+    '/fraudlens/licensing': {
+      id: '/fraudlens/licensing'
+      path: '/licensing'
+      fullPath: '/fraudlens/licensing'
+      preLoaderRoute: typeof FraudlensLicensingRouteImport
+      parentRoute: typeof FraudlensRouteRoute
+    }
     '/fraudlens/intelligence': {
       id: '/fraudlens/intelligence'
       path: '/intelligence'
@@ -327,6 +346,7 @@ interface FraudlensRouteRouteChildren {
   FraudlensGraphRoute: typeof FraudlensGraphRoute
   FraudlensIngestRoute: typeof FraudlensIngestRoute
   FraudlensIntelligenceRoute: typeof FraudlensIntelligenceRoute
+  FraudlensLicensingRoute: typeof FraudlensLicensingRoute
   FraudlensMapRoute: typeof FraudlensMapRoute
   FraudlensMlRoute: typeof FraudlensMlRoute
   FraudlensOsintRoute: typeof FraudlensOsintRoute
@@ -343,6 +363,7 @@ const FraudlensRouteRouteChildren: FraudlensRouteRouteChildren = {
   FraudlensGraphRoute: FraudlensGraphRoute,
   FraudlensIngestRoute: FraudlensIngestRoute,
   FraudlensIntelligenceRoute: FraudlensIntelligenceRoute,
+  FraudlensLicensingRoute: FraudlensLicensingRoute,
   FraudlensMapRoute: FraudlensMapRoute,
   FraudlensMlRoute: FraudlensMlRoute,
   FraudlensOsintRoute: FraudlensOsintRoute,

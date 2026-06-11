@@ -1,5 +1,5 @@
 import { Link, useLocation } from '@tanstack/react-router';
-import { Shield, Network, Brain, Settings, Upload, Eye, Fingerprint, Users, Bell, FileText, Map as MapIcon, Lightbulb, ShieldAlert, Globe } from 'lucide-react';
+import { Shield, Network, Brain, Settings, Upload, Eye, Fingerprint, Users, Bell, FileText, Map as MapIcon, Lightbulb, ShieldAlert, Globe, Scale } from 'lucide-react';
 
 const navItems: { href: string; label: string; icon: any; shortLabel: string }[] = [
   { href: '/fraudlens', label: 'Mission Control', icon: Shield, shortLabel: 'HQ' },
@@ -14,6 +14,7 @@ const navItems: { href: string; label: string; icon: any; shortLabel: string }[]
   { href: '/fraudlens/intelligence', label: 'Intelligence', icon: Lightbulb, shortLabel: 'INTEL' },
   { href: '/fraudlens/alerts', label: 'Alerts', icon: ShieldAlert, shortLabel: 'ALRT' },
   { href: '/fraudlens/ml', label: 'ML Core', icon: Brain, shortLabel: 'ML' },
+  { href: '/fraudlens/licensing', label: 'Licensing & Compliance', icon: Scale, shortLabel: 'LEGAL' },
 ];
 
 export default function GlobalSidebar() {

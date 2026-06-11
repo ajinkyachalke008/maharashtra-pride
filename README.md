@@ -464,6 +464,29 @@ npm run dev
 
 ---
 
+# 📜 <img src="https://readme-typing-svg.herokuapp.com?font=Share+Tech+Mono&weight=500&size=28&duration=1000&pause=500&color=00FFB3&center=false&vCenter=true&width=800&lines=Licensing+%26+Legal+Compliance"/>
+
+This repository is governed by the **MIT License + Special Indian Law Enforcement Homage Rider**.
+
+<div align="center">
+
+<img src="https://img.shields.io/badge/⚖️_BNS_2023-COMPLIANT-00FA9A?style=for-the-badge&labelColor=0B1020"/>
+<img src="https://img.shields.io/badge/📜_IEA_SEC_65B-ADMISSIBLE-00E5FF?style=for-the-badge&labelColor=0B1020"/>
+<img src="https://img.shields.io/badge/🛡️_DPDP_ACT_2023-VERIFIED-FFB300?style=for-the-badge&labelColor=0B1020"/>
+<img src="https://img.shields.io/badge/💻_IT_ACT_2000-SECURE-FF5252?style=for-the-badge&labelColor=0B1020"/>
+
+</div>
+
+### ⚖️ Legal Status & Permitted Scope
+
+1. **Indian Law Enforcement Agencies**: Full authorization is granted for direct deployment, local hosting, simulation, and case graph building under Section 65B of the Indian Evidence Act.
+2. **Academic & Tribute Usage**: Permitted for public demonstration, presentation, training, and educational modification.
+3. **Commercial Redistribution Restrictions**: Commercial resale, sublicensing, or deployment as a paid software-as-a-service (SaaS) tool is **strictly prohibited** under the proprietary homage rider.
+
+For full license terms, please refer to the [LICENSE](LICENSE) file in the root of this project.
+
+---
+
 <div align="center">
 
 # 🚀 <img src="https://readme-typing-svg.herokuapp.com?font=VT323&weight=400&size=32&duration=800&pause=400&color=FFB300&center=false&vCenter=true&width=800&lines=MISSION"/>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from '@tanstack/react-router';
 import { ArrowRight, AlertTriangle, ShieldAlert, CircleDot, Download } from 'lucide-react';
-import { API_BASE_URL } from '../../../../config';
+import { API_BASE_URL } from '../../../config';
 
 interface Case {
   id: string;
