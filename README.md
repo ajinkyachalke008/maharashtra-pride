@@ -77,15 +77,15 @@ FraudLens transforms fragmented evidence sources — bank statements, screenshot
 <div align="center">
 
 📥 <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=20&duration=1200&pause=1000&color=00E5FF&center=true&vCenter=true&width=600&lines=RAW+EVIDENCE+%5BText+Scramble+Effect%5D"/>
-<br><strong style="color: #00FFB3;">↓</strong><br>
+<br><img src="public/animated_arrow.svg" alt="Animated Connection" width="40"/><br>
 🤖 <img src="https://readme-typing-svg.herokuapp.com?font=VT323&weight=400&size=20&duration=800&pause=400&color=00FFB3&center=true&vCenter=true&width=600&lines=AI+EXTRACTION+%5BDecode+Animation%5D"/>
-<br><strong style="color: #00FFB3;">↓</strong><br>
+<br><img src="public/animated_arrow.svg" alt="Animated Connection" width="40"/><br>
 🌐 <img src="https://readme-typing-svg.herokuapp.com?font=Play&weight=700&size=20&duration=2500&pause=1500&color=7C3AED&center=true&vCenter=true&width=600&lines=GRAPH+INTELLIGENCE+%5BParticle+Network%5D"/>
-<br><strong style="color: #00FFB3;">↓</strong><br>
+<br><img src="public/animated_arrow.svg" alt="Animated Connection" width="40"/><br>
 🧠 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=800&size=20&duration=1800&pause=1200&color=FFB300&center=true&vCenter=true&width=600&lines=RISK+ANALYTICS+%5BMatrix+Rain+Effect%5D"/>
-<br><strong style="color: #00FFB3;">↓</strong><br>
+<br><img src="public/animated_arrow.svg" alt="Animated Connection" width="40"/><br>
 ⚖️ <img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&weight=500&size=20&duration=1500&pause=800&color=10B981&center=true&vCenter=true&width=600&lines=LEGAL+MAPPING+%5BCyberpunk+Scanline%5D"/>
-<br><strong style="color: #00FFB3;">↓</strong><br>
+<br><img src="public/animated_arrow.svg" alt="Animated Connection" width="40"/><br>
 📜 <img src="https://readme-typing-svg.herokuapp.com?font=Righteous&weight=400&size=20&duration=2200&pause=1000&color=FF5252&center=true&vCenter=true&width=600&lines=COURT+ADMISSIBLE+REPORTS+%5BHolographic+Effect%5D"/>
 
 </div>
@@ -185,9 +185,9 @@ Every entity continuously receives a dynamic behavioral risk score.
 <div align="center">
 
 <img src="https://readme-typing-svg.herokuapp.com?font=Play&weight=700&size=20&duration=2500&pause=1500&color=00E5FF&center=true&vCenter=true&width=600&lines=%E2%82%B9100%2C000++Volume+%5BData+Stream+Animation%5D"/>
-<br><strong style="color: #FF5252;">↓</strong><br>
+<br><img src="public/animated_arrow.svg" alt="Animated Connection" width="40"/><br>
 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=800&size=20&duration=1800&pause=1200&color=FFB300&center=true&vCenter=true&width=600&lines=Risk+Score+%E2%89%A5+0.90+%5BNeon+Flicker+Effect%5D"/>
-<br><strong style="color: #FF5252;">↓</strong><br>
+<br><img src="public/animated_arrow.svg" alt="Animated Connection" width="40"/><br>
 🔴 <img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&weight=500&size=20&duration=1500&pause=800&color=FF5252&center=true&vCenter=true&width=600&lines=Critical+Threat+%5BGlitch+Effect%5D"/>
 
 </div>
@@ -445,7 +445,7 @@ All reports are designed for admissibility under Section 65B of the Indian Evide
 </p>
 
 ### 1. Backend Setup
-With `python` (v3.11+) installed:
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=16&duration=2000&pause=500&color=00FFB3&center=true&vCenter=true&width=600&lines=With+Python+(v3.11%2B)+installed+%5BTypewriter+Effect%5D"/>
 
 ```sh
 cd backend
@@ -455,7 +455,7 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 
 ### 2. Frontend Setup
-With `npm` installed:
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=16&duration=2000&pause=500&color=00FFB3&center=true&vCenter=true&width=600&lines=With+NPM+installed+%5BTypewriter+Effect%5D"/>
 
 ```sh
 npm install

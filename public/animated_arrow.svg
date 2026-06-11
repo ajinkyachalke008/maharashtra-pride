@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="60" viewBox="0 0 40 60">
+  <style>
+    .arrow-path {
+      stroke: #00FFB3;
+      stroke-width: 3;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 70;
+      stroke-dashoffset: 70;
+      animation: drawLine 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    @keyframes drawLine {
+      0% { stroke-dashoffset: 70; opacity: 0; }
+      15% { opacity: 1; }
+      60% { stroke-dashoffset: 0; opacity: 1; }
+      80% { opacity: 0; stroke-dashoffset: 0; }
+      100% { opacity: 0; stroke-dashoffset: 0; }
+    }
+  </style>
+  <path class="arrow-path" d="M 20 5 L 20 45 L 12 37 M 20 45 L 28 37" />
+</svg>
