@@ -424,6 +424,76 @@ All reports are designed for admissibility under Section 65B of the Indian Evide
 
 ---
 
+### ✨ Comprehensive UI/UX Animation Engine
+To achieve the immersive cinematic feel and rich interactive feedback, the platform leverages over 100 distinct front-end micro-interactions, WebGL shaders, and physics-based animations:
+
+<details>
+<summary><b><kbd>CLICK TO EXPAND: View All 100+ UI/UX Effects & Animations</kbd></b></summary>
+<br>
+
+| Typography & Reveal | Shaders & Distortion | Physics & Particles | Scroll & Layout |
+| :--- | :--- | :--- | :--- |
+| ✨ Text Scramble Effect | 🌌 Glitch Effect | ⚛️ Magnetic Cursor | 🚀 Matrix Rain Effect |
+| ✨ Typewriter Effect | 🌌 Liquid Distortion | ⚛️ Gooey Effect | 🚀 Kinetic Typography |
+| ✨ Split Text Animation | 🌌 RGB Split Effect | ⚛️ Particle Explosion | 🚀 Parallax Scrolling |
+| ✨ Letter Shuffle Animation | 🌌 Morphing Blob | ⚛️ Particle Network | 🚀 Mouse Trail Effect |
+| ✨ Character Morphing | 🌌 Glassmorphism Hover | ⚛️ Orbit Animation | 🚀 Neumorphic Interaction |
+| ✨ Decode Animation | 🌌 Noise Distortion | ⚛️ Physics-Based Spring Animation | 🚀 3D Tilt Effect |
+| ✨ Hacker Text Reveal | 🌌 Wave Distortion | ⚛️ Canvas Particle Field | 🚀 Card Flip Animation |
+| ✨ Text Decryption Effect | 🌌 Gradient Mesh Animation | ⚛️ Magnetic Button Effect | 🚀 Perspective Hover |
+| ✨ Random Character Reveal | 🌌 Blur-to-Focus Reveal | ⚛️ Infinite Particle Flow | 🚀 Scroll Reveal |
+| ✨ Text Trail Effect | 🌌 VHS Effect | ⚛️ Orbital Particle System | 🚀 Staggered Fade-In |
+| ✨ Terminal Command Animation | 🌌 Holographic Effect | ⚛️ Interactive Fluid Simulation | 🚀 Infinite Marquee |
+| ✨ Cyber Decrypt Reveal | 🌌 Liquid Button Effect |  | 🚀 Smooth Page Transition |
+| ✨ Elastic Text Stretch Effect | 🌌 Mesh Gradient Animation |  | 🚀 SVG Path Drawing |
+| ✨ Variable Font Morphing | 🌌 Noise Grain Overlay |  | 🚀 SVG Morphing |
+|  | 🌌 Liquid Metal Effect |  | 🚀 Ripple Effect |
+|  | 🌌 Frosted Glass Distortion |  | 🚀 Spotlight Cursor Effect |
+|  | 🌌 Chromatic Aberration Effect |  | 🚀 Shimmer Effect |
+|  | 🌌 Warp Speed Transition |  | 🚀 Skeleton Loading Animation |
+|  | 🌌 Noise-Based Flow Field Animation |  | 🚀 Aurora Background |
+|  | 🌌 Mesh Warp Animation |  | 🚀 Floating Elements |
+|  | 🌌 Lava Lamp Blob Animation |  | 🚀 Pixel Dissolve |
+|  | 🌌 Magnetic Grid Distortion Effect |  | 🚀 Image Fragmentation |
+|  |  |  | 🚀 Clip-Path Reveal |
+|  |  |  | 🚀 Mask Reveal Animation |
+|  |  |  | 🚀 Cyberpunk Scanline Effect |
+|  |  |  | 🚀 Neon Flicker Effect |
+|  |  |  | 🚀 Elastic Hover Effect |
+|  |  |  | 🚀 Infinite Zoom Effect |
+|  |  |  | 🚀 Bento Grid Hover Effect |
+|  |  |  | 🚀 Cinematic Scroll Animation |
+|  |  |  | 🚀 WebGL Displacement Effect |
+|  |  |  | 🚀 Lenis Smooth Scroll Effect |
+|  |  |  | 🚀 Framer Motion Layout Transition |
+|  |  |  | 🚀 Cursor Spotlight Effect |
+|  |  |  | 🚀 Infinite Grid Animation |
+|  |  |  | 🚀 Isometric Hover Effect |
+|  |  |  | 🚀 Scroll Progress Indicator |
+|  |  |  | 🚀 Fold/Unfold Animation |
+|  |  |  | 🚀 Morphing Navigation Menu |
+|  |  |  | 🚀 Radial Reveal Effect |
+|  |  |  | 🚀 Infinite Rotating Ring Effect |
+|  |  |  | 🚀 Starfield Animation |
+|  |  |  | 🚀 Dot Matrix Reveal |
+|  |  |  | 🚀 Dynamic Island Expansion Effect |
+|  |  |  | 🚀 Data Stream Animation |
+|  |  |  | 🚀 Smoke Reveal Effect |
+|  |  |  | 🚀 Ink Spread Animation |
+|  |  |  | 🚀 Pixel Sort Effect |
+|  |  |  | 🚀 AI Data Visualization Animation |
+|  |  |  | 🚀 Constellation Background Effect |
+|  |  |  | 🚀 Energy Pulse Animation |
+|  |  |  | 🚀 Scanline Sweep Effect |
+|  |  |  | 🚀 DNA Helix Animation |
+|  |  |  | 🚀 Volumetric Light Sweep Effect |
+|  |  |  | 🚀 Silk Background Animation |
+|  |  |  | 🚀 Ribbon Trail Animation |
+
+</details>
+
+---
+
 ## 📁 Directory Structure Overview
 
 <p align="center">
