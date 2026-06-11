@@ -48,63 +48,94 @@ The root application serves as a high-fidelity, scroll-driven interactive web ex
 
 ---
 
-## 🛡️ Part II: FraudLens Portal (The Intelligence Application)
+<img src="https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=80&section=header" width="100%"/>
 
-Hidden behind the "Portal Gate" is **FraudLens**, a production-ready, AI-driven financial intelligence platform. It is engineered specifically for law enforcement to transform unstructured cybercrime data into actionable insights.
+# 🛡️ Part II: FraudLens Portal (The Intelligence Application)
+
+> [!IMPORTANT]  
+> **RESTRICTED ACCESS**: Hidden behind the "Portal Gate" is **FraudLens**, a production-ready, AI-driven financial intelligence platform. It is engineered specifically for law enforcement to transform unstructured cybercrime data into actionable insights.
+
+<div align="center">
+  <img src="https://img.shields.io/badge/Module_Count-13_Dashboards-FF1493?style=for-the-badge&logo=react&logoColor=white" />
+  <img src="https://img.shields.io/badge/Architecture-Dual_Engine-00C957?style=for-the-badge&logo=neo4j&logoColor=white" />
+  <img src="https://img.shields.io/badge/AI_Core-Gemini_2.5_Pro-FF8C00?style=for-the-badge&logo=googlebard&logoColor=white" />
+  <img src="https://img.shields.io/badge/Compliance-BNS_2023_Ready-1E90FF?style=for-the-badge&logo=scales&logoColor=white" />
+</div>
+
+<br/>
 
 ### 🧩 1. The 13 Specialized Modules (React Frontend)
-The frontend is built on `TanStack Router` and offers 13 distinct investigative dashboards:
-- **`ingest.tsx` (Dropzone)**: Drag-and-drop file ingestion and LLM parsing interface.
-- **`graph.tsx` (3D Network)**: The 3D webGL visualization of the criminal syndicate graph.
-- **`intelligence.tsx` (Legal Intelligence)**: BNS 2023 cross-jurisdictional threat mapper.
-- **`ml.tsx` (Latent Space)**: Visual clustering of anomalies using Isolation Forests logic.
-- **`cases.tsx` (Kanban Board)**: Drag-and-drop case management board.
-- **`reports.tsx` (Section 65B)**: One-click court-admissible PDF generation.
-- **`alerts.tsx` (Live Triggers)**: Real-time WebSocket event feed for flagged transactions.
-- **`entities.tsx` (Account Registry)**: Tabular view of all tracked bank accounts and risk scores.
-- **`map.tsx` (Geospatial Analysis)**: MapLibre integration to track IP/transaction geolocations.
-- **`osint.tsx` (Open Source Intel)**: Dark web and public registry scraping interfaces.
-- **`patterns.tsx` (Typology Detection)**: Identifies smurfing, layering, and round-tripping patterns.
-- **`watchlist.tsx` (Hotlist)**: Manually flagged high-risk accounts and UPI IDs.
-- **`index.tsx` (Command Center)**: The global executive dashboard summarizing all active metrics.
+
+The frontend is heavily stylized and built on `TanStack Router`, offering 13 distinct investigative dashboards:
+
+| Module | Core Functionality | Tech Badge |
+| :--- | :--- | :--- |
+| 📥 **`ingest.tsx`** (Dropzone) | Drag-and-drop file ingestion and LLM parsing interface. | ![Dropzone](https://img.shields.io/badge/Feature-Drag_&_Drop-6A5ACD?style=flat-square) |
+| 🕸️ **`graph.tsx`** (3D Network) | The 3D webGL visualization of the criminal syndicate graph. | ![WebGL](https://img.shields.io/badge/Render-WebGL_3D-FF4500?style=flat-square) |
+| ⚖️ **`intelligence.tsx`** (Legal) | **BNS 2023** cross-jurisdictional threat mapper. | ![BNS](https://img.shields.io/badge/Legal-BNS_2023-DC143C?style=flat-square) |
+| 📡 **`ml.tsx`** (Latent Space) | Visual clustering of anomalies using Isolation Forests logic. | ![ML](https://img.shields.io/badge/Machine_Learning-Active-00FA9A?style=flat-square) |
+| 🗄️ **`cases.tsx`** (Kanban Board)| Drag-and-drop case management board for officers. | ![Kanban](https://img.shields.io/badge/UI-React_Beautiful_Dnd-4169E1?style=flat-square) |
+| 📜 **`reports.tsx`** (Section 65B)| One-click court-admissible PDF generation. | ![PDF](https://img.shields.io/badge/Export-fpdf2-8A2BE2?style=flat-square) |
+| 🚨 **`alerts.tsx`** (Live Triggers)| Real-time WebSocket event feed for flagged transactions. | ![Live](https://img.shields.io/badge/Stream-WebSockets-FF00FF?style=flat-square) |
+| 🏦 **`entities.tsx`** (Registry)| Tabular view of all tracked bank accounts and risk scores. | ![Data](https://img.shields.io/badge/View-Data_Grid-20B2AA?style=flat-square) |
+| 🗺️ **`map.tsx`** (Geospatial) | MapLibre integration to track IP/transaction geolocations. | ![MapLibre](https://img.shields.io/badge/Map-MapLibre_GL-FFA500?style=flat-square) |
+| 🕵️ **`osint.tsx`** (OSINT) | Dark web and public registry scraping interfaces. | ![OSINT](https://img.shields.io/badge/Intel-Dark_Web-000000?style=flat-square) |
+| 🔄 **`patterns.tsx`** (Typology) | Identifies smurfing, layering, and round-tripping patterns. | ![Typology](https://img.shields.io/badge/Analysis-Typology-B22222?style=flat-square) |
+| ⚠️ **`watchlist.tsx`** (Hotlist)| Manually flagged high-risk accounts and UPI IDs. | ![Hotlist](https://img.shields.io/badge/Alert-High_Risk-FF0000?style=flat-square) |
+| 🖥️ **`index.tsx`** (Command) | The global executive dashboard summarizing all active metrics. | ![Command](https://img.shields.io/badge/Dashboard-Executive-4B0082?style=flat-square) |
+
+---
 
 ### 🧠 2. Deep-Dive: Core Architecture & Capabilities
 
+> [!NOTE]  
+> The backend operates on an advanced decoupling philosophy, ensuring the platform can run in a highly-secure air-gapped environment or deploy instantly to the cloud.
+
 #### 🏢 Dual Graph Engine Architecture (Neo4j & NetworkX)
 The platform operates on a robust dual-engine architecture:
-*   **Production Engine**: Native `neo4j` integration. Uses Cypher queries (`MATCH path = (a)-[*1..3]-(b)`) for highly scalable, multi-hop subgraph traversals.
-*   **Portable Zero-Mock Engine**: A fully functional Python-native `networkx` engine. It commits accounts as nodes and transactions as edges directly to a persisted `graph_store.json`. This allows the application to run anywhere completely standalone, without requiring heavy Dockerized database containers.
-*   **Dynamic Risk Scoring**: Accounts exceeding ₹100,000 in total transaction volume are automatically flagged with critical risk thresholds (Risk Score: 0.9).
+*   🟢 **Production Engine**: Native `neo4j` integration. Uses Cypher queries (`MATCH path = (a)-[*1..3]-(b)`) for highly scalable, multi-hop subgraph traversals.
+*   🟡 **Portable Zero-Mock Engine**: A fully functional Python-native `networkx` engine. It commits accounts as nodes and transactions as edges directly to a persisted `graph_store.json`. This allows the application to run anywhere completely standalone.
+*   🔴 **Dynamic Risk Scoring**: Accounts exceeding ₹100,000 in total transaction volume are automatically flagged with critical risk thresholds (Risk Score: 0.9).
 
 #### 🤖 Multimodal AI Ingestion Pipeline
 The `llm_extractor.py` service handles the heavy lifting of raw police evidence:
-*   **Universal File Parsing**: Accepts unstructured text from PDFs (`pdfplumber`), Excel/CSVs (`pandas`), and Word Documents (`python-docx`).
-*   **Vision-Language Model (Gemini 2.5 Pro)**: The backend utilizes `google/gemini-2.5-pro` via the OpenRouter API. It leverages zero-shot prompting and multimodal vision capabilities to read screenshots of bank statements or WhatsApp chat logs, extracting structured JSON arrays (Sender, Receiver, Amount, Narration, Type).
-*   **Confidence Scoring**: Transactions extracted by the LLM are given a confidence score. Anything `<0.8` is visually flagged in red on the investigator's UI for manual human verification before committing to the graph.
+*   📑 **Universal File Parsing**: Accepts unstructured text from PDFs (`pdfplumber`), Excel/CSVs (`pandas`), and Word Documents (`python-docx`).
+*   👁️ **Vision-Language Model (Gemini 2.5 Pro)**: The backend utilizes `google/gemini-2.5-pro` via the OpenRouter API. It leverages zero-shot prompting and multimodal vision capabilities to read screenshots of bank statements or WhatsApp chat logs, extracting structured JSON arrays.
+*   🚦 **Confidence Scoring**: Transactions extracted by the LLM are given a confidence score. Anything `<0.8` is visually flagged in red on the investigator's UI for manual human verification.
 
 #### 🕸️ 3D Threat Network Explorer
-*   **ForceGraph3D Engine**: Uses `react-force-graph-3d` and `three.js` to render the extracted financial data natively in the browser as an interactive physics-based node-link graph.
-*   **Sub-Graph Traversal**: Uses `nx.ego_graph` (in portable mode) to isolate suspected money mules up to 3 degrees of separation from a central suspect. High-risk entities glow neon red, while safe nodes remain blue. Investigators can right-click nodes or smoothly orbit suspected actors in a 3D physical space.
+*   🌌 **ForceGraph3D Engine**: Uses `react-force-graph-3d` and `three.js` to render the extracted financial data natively in the browser as an interactive physics-based node-link graph.
+*   🎯 **Sub-Graph Traversal**: Uses `nx.ego_graph` to isolate suspected money mules up to 3 degrees of separation from a central suspect. High-risk entities glow neon red, while safe nodes remain blue.
 
 #### ⚖️ Legal Enforcement Intelligence (BNS 2023)
-The `intelligence.tsx` dashboard polls the backend (`/api/v1/intelligence/syndicates`) every 5 seconds for live syndicate detection:
-*   **Cross-Jurisdictional Mapping**: Automatically detects "Shared Mules"—accounts with critical risk scores (>0.8) that appear across multiple independent, unconnected FIR case files.
-*   **Automated Charge Targeting**: Automatically tags detected syndicates with the new **Bharatiya Nyaya Sanhita (BNS) 2023** mandates. For example, linking them to BNS 318 (Cheating), BNS 336 (Forgery), and IT Act 66D for cyber fraud.
+The `intelligence.tsx` dashboard polls the backend every 5 seconds for live syndicate detection:
+*   🔗 **Cross-Jurisdictional Mapping**: Automatically detects "Shared Mules"—accounts with critical risk scores (>0.8) that appear across multiple independent FIR case files.
+*   📜 **Automated Charge Targeting**: Automatically tags detected syndicates with the new **Bharatiya Nyaya Sanhita (BNS) 2023** mandates (e.g. BNS 318, BNS 336, and IT Act 66D).
 
 #### 📡 Machine Learning Latent Space (Anomaly Detection)
 *   The `/ml/latent-space` endpoint projects the high-dimensional node data into a 2D geometric latent space using the `spring_layout` algorithm. 
-*   This effectively clusters accounts into Low, Medium, High, and Critical risk zones based on interaction weights and transaction volumes, mimicking Isolation Forest anomaly detection models for investigators.
+*   This effectively clusters accounts into Low, Medium, High, and Critical risk zones, mimicking **Isolation Forest** anomaly detection models.
 
 #### 🗄️ Automated Case Management (Kanban)
-*   **Trigger Logic**: When the ML pipeline flags multiple high-risk nodes in a single upload, the system automatically opens a new Case envelope.
-*   **Investigator Board**: Features a drag-and-drop Kanban UI allowing officers to move cases across statuses (*New Alert*, *Investigating*, *Closed*), hitting live API endpoints to sync state automatically.
+*   ⚡ **Trigger Logic**: When the ML pipeline flags multiple high-risk nodes, the system automatically opens a new Case envelope.
+*   📋 **Investigator Board**: Features a drag-and-drop Kanban UI allowing officers to move cases across statuses (*New Alert*, *Investigating*, *Closed*).
 
 #### 📜 Section 65B Compliance Reporting
-*   **Automated Court-Ready Reports**: The `/cases/{case_id}/export` API generates formal PDF reports (via `fpdf2`). These reports document the digital trail, timestamped transaction references, and chain of custody. This ensures evidence collected through the platform is formatted to be admissible in Indian courts under Section 65B of the Indian Evidence Act.
+*   🏛️ **Automated Court-Ready Reports**: The `/cases/{case_id}/export` API generates formal PDF reports (via `fpdf2`). These reports document the digital trail and chain of custody, ensuring evidence is admissible under **Section 65B of the Indian Evidence Act**.
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=80&section=footer" width="100%"/>
 
 ---
 
 ## 🛠️ Complete Technology Stack
+
+<div align="center">
+  <img src="https://img.shields.io/badge/Frontend-React_19_%2B_Vite-000000?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
+  <img src="https://img.shields.io/badge/Database-Neo4j-018BFF?style=for-the-badge&logo=neo4j&logoColor=white" />
+</div>
+
+<br/>
 
 ### Frontend Client
 - **Framework**: React 19, Vite, TypeScript
