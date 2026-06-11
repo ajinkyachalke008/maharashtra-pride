@@ -20,6 +20,7 @@
   <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white" />
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
   <img src="https://img.shields.io/badge/Neo4j-018bff?style=for-the-badge&logo=neo4j&logoColor=white" />
+  <img src="https://img.shields.io/badge/OpenAI_LLM-412991?style=for-the-badge&logo=openai&logoColor=white" />
 </p>
 
 <br/>
@@ -38,48 +39,87 @@ A comprehensive, dual-purpose digital platform developed as an homage to the **M
 
 ## 🌟 Part I: Maharashtra Police Pride (The Cinematic Landing)
 
-The root application serves as a high-fidelity, scroll-driven interactive web experience honoring the history and scale of India's largest state police force.
+The root application serves as a high-fidelity, scroll-driven interactive web experience honoring the history and scale of India's largest state police force. 
 
-### ✨ Key Visual & Interactive Features
-- 🎬 **Immersive Scrollytelling**: Powered by Framer Motion, elements fade and slide dynamically to create a cinematic narrative experience as the user scrolls.
-- 🛡️ **The 36 Districts & 185,000 Officers**: A detailed narrative tribute visually representing the scale of the force defending 11.42 crore citizens, complete with dynamic counters and historical timelines.
-- 🗺️ **Interactive Commissionerates Cloth**: A stunning WebGL physics-simulated, interactive grid showcasing the 12 primary Police Commissionerates across the state.
-- 🌌 **Cinematic Aesthetics**: Deep dark themes (`#0d0d0d`), ambient glassmorphism panels, specialized typography, and bespoke cursor trackers to ensure maximum user engagement.
+### 🎭 Cinematic Modules
+1. **The Grand Entry**: Framer Motion powered hero sections with dynamic typography and glassmorphism layered over deep dark themes (`#0d0d0d`).
+2. **The 36 Districts & 185,000 Officers**: A narrative scrollytelling experience. As the user scrolls, dynamic counters and historical timelines fade into view, explaining the scale of the force defending 11.42 crore citizens.
+3. **Interactive Commissionerates Cloth**: A physics-simulated, interactive WebGL grid showcasing the 12 primary Police Commissionerates across the state. Users can interact with the cloth simulation via cursor tracking.
 
 ---
 
 ## 🛡️ Part II: FraudLens Portal (The Intelligence Application)
 
-Hidden behind the "Portal Gate" is **FraudLens**, a production-ready, AI-driven financial intelligence platform. It is engineered specifically for law enforcement to transform unstructured cybercrime data (like FIRs, Bank Statements, and Images) into interactive 3D threat graphs.
+Hidden behind the "Portal Gate" is **FraudLens**, a production-ready, AI-driven financial intelligence platform. It is engineered specifically for law enforcement to transform unstructured cybercrime data into actionable insights.
 
-### 🧠 Deep-Dive: Core Architecture & Capabilities
+### 🧩 1. The 13 Specialized Modules (React Frontend)
+The frontend is built on `TanStack Router` and offers 13 distinct investigative dashboards:
+- **`ingest.tsx` (Dropzone)**: Drag-and-drop file ingestion and LLM parsing interface.
+- **`graph.tsx` (3D Network)**: The 3D webGL visualization of the criminal syndicate graph.
+- **`intelligence.tsx` (Legal Intelligence)**: BNS 2023 cross-jurisdictional threat mapper.
+- **`ml.tsx` (Latent Space)**: Visual clustering of anomalies using Isolation Forests logic.
+- **`cases.tsx` (Kanban Board)**: Drag-and-drop case management board.
+- **`reports.tsx` (Section 65B)**: One-click court-admissible PDF generation.
+- **`alerts.tsx` (Live Triggers)**: Real-time WebSocket event feed for flagged transactions.
+- **`entities.tsx` (Account Registry)**: Tabular view of all tracked bank accounts and risk scores.
+- **`map.tsx` (Geospatial Analysis)**: MapLibre integration to track IP/transaction geolocations.
+- **`osint.tsx` (Open Source Intel)**: Dark web and public registry scraping interfaces.
+- **`patterns.tsx` (Typology Detection)**: Identifies smurfing, layering, and round-tripping patterns.
+- **`watchlist.tsx` (Hotlist)**: Manually flagged high-risk accounts and UPI IDs.
+- **`index.tsx` (Command Center)**: The global executive dashboard summarizing all active metrics.
 
-#### 1. Zero-Mock Graph Engine (Neo4j & NetworkX)
-The platform operates on a dual-engine architecture:
-*   **Production**: Native `neo4j` integration via Cypher queries for highly scalable subgraph traversals.
-*   **Portable Mode**: A fully functional Python-native `networkx` engine that commits accounts as nodes and transactions as edges directly to a persisted `graph_store.json`, allowing the app to run anywhere without heavy Dockerized database containers.
-*   **Dynamic Risk Scoring**: Accounts exceeding ₹100,000 in transaction volume are automatically flagged with critical risk thresholds (Risk Score: 0.9).
+### 🧠 2. Deep-Dive: Core Architecture & Capabilities
 
-#### 2. Multimodal LLM Ingestion (The Dropzone)
-The frontend features a drag-and-drop React component (`ingest.tsx`) that streams files to the FastAPI backend, where the `llm_extractor.py` pipeline takes over:
-*   **Universal File Parsing**: Accepts PDFs (`pdfplumber`), Excel/CSV (`pandas`), Word (`python-docx`), and even Images (`png/jpg`).
-*   **Vision-Language Model (Gemini 2.5 Pro)**: The backend utilizes `google/gemini-2.5-pro` via the OpenRouter API. It leverages zero-shot prompting and multimodal vision capabilities to read thousands of words of unstructured text or scan raw screenshots of bank statements to extract structured JSON arrays (Sender, Receiver, Amount, Type).
-*   **Confidence Scoring**: Transactions extracted with low confidence (<0.8) are visually flagged in red on the investigator's UI for manual review.
+#### 🏢 Dual Graph Engine Architecture (Neo4j & NetworkX)
+The platform operates on a robust dual-engine architecture:
+*   **Production Engine**: Native `neo4j` integration. Uses Cypher queries (`MATCH path = (a)-[*1..3]-(b)`) for highly scalable, multi-hop subgraph traversals.
+*   **Portable Zero-Mock Engine**: A fully functional Python-native `networkx` engine. It commits accounts as nodes and transactions as edges directly to a persisted `graph_store.json`. This allows the application to run anywhere completely standalone, without requiring heavy Dockerized database containers.
+*   **Dynamic Risk Scoring**: Accounts exceeding ₹100,000 in total transaction volume are automatically flagged with critical risk thresholds (Risk Score: 0.9).
 
-#### 3. 3D Network Explorer & Syndication
-*   **ForceGraph3D Engine**: Uses `react-force-graph-3d` and `three.js` to render extracted data natively in the browser. 
-*   **Sub-Graph Traversal**: Uses `nx.ego_graph` to isolate suspected money mules up to 3 degrees of separation. High-risk entities glow red, safe nodes remain blue. Investigators can smoothly orbit suspected central actors in a 3D physical space.
+#### 🤖 Multimodal AI Ingestion Pipeline
+The `llm_extractor.py` service handles the heavy lifting of raw police evidence:
+*   **Universal File Parsing**: Accepts unstructured text from PDFs (`pdfplumber`), Excel/CSVs (`pandas`), and Word Documents (`python-docx`).
+*   **Vision-Language Model (Gemini 2.5 Pro)**: The backend utilizes `google/gemini-2.5-pro` via the OpenRouter API. It leverages zero-shot prompting and multimodal vision capabilities to read screenshots of bank statements or WhatsApp chat logs, extracting structured JSON arrays (Sender, Receiver, Amount, Narration, Type).
+*   **Confidence Scoring**: Transactions extracted by the LLM are given a confidence score. Anything `<0.8` is visually flagged in red on the investigator's UI for manual human verification before committing to the graph.
 
-#### 4. Legal Enforcement Intelligence (BNS 2023 Mapped)
-The `intelligence.tsx` dashboard polls the backend every 5 seconds for live syndicate detection:
-*   **Cross-Jurisdictional Mapping**: Detects "Shared Mules"—accounts with critical risk scores (>0.8) that appear across multiple independent FIR case files.
-*   **Automated Charge Targeting**: Automatically tags detected syndicates with the new **Bharatiya Nyaya Sanhita (BNS) 2023** mandates, including BNS 318 (Cheating), BNS 336 (Forgery), and IT Act 66D.
+#### 🕸️ 3D Threat Network Explorer
+*   **ForceGraph3D Engine**: Uses `react-force-graph-3d` and `three.js` to render the extracted financial data natively in the browser as an interactive physics-based node-link graph.
+*   **Sub-Graph Traversal**: Uses `nx.ego_graph` (in portable mode) to isolate suspected money mules up to 3 degrees of separation from a central suspect. High-risk entities glow neon red, while safe nodes remain blue. Investigators can right-click nodes or smoothly orbit suspected actors in a 3D physical space.
 
-#### 5. Machine Learning Latent Space (Anomaly Detection)
-*   The `/ml/latent-space` endpoint projects high-risk nodes into a 2D geometric latent space using the `spring_layout` algorithm, effectively clustering accounts into Low, Medium, High, and Critical risk zones based on interaction weights and volumes. This mimics isolation forest anomaly detection for investigators.
+#### ⚖️ Legal Enforcement Intelligence (BNS 2023)
+The `intelligence.tsx` dashboard polls the backend (`/api/v1/intelligence/syndicates`) every 5 seconds for live syndicate detection:
+*   **Cross-Jurisdictional Mapping**: Automatically detects "Shared Mules"—accounts with critical risk scores (>0.8) that appear across multiple independent, unconnected FIR case files.
+*   **Automated Charge Targeting**: Automatically tags detected syndicates with the new **Bharatiya Nyaya Sanhita (BNS) 2023** mandates. For example, linking them to BNS 318 (Cheating), BNS 336 (Forgery), and IT Act 66D for cyber fraud.
 
-#### 6. Section 65B Compliance Reporting
-*   **Automated Court-Ready Reports**: Generates formal PDF reports (via `fpdf2`) that document the digital trail, transaction references, and chain of custody, ensuring evidence collected through the platform is admissible in Indian courts under Section 65B of the Indian Evidence Act.
+#### 📡 Machine Learning Latent Space (Anomaly Detection)
+*   The `/ml/latent-space` endpoint projects the high-dimensional node data into a 2D geometric latent space using the `spring_layout` algorithm. 
+*   This effectively clusters accounts into Low, Medium, High, and Critical risk zones based on interaction weights and transaction volumes, mimicking Isolation Forest anomaly detection models for investigators.
+
+#### 🗄️ Automated Case Management (Kanban)
+*   **Trigger Logic**: When the ML pipeline flags multiple high-risk nodes in a single upload, the system automatically opens a new Case envelope.
+*   **Investigator Board**: Features a drag-and-drop Kanban UI allowing officers to move cases across statuses (*New Alert*, *Investigating*, *Closed*), hitting live API endpoints to sync state automatically.
+
+#### 📜 Section 65B Compliance Reporting
+*   **Automated Court-Ready Reports**: The `/cases/{case_id}/export` API generates formal PDF reports (via `fpdf2`). These reports document the digital trail, timestamped transaction references, and chain of custody. This ensures evidence collected through the platform is formatted to be admissible in Indian courts under Section 65B of the Indian Evidence Act.
+
+---
+
+## 🛠️ Complete Technology Stack
+
+### Frontend Client
+- **Framework**: React 19, Vite, TypeScript
+- **Routing**: TanStack Router (`@tanstack/react-router`)
+- **State & Data**: Zustand, TanStack Query (`@tanstack/react-query`), Axios
+- **Styling & UI**: Tailwind CSS v4, Radix UI Primitives, Lucide React
+- **Animations**: Framer Motion, GSAP, Tw-animate-css
+- **Visualizations**: `react-force-graph-3d`, `three.js`, `@deck.gl`, `recharts`
+
+### Backend API
+- **Framework**: Python FastAPI, Uvicorn Server
+- **Graph Engines**: NetworkX (Portable), Neo4j (Production)
+- **AI Integration**: OpenAI SDK, OpenRouter API (`google/gemini-2.5-pro`)
+- **Data Parsing**: `pdfplumber`, `pandas`, `python-docx`
+- **PDF Generation**: `fpdf2`
 
 ---
 
