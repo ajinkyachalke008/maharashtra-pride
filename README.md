@@ -19,6 +19,7 @@
   <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" />
   <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white" />
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Neo4j-018bff?style=for-the-badge&logo=neo4j&logoColor=white" />
 </p>
 
 <br/>
@@ -49,33 +50,36 @@ The root application serves as a high-fidelity, scroll-driven interactive web ex
 
 ## 🛡️ Part II: FraudLens Portal (The Intelligence Application)
 
-Hidden behind the "Portal Gate" is **FraudLens**, a production-ready, AI-driven financial intelligence platform. It is engineered specifically for law enforcement to transform unstructured cybercrime data (like FIRs and Bank Statements) into interactive 3D threat graphs.
+Hidden behind the "Portal Gate" is **FraudLens**, a production-ready, AI-driven financial intelligence platform. It is engineered specifically for law enforcement to transform unstructured cybercrime data (like FIRs, Bank Statements, and Images) into interactive 3D threat graphs.
 
-### 🧠 Core Architecture & Capabilities
+### 🧠 Deep-Dive: Core Architecture & Capabilities
 
-#### 1. Zero-Mock Data Engine (Local Graph DB)
-The platform operates on a functional Python-native `networkx` graph engine. Instead of relying on heavy Dockerized databases, the backend natively commits accounts as nodes and transactions as edges directly to a persisted `graph_store.json`.
-*   **Dynamic Risk Scoring**: Accounts exceeding ₹100,000 in transaction volume are automatically flagged with critical risk thresholds.
-*   **Sub-Graph Traversal**: The API efficiently queries multi-hop connections (`nx.ego_graph`) to isolate suspected money mules up to 3 degrees of separation.
+#### 1. Zero-Mock Graph Engine (Neo4j & NetworkX)
+The platform operates on a dual-engine architecture:
+*   **Production**: Native `neo4j` integration via Cypher queries for highly scalable subgraph traversals.
+*   **Portable Mode**: A fully functional Python-native `networkx` engine that commits accounts as nodes and transactions as edges directly to a persisted `graph_store.json`, allowing the app to run anywhere without heavy Dockerized database containers.
+*   **Dynamic Risk Scoring**: Accounts exceeding ₹100,000 in transaction volume are automatically flagged with critical risk thresholds (Risk Score: 0.9).
 
-#### 2. LLM-Powered Data Ingestion (The Dropzone)
-Investigators often deal with raw, unstructured evidence. FraudLens solves this with an AI data extraction pipeline:
-*   **File Parsing**: Accepts PDFs, Excel sheets, and CSVs (via `pdfplumber` and `pandas`).
-*   **OpenRouter & Gemini 2.5 Pro**: The backend utilizes an advanced LLM model to read thousands of words of text (such as FIR complaints) and extract structured JSON arrays of transactions (Sender, Receiver, Amount, Type) using zero-shot prompting.
+#### 2. Multimodal LLM Ingestion (The Dropzone)
+The frontend features a drag-and-drop React component (`ingest.tsx`) that streams files to the FastAPI backend, where the `llm_extractor.py` pipeline takes over:
+*   **Universal File Parsing**: Accepts PDFs (`pdfplumber`), Excel/CSV (`pandas`), Word (`python-docx`), and even Images (`png/jpg`).
+*   **Vision-Language Model (Gemini 2.5 Pro)**: The backend utilizes `google/gemini-2.5-pro` via the OpenRouter API. It leverages zero-shot prompting and multimodal vision capabilities to read thousands of words of unstructured text or scan raw screenshots of bank statements to extract structured JSON arrays (Sender, Receiver, Amount, Type).
+*   **Confidence Scoring**: Transactions extracted with low confidence (<0.8) are visually flagged in red on the investigator's UI for manual review.
 
 #### 3. 3D Network Explorer & Syndication
-*   **ForceGraph3D Engine**: Uses `react-force-graph-3d` and `three.js` to render extracted data natively in the browser as an interactive physics-based node-link graph.
-*   **Visual Threat Mapping**: High-risk entities glow red, safe nodes remain blue. Investigators can right-click nodes to view transaction history or smoothly orbit suspected central actors.
+*   **ForceGraph3D Engine**: Uses `react-force-graph-3d` and `three.js` to render extracted data natively in the browser. 
+*   **Sub-Graph Traversal**: Uses `nx.ego_graph` to isolate suspected money mules up to 3 degrees of separation. High-risk entities glow red, safe nodes remain blue. Investigators can smoothly orbit suspected central actors in a 3D physical space.
 
-#### 4. Automated Case Management (Kanban)
-*   **Trigger Logic**: When the ML pipeline flags multiple high-risk nodes, the system automatically opens a Case.
-*   **Investigator Board**: Features a drag-and-drop Kanban UI allowing officers to move cases across statuses (e.g., *New Alert*, *Investigating*, *Closed*), hitting live API endpoints to sync state.
+#### 4. Legal Enforcement Intelligence (BNS 2023 Mapped)
+The `intelligence.tsx` dashboard polls the backend every 5 seconds for live syndicate detection:
+*   **Cross-Jurisdictional Mapping**: Detects "Shared Mules"—accounts with critical risk scores (>0.8) that appear across multiple independent FIR case files.
+*   **Automated Charge Targeting**: Automatically tags detected syndicates with the new **Bharatiya Nyaya Sanhita (BNS) 2023** mandates, including BNS 318 (Cheating), BNS 336 (Forgery), and IT Act 66D.
 
-#### 5. Section 65B Compliance Reporting
-*   **Automated Court-Ready Reports**: Generates formal PDF reports (via `fpdf2`) that document the digital trail and chain of custody, ensuring evidence collected through the platform is admissible in Indian courts under Section 65B of the Evidence Act.
+#### 5. Machine Learning Latent Space (Anomaly Detection)
+*   The `/ml/latent-space` endpoint projects high-risk nodes into a 2D geometric latent space using the `spring_layout` algorithm, effectively clustering accounts into Low, Medium, High, and Critical risk zones based on interaction weights and volumes. This mimics isolation forest anomaly detection for investigators.
 
-#### 6. Machine Learning Telemetry
-*   **Live WebSockets**: The dashboard monitors telemetry for theoretical models such as **FraudSAGE GNN** (Structural embeddings) and **Isolation Forests** (Anomaly detection), streaming active alerts across the UI in real-time.
+#### 6. Section 65B Compliance Reporting
+*   **Automated Court-Ready Reports**: Generates formal PDF reports (via `fpdf2`) that document the digital trail, transaction references, and chain of custody, ensuring evidence collected through the platform is admissible in Indian courts under Section 65B of the Indian Evidence Act.
 
 ---
 
