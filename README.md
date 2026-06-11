@@ -54,7 +54,7 @@ The root application serves as a high-fidelity, scroll-driven interactive web ex
 
 ### ⚡ THE FINANCIAL INTELLIGENCE APPLICATION
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=800&size=28&duration=2500&pause=800&color=00E5FF&center=true&vCenter=true&width=1200&lines=Transforming+Evidence+Into+Intelligence;Uncovering+Hidden+Criminal+Networks;AI-Powered+Financial+Crime+Investigation;3D+Syndicate+Visualization+Engine;Court-Ready+Digital+Evidence+Automation"/>
+<img src="https://readme-typing-svg.herokuapp.com?font=Cinzel&weight=700&size=28&duration=4000&pause=2000&color=00E5FF&center=true&vCenter=true&width=1200&lines=Transforming+Evidence+Into+Intelligence%3BUncovering+Hidden+Criminal+Networks%3BAI-Powered+Financial+Crime+Investigation%3B3D+Syndicate+Visualization+Engine%3BCourt-Ready+Digital+Evidence+Automation"/>
 
 <br>
 
@@ -68,7 +68,7 @@ The root application serves as a high-fidelity, scroll-driven interactive web ex
 
 ---
 
-# 🌌 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=800&lines=Behind+The+Portal+Gate"/>
+# 🌌 <img src="https://readme-typing-svg.herokuapp.com?font=Share+Tech+Mono&weight=500&size=28&duration=600&pause=300&color=00FFB3&center=false&vCenter=true&width=800&lines=Behind+The+Portal+Gate"/>
 
 Beyond the secure access layer lies **FraudLens**, an AI-native financial intelligence platform purpose-built for cybercrime investigators, financial crime units, and law enforcement agencies.
 
@@ -76,23 +76,23 @@ FraudLens transforms fragmented evidence sources — bank statements, screenshot
 
 <div align="center">
 
-📥 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=20&duration=2000&pause=500&color=00E5FF&center=true&vCenter=true&width=600&lines=RAW+EVIDENCE+%5BText+Scramble+Effect%5D"/>
+📥 <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=20&duration=1200&pause=1000&color=00E5FF&center=true&vCenter=true&width=600&lines=RAW+EVIDENCE+%5BText+Scramble+Effect%5D"/>
 <br><strong style="color: #00FFB3;">↓</strong><br>
-🤖 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=20&duration=2000&pause=500&color=00FFB3&center=true&vCenter=true&width=600&lines=AI+EXTRACTION+%5BDecode+Animation%5D"/>
+🤖 <img src="https://readme-typing-svg.herokuapp.com?font=VT323&weight=400&size=20&duration=800&pause=400&color=00FFB3&center=true&vCenter=true&width=600&lines=AI+EXTRACTION+%5BDecode+Animation%5D"/>
 <br><strong style="color: #00FFB3;">↓</strong><br>
-🌐 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=20&duration=2000&pause=500&color=7C3AED&center=true&vCenter=true&width=600&lines=GRAPH+INTELLIGENCE+%5BParticle+Network%5D"/>
+🌐 <img src="https://readme-typing-svg.herokuapp.com?font=Play&weight=700&size=20&duration=2500&pause=1500&color=7C3AED&center=true&vCenter=true&width=600&lines=GRAPH+INTELLIGENCE+%5BParticle+Network%5D"/>
 <br><strong style="color: #00FFB3;">↓</strong><br>
-🧠 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=20&duration=2000&pause=500&color=FFB300&center=true&vCenter=true&width=600&lines=RISK+ANALYTICS+%5BMatrix+Rain+Effect%5D"/>
+🧠 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=800&size=20&duration=1800&pause=1200&color=FFB300&center=true&vCenter=true&width=600&lines=RISK+ANALYTICS+%5BMatrix+Rain+Effect%5D"/>
 <br><strong style="color: #00FFB3;">↓</strong><br>
-⚖️ <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=20&duration=2000&pause=500&color=10B981&center=true&vCenter=true&width=600&lines=LEGAL+MAPPING+%5BCyberpunk+Scanline%5D"/>
+⚖️ <img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&weight=500&size=20&duration=1500&pause=800&color=10B981&center=true&vCenter=true&width=600&lines=LEGAL+MAPPING+%5BCyberpunk+Scanline%5D"/>
 <br><strong style="color: #00FFB3;">↓</strong><br>
-📜 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=20&duration=2000&pause=500&color=FF5252&center=true&vCenter=true&width=600&lines=COURT+ADMISSIBLE+REPORTS+%5BHolographic+Effect%5D"/>
+📜 <img src="https://readme-typing-svg.herokuapp.com?font=Righteous&weight=400&size=20&duration=2200&pause=1000&color=FF5252&center=true&vCenter=true&width=600&lines=COURT+ADMISSIBLE+REPORTS+%5BHolographic+Effect%5D"/>
 
 </div>
 
 ---
 
-# ⚡ <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=00E5FF&center=false&vCenter=true&width=800&lines=13+Specialized+Intelligence+Modules"/>
+# ⚡ <img src="https://readme-typing-svg.herokuapp.com?font=Rajdhani&weight=700&size=28&duration=1000&pause=600&color=00E5FF&center=false&vCenter=true&width=800&lines=13+Specialized+Intelligence+Modules"/>
 
 <div align="center">
 
@@ -116,7 +116,7 @@ FraudLens transforms fragmented evidence sources — bank statements, screenshot
 
 ---
 
-# 🏢 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=7C3AED&center=false&vCenter=true&width=800&lines=Dual+Graph+Intelligence+Architecture"/>
+# 🏢 <img src="https://readme-typing-svg.herokuapp.com?font=Cinzel&weight=700&size=28&duration=4000&pause=2000&color=7C3AED&center=false&vCenter=true&width=800&lines=Dual+Graph+Intelligence+Architecture"/>
 
 <div align="center">
 
@@ -139,7 +139,7 @@ F --> G[📜 Court Reports]
 
 </div>
 
-## 🌐 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=22&duration=2000&pause=1000&color=018bff&center=false&vCenter=true&width=800&lines=Neo4j+Production+Engine"/>
+## 🌐 <img src="https://readme-typing-svg.herokuapp.com?font=Share+Tech+Mono&weight=500&size=22&duration=600&pause=300&color=018bff&center=false&vCenter=true&width=800&lines=Neo4j+Production+Engine"/>
 
 ```cypher
 MATCH path = (a)-[*1..3]-(b)
@@ -158,7 +158,7 @@ RETURN path
 
 ---
 
-## 🐍 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=22&duration=2000&pause=1000&color=FFD62E&center=false&vCenter=true&width=800&lines=Portable+NetworkX+Engine"/>
+## 🐍 <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=22&duration=1200&pause=1000&color=FFD62E&center=false&vCenter=true&width=800&lines=Portable+NetworkX+Engine"/>
 
 Unlike traditional intelligence platforms requiring complex infrastructure, FraudLens includes a fully operational standalone graph engine.
 
@@ -178,17 +178,17 @@ graph_store.json
 
 ---
 
-## 🚨 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=22&duration=2000&pause=1000&color=FF5252&center=false&vCenter=true&width=800&lines=Dynamic+Risk+Intelligence"/>
+## 🚨 <img src="https://readme-typing-svg.herokuapp.com?font=VT323&weight=400&size=22&duration=800&pause=400&color=FF5252&center=false&vCenter=true&width=800&lines=Dynamic+Risk+Intelligence"/>
 
 Every entity continuously receives a dynamic behavioral risk score.
 
 <div align="center">
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=20&duration=2000&pause=500&color=00E5FF&center=true&vCenter=true&width=600&lines=₹100,000%2B+Volume+%5BData+Stream+Animation%5D"/>
+<img src="https://readme-typing-svg.herokuapp.com?font=Play&weight=700&size=20&duration=2500&pause=1500&color=00E5FF&center=true&vCenter=true&width=600&lines=%E2%82%B9100%2C000++Volume+%5BData+Stream+Animation%5D"/>
 <br><strong style="color: #FF5252;">↓</strong><br>
-<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=20&duration=2000&pause=500&color=FFB300&center=true&vCenter=true&width=600&lines=Risk+Score+≥+0.90+%5BNeon+Flicker+Effect%5D"/>
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=800&size=20&duration=1800&pause=1200&color=FFB300&center=true&vCenter=true&width=600&lines=Risk+Score+%E2%89%A5+0.90+%5BNeon+Flicker+Effect%5D"/>
 <br><strong style="color: #FF5252;">↓</strong><br>
-🔴 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=20&duration=2000&pause=500&color=FF5252&center=true&vCenter=true&width=600&lines=Critical+Threat+%5BGlitch+Effect%5D"/>
+🔴 <img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&weight=500&size=20&duration=1500&pause=800&color=FF5252&center=true&vCenter=true&width=600&lines=Critical+Threat+%5BGlitch+Effect%5D"/>
 
 </div>
 
@@ -196,11 +196,11 @@ High-risk entities automatically surface across investigative dashboards and int
 
 ---
 
-# 🤖 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=00E5FF&center=false&vCenter=true&width=800&lines=Multimodal+AI+Evidence+Pipeline"/>
+# 🤖 <img src="https://readme-typing-svg.herokuapp.com?font=Righteous&weight=400&size=28&duration=2200&pause=1000&color=00E5FF&center=false&vCenter=true&width=800&lines=Multimodal+AI+Evidence+Pipeline"/>
 
 <div align="center">
 
-<img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&weight=700&size=18&duration=3500&pause=700&color=00FFB3&center=true&vCenter=true&width=900&lines=PDFs+➜+Structured+Transactions;Screenshots+➜+Financial+Intelligence;WhatsApp+Chats+➜+Evidence+Correlation;Raw+Evidence+➜+Actionable+Insights"/>
+<img src="https://readme-typing-svg.herokuapp.com?font=Rajdhani&weight=700&size=18&duration=1000&pause=600&color=00FFB3&center=true&vCenter=true&width=900&lines=PDFs+%E2%9E%9C+Structured+Transactions%3BScreenshots+%E2%9E%9C+Financial+Intelligence%3BWhatsApp+Chats+%E2%9E%9C+Evidence+Correlation%3BRaw+Evidence+%E2%9E%9C+Actionable+Insights"/>
 
 </div>
 
@@ -257,7 +257,7 @@ No intelligence enters the graph without verification safeguards.
 
 ---
 
-# 🌌 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=FFB300&center=false&vCenter=true&width=800&lines=3D+Threat+Network+Explorer"/>
+# 🌌 <img src="https://readme-typing-svg.herokuapp.com?font=Cinzel&weight=700&size=28&duration=4000&pause=2000&color=FFB300&center=false&vCenter=true&width=800&lines=3D+Threat+Network+Explorer"/>
 
 Built using:
 
@@ -298,7 +298,7 @@ FraudLens renders criminal ecosystems as living, interactive intelligence networ
 
 ---
 
-# ⚖️ <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=10B981&center=false&vCenter=true&width=800&lines=BNS+2023+Legal+Intelligence+Engine"/>
+# ⚖️ <img src="https://readme-typing-svg.herokuapp.com?font=Share+Tech+Mono&weight=500&size=28&duration=600&pause=300&color=10B981&center=false&vCenter=true&width=800&lines=BNS+2023+Legal+Intelligence+Engine"/>
 
 FraudLens continuously monitors active investigations for syndicate formation.
 
@@ -333,7 +333,7 @@ Investigators receive legal intelligence in real-time.
 
 ---
 
-# 📡 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=00FFB3&center=false&vCenter=true&width=800&lines=Machine+Learning+Intelligence+Layer"/>
+# 📡 <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&duration=1200&pause=1000&color=00FFB3&center=false&vCenter=true&width=800&lines=Machine+Learning+Intelligence+Layer"/>
 
 The platform projects complex graph relationships into a visual risk space using **AI Data Visualization Animation** and a **Holographic Effect**.
 
@@ -360,7 +360,7 @@ The platform projects complex graph relationships into a visual risk space using
 
 ---
 
-# 📂 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=38B2AC&center=false&vCenter=true&width=800&lines=Automated+Case+Management"/>
+# 📂 <img src="https://readme-typing-svg.herokuapp.com?font=VT323&weight=400&size=28&duration=800&pause=400&color=38B2AC&center=false&vCenter=true&width=800&lines=Automated+Case+Management"/>
 
 When multiple critical-risk entities emerge:
 
@@ -380,29 +380,29 @@ The Kanban board provides drag-and-drop operational control using **Smooth Page 
 
 ---
 
-# 📜 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=7C3AED&center=false&vCenter=true&width=800&lines=Section+65B+Compliance+Engine"/>
+# 📜 <img src="https://readme-typing-svg.herokuapp.com?font=Play&weight=700&size=28&duration=2500&pause=1500&color=7C3AED&center=false&vCenter=true&width=800&lines=Section+65B+Compliance+Engine"/>
 
 FraudLens bridges intelligence gathering and prosecution.
 
 ### Generated Evidence Packages
 
-📄 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=18&duration=2000&pause=500&color=00E5FF&center=false&vCenter=true&width=800&lines=Court-Admissible+Reports+%5BTypewriter+Effect%5D"/>
+📄 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=800&size=18&duration=1800&pause=1200&color=00E5FF&center=false&vCenter=true&width=800&lines=Court-Admissible+Reports+%5BTypewriter+Effect%5D"/>
 
-🕒 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=18&duration=2000&pause=500&color=00FFB3&center=false&vCenter=true&width=800&lines=Timestamped+Evidence+Trails+%5BSplit+Text+Animation%5D"/>
+🕒 <img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&weight=500&size=18&duration=1500&pause=800&color=00FFB3&center=false&vCenter=true&width=800&lines=Timestamped+Evidence+Trails+%5BSplit+Text+Animation%5D"/>
 
-🔗 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=18&duration=2000&pause=500&color=7C3AED&center=false&vCenter=true&width=800&lines=Chain+Of+Custody+Records+%5BHacker+Text+Reveal%5D"/>
+🔗 <img src="https://readme-typing-svg.herokuapp.com?font=Righteous&weight=400&size=18&duration=2200&pause=1000&color=7C3AED&center=false&vCenter=true&width=800&lines=Chain+Of+Custody+Records+%5BHacker+Text+Reveal%5D"/>
 
-🧠 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=18&duration=2000&pause=500&color=FFB300&center=false&vCenter=true&width=800&lines=Intelligence+Findings+%5BRandom+Character+Reveal%5D"/>
+🧠 <img src="https://readme-typing-svg.herokuapp.com?font=Rajdhani&weight=700&size=18&duration=1000&pause=600&color=FFB300&center=false&vCenter=true&width=800&lines=Intelligence+Findings+%5BRandom+Character+Reveal%5D"/>
 
-📊 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=18&duration=2000&pause=500&color=10B981&center=false&vCenter=true&width=800&lines=Transaction+Narratives+%5BCyber+Decrypt+Reveal%5D"/>
+📊 <img src="https://readme-typing-svg.herokuapp.com?font=Cinzel&weight=700&size=18&duration=4000&pause=2000&color=10B981&center=false&vCenter=true&width=800&lines=Transaction+Narratives+%5BCyber+Decrypt+Reveal%5D"/>
 
-⚖️ <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=18&duration=2000&pause=500&color=FF5252&center=false&vCenter=true&width=800&lines=Legal+Documentation+%5BLiquid+Distortion%5D"/>
+⚖️ <img src="https://readme-typing-svg.herokuapp.com?font=Share+Tech+Mono&weight=500&size=18&duration=600&pause=300&color=FF5252&center=false&vCenter=true&width=800&lines=Legal+Documentation+%5BLiquid+Distortion%5D"/>
 
 All reports are designed for admissibility under Section 65B of the Indian Evidence Act.
 
 ---
 
-# 🛠️ <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2000&pause=1000&color=00E5FF&center=false&vCenter=true&width=800&lines=Technology+Stack"/>
+# 🛠️ <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&duration=1200&pause=1000&color=00E5FF&center=false&vCenter=true&width=800&lines=Technology+Stack"/>
 
 <div align="center">
 
@@ -466,7 +466,7 @@ npm run dev
 
 <div align="center">
 
-# 🚀 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=32&duration=2000&pause=1000&color=FFB300&center=false&vCenter=true&width=800&lines=MISSION"/>
+# 🚀 <img src="https://readme-typing-svg.herokuapp.com?font=VT323&weight=400&size=32&duration=800&pause=400&color=FFB300&center=false&vCenter=true&width=800&lines=MISSION"/>
 
 ### From Evidence → Intelligence → Action
 
