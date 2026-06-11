@@ -40,22 +40,42 @@ A comprehensive, dual-purpose digital platform developed as an homage to the **M
 The root application serves as a high-fidelity, scroll-driven interactive web experience honoring the history and scale of India's largest state police force.
 
 ### ✨ Key Visual & Interactive Features
-- 🎬 **Immersive Scrollytelling**: Powered by Framer Motion, elements fade and slide dynamically.
-- 🛡️ **The 36 Districts & 185,000 Officers**: A narrative tribute visually representing the scale of the force.
-- 🗺️ **Interactive Commissionerates Cloth**: A physics-simulated, interactive grid showcasing the 12 primary Police Commissionerates.
-- 🌌 **Cinematic Aesthetics**: Deep dark themes (`#0d0d0d`), ambient glassmorphism panels, and bespoke cursor trackers.
+- 🎬 **Immersive Scrollytelling**: Powered by Framer Motion, elements fade and slide dynamically to create a cinematic narrative experience as the user scrolls.
+- 🛡️ **The 36 Districts & 185,000 Officers**: A detailed narrative tribute visually representing the scale of the force defending 11.42 crore citizens, complete with dynamic counters and historical timelines.
+- 🗺️ **Interactive Commissionerates Cloth**: A stunning WebGL physics-simulated, interactive grid showcasing the 12 primary Police Commissionerates across the state.
+- 🌌 **Cinematic Aesthetics**: Deep dark themes (`#0d0d0d`), ambient glassmorphism panels, specialized typography, and bespoke cursor trackers to ensure maximum user engagement.
 
 ---
 
 ## 🛡️ Part II: FraudLens Portal (The Intelligence Application)
 
-Hidden behind the "Portal Gate" is **FraudLens**, a production-ready, AI-driven financial intelligence platform. It is engineered to transform unstructured cybercrime data into interactive 3D threat graphs.
+Hidden behind the "Portal Gate" is **FraudLens**, a production-ready, AI-driven financial intelligence platform. It is engineered specifically for law enforcement to transform unstructured cybercrime data (like FIRs and Bank Statements) into interactive 3D threat graphs.
 
 ### 🧠 Core Architecture & Capabilities
-*   **Zero-Mock Data Engine**: Python-native `networkx` graph engine committing natively to a local `graph_store.json`.
-*   **LLM-Powered Data Ingestion**: Uses OpenRouter API to parse drag-and-dropped PDFs/CSVs into structured transaction arrays.
-*   **3D Network Explorer**: `ForceGraph3D` Engine tracking money mules and crypto syndicates via visually glowing high-risk nodes.
-*   **Automated Case Management**: Live Kanban board with reactive triggers for suspicious thresholds.
+
+#### 1. Zero-Mock Data Engine (Local Graph DB)
+The platform operates on a functional Python-native `networkx` graph engine. Instead of relying on heavy Dockerized databases, the backend natively commits accounts as nodes and transactions as edges directly to a persisted `graph_store.json`.
+*   **Dynamic Risk Scoring**: Accounts exceeding ₹100,000 in transaction volume are automatically flagged with critical risk thresholds.
+*   **Sub-Graph Traversal**: The API efficiently queries multi-hop connections (`nx.ego_graph`) to isolate suspected money mules up to 3 degrees of separation.
+
+#### 2. LLM-Powered Data Ingestion (The Dropzone)
+Investigators often deal with raw, unstructured evidence. FraudLens solves this with an AI data extraction pipeline:
+*   **File Parsing**: Accepts PDFs, Excel sheets, and CSVs (via `pdfplumber` and `pandas`).
+*   **OpenRouter & Gemini 2.5 Pro**: The backend utilizes an advanced LLM model to read thousands of words of text (such as FIR complaints) and extract structured JSON arrays of transactions (Sender, Receiver, Amount, Type) using zero-shot prompting.
+
+#### 3. 3D Network Explorer & Syndication
+*   **ForceGraph3D Engine**: Uses `react-force-graph-3d` and `three.js` to render extracted data natively in the browser as an interactive physics-based node-link graph.
+*   **Visual Threat Mapping**: High-risk entities glow red, safe nodes remain blue. Investigators can right-click nodes to view transaction history or smoothly orbit suspected central actors.
+
+#### 4. Automated Case Management (Kanban)
+*   **Trigger Logic**: When the ML pipeline flags multiple high-risk nodes, the system automatically opens a Case.
+*   **Investigator Board**: Features a drag-and-drop Kanban UI allowing officers to move cases across statuses (e.g., *New Alert*, *Investigating*, *Closed*), hitting live API endpoints to sync state.
+
+#### 5. Section 65B Compliance Reporting
+*   **Automated Court-Ready Reports**: Generates formal PDF reports (via `fpdf2`) that document the digital trail and chain of custody, ensuring evidence collected through the platform is admissible in Indian courts under Section 65B of the Evidence Act.
+
+#### 6. Machine Learning Telemetry
+*   **Live WebSockets**: The dashboard monitors telemetry for theoretical models such as **FraudSAGE GNN** (Structural embeddings) and **Isolation Forests** (Anomaly detection), streaming active alerts across the UI in real-time.
 
 ---
 
