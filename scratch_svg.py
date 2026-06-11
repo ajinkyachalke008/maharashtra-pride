@@ -1,4 +1,96 @@
-<p align="center">
+import os
+
+def create_svg(filename, content, height):
+    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="800" height="{height}" style="background-color: #0d1117; font-family: 'Courier New', Courier, monospace; font-size: 15px; font-weight: bold; border-radius: 8px;">
+  <!-- Window Controls -->
+  <rect width="100%" height="35" fill="#161b22" rx="8" />
+  <circle cx="20" cy="18" r="6" fill="#ff5f56" />
+  <circle cx="40" cy="18" r="6" fill="#ffbd2e" />
+  <circle cx="60" cy="18" r="6" fill="#27c93f" />
+
+  {content}
+</svg>"""
+    with open(filename, 'w', encoding='utf-8') as f:
+        f.write(svg)
+
+# --- Tree SVG ---
+tree_content = """
+  <!-- Prompt 1 -->
+  <!-- Blue background for path -->
+  <rect x="20" y="55" width="310" height="24" fill="#1f6feb" rx="3" />
+  <text x="30" y="72" fill="#ffffff">🍎 📂 .../maharashtra-pride</text>
+  
+  <!-- Green background for branch -->
+  <rect x="330" y="55" width="210" height="24" fill="#238636" rx="3" />
+  <text x="340" y="72" fill="#ffffff">🐙 ⎇ main ✔ v1.0.0</text>
+
+  <!-- Command -->
+  <text x="20" y="105" fill="#58a6ff">↳</text>
+  <text x="40" y="105" fill="#e3b341">colorls -1</text>
+
+  <!-- Tree -->
+  <text x="20" y="145" fill="#3fb950">📂 backend/</text>
+  <text x="45" y="170" fill="#3fb950">🐍 api.py</text>
+  <text x="45" y="195" fill="#3fb950">🐍 database.py</text>
+  <text x="45" y="220" fill="#3fb950">🐍 llm_extractor.py</text>
+  <text x="45" y="245" fill="#3fb950">🐍 main.py</text>
+  <text x="45" y="270" fill="#58a6ff">📜 requirements.txt</text>
+
+  <text x="20" y="310" fill="#3fb950">📂 src/</text>
+  <text x="45" y="335" fill="#3fb950">📂 components/</text>
+  <text x="45" y="360" fill="#3fb950">📂 routes/</text>
+  <text x="45" y="385" fill="#3fb950">📂 hooks/</text>
+  <text x="45" y="410" fill="#58a6ff">🎨 styles.css</text>
+  <text x="45" y="435" fill="#58a6ff">⚙️ config.ts</text>
+
+  <text x="20" y="475" fill="#58a6ff">🐳 docker-compose.yml</text>
+  <text x="20" y="500" fill="#58a6ff">📦 package.json</text>
+  <text x="20" y="525" fill="#58a6ff">📜 render.yaml</text>
+"""
+create_svg('c:/Users/HP/Desktop/new 1/maharashtra-pride-1/public/terminal_tree.svg', tree_content, 560)
+
+
+# --- Setup SVG ---
+setup_content = """
+  <!-- Prompt 1 -->
+  <rect x="20" y="55" width="220" height="24" fill="#1f6feb" rx="3" />
+  <text x="30" y="72" fill="#ffffff">🍎 📂 .../backend</text>
+  
+  <rect x="240" y="55" width="210" height="24" fill="#238636" rx="3" />
+  <text x="250" y="72" fill="#ffffff">🐙 ⎇ main ✔ v1.0.0</text>
+
+  <!-- Command -->
+  <text x="20" y="105" fill="#58a6ff">↳</text>
+  <text x="40" y="105" fill="#e3b341">python -m uvicorn main:app --reload</text>
+
+  <!-- Logs -->
+  <text x="20" y="145" fill="#3fb950">INFO:</text>
+  <text x="75" y="145" fill="#c9d1d9">Will watch for changes in these directories: ['/backend']</text>
+  
+  <text x="20" y="170" fill="#3fb950">INFO:</text>
+  <text x="75" y="170" fill="#c9d1d9">Uvicorn running on </text>
+  <text x="250" y="170" fill="#58a6ff">http://127.0.0.0:8000</text>
+  
+  <text x="20" y="195" fill="#3fb950">INFO:</text>
+  <text x="75" y="195" fill="#c9d1d9">Started reloader process [12345] using WatchFiles</text>
+
+  <text x="20" y="220" fill="#3fb950">INFO:</text>
+  <text x="75" y="220" fill="#c9d1d9">Application startup complete.</text>
+"""
+create_svg('c:/Users/HP/Desktop/new 1/maharashtra-pride-1/public/terminal_setup.svg', setup_content, 260)
+
+
+# --- Update README.md ---
+readme_path = 'c:/Users/HP/Desktop/new 1/maharashtra-pride-1/README.md'
+with open(readme_path, 'r', encoding='utf-8') as f:
+    content = f.read()
+
+# Replace ANSI sections with SVG images
+import re
+
+# Remove the ANSI blocks completely
+# We will use string replacement or regex
+new_readme = """<p align="center">
   <img src="public/maharashtra_police_logo.png" alt="Maharashtra Police Logo" width="150" />
   <br />
   <strong style="color: #3b82f6; font-size: 1.3em;">सद्रक्षणाय खलनिग्रहणाय</strong>
@@ -95,3 +187,9 @@ npm run dev
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=150&section=footer" />
 </p>
+"""
+
+with open(readme_path, 'w', encoding='utf-8') as f:
+    f.write(new_readme)
+
+print("SVGs created and README updated.")
