@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 import { createFileRoute } from '@tanstack/react-router';
 import { Globe } from 'lucide-react';
 import BANK_BRANCHES from '@/data/bankBranches';
@@ -7,10 +7,16 @@ export const Route = createFileRoute('/fraudlens/map')({
   component: MapPage,
 });
 
-// Lazy load Deck.gl map to prevent SSR issues and reduce initial bundle size
+// Lazy load Deck.gl map — only imported on client side
 const SpatialMap = React.lazy(() => import('@/components/fraudlens/map/SpatialMap'));
 
 function MapPage() {
+  // ── Client-only gate: Deck.gl + MapLibre require browser WebGL APIs ──
+  // Without this, SSR on Vercel tries to render the canvas server-side
+  // which silently fails and produces an empty map with no bank dots.
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => { setIsClient(true); }, []);
+
   return (
     <div className="flex flex-col h-[calc(100vh-56px)] p-4 gap-4 bg-background-base">
       <div className="h-16 bg-background-surface border border-white/5 rounded-lg shadow flex items-center justify-between px-6 shrink-0">
@@ -38,13 +44,19 @@ function MapPage() {
       </div>
 
       <div className="flex-1 relative">
-        <Suspense fallback={
+        {isClient ? (
+          <Suspense fallback={
+            <div className="w-full h-full flex items-center justify-center bg-background-surface rounded-xl border border-white/5 text-primary-500 font-mono animate-pulse shadow-lg">
+              Loading Spatial Geometry...
+            </div>
+          }>
+            <SpatialMap banks={BANK_BRANCHES} />
+          </Suspense>
+        ) : (
           <div className="w-full h-full flex items-center justify-center bg-background-surface rounded-xl border border-white/5 text-primary-500 font-mono animate-pulse shadow-lg">
-            Loading Spatial Geometry...
+            Initializing WebGL Engine...
           </div>
-        }>
-          <SpatialMap banks={BANK_BRANCHES} />
-        </Suspense>
+        )}
       </div>
     </div>
   );
