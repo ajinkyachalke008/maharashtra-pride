@@ -491,7 +491,7 @@ For full license terms, please refer to the [LICENSE](LICENSE) file in the root 
 
 # 🚀 <img src="https://readme-typing-svg.herokuapp.com?font=VT323&weight=400&size=32&duration=800&pause=400&color=FFB300&center=false&vCenter=true&width=800&lines=MISSION"/>
 
-### From Evidence → Intelligence → Action
+### From Evidence→Intelligence → Action
 
 FraudLens empowers investigators to uncover hidden financial syndicates, expose cybercrime infrastructure, accelerate investigations, and generate legally defensible evidence through a unified AI-powered intelligence ecosystem.
 
