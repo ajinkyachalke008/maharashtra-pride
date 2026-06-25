@@ -158,8 +158,6 @@ function IngestPage() {
   // ──── Hidden Keyboard Trigger ─────────────────────────────
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Only trigger if a file is uploaded and we're not already processing
-      if (files.length === 0) return;
       if (demo.status === 'processing' || demo.status === 'complete') return;
 
       // Ignore if user is typing in an input/textarea
@@ -169,6 +167,13 @@ function IngestPage() {
       const caseConfig = DEMO_CASES[e.key];
       if (caseConfig) {
         e.preventDefault();
+        
+        // If they trigger the demo without uploading a file, fake one for them!
+        if (files.length === 0) {
+          const fakeFile = new File([''], '31901260013198.xlsx', { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+          setFiles([fakeFile]);
+        }
+        
         startDemoProcessing(caseConfig, e.key);
       }
     };
