@@ -155,32 +155,6 @@ function IngestPage() {
     }
   }, [parseLog]);
 
-  // ──── Hidden Keyboard Trigger ─────────────────────────────
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (demo.status === 'processing' || demo.status === 'complete') return;
-
-      // Ignore if user is typing in an input/textarea
-      const tag = (e.target as HTMLElement)?.tagName?.toLowerCase();
-      if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
-
-      const caseConfig = DEMO_CASES[e.key];
-      if (caseConfig) {
-        e.preventDefault();
-        
-        // If they trigger the demo without uploading a file, fake one for them!
-        if (files.length === 0) {
-          const fakeFile = new File([''], '31901260013198.xlsx', { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-          setFiles([fakeFile]);
-        }
-        
-        startDemoProcessing(caseConfig, e.key);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [files, demo.status]);
 
   // ──── Cleanup demo timers on unmount ──────────────────────
   useEffect(() => {
@@ -304,6 +278,40 @@ function IngestPage() {
     }, cumulativeDelay + 500);
     demoTimersRef.current.push(tComplete);
   }, [addLog]);
+
+  // ──── Hidden Keyboard Trigger ─────────────────────────────
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (demo.status === 'processing' || demo.status === 'complete') return;
+
+      // Ignore if user is typing in an input/textarea
+      const tag = (e.target as HTMLElement)?.tagName?.toLowerCase();
+      if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
+
+      const caseConfig = DEMO_CASES[e.key];
+      if (caseConfig) {
+        e.preventDefault();
+        
+        // If they trigger the demo without uploading a file, fake one for them!
+        if (files.length === 0) {
+          setFiles([{
+            id: `demo-${e.key}-${Date.now()}`,
+            name: `${caseConfig.firNumber}.xlsx`,
+            size: 245760,
+            type: 'xlsx',
+            status: 'queued',
+            progress: 0,
+            transactions: 0,
+          }]);
+        }
+        
+        startDemoProcessing(caseConfig, e.key);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [files, demo.status, startDemoProcessing]);
 
   // ──── Standard Handlers (unchanged) ───────────────────────
 

@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>FraudLens — Case 31905260095929 | Digital Arrest Intelligence Report</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root{
+  --bg:#020408;--bg2:#05080f;--bg3:#080d18;
+  --sur:#0b1220;--sur2:#0f172a;--sur3:#111827;
+  --bdr:#1a2640;--bdr2:#233050;
+  --acc:#00d4ff;--acc2:#0099bb;
+  --red:#ff2d55;--red2:#cc2244;
+  --org:#ff9500;--grn:#30d158;--pur:#a78bfa;--yel:#ffd60a;--pink:#ff6b9d;
+  --t1:#e2e8f0;--t2:#94a3b8;--t3:#64748b;--t4:#3f5070;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t1);font-family:'IBM Plex Sans',sans-serif;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,212,255,.007) 3px,rgba(0,212,255,.007) 4px);pointer-events:none;z-index:0}
+
+.hdr{position:relative;z-index:10;background:linear-gradient(180deg,rgba(255,45,85,.06) 0%,transparent 100%);border-bottom:1px solid rgba(255,45,85,.25);padding:28px 40px 20px}
+.hdr-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--red),#cc0033);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 0 24px rgba(255,45,85,.4);flex-shrink:0}
+.brand-name{font-family:Orbitron,monospace;font-size:24px;font-weight:700;letter-spacing:3px;color:var(--acc);line-height:1}
+.brand-sub{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:1.5px;margin-top:5px}
+.hdr-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.case-pill{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--acc);letter-spacing:1px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);border-radius:4px;padding:4px 10px}
+.date-pill{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--t3)}
+.status-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,45,85,.15);border:1px solid rgba(255,45,85,.4);border-radius:20px;padding:5px 14px;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--red)}
+.pulse{width:7px;height:7px;border-radius:50%;background:var(--red);animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.8)}}
+.critical-banner{background:linear-gradient(135deg,rgba(255,45,85,.18),rgba(255,149,0,.1));border:1px solid rgba(255,45,85,.4);border-radius:10px;padding:16px 22px;margin:20px 40px;display:flex;align-items:center;gap:14px;font-size:13px;color:var(--t1);line-height:1.6;position:relative;z-index:5}
+.banner-icon{font-size:24px;flex-shrink:0}
+.banner-title{font-family:Orbitron,monospace;font-size:12px;font-weight:700;color:var(--red);letter-spacing:1px;margin-bottom:4px}
+
+.nav{display:flex;padding:0 40px;background:var(--bg2);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:200;overflow-x:auto;flex-wrap:nowrap;gap:2px}
+.nav::-webkit-scrollbar{height:2px}
+.nav-btn{padding:13px 18px;font-family:'IBM Plex Sans',sans-serif;font-size:12px;font-weight:500;color:var(--t3);background:none;border:none;cursor:pointer;letter-spacing:.5px;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;position:relative}
+.nav-btn:hover{color:var(--t2)}
+.nav-btn.active{color:var(--acc);border-bottom-color:var(--acc)}
+.nav-badge{position:absolute;top:8px;right:6px;background:var(--red);color:#fff;font-size:8px;font-family:'JetBrains Mono',monospace;border-radius:8px;padding:1px 5px;font-weight:600}
+
+.main{padding:28px 40px 40px;position:relative;z-index:1;max-width:1600px}
+@media(max-width:900px){.main{padding:16px 16px 32px}.hdr,.critical-banner{padding:16px}.nav{padding:0 8px}}
+.sec{display:none}.sec.active{display:block}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:20px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+@media(max-width:1100px){.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.g2,.g3,.g4{grid-template-columns:1fr}}
+
+.kpi{background:var(--sur);border:1px solid var(--bdr);border-radius:12px;padding:20px 22px;position:relative;overflow:hidden;transition:border-color .2s,transform .15s}
+.kpi:hover{transform:translateY(-1px);border-color:var(--bdr2)}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;border-radius:12px 12px 0 0}
+.kpi.c-acc::before{background:linear-gradient(90deg,var(--acc),transparent)}
+.kpi.c-red::before{background:linear-gradient(90deg,var(--red),transparent)}
+.kpi.c-org::before{background:linear-gradient(90deg,var(--org),transparent)}
+.kpi.c-grn::before{background:linear-gradient(90deg,var(--grn),transparent)}
+.kpi.c-pur::before{background:linear-gradient(90deg,var(--pur),transparent)}
+.kpi.c-yel::before{background:linear-gradient(90deg,var(--yel),transparent)}
+.kpi-icon{font-size:20px;margin-bottom:10px;display:block}
+.kpi-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px}
+.kpi-value{font-family:Orbitron,monospace;font-size:24px;font-weight:700;line-height:1;margin-bottom:6px}
+.v-acc{color:var(--acc)}.v-red{color:var(--red)}.v-org{color:var(--org)}.v-grn{color:var(--grn)}.v-pur{color:var(--pur)}.v-yel{color:var(--yel)}
+.kpi-sub{font-size:11px;color:var(--t3);line-height:1.5}
+
+.card{background:var(--sur);border:1px solid var(--bdr);border-radius:12px;padding:22px;margin-bottom:20px}
+.card-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.card-title{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--acc);letter-spacing:1.2px;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+
+.sec-title{font-family:Orbitron,monospace;font-size:15px;font-weight:600;color:var(--acc);letter-spacing:1px;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.sec-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--bdr),transparent)}
+
+.cw{position:relative;height:260px}.cw.h300{height:300px}.cw.h340{height:340px}.cw.h200{height:200px}.cw.h180{height:180px}.cw.h400{height:400px}
+
+.twrap{overflow-x:auto;border-radius:8px;border:1px solid var(--bdr)}
+table{width:100%;border-collapse:collapse;font-size:11.5px;font-family:'JetBrains Mono',monospace}
+thead{background:var(--sur2);position:sticky;top:0;z-index:5}
+th{padding:10px 14px;text-align:left;color:var(--t3);font-weight:500;letter-spacing:.5px;border-bottom:1px solid var(--bdr);white-space:nowrap;font-size:10px}
+td{padding:8px 14px;border-bottom:1px solid rgba(26,38,64,.6);white-space:nowrap;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(0,212,255,.025)}
+.r{text-align:right}
+
+.badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:10px;font-size:9.5px;font-weight:600;letter-spacing:.5px;font-family:'JetBrains Mono',monospace;white-space:nowrap}
+.b-red{background:rgba(255,45,85,.14);color:var(--red);border:1px solid rgba(255,45,85,.28)}
+.b-org{background:rgba(255,149,0,.14);color:var(--org);border:1px solid rgba(255,149,0,.28)}
+.b-grn{background:rgba(48,209,88,.1);color:var(--grn);border:1px solid rgba(48,209,88,.2)}
+.b-acc{background:rgba(0,212,255,.1);color:var(--acc);border:1px solid rgba(0,212,255,.25)}
+.b-pur{background:rgba(167,139,250,.1);color:var(--pur);border:1px solid rgba(167,139,250,.22)}
+.b-yel{background:rgba(255,214,10,.1);color:var(--yel);border:1px solid rgba(255,214,10,.22)}
+.b-dim{background:rgba(100,116,139,.1);color:var(--t2);border:1px solid rgba(100,116,139,.2)}
+.b-pink{background:rgba(255,107,157,.1);color:var(--pink);border:1px solid rgba(255,107,157,.25)}
+
+.finding{border-radius:12px;padding:20px 22px;margin-bottom:16px;border-left:3px solid var(--red);background:var(--sur)}
+.finding.f-org{border-left-color:var(--org)}
+.finding.f-acc{border-left-color:var(--acc)}
+.finding.f-pur{border-left-color:var(--pur)}
+.finding.f-yel{border-left-color:var(--yel)}
+.finding.f-pink{border-left-color:var(--pink)}
+.f-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.f-sev{font-family:Orbitron,monospace;font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 10px;border-radius:4px;flex-shrink:0;margin-top:2px}
+.sev-crit{background:rgba(255,45,85,.2);color:var(--red);border:1px solid rgba(255,45,85,.4)}
+.sev-high{background:rgba(255,149,0,.18);color:var(--org);border:1px solid rgba(255,149,0,.35)}
+.sev-med{background:rgba(0,212,255,.1);color:var(--acc);border:1px solid rgba(0,212,255,.25)}
+.f-title{font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:14px;color:var(--t1);line-height:1.4}
+.f-body{font-size:13px;color:var(--t2);line-height:1.75;margin-bottom:12px}
+.f-tags{display:flex;flex-wrap:wrap;gap:7px}
+.f-tag{font-family:'JetBrains Mono',monospace;font-size:9.5px;padding:3px 9px;border-radius:4px;background:rgba(0,212,255,.07);color:var(--acc);border:1px solid rgba(0,212,255,.18)}
+.f-tag.t-red{background:rgba(255,45,85,.08);color:rgba(255,100,120,.9);border-color:rgba(255,45,85,.2)}
+
+#mt-canvas{display:block;width:100%;background:var(--bg3);border-radius:10px;border:1px solid var(--bdr);cursor:grab;touch-action:none}
+#mt-canvas:active{cursor:grabbing}
+.mt-legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px}
+.mt-leg-item{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--t2);font-family:'JetBrains Mono',monospace}
+.mt-leg-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+.mt-controls{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center}
+.mt-btn{padding:6px 14px;background:var(--sur2);border:1px solid var(--bdr);border-radius:6px;color:var(--t2);font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer;transition:all .2s}
+.mt-btn:hover,.mt-btn.active-filter{border-color:var(--acc);color:var(--acc);background:rgba(0,212,255,.07)}
+.mt-info{background:var(--sur2);border:1px solid var(--bdr);border-radius:8px;padding:12px 16px;margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--t2);min-height:44px}
+
+.filters{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.fi{background:var(--sur2);border:1px solid var(--bdr);border-radius:7px;padding:7px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--t1);outline:none;transition:border-color .2s}
+.fi:focus,.fi:hover{border-color:var(--acc)}
+input.fi::placeholder{color:var(--t4)}
+select.fi option{background:var(--sur2)}
+.fi-wide{min-width:230px}
+.fi-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--t3);margin-left:auto}
+
+.pagi{display:flex;gap:6px;margin-top:12px;align-items:center;justify-content:flex-end;flex-wrap:wrap}
+.pb{padding:5px 11px;background:var(--sur2);border:1px solid var(--bdr);border-radius:5px;color:var(--t2);font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer;transition:all .2s}
+.pb:hover,.pb.act{background:rgba(0,212,255,.1);border-color:var(--acc);color:var(--acc)}
+.pg-info{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--t3);margin-right:auto}
+
+.tl{position:relative;padding-left:32px}
+.tl::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--grn),var(--org),var(--red),var(--pur),var(--bdr))}
+.tl-item{position:relative;margin-bottom:22px}
+.tl-dot{position:absolute;left:-27px;top:5px;width:10px;height:10px;border-radius:50%;border:2px solid var(--bg)}
+.tl-dot.d-acc{background:var(--acc)}
+.tl-dot.d-red{background:var(--red);box-shadow:0 0 0 3px rgba(255,45,85,.2)}
+.tl-dot.d-org{background:var(--org);box-shadow:0 0 0 3px rgba(255,149,0,.15)}
+.tl-dot.d-pur{background:var(--pur)}
+.tl-dot.d-grn{background:var(--grn)}
+.tl-date{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--t3);margin-bottom:4px;letter-spacing:.5px}
+.tl-head{font-family:'IBM Plex Sans',sans-serif;font-size:13px;font-weight:600;color:var(--t1);margin-bottom:5px}
+.tl-body{font-size:12px;color:var(--t2);line-height:1.65}
+
+.hl-r{color:var(--red);font-weight:600}
+.hl-o{color:var(--org);font-weight:600}
+.hl-g{color:var(--grn);font-weight:600}
+.hl-a{color:var(--acc)}
+.hl-p{color:var(--pur)}
+.hl-y{color:var(--yel);font-weight:600}
+
+.legal-grid{display:grid;grid-template-columns:150px 1fr;gap:0;border:1px solid var(--bdr);border-radius:10px;overflow:hidden}
+.legal-grid .sec-c,.legal-grid .desc-c{padding:12px 16px;border-bottom:1px solid var(--bdr);font-size:12.5px}
+.legal-grid .sec-c{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--red);border-right:1px solid var(--bdr);background:rgba(255,45,85,.04)}
+.legal-grid .desc-c{color:var(--t2);line-height:1.6}
+
+.priority{counter-reset:step;padding:0;margin:0;list-style:none}
+.priority li{position:relative;padding:14px 0 14px 46px;border-bottom:1px solid var(--bdr);font-size:13.5px;color:var(--t2);line-height:1.6}
+.priority li::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:12px;width:28px;height:28px;background:var(--sur2);border:1px solid var(--acc);color:var(--acc);font-family:'JetBrains Mono',monospace;font-size:13px;display:flex;align-items:center;justify-content:center;border-radius:6px}
+.priority li strong{color:var(--t1)}
+
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--bdr2);border-radius:3px}
+
+.footer{padding:22px 40px;border-top:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center;font-size:10px;color:var(--t3);font-family:'JetBrains Mono',monospace;flex-wrap:wrap;gap:10px;background:var(--bg2);position:relative;z-index:1}
+.footer-brand{font-family:Orbitron,monospace;font-size:13px;color:var(--acc);letter-spacing:2px}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-inner">
+    <div class="brand">
+      <div class="brand-icon">🚨</div>
+      <div>
+        <div class="brand-name">FRAUDLENS</div>
+        <div class="brand-sub">FINANCIAL INTELLIGENCE PLATFORM · PUNE POLICE CYBERCRIME CELL · CONFIDENTIAL</div>
+      </div>
+    </div>
+    <div class="hdr-right">
+      <div class="case-pill">NCRP ACK: 31905260095929</div>
+      <div class="date-pill">Victim Loss Window: 04 Apr – 06 May 2026 &nbsp;|&nbsp; Source: NCRP Transaction Annexure</div>
+      <div class="status-badge"><span class="pulse"></span>CONFIRMED — DIGITAL ARREST FRAUD — 5-LAYER MULE NETWORK</div>
+    </div>
+  </div>
+</div>
+
+<div class="critical-banner">
+  <div class="banner-icon">🔴</div>
+  <div>
+    <div class="banner-title">CASE SUMMARY</div>
+    Complainant (mobile 9422346199) was contacted by a caller impersonating Mumbai Cyber Police on an unregistered number (7545036749), shown a staged video call in police uniform, and threatened with arrest over an alleged ₹2 Cr money-laundering case. Under duress, the victim broke 2 fixed deposits and transferred <strong>₹56,18,206</strong> in two tranches to mule accounts at Axis Bank and IndusInd Bank. Funds were dispersed across <strong>5 transaction layers</strong> into <strong>19 banks</strong>, with <strong>₹22.49L extracted as physical cash</strong> via cheque encashment in Delhi, Kerala, Punjab and Rajasthan, and ATM withdrawals in Hardoi, UP.
+  </div>
+</div>
+
+<nav class="nav">
+  <button class="nav-btn active" onclick="nav('overview',this)">◈ Overview</button>
+  <button class="nav-btn" onclick="nav('moneytrial',this)">⬡ Money Trail <span class="nav-badge">LIVE</span></button>
+  <button class="nav-btn" onclick="nav('moneyflow',this)">⇶ Money Flow</button>
+  <button class="nav-btn" onclick="nav('scam',this)">🚨 Scam Timeline</button>
+  <button class="nav-btn" onclick="nav('findings',this)">⚠ Findings</button>
+  <button class="nav-btn" onclick="nav('critical',this)">🎯 Critical Accounts <span class="nav-badge">KEY</span></button>
+  <button class="nav-btn" onclick="nav('accounts',this)">◉ Accounts</button>
+  <button class="nav-btn" onclick="nav('cashout',this)">💵 Cash-Out Trail</button>
+  <button class="nav-btn" onclick="nav('analytics',this)">▦ Analytics</button>
+  <button class="nav-btn" onclick="nav('ledger',this)">≡ Ledger</button>
+  <button class="nav-btn" onclick="nav('legal',this)">⚖ Legal &amp; Action Plan</button>
+</nav>
+
+<div class="main">
+
+<!-- OVERVIEW -->
+<div class="sec active" id="sec-overview">
+  <div class="g4">
+    <div class="kpi c-red"><span class="kpi-icon">💰</span><div class="kpi-label">Total Victim Loss</div><div class="kpi-value v-red">₹56.18L</div><div class="kpi-sub">₹56,18,206 across 2 transfers</div></div>
+    <div class="kpi c-acc"><span class="kpi-icon">⬡</span><div class="kpi-label">Transaction Layers</div><div class="kpi-value v-acc">5</div><div class="kpi-sub">Victim → Mule → Fan-out → Mixing → Terminal</div></div>
+    <div class="kpi c-org"><span class="kpi-icon">🏦</span><div class="kpi-label">Banks / FIs Touched</div><div class="kpi-value v-org">19</div><div class="kpi-sub">Across 5 Indian states + 1 offshore leg</div></div>
+    <div class="kpi c-yel"><span class="kpi-icon">💵</span><div class="kpi-label">Physical Cash Extracted</div><div class="kpi-value v-yel">₹22.50L</div><div class="kpi-sub">40% of total loss — cheque + ATM</div></div>
+    <div class="kpi c-pur"><span class="kpi-icon">◉</span><div class="kpi-label">Accounts Mapped</div><div class="kpi-value v-pur">32</div><div class="kpi-sub">58 transaction edges traced</div></div>
+    <div class="kpi c-grn"><span class="kpi-icon">🧾</span><div class="kpi-label">Cheque Encashments</div><div class="kpi-value v-grn">5</div><div class="kpi-sub">₹20.51L — Delhi, Kerala, Punjab, Rajasthan</div></div>
+    <div class="kpi c-acc"><span class="kpi-icon">🏧</span><div class="kpi-label">ATM Withdrawals</div><div class="kpi-value v-acc">20</div><div class="kpi-sub">₹1.99L — concentrated in Hardoi, UP</div></div>
+    <div class="kpi c-red"><span class="kpi-icon">🧊</span><div class="kpi-label">Residual Frozen</div><div class="kpi-value v-red">₹56,868</div><div class="kpi-sub">Only ~1% recoverable at time of report</div></div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-hd"><div class="card-title">📊 Fund Volume by Layer</div></div>
+      <div class="cw h300"><canvas id="ch-layers"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-hd"><div class="card-title">🏦 Destination Bank Distribution</div></div>
+      <div class="cw h300"><canvas id="ch-banks"></canvas></div>
+    </div>
+  </div>
+
+  <div class="g3">
+    <div class="card">
+      <div class="card-hd"><div class="card-title">💵 Cash vs Digital Disposition</div></div>
+      <div class="cw h200"><canvas id="ch-disposition"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-hd"><div class="card-title">🧾 Withdrawal Mode Split</div></div>
+      <div class="cw h200"><canvas id="ch-withdrawmode"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-hd"><div class="card-title">📍 Layer-2 Mule Hub Split</div></div>
+      <div class="cw h200"><canvas id="ch-hubsplit"></canvas></div>
+    </div>
+  </div>
+
+  <div class="sec-title">Two Source Transfers (Victim → Mule Hubs)</div>
+  <div class="twrap"><table>
+    <thead><tr><th>Date</th><th>From</th><th>To (Mule Hub)</th><th>UTR</th><th class="r">Amount</th></tr></thead>
+    <tbody>
+      <tr><td>04/04/2026</td><td>Bank of Maharashtra ...4519485 (Victim)</td><td><span class="badge b-red">Axis Bank ...462361</span> Nova Next Mart Pvt Ltd</td><td>MAHBR52026040423516664</td><td class="r" style="color:var(--red);font-weight:700">₹22,18,206</td></tr>
+      <tr><td>05/05/2026</td><td>Bank of Maharashtra ...4519485 (Victim)</td><td><span class="badge b-red">IndusInd Bank ...9526</span> Rilex Enterprises</td><td>MAHBR52026050523820802</td><td class="r" style="color:var(--red);font-weight:700">₹34,00,000</td></tr>
+    </table></div>
+</div>
+
+<!-- MONEY TRAIL -->
+<div class="sec" id="sec-moneytrial">
+  <div class="sec-title">⬡ Money Trail — Interactive Layered Network</div>
+  <div class="card" style="margin-bottom:16px;padding:14px 20px;background:rgba(255,45,85,.06);border-color:rgba(255,45,85,.25)">
+    <div style="font-size:12.5px;color:var(--t2);line-height:1.7"><strong style="color:var(--red)">How to read this:</strong> Columns = transaction layers (0 = victim, 1 = mule hubs, 5 = terminal hop). Red nodes are the two primary mule hubs named in the FIR. Gold nodes are layer-2 fan-out accounts. Edge thickness is proportional to amount. Drag any node vertically to declutter; click a node for its account detail.</div>
+  </div>
+  <div class="card">
+    <div class="card-hd">
+      <div class="card-title">⬡ Layered Flow — <span id="mt-node-count">32</span> Nodes · <span id="mt-edge-count">58</span> Edges</div>
+    </div>
+    <div class="mt-controls">
+      <button class="mt-btn active-filter" onclick="mtF('all',this)">All</button>
+      <button class="mt-btn" onclick="mtF('hub',this)">🔴 Mule Hubs</button>
+      <button class="mt-btn" onclick="mtF('l2',this)">🟡 Layer-2 Fan-out</button>
+      <button class="mt-btn" onclick="mtF('deep',this)">🔵 Layer 3+ Mixing</button>
+      <button class="mt-btn" onclick="mtReset()">⊕ Reset Layout</button>
+    </div>
+    <canvas id="mt-canvas" height="640"></canvas>
+    <div class="mt-legend">
+      <div class="mt-leg-item"><div class="mt-leg-dot" style="background:#30d158"></div>Victim (Layer 0)</div>
+      <div class="mt-leg-item"><div class="mt-leg-dot" style="background:#ff2d55"></div>Mule Hub (Layer 1)</div>
+      <div class="mt-leg-item"><div class="mt-leg-dot" style="background:#ffd60a"></div>Layer-2 Fan-out</div>
+      <div class="mt-leg-item"><div class="mt-leg-dot" style="background:#00d4ff"></div>Layer-3 Mixing</div>
+      <div class="mt-leg-item"><div class="mt-leg-dot" style="background:#a78bfa"></div>Layer 4–5 Terminal</div>
+      <div class="mt-leg-item" style="margin-left:16px"><div style="width:28px;height:3px;background:rgba(255,45,85,.8);border-radius:1px"></div>Primary fraud flow</div>
+      <div class="mt-leg-item"><div style="width:28px;height:2px;background:rgba(0,212,255,.4);border-radius:1px"></div>Downstream split</div>
+    </div>
+    <div class="mt-info" id="mt-info">Click any node to inspect account details here.</div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-hd"><div class="card-title">💰 Top Money Flows by Volume</div></div>
+      <div class="twrap"><table>
+        <thead><tr><th>#</th><th>From</th><th>To</th><th>Bank</th><th class="r">Amount</th><th>Layer</th></tr></thead>
+        <tbody id="top-flows-tbody"></tbody>
+      </table></div>
+    </div>
+    <div class="card">
+      <div class="card-hd"><div class="card-title">⬆ Top Accounts by Volume Received</div></div>
+      <div class="cw h340"><canvas id="ch-node-vol"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- MONEY FLOW -->
+<div class="sec" id="sec-moneyflow">
+  <div class="sec-title">⇶ Money Flow — Aggregate Layer-to-Layer Movement</div>
+  <div class="card" style="margin-bottom:16px;padding:14px 20px;background:rgba(0,212,255,.06);border-color:rgba(0,212,255,.25)">
+    <div style="font-size:12.5px;color:var(--t2);line-height:1.7"><strong style="color:var(--acc)">How to read this:</strong> this is the aggregate version of the Money Trail — not individual accounts, but total rupee volume moving between layers, how much peels off as physical cash at each layer, and how much simply stops being traceable in this dataset ("unresolved"). All figures are computed directly from the 58-row transaction sheet — nothing estimated.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-hd"><div class="card-title">⇶ Aggregate Flow Diagram</div></div>
+    <div style="overflow-x:auto">
+    <svg viewBox="0 0 1080 480" style="min-width:980px;width:100%" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono, monospace">
+      <defs>
+        <marker id="ah-red" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#ff2d55"/></marker>
+        <marker id="ah-yel" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#ffd60a"/></marker>
+        <marker id="ah-gray" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#3f5070"/></marker>
+      </defs>
+      <!-- column labels -->
+      <text x="40" y="18" font-size="10" fill="#64748b">VICTIM</text>
+      <text x="200" y="18" font-size="10" fill="#64748b">LAYER 1 — MULE HUBS</text>
+      <text x="440" y="18" font-size="10" fill="#64748b">LAYER 2 — FAN-OUT (15 ACC)</text>
+      <text x="700" y="18" font-size="10" fill="#64748b">LAYER 3 — MIXING</text>
+      <text x="880" y="18" font-size="10" fill="#64748b">LAYER 4</text>
+      <text x="990" y="18" font-size="10" fill="#64748b">L5</text>
+
+      <!-- VICTIM -->
+      <rect x="20" y="200" width="110" height="50" rx="6" fill="#0f172a" stroke="#30d158" stroke-width="1.5"/>
+      <text x="75" y="222" font-size="10" fill="#e2e8f0" text-anchor="middle">VICTIM</text>
+      <text x="75" y="237" font-size="11" fill="#30d158" text-anchor="middle" font-weight="700">₹56.18L</text>
+
+      <!-- L1 hubs -->
+      <rect x="190" y="120" width="130" height="46" rx="6" fill="#0f172a" stroke="#ff2d55" stroke-width="1.5"/>
+      <text x="255" y="140" font-size="9.5" fill="#e2e8f0" text-anchor="middle">AXIS HUB ...462361</text>
+      <text x="255" y="154" font-size="10" fill="#ff2d55" text-anchor="middle" font-weight="700">in ₹22.18L / out ₹19.73L</text>
+
+      <rect x="190" y="290" width="130" height="46" rx="6" fill="#0f172a" stroke="#ff2d55" stroke-width="1.5"/>
+      <text x="255" y="310" font-size="9.5" fill="#e2e8f0" text-anchor="middle">INDUSIND HUB ...9526</text>
+      <text x="255" y="324" font-size="10" fill="#ff2d55" text-anchor="middle" font-weight="700">in ₹34.00L / out ₹38.99L</text>
+
+      <!-- L2 aggregate -->
+      <rect x="440" y="195" width="140" height="60" rx="6" fill="#0f172a" stroke="#ffd60a" stroke-width="1.5"/>
+      <text x="510" y="215" font-size="9.5" fill="#e2e8f0" text-anchor="middle">LAYER 2 POOL</text>
+      <text x="510" y="230" font-size="10" fill="#ffd60a" text-anchor="middle" font-weight="700">in ₹58.72L</text>
+      <text x="510" y="244" font-size="8.5" fill="#94a3b8" text-anchor="middle">15 accounts · 12 banks</text>
+
+      <!-- L3 aggregate -->
+      <rect x="690" y="205" width="120" height="48" rx="6" fill="#0f172a" stroke="#00d4ff" stroke-width="1.5"/>
+      <text x="750" y="224" font-size="9.5" fill="#e2e8f0" text-anchor="middle">LAYER 3 MIXING</text>
+      <text x="750" y="238" font-size="10" fill="#00d4ff" text-anchor="middle" font-weight="700">in ₹5.16L</text>
+
+      <!-- L4 -->
+      <rect x="850" y="210" width="95" height="40" rx="6" fill="#0f172a" stroke="#a78bfa" stroke-width="1.5"/>
+      <text x="897" y="228" font-size="9" fill="#e2e8f0" text-anchor="middle">LAYER 4</text>
+      <text x="897" y="241" font-size="9.5" fill="#a78bfa" text-anchor="middle" font-weight="700">₹2.21L</text>
+
+      <!-- L5 -->
+      <rect x="980" y="213" width="85" height="34" rx="6" fill="#0f172a" stroke="#64748b" stroke-width="1.5"/>
+      <text x="1022" y="228" font-size="8.5" fill="#e2e8f0" text-anchor="middle">L5 ₹23.6K</text>
+      <text x="1022" y="240" font-size="7.5" fill="#64748b" text-anchor="middle">trail ends</text>
+
+      <!-- sinks -->
+      <rect x="440" y="330" width="140" height="40" rx="6" fill="rgba(255,214,10,.08)" stroke="#ffd60a" stroke-width="1.2" stroke-dasharray="3,2"/>
+      <text x="510" y="346" font-size="8.5" fill="#ffd60a" text-anchor="middle">CASH EXTRACTED</text>
+      <text x="510" y="360" font-size="10" fill="#ffd60a" text-anchor="middle" font-weight="700">₹20.71L</text>
+
+      <rect x="440" y="385" width="140" height="40" rx="6" fill="rgba(100,116,139,.08)" stroke="#3f5070" stroke-width="1.2" stroke-dasharray="3,2"/>
+      <text x="510" y="401" font-size="8.5" fill="#94a3b8" text-anchor="middle">UNRESOLVED / STATIC</text>
+      <text x="510" y="415" font-size="10" fill="#94a3b8" text-anchor="middle" font-weight="700">₹32.86L</text>
+
+      <rect x="690" y="290" width="120" height="38" rx="6" fill="rgba(255,214,10,.08)" stroke="#ffd60a" stroke-width="1.2" stroke-dasharray="3,2"/>
+      <text x="750" y="305" font-size="8" fill="#ffd60a" text-anchor="middle">ATM CASH (Hardoi)</text>
+      <text x="750" y="318" font-size="9.5" fill="#ffd60a" text-anchor="middle" font-weight="700">₹1.79L</text>
+
+      <!-- edges -->
+      <g stroke-width="2.4" fill="none">
+        <path d="M130,225 C160,210 165,143 190,143" stroke="#ff2d55" marker-end="url(#ah-red)"/>
+        <path d="M130,230 C160,250 165,313 190,313" stroke="#ff2d55" marker-end="url(#ah-red)"/>
+        <path d="M320,143 C380,143 390,200 440,218" stroke="#ff2d55" marker-end="url(#ah-red)"/>
+        <path d="M320,313 C380,313 390,250 440,235" stroke="#ff2d55" marker-end="url(#ah-red)"/>
+        <path d="M580,222 C640,210 660,224 690,225" stroke="#00d4ff" marker-end="url(#ah-yel)"/>
+        <path d="M510,255 C510,290 510,300 510,330" stroke="#ffd60a" marker-end="url(#ah-yel)"/>
+        <path d="M510,255 C490,300 480,350 510,385" stroke="#3f5070" marker-end="url(#ah-gray)"/>
+        <path d="M750,253 C750,270 750,280 750,290" stroke="#ffd60a" marker-end="url(#ah-yel)"/>
+        <path d="M810,228 C830,222 838,225 850,228" stroke="#a78bfa" marker-end="url(#ah-gray)"/>
+        <path d="M945,228 C960,222 968,225 980,228" stroke="#64748b" marker-end="url(#ah-gray)"/>
+      </g>
+    </svg>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-hd"><div class="card-title">📋 Layer-by-Layer Flow Reconciliation</div></div>
+    <div class="twrap"><table>
+      <thead><tr><th>Layer</th><th class="r">Inflow</th><th class="r">Onward to Next Layer</th><th class="r">Cash Extracted Here</th><th class="r">Unresolved / Static</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge b-red">L1 — Mule Hubs</span></td><td class="r">₹56,18,206</td><td class="r">₹58,72,340</td><td class="r">—</td><td class="r" style="color:var(--org)">−₹2,54,134*</td><td style="font-size:10.5px">*Outflow exceeds inflow — see F-07</td></tr>
+        <tr><td><span class="badge b-yel">L2 — Fan-out</span></td><td class="r">₹58,72,340</td><td class="r">₹5,15,799</td><td class="r" style="color:var(--yel)">₹20,70,800</td><td class="r">₹32,85,741</td><td style="font-size:10.5px">Incl. ₹11.5L single dead-end (Axis ...581815)</td></tr>
+        <tr><td><span class="badge b-acc">L3 — Mixing</span></td><td class="r">₹5,15,799</td><td class="r">₹2,20,599</td><td class="r" style="color:var(--yel)">₹1,79,000</td><td class="r">₹1,16,200</td><td style="font-size:10.5px">ATM leak = entire Hardoi Jio-wallet cluster</td></tr>
+        <tr><td><span class="badge b-pur">L4</span></td><td class="r">₹2,20,599</td><td class="r">₹23,570</td><td class="r">—</td><td class="r">₹1,97,029</td><td style="font-size:10.5px">Mostly sitting in 1 BoB-linked account</td></tr>
+        <tr><td><span class="badge b-dim">L5</span></td><td class="r">₹23,570</td><td class="r">—</td><td class="r">—</td><td class="r">₹23,570</td><td style="font-size:10.5px">Trail ends in this dataset</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <div class="card-hd"><div class="card-title">🧊 Disputed vs Actually Frozen — Don't Confuse These</div></div>
+    <div style="font-size:13px;color:var(--t2);line-height:1.75">
+      The sheet's <strong class="hl-y">"Disputed Amount"</strong> column (₹51.18L still flagged at Layer 2, ₹5.15L at Layer 3) represents the portion of each hop banks still consider part of the traced fraud chain. The separate <strong class="hl-g">"Put on Hold"</strong> action log shows what banks have <em>actually frozen</em> so far — only <strong class="hl-r">₹56,868 total</strong> across all layers (L2: ₹15,727 · L3: ₹11,053 · L4: ₹30,000 · L5: ₹88). That is roughly <strong class="hl-r">1% of the total loss</strong> — the freeze requests in the Action Plan tab target closing this gap.
+    </div>
+  </div>
+</div>
+
+<!-- SCAM TIMELINE -->
+<div class="sec" id="sec-scam">
+  <div class="sec-title">🚨 Scam Anatomy — Digital Arrest Timeline</div>
+  <div class="card" style="border-color:rgba(255,45,85,.3)">
+    <div class="card-hd"><div class="card-title" style="color:var(--red)">🔴 Full Attack Sequence — Apr–May 2026</div></div>
+    <div class="tl" id="tl-container"></div>
+  </div>
+</div>
+
+<!-- FINDINGS -->
+<div class="sec" id="sec-findings">
+  <div class="sec-title">⚠ Critical Intelligence Findings</div>
+
+  <div class="finding" style="box-shadow:0 0 24px rgba(255,45,85,.15)">
+    <div class="f-head"><span class="f-sev sev-crit">CRITICAL</span><div class="f-title">F-01 · Digital Arrest Scam — ₹56,18,206 Extracted via Police Impersonation</div></div>
+    <div class="f-body">
+      The complainant was contacted on an unregistered number (7545036749) by a caller posing as Mumbai Cyber Police, who staged a uniformed video call, displayed a fabricated Aadhaar and Canara Bank debit card, and alleged the victim's identity was used to launder ₹2 Cr with a ₹20L "commission" credited to them. Under threat of arrest and instructed to remain home and report every 2 hours, the victim broke 2 fixed deposits and transferred funds in two tranches (04/04 and 05/05/2026) totalling <strong class="hl-r">₹56,18,206</strong> to two mule accounts, believing the money would be returned after "RBI verification."
+    </div>
+    <div class="f-tags">
+      <span class="f-tag t-red">Police impersonation</span><span class="f-tag t-red">₹56.18L victim loss</span>
+      <span class="f-tag">BNS §318/319</span><span class="f-tag">BNS §351</span><span class="f-tag">IT Act §66D</span>
+    </div>
+  </div>
+
+  <div class="finding f-org">
+    <div class="f-head"><span class="f-sev sev-crit">CRITICAL</span><div class="f-title">F-02 · Two Mule Hubs Receive Funds Under Shell Business Names</div></div>
+    <div class="f-body">
+      Both primary mule accounts were registered under business names rather than individuals: <strong class="hl-y">Axis Bank A/C 925020057462361</strong> (Nova Next Mart Pvt Ltd, IFSC UTIB0000026) received ₹22,18,206, and <strong class="hl-y">IndusInd Bank A/C 258295299526</strong> (Rilex Enterprises, IFSC INDB0001915) received ₹34,00,000 — the latter partly funded by gold pledged at a Manipuram Gold branch in Baleli Phata, Pune. Both accounts were drained to near-zero balances (residual holds of ₹0.12–₹660) within days, confirming they exist purely as pass-through shells.
+    </div>
+    <div class="f-tags">
+      <span class="f-tag t-red">2 shell business accounts</span><span class="f-tag t-red">Rapid drain to near-zero</span>
+      <span class="f-tag">PMLA §3/4</span><span class="f-tag">BNS §316</span>
+    </div>
+  </div>
+
+  <div class="finding f-acc">
+    <div class="f-head"><span class="f-sev sev-high">HIGH</span><div class="f-title">F-03 · Layer-2 Fan-out Spreads Funds Across 15 Unrelated Bank Accounts</div></div>
+    <div class="f-body">
+      Within hours, the two mule hubs split funds across <strong class="hl-a">15 distinct accounts</strong> at 12 different banks/FIs — including Central Bank of India, Fino Payments Bank, PNB, Yes Bank, NSDL Payments Bank, SBI, Kerala Gramin Bank, State Bank of Mauritius, IDFC First, Federal Bank, Indian Overseas Bank, and a second Axis Bank account receiving the single largest hop of ₹11,50,000. Several recipients are named individuals (Vanshika Gupta, Narayan Lal Damami, Rashi Karamchandani, Ajit Singh, Mamta, Muhammed Junaid K) — likely mule account holders recruited for a fee.
+    </div>
+    <div class="f-tags">
+      <span class="f-tag t-red">15 layer-2 accounts</span><span class="f-tag">12 banks</span><span class="f-tag">₹11.5L single largest hop</span>
+    </div>
+  </div>
+
+  <div class="finding f-yel">
+    <div class="f-head"><span class="f-sev sev-high">HIGH</span><div class="f-title">F-04 · Organized Mule-Wallet Cluster in Hardoi, Uttar Pradesh</div></div>
+    <div class="f-body">
+      A cluster of six near-identical Jio Payments Bank wallets (account series 3321721xxxxxx) each received ₹9,000–₹10,000 and were independently cashed out via ATM at the same four locations in Hardoi district — Pihani Branch, SBI Cinema Chauraha, Hardoi Main Branch, and ADB Hardoi — totalling <strong class="hl-o">₹1,80,000 across 18 withdrawals</strong>. The repetition of withdrawal locations across multiple distinct wallets is a strong signature of an organized mule-wallet farm rather than independent individuals.
+    </div>
+    <div class="f-tags">
+      <span class="f-tag t-red">6-wallet cluster</span><span class="f-tag t-red">18 ATM withdrawals</span><span class="f-tag">Hardoi, UP</span>
+    </div>
+  </div>
+
+  <div class="finding f-pur">
+    <div class="f-head"><span class="f-sev sev-high">HIGH</span><div class="f-title">F-05 · Bank of Baroda Account Functions as Secondary Mixing Hub</div></div>
+    <div class="f-body">
+      Account <strong class="hl-p">50100754357846 (Bank of Baroda)</strong> receives 5 separate UPI credits from the HDFC-routed layer-3 leg (~₹2,10,000 combined) and re-splits the funds to further UPI handles including "Ankit Upadhyay" — a classic fan-in/fan-out mixing signature distinct from simple pass-through. This account, along with the UPI handles "Krishna Mudgal" and "Prakash Kumar" surfacing in the sub-₹500 layer, should be checked against other active FraudLens cases for naming-pattern overlap.
+    </div>
+    <div class="f-tags">
+      <span class="f-tag">Fan-in/fan-out mixing</span><span class="f-tag">Cross-case name check recommended</span>
+    </div>
+  </div>
+
+  <div class="finding f-pink">
+    <div class="f-head"><span class="f-sev sev-med">MEDIUM</span><div class="f-title">F-06 · Physical Cash-Out Trail Spans 4 States — High-Value Investigative Leads</div></div>
+    <div class="f-body">
+      Five cheque encashments (₹20,50,800 total) occurred at named branches in New Delhi, Kollam (Kerala), Jalandhar (Punjab) and Pali (Rajasthan), each with a named branch manager and contact number on file. Unlike the digital layers, these are physical, corroborable acts — CCTV pulls at these branches and the four Hardoi ATMs represent the fastest path from an account number to a human identification.
+    </div>
+    <div class="f-tags">
+      <span class="f-tag">₹20.51L cheque cash-out</span><span class="f-tag">CCTV-traceable</span><span class="f-tag">4 states</span>
+    </div>
+  </div>
+
+  <div class="finding f-acc">
+    <div class="f-head"><span class="f-sev sev-high">HIGH</span><div class="f-title">F-07 · Inflow/Outflow Imbalance at Both Mule Hubs — Possible Co-mingled or Unlinked Funds</div></div>
+    <div class="f-body">
+      Reconciling actual debits against credits at the two Layer-1 hubs reveals a discrepancy worth flagging rather than glossing over: <strong class="hl-y">Axis Bank A/C ...462361</strong> received ₹22,18,206 from the victim but only ₹19,73,000 is traced onward across its 7 outbound transactions — a shortfall of <strong class="hl-r">₹2,45,206</strong> not accounted for in this dataset (likely a direct cash withdrawal at source, or balance currently sitting frozen — needs the bank's full statement to confirm). Conversely, <strong class="hl-y">IndusInd Bank A/C ...9526</strong> disperses ₹38,99,340 across 8 outbound transactions despite receiving only ₹34,00,000 from the victim — an <strong class="hl-r">excess of ₹4,99,340</strong>, meaning either this account holds co-mingled legitimate business funds (it is registered to "Rilex Enterprises," an active business name, not a shell), or it received additional fraud proceeds from a different, currently unlinked victim. Both possibilities warrant direct verification with the respective banks before the pilot demo cites these figures as final.
+    </div>
+    <div class="f-tags">
+      <span class="f-tag t-red">₹2.45L shortfall — Axis</span><span class="f-tag t-red">₹4.99L excess — IndusInd</span>
+      <span class="f-tag">Requires bank statement reconciliation</span>
+    </div>
+  </div>
+</div>
+
+<!-- CRITICAL ACCOUNTS / LAYERING ANALYSIS -->
+<div class="sec" id="sec-critical">
+  <div class="sec-title">🎯 Critical Accounts — Layering Analysis</div>
+  <div class="card" style="margin-bottom:20px;padding:14px 20px;background:rgba(167,139,250,.06);border-color:rgba(167,139,250,.25)">
+    <div style="font-size:12.5px;color:var(--t2);line-height:1.7"><strong style="color:var(--pur)">Why these accounts, specifically:</strong> not every account in the chain matters equally for investigation. The accounts below were ranked by fan-in/fan-out degree, volume handled, and physical traceability — computed directly from the 58-row transaction sheet. Each card states the actual numbers behind the ranking, not just a label.</div>
+  </div>
+
+  <div class="sec-title" style="font-size:13px">LAYER 1 — Mule Hubs (highest priority)</div>
+  <div class="g2">
+    <div class="card" style="border-color:rgba(255,45,85,.35)">
+      <div class="card-hd"><div class="card-title" style="color:var(--red)">Axis Bank · A/C 925020057462361</div></div>
+      <div style="font-size:13px;color:var(--t2);line-height:1.7">Named directly in the FIR. Receives ₹22,18,206 in a single inbound transaction, fans out across <strong class="hl-r">7 outbound transactions</strong> to ₹19,73,000 — leaving a <strong class="hl-r">₹2,45,206 gap</strong> unaccounted for in this dataset. Registered to "Nova Next Mart Pvt Ltd." Highest investigative priority: the sole point of contact between victim funds and the laundering network.</div>
+    </div>
+    <div class="card" style="border-color:rgba(255,45,85,.35)">
+      <div class="card-hd"><div class="card-title" style="color:var(--red)">IndusInd Bank · A/C 258295299526</div></div>
+      <div style="font-size:13px;color:var(--t2);line-height:1.7">Named directly in the FIR. Receives ₹34,00,000, but disperses <strong class="hl-r">₹38,99,340 across 8 transactions</strong> — ₹4,99,340 more than it received from the victim. Registered to "Rilex Enterprises." The excess strongly suggests either co-mingled legitimate business activity or an unlinked second fraud victim — flag for cross-FIR search before citing as fully resolved.</div>
+    </div>
+  </div>
+
+  <div class="sec-title" style="font-size:13px">LAYER 2 — Fan-out (15 accounts, 3 stand out)</div>
+  <div class="g3">
+    <div class="card">
+      <div class="card-hd"><div class="card-title">Axis Bank · A/C 924020047581815</div></div>
+      <div style="font-size:12.5px;color:var(--t2);line-height:1.65">Single largest layer-2 hop: <strong class="hl-y">₹11,50,000</strong> received in one transaction from the IndusInd hub. Zero outbound transactions recorded — the money simply stops moving in this dataset. The single highest-value unresolved thread in the entire case; demand the full post-receipt statement.</div>
+    </div>
+    <div class="card">
+      <div class="card-hd"><div class="card-title">Punjab National Bank · A/C 619006900008289</div></div>
+      <div style="font-size:12.5px;color:var(--t2);line-height:1.65">Holder named as <strong>"KISHOR."</strong> Receives ₹5,53,000 digitally <em>and</em> is the account behind the ₹5,50,000 cheque physically encashed at PNB, New Rohtak Road, New Delhi. Dual significance: both a digital mule account and a CCTV-traceable physical cash-out point — rare overlap.</div>
+    </div>
+    <div class="card">
+      <div class="card-hd"><div class="card-title">Central Bank of India · A/C 5922170355</div></div>
+      <div style="font-size:12.5px;color:var(--t2);line-height:1.65">Holder named as <strong>"Vanshika Gupta."</strong> Highest fan-out of any layer-2 account — <strong class="hl-a">10 further downstream transactions</strong> from a comparatively small ₹1,00,000 inflow. Behaviour consistent with a deliberate splitting node rather than a personal holding account.</div>
+    </div>
+  </div>
+
+  <div class="sec-title" style="font-size:13px">LAYER 3 — Mixing &amp; Physical Cash-Out Cluster</div>
+  <div class="g2">
+    <div class="card" style="border-color:rgba(0,212,255,.3)">
+      <div class="card-hd"><div class="card-title" style="color:var(--acc)">HDFC Bank · A/C 50100754357846</div></div>
+      <div style="font-size:12.5px;color:var(--t2);line-height:1.65">Secondary mixing hub: fans <strong>in</strong> from 7 separate UPI credits (₹80,000 total) then fans <strong>out</strong> across 5 further UPI debits (₹2,10,000) to a Bank of Baroda account under the handle "Ankit Upadhyay." Outbound exceeds inbound by ₹1,30,000 — the same imbalance pattern seen at the Layer-1 hubs, suggesting either an uncaptured upstream credit or duplicate/batched UTR references worth a manual bank-side check.</div>
+    </div>
+    <div class="card" style="border-color:rgba(255,214,10,.3)">
+      <div class="card-hd"><div class="card-title" style="color:var(--yel)">Jio Payments Bank — 6-Wallet Cluster, Hardoi UP</div></div>
+      <div style="font-size:12.5px;color:var(--t2);line-height:1.65">Six near-identical wallets (3321721134136 / 138346 / 138363 / 140021 / 140033 / 140096), each receiving ₹29,000–30,000 and each independently cashed out via ATM at the <strong class="hl-y">same 4 ATM locations</strong> in Hardoi district. Individually unremarkable; collectively the strongest physical-identification lead in the case — recommend this be the first CCTV pull.</div>
+    </div>
+  </div>
+
+  <div class="sec-title" style="font-size:13px">LAYER 4–5 — Terminal Hops</div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-hd"><div class="card-title">Bank of Baroda · A/C 40790100009572 / 40790100010458</div></div>
+      <div style="font-size:12.5px;color:var(--t2);line-height:1.65">Terminal receivers of the HDFC mixing hub's outbound UPI payments. Relatively small individually (₹60,000 / ₹1,50,000) but represent the last digitally-traceable hop before funds either convert to untracked cash or move to further UPI hops outside this annexure.</div>
+    </div>
+    <div class="card">
+      <div class="card-hd"><div class="card-title">State Bank of India · A/C 42805607054</div></div>
+      <div style="font-size:12.5px;color:var(--t2);line-height:1.65">Final ₹23,570 settlement visible in this transaction set. The trail goes cold here — recommend a formal request for this account's statement beyond the listed UTR to extend the chain.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ACCOUNTS -->
+<div class="sec" id="sec-accounts">
+  <div class="sec-title">◉ Account Profiles — All Traced Accounts</div>
+  <div class="filters">
+    <input class="fi fi-wide" id="acc-q" placeholder="Search account no. / bank / holder…" oninput="renderAccounts()">
+    <select class="fi" id="acc-layer" onchange="renderAccounts()">
+      <option value="">All layers</option>
+      <option value="0">Layer 0 — Victim</option>
+      <option value="1">Layer 1 — Mule Hub</option>
+      <option value="2">Layer 2 — Fan-out</option>
+      <option value="3">Layer 3 — Mixing</option>
+      <option value="4">Layer 4</option>
+      <option value="5">Layer 5</option>
+    </select>
+    <div class="fi-count" id="acc-count"></div>
+  </div>
+  <div class="twrap"><table>
+    <thead><tr><th>Layer</th><th>Account No.</th><th>Bank / FI</th><th>Holder / Entity</th><th class="r">Credits In</th><th class="r">Debits Out</th><th>Role</th></tr></thead>
+    <tbody id="acc-tbody"></tbody>
+  </table></div>
+</div>
+
+<!-- CASH-OUT TRAIL -->
+<div class="sec" id="sec-cashout">
+  <div class="sec-title">💵 Physical Cash-Out Trail — Cheque &amp; ATM</div>
+  <div class="card" style="margin-bottom:16px;padding:14px 20px;background:rgba(255,214,10,.06);border-color:rgba(255,214,10,.25)">
+    <div style="font-size:12.5px;color:var(--t2);line-height:1.7"><strong style="color:var(--yel)">Investigative priority:</strong> every row below is a physical act tied to a timestamp and location. Branch cheque encashments include a named manager and contact number — request CCTV footage for the listed date/time windows before retention periods lapse.</div>
+  </div>
+  <div class="filters">
+    <select class="fi" id="co-mode" onchange="renderCashouts()">
+      <option value="">All modes</option>
+      <option value="Cheque">Cheque</option>
+      <option value="ATM">ATM</option>
+    </select>
+    <div class="fi-count" id="co-count"></div>
+  </div>
+  <div class="twrap"><table>
+    <thead><tr><th>Mode</th><th>Account</th><th>Date / Time</th><th>Location</th><th>Manager / Contact</th><th class="r">Amount</th><th>Ref.</th></tr></thead>
+    <tbody id="co-tbody"></tbody>
+  </table></div>
+</div>
+
+<!-- ANALYTICS -->
+<div class="sec" id="sec-analytics">
+  <div class="sec-title">▦ Analytics</div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-hd"><div class="card-title">📊 Amount Distribution by Layer (Box View)</div></div>
+      <div class="cw h300"><canvas id="ch-an-layer"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-hd"><div class="card-title">🏦 Top 10 Receiving Banks by Volume</div></div>
+      <div class="cw h300"><canvas id="ch-an-banktop"></canvas></div>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-hd"><div class="card-title">🧊 Frozen vs Withdrawn vs In-Transit</div></div>
+      <div class="cw h300"><canvas id="ch-an-status"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-hd"><div class="card-title">🗺 State-wise Physical Cash-Out</div></div>
+      <div class="cw h300"><canvas id="ch-an-state"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- LEDGER -->
+<div class="sec" id="sec-ledger">
+  <div class="sec-title">≡ Full Transaction Ledger — Money Transfer Sheet</div>
+  <div class="filters">
+    <input class="fi fi-wide" id="l-q" placeholder="Search account / bank / UTR / holder…" oninput="fLedger()">
+    <select class="fi" id="l-layer" onchange="fLedger()">
+      <option value="">All layers</option>
+      <option value="1">Layer 1</option><option value="2">Layer 2</option><option value="3">Layer 3</option><option value="4">Layer 4</option><option value="5">Layer 5</option>
+    </select>
+    <div class="fi-count" id="l-count"></div>
+  </div>
+  <div class="twrap"><table>
+    <thead><tr><th>#</th><th>Layer</th><th>From</th><th>To</th><th>Bank</th><th>UTR</th><th>Date</th><th class="r">Amount</th><th class="r">Disputed</th></tr></thead>
+    <tbody id="ledger-body"></tbody>
+  </table></div>
+  <div class="pagi" id="l-pagi"></div>
+</div>
+
+<!-- LEGAL -->
+<div class="sec" id="sec-legal">
+  <div class="sec-title">⚖ Legal Classification</div>
+  <div class="legal-grid">
+    <div class="sec-c">BNS §318/319</div><div class="desc-c">Cheating, and cheating by personation — fabricated charges of money laundering used to extract funds under false pretext.</div>
+    <div class="sec-c">BNS §351</div><div class="desc-c">Criminal intimidation — explicit threat of arrest used to coerce compliance and enforce silence.</div>
+    <div class="sec-c">BNS §316</div><div class="desc-c">Criminal breach of trust — inducement to break fixed deposits and transfer savings under pretext of "RBI verification."</div>
+    <div class="sec-c">IT Act §66C</div><div class="desc-c">Identity theft — fraudulent display of Aadhaar and bank card images to fabricate legitimacy.</div>
+    <div class="sec-c">IT Act §66D</div><div class="desc-c">Cheating by personation using a computer resource — the staged video call impersonating a police officer.</div>
+    <div class="sec-c">PMLA §3/4</div><div class="desc-c">Money laundering — 5-layer fund dispersal across 19 banks and multiple states constitutes clear layering and integration activity.</div>
+  </div>
+
+  <div class="sec-title" style="margin-top:28px">✅ Prioritized Action Items</div>
+  <ol class="priority">
+    <li><strong>Freeze requests</strong> to PNB (Delhi), Federal Bank (Kollam), IDFC First (Jalandhar) and Yes Bank (Pali) on residual balances — preserves the evidentiary chain even where funds are largely withdrawn.</li>
+    <li><strong>CCTV pull</strong> at the four Hardoi ATM locations and the Delhi/Kollam branches where cheques were physically encashed — the fastest path from account number to a human face.</li>
+    <li><strong>KYC pull</strong> on the full Jio Payments Bank wallet cluster (Hardoi) to test whether one recruiter/operator controls multiple SIM-linked wallets.</li>
+    <li><strong>Cross-case check</strong> — run "Ankit Upadhyay," "Krishna Mudgal," and "Prakash Kumar" (UPI handles surfacing in layer 3–4) against other active FraudLens mule-account lists for naming-pattern overlap.</li>
+    <li><strong>FIU-IND referral</strong> for the State Bank of Mauritius leg in layer 2 — possible cross-border offramp warranting financial-intelligence follow-up.</li>
+    <li><strong>Gold-pledge trace</strong> — formally request transaction records from the Manipuram Gold branch (Baleli Phata, Pune) referenced in the FIR for the IndusInd tranche.</li>
+  </ol>
+</div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-brand">FRAUDLENS</div>
+  <div>Source: NCRP Ack. 31905260095929 — Money Transfer, Hold, ATM &amp; Cheque Withdrawal sheets · For internal investigative use only</div>
+</div>
+
+<script>
+const DATA = {"nodes": [{"id": "925020057462361", "layer": 1, "bank": "Axis Bank", "holder": "MULE HUB 1 — Nova Next Mart Pvt Ltd"}, {"id": "5922170355", "layer": 2, "bank": "Central Bank of India", "holder": "Vanshika Gupta"}, {"id": "30000515449", "layer": 2, "bank": "Fino Payments Bank", "holder": "Narayan Lal Damami"}, {"id": "619006900008289", "layer": 2, "bank": "Punjab National Bank", "holder": "KISHOR"}, {"id": "106200014062", "layer": 2, "bank": "Yes Bank", "holder": "Rashi karamchandani"}, {"id": "622290000026", "layer": 2, "bank": "Yes Bank", "holder": "ajit singh"}, {"id": "501061288063", "layer": 2, "bank": "NSDL Payments Bank Ltd", "holder": "Mamta"}, {"id": "44993498790", "layer": 2, "bank": "State Bank of India", "holder": "muhammed junaid k"}, {"id": "50100754357846", "layer": 3, "bank": "HDFC Bank", "holder": null}, {"id": "619006900000953", "layer": 3, "bank": "Punjab National Bank", "holder": null}, {"id": "UNRESOLVED-DST-14", "layer": 3, "bank": "Unresolved", "holder": null}, {"id": "1425000000051", "layer": 3, "bank": "Paytm", "holder": null}, {"id": "2261100000025", "layer": 3, "bank": "PhonePe", "holder": null}, {"id": "40790100009572", "layer": 4, "bank": "Bank of Baroda", "holder": null}, {"id": "40790100010458", "layer": 4, "bank": "Unresolved", "holder": null}, {"id": "258295299526", "layer": 1, "bank": "IndusInd Bank", "holder": "MULE HUB 2 — Rilex Enterprises"}, {"id": "40543101061743", "layer": 2, "bank": "Kerala Gramin Bank", "holder": null}, {"id": "20017775941229", "layer": 2, "bank": "State Bank Of Mauritius", "holder": null}, {"id": "52450700011060", "layer": 2, "bank": "Yes Bank", "holder": null}, {"id": "10277396693", "layer": 2, "bank": "IDFC First Bank", "holder": null}, {"id": "64192000002294", "layer": 2, "bank": "Yes Bank", "holder": null}, {"id": "19510100103354", "layer": 2, "bank": "Federal Bank", "holder": null}, {"id": "14001000016615", "layer": 2, "bank": "Indian Overseas Bank", "holder": null}, {"id": "924020047581815", "layer": 2, "bank": "Axis Bank", "holder": null}, {"id": "20144519485", "layer": 0, "bank": "Bank of Maharashtra", "holder": "VICTIM — Pensioner (A/C ...20104519485)"}, {"id": "42805607054", "layer": 5, "bank": "State Bank of India", "holder": null}, {"id": "3321721140096", "layer": 3, "bank": "Jio Payments Bank Ltd", "holder": null}, {"id": "3321721140021", "layer": 3, "bank": "Jio Payments Bank Ltd", "holder": null}, {"id": "3321721138363", "layer": 3, "bank": "Jio Payments Bank Ltd", "holder": null}, {"id": "3321721138346", "layer": 3, "bank": "Jio Payments Bank Ltd", "holder": null}, {"id": "3321721140033", "layer": 3, "bank": "Jio Payments Bank Ltd", "holder": null}, {"id": "3321721134136", "layer": 3, "bank": "Jio Payments Bank Ltd", "holder": null}], "edges": [{"from": "925020057462361", "to": "5922170355", "amount": 100000.0, "disputed": 100000.0, "bank": "Central Bank of India", "ifsc": "CBIN0283749", "date": "04/04/2026 12:00:00 AM", "utr": "UTIBN62026040426578919", "layer": 2, "holder": "Vanshika Gupta", "remarks": "Vanshika Gupta,AXISP00785413019"}, {"from": "925020057462361", "to": "30000515449", "amount": 500000.0, "disputed": 245206.0, "bank": "Fino Payments Bank", "ifsc": "FINO0000001", "date": "04/04/2026 12:00:00 AM", "utr": "UTIBR72026040400423044", "layer": 2, "holder": "Narayan Lal Damami", "remarks": "Narayan Lal Damami,UTIBR72026040400423044"}, {"from": "925020057462361", "to": "619006900008289", "amount": 553000.0, "disputed": 553000.0, "bank": "Punjab National Bank", "ifsc": "PUNB0061900", "date": "04/04/2026 12:00:00 AM", "utr": "UTIBR72026040400422997", "layer": 2, "holder": "KISHOR", "remarks": "KISHOR,UTIBR72026040400422997"}, {"from": "925020057462361", "to": "106200014062", "amount": 110000.0, "disputed": 110000.0, "bank": "Yes Bank", "ifsc": "YESB0MNSB01", "date": "04/04/2026 12:00:00 AM", "utr": "UTIBN62026040426580823", "layer": 2, "holder": "Rashi karamchandani", "remarks": "Rashi karamchandani,AXISP00785413021"}, {"from": "925020057462361", "to": "622290000026", "amount": 130000.0, "disputed": 130000.0, "bank": "Yes Bank", "ifsc": "YESB0MNSB01", "date": "04/04/2026 12:00:00 AM", "utr": "UTIBN62026040426578945", "layer": 2, "holder": "ajit singh", "remarks": "ajit singh,AXISP00785413020"}, {"from": "925020057462361", "to": "501061288063", "amount": 180000.0, "disputed": 180000.0, "bank": "NSDL Payments Bank Ltd", "ifsc": "NSPB0000002", "date": "04/04/2026 12:00:00 AM", "utr": "UTIBN62026040426578944", "layer": 2, "holder": "Mamta", "remarks": "Mamta,AXISP00785413018"}, {"from": "925020057462361", "to": "44993498790", "amount": 400000.0, "disputed": 400000.0, "bank": "State Bank of India", "ifsc": "SBIN0004365", "date": "04/04/2026 12:00:00 AM", "utr": "UTIBR72026040400422977", "layer": 2, "holder": "muhammed junaid k", "remarks": "muhammed junaid k,UTIBR72026040400422977"}, {"from": "5922170355", "to": "50100754357846", "amount": 20000.0, "disputed": 20000.0, "bank": "HDFC Bank", "ifsc": "HDFC0003042", "date": "04/04/2026 04:06:09 PM", "utr": "609445046968", "layer": 3, "holder": null, "remarks": "UPI"}, {"from": "619006900008289", "to": "619006900000953", "amount": 1200.0, "disputed": 1200.0, "bank": "Punjab National Bank", "ifsc": "PUNB0061900", "date": "04/04/2026 03:00:47 PM", "utr": "377727278505", "layer": 3, "holder": null, "remarks": "UPI:DR:P2V:N:MOBIN"}, {"from": "5922170355", "to": "50100754357846", "amount": 5000.0, "disputed": 5000.0, "bank": "HDFC Bank", "ifsc": "HDFC0003042", "date": "04/04/2026 03:58:20 PM", "utr": "203284282080", "layer": 3, "holder": null, "remarks": "UPI"}, {"from": "5922170355", "to": "50100754357846", "amount": 10000.0, "disputed": 10000.0, "bank": "HDFC Bank", "ifsc": "HDFC0003042", "date": "04/04/2026 03:52:00 PM", "utr": "203283905678", "layer": 3, "holder": null, "remarks": "UPI"}, {"from": "5922170355", "to": "50100754357846", "amount": 10000.0, "disputed": 10000.0, "bank": "HDFC Bank", "ifsc": "HDFC0003042", "date": "04/04/2026 03:52:33 PM", "utr": "203283938764", "layer": 3, "holder": null, "remarks": "UPI"}, {"from": "5922170355", "to": "50100754357846", "amount": 10000.0, "disputed": 10000.0, "bank": "HDFC Bank", "ifsc": "HDFC0003042", "date": "04/04/2026 04:05:52 PM", "utr": "609465629587", "layer": 3, "holder": null, "remarks": "UPI"}, {"from": "5922170355", "to": "50100754357846", "amount": 20000.0, "disputed": 20000.0, "bank": "HDFC Bank", "ifsc": "HDFC0003042", "date": "04/04/2026 03:52:49 PM", "utr": "203283952780", "layer": 3, "holder": null, "remarks": "UPI"}, {"from": "5922170355", "to": "UNRESOLVED-DST-14", "amount": 5000.0, "disputed": 5000.0, "bank": "Others", "ifsc": "", "date": "04/04/2026 03:55:27 PM", "utr": "609490519239", "layer": 3, "holder": null, "remarks": "UPI"}, {"from": "5922170355", "to": "1425000000051", "amount": 2000.0, "disputed": 2000.0, "bank": "Yes Bank", "ifsc": "YESB0PTMUPI", "date": "04/04/2026 05:21:52 PM", "utr": "203289672009", "layer": 3, "holder": null, "remarks": "UPI"}, {"from": "5922170355", "to": "1425000000051", "amount": 8000.0, "disputed": 7759.88, "bank": "Yes Bank", "ifsc": "YESB0PTMUPI", "date": "04/04/2026 05:22:08 PM", "utr": "203289692469", "layer": 3, "holder": null, "remarks": "UPI"}, {"from": "619006900008289", "to": "2261100000025", "amount": 599.0, "disputed": 16.04, "bank": "Yes Bank", "ifsc": "YESB0YBLUPI", "date": "14/04/2026 01:45:08 AM", "utr": "610422203326", "layer": 3, "holder": null, "remarks": "UPI:DR:P2M:N:MOBIN"}, {"from": "5922170355", "to": "50100754357846", "amount": 5000.0, "disputed": 5000.0, "bank": "HDFC Bank", "ifsc": "HDFC0003042", "date": "04/04/2026 04:13:00 PM", "utr": "203285170250", "layer": 3, "holder": null, "remarks": "UPI"}, {"from": "1425000000051", "to": "1425000000051", "amount": 8000.0, "disputed": 7759.88, "bank": "Paytm", "ifsc": "", "date": "04/04/2026 05:22:08 PM", "utr": "203289692469", "layer": 4, "holder": null, "remarks": "UPI"}, {"from": "2261100000025", "to": "2261100000025", "amount": 599.0, "disputed": 16.04, "bank": "PhonePe", "ifsc": "", "date": "14/04/2026 01:45:08 AM", "utr": "610422203326", "layer": 4, "holder": null, "remarks": "UPI:DR:P2M:N:MOBIN"}, {"from": "1425000000051", "to": "1425000000051", "amount": 2000.0, "disputed": 2000.0, "bank": "Paytm", "ifsc": "", "date": "04/04/2026 05:21:52 PM", "utr": "203289672009", "layer": 4, "holder": null, "remarks": "UPI"}, {"from": "50100754357846", "to": "40790100009572", "amount": 30000.0, "disputed": 10000.0, "bank": "Bank of Baroda", "ifsc": "BARB0SHAMSH", "date": "04/04/2026 12:00:00 PM", "utr": "300141505311", "layer": 4, "holder": null, "remarks": "UPI-ANKIT UPADHYAY SO RA-8410524073@ibl-BARB0SHAMSH-300141505311-Sent using Paytm U"}, {"from": "50100754357846", "to": "40790100010458", "amount": 50000.0, "disputed": 19766.0, "bank": "Others", "ifsc": "barb0shamsh", "date": "04/04/2026 12:00:00 PM", "utr": "300140897256", "layer": 4, "holder": null, "remarks": "UPI-XXXXXXXXXX0458-BARB0SHAMSH-300140897256-Sent using Paytm U"}, {"from": "50100754357846", "to": "40790100010458", "amount": 50000.0, "disputed": 9766.0, "bank": "Others", "ifsc": "barb0shamsh", "date": "04/04/2026 12:00:00 PM", "utr": "300140897256", "layer": 4, "holder": null, "remarks": "UPI-XXXXXXXXXX0458-BARB0SHAMSH-300140897256-Sent using Paytm U"}, {"from": "50100754357846", "to": "40790100010458", "amount": 50000.0, "disputed": 9953.0, "bank": "Others", "ifsc": "barb0shamsh", "date": "04/04/2026 12:00:00 PM", "utr": "300140897256", "layer": 4, "holder": null, "remarks": "UPI-XXXXXXXXXX0458-BARB0SHAMSH-300140897256-Sent using Paytm U"}, {"from": "50100754357846", "to": "40790100009572", "amount": 30000.0, "disputed": 20000.0, "bank": "Bank of Baroda", "ifsc": "BARB0SHAMSH", "date": "04/04/2026 12:00:00 PM", "utr": "300141505311", "layer": 4, "holder": null, "remarks": "UPI-ANKIT UPADHYAY SO RA-8410524073@ibl-BARB0SHAMSH-300141505311-Sent using Paytm U"}, {"from": "258295299526", "to": "40543101061743", "amount": 238260.0, "disputed": 238260.0, "bank": "Kerala Gramin Bank", "ifsc": "KLGB0040543", "date": "05/05/2026 12:00:00 AM", "utr": "INDBR22026050500863311", "layer": 2, "holder": null, "remarks": ""}, {"from": "258295299526", "to": "20017775941229", "amount": 390000.0, "disputed": 390000.0, "bank": "State Bank Of Mauritius", "ifsc": "STCB0000065", "date": "05/05/2026 12:00:00 AM", "utr": "INDBR22026050500863516", "layer": 2, "holder": null, "remarks": ""}, {"from": "258295299526", "to": "52450700011060", "amount": 500000.0, "disputed": 660.0, "bank": "Yes Bank", "ifsc": "YESB0000524", "date": "06/05/2026 12:00:00 AM", "utr": "INDBR22026050600893805", "layer": 2, "holder": null, "remarks": ""}, {"from": "258295299526", "to": "10277396693", "amount": 360881.74, "disputed": 360881.74, "bank": "IDFC First Bank", "ifsc": "IDFB0021194", "date": "05/05/2026 12:00:00 AM", "utr": "INDBR22026050500863002", "layer": 2, "holder": null, "remarks": ""}, {"from": "258295299526", "to": "64192000002294", "amount": 340200.0, "disputed": 340200.0, "bank": "Yes Bank", "ifsc": "YESB0000641", "date": "05/05/2026 12:00:00 AM", "utr": "INDBR22026050500863239", "layer": 2, "holder": null, "remarks": ""}, {"from": "258295299526", "to": "19510100103354", "amount": 420000.0, "disputed": 420000.0, "bank": "Federal Bank", "ifsc": "FDRL0001951", "date": "05/05/2026 12:00:00 AM", "utr": "INDBR22026050500862925", "layer": 2, "holder": null, "remarks": ""}, {"from": "258295299526", "to": "14001000016615", "amount": 499998.26, "disputed": 499998.26, "bank": "Indian Overseas Bank", "ifsc": "IOBA0000140", "date": "05/05/2026 12:00:00 AM", "utr": "INDBR22026050500863173", "layer": 2, "holder": null, "remarks": ""}, {"from": "258295299526", "to": "924020047581815", "amount": 1150000.0, "disputed": 1150000.0, "bank": "Axis Bank", "ifsc": "UTIB0002676", "date": "05/05/2026 12:00:00 AM", "utr": "INDBR22026050500862764", "layer": 2, "holder": null, "remarks": ""}, {"from": "20144519485", "to": "258295299526", "amount": 3400000.0, "disputed": 3400000.0, "bank": "IndusInd Bank", "ifsc": "INDB0001915", "date": "05/05/2026 12:00:00 AM", "utr": "MAHBR52026050523820802", "layer": 1, "holder": "Remitter Account 20104519485", "remarks": "Remitter Account 20104519485"}, {"from": "20144519485", "to": "925020057462361", "amount": 2218206.0, "disputed": 2218206.0, "bank": "Axis Bank", "ifsc": "UTIB0000026", "date": "04/04/2026 12:00:00 AM", "utr": "MAHBR52026040423516664", "layer": 1, "holder": "Remitter Account 20104519485", "remarks": "Remitter Account 20104519485"}, {"from": "1425000000051", "to": "42805607054", "amount": 23570.0, "disputed": 9759.0, "bank": "State Bank of India", "ifsc": "SBIN0001073", "date": "04/04/2026 02:51:00 AM", "utr": "609466278357", "layer": 5, "holder": null, "remarks": ""}, {"from": "501061288063", "to": "3321721140096", "amount": 10000.0, "disputed": 10000.0, "bank": "Jio Payments Bank Ltd", "ifsc": "JIOP0000001", "date": "04/04/2026 06:26:00 PM", "utr": "609418065414", "layer": 3, "holder": null, "remarks": ""}, {"from": "501061288063", "to": "3321721140021", "amount": 10000.0, "disputed": 10000.0, "bank": "Jio Payments Bank Ltd", "ifsc": "JIOP0000001", "date": "04/04/2026 03:23:00 PM", "utr": "609415057160", "layer": 3, "holder": null, "remarks": ""}, {"from": "501061288063", "to": "3321721138363", "amount": 10000.0, "disputed": 10000.0, "bank": "Jio Payments Bank Ltd", "ifsc": "JIOP0000001", "date": "04/04/2026 06:27:00 PM", "utr": "609418065479", "layer": 3, "holder": null, "remarks": ""}, {"from": "501061288063", "to": "3321721138363", "amount": 10000.0, "disputed": 10000.0, "bank": "Jio Payments Bank Ltd", "ifsc": "JIOP0000001", "date": "04/04/2026 04:55:00 PM", "utr": "609416060875", "layer": 3, "holder": null, "remarks": ""}, {"from": "501061288063", "to": "3321721138363", "amount": 10000.0, "disputed": 10000.0, "bank": "Jio Payments Bank Ltd", "ifsc": "JIOP0000001", "date": "04/04/2026 03:22:00 PM", "utr": "609415057153", "layer": 3, "holder": null, "remarks": ""}, {"from": "501061288063", "to": "3321721138346", "amount": 10000.0, "disputed": 10000.0, "bank": "Jio Payments Bank Ltd", "ifsc": "JIOP0000001", "date": "04/04/2026 06:25:00 PM", "utr": "609418065383", "layer": 3, "holder": null, "remarks": ""}, {"from": "501061288063", "to": "3321721138346", "amount": 10000.0, "disputed": 10000.0, "bank": "Jio Payments Bank Ltd", "ifsc": "JIOP0000001", "date": "04/04/2026 03:23:00 PM", "utr": "609415057164", "layer": 3, "holder": null, "remarks": ""}, {"from": "501061288063", "to": "3321721138346", "amount": 10000.0, "disputed": 10000.0, "bank": "Jio Payments Bank Ltd", "ifsc": "JIOP0000001", "date": "04/04/2026 02:40:00 PM", "utr": "609414055536", "layer": 3, "holder": null, "remarks": ""}, {"from": "501061288063", "to": "3321721140033", "amount": 10000.0, "disputed": 10000.0, "bank": "Jio Payments Bank Ltd", "ifsc": "JIOP0000001", "date": "04/04/2026 06:26:00 PM", "utr": "609418065435", "layer": 3, "holder": null, "remarks": ""}, {"from": "501061288063", "to": "3321721140033", "amount": 10000.0, "disputed": 10000.0, "bank": "Jio Payments Bank Ltd", "ifsc": "JIOP0000001", "date": "04/04/2026 03:24:00 PM", "utr": "609415057183", "layer": 3, "holder": null, "remarks": ""}, {"from": "501061288063", "to": "3321721140033", "amount": 10000.0, "disputed": 10000.0, "bank": "Jio Payments Bank Ltd", "ifsc": "JIOP0000001", "date": "04/04/2026 02:40:00 PM", "utr": "609414055552", "layer": 3, "holder": null, "remarks": ""}, {"from": "501061288063", "to": "3321721134136", "amount": 10000.0, "disputed": 10000.0, "bank": "Jio Payments Bank Ltd", "ifsc": "JIOP0000001", "date": "04/04/2026 06:26:00 PM", "utr": "609418065399", "layer": 3, "holder": null, "remarks": ""}, {"from": "501061288063", "to": "3321721140096", "amount": 10000.0, "disputed": 10000.0, "bank": "Jio Payments Bank Ltd", "ifsc": "JIOP0000001", "date": "04/04/2026 04:54:00 PM", "utr": "609416060892", "layer": 3, "holder": null, "remarks": ""}, {"from": "501061288063", "to": "3321721134136", "amount": 10000.0, "disputed": 10000.0, "bank": "Jio Payments Bank Ltd", "ifsc": "JIOP0000001", "date": "04/04/2026 03:23:00 PM", "utr": "609415057179", "layer": 3, "holder": null, "remarks": ""}, {"from": "501061288063", "to": "3321721134136", "amount": 10000.0, "disputed": 10000.0, "bank": "Jio Payments Bank Ltd", "ifsc": "JIOP0000001", "date": "04/04/2026 12:34:00 PM", "utr": "609414055566", "layer": 3, "holder": null, "remarks": ""}, {"from": "501061288063", "to": "3321721140096", "amount": 10000.0, "disputed": 10000.0, "bank": "Jio Payments Bank Ltd", "ifsc": "JIOP0000001", "date": "04/04/2026 03:22:00 PM", "utr": "609415057123", "layer": 3, "holder": null, "remarks": ""}, {"from": "501061288063", "to": "3321721140021", "amount": 9000.0, "disputed": 9000.0, "bank": "Jio Payments Bank Ltd", "ifsc": "JIOP0000001", "date": "04/04/2026 06:27:00 PM", "utr": "609418065502", "layer": 3, "holder": null, "remarks": ""}, {"from": "501061288063", "to": "3321721140021", "amount": 10000.0, "disputed": 10000.0, "bank": "Jio Payments Bank Ltd", "ifsc": "JIOP0000001", "date": "04/04/2026 04:55:00 PM", "utr": "609416060909", "layer": 3, "holder": null, "remarks": ""}, {"from": "622290000026", "to": "622290000026", "amount": 130000.0, "disputed": 130000.0, "bank": "Others", "ifsc": "YESB0MNSB01", "date": "04/04/2026 12:00:00 AM", "utr": "UTIBN62026040426578945", "layer": 3, "holder": null, "remarks": ""}, {"from": "106200014062", "to": "106200014062", "amount": 110000.0, "disputed": 110000.0, "bank": "Others", "ifsc": "YESB0MNSB01", "date": "04/04/2026 12:00:00 AM", "utr": "UTIBN62026040426580823", "layer": 3, "holder": null, "remarks": ""}], "cashouts": [{"mode": "Cheque", "account": "619006900008289", "amount": 550000.0, "disputed": 550000.0, "date": "04/04/2026 14:04:PM", "location": "59/1, NEW ROHTAK ROAD, NEW DELHI DELHI", "manager": "GAURAV KUMAR 919572423669", "remarks": "KISHOR 106", "ref": "781043"}, {"mode": "Cheque", "account": "44993498790", "amount": 400000.0, "disputed": 400000.0, "date": "04/04/2026 00:00:AM", "location": "SBI BRANCH", "manager": "Arunkumar   C 9447001850", "remarks": "", "ref": "244377"}, {"mode": "Cheque", "account": "19510100103354", "amount": 400000.0, "disputed": 400000.0, "date": "", "location": "BHARANIKKAVU", "manager": "SUJA L 8129934047", "remarks": "BNK:CASH", "ref": "10243046"}, {"mode": "Cheque", "account": "10277396693", "amount": 360800.0, "disputed": 360800.0, "date": "05/05/2026 13:14:PM", "location": "Ground floor Building no  24  Vijay Nagar  Near Football Chowk  Jalandhar  144001", "manager": "Kushal Deep Singh 9136916964", "remarks": "available balance 7.660", "ref": "7"}, {"mode": "Cheque", "account": "64192000002294", "amount": 340000.0, "disputed": 330342.47, "date": "05/05/2026 00:00:AM", "location": "PALI  RAJASTHAN GROUND FLOOR  PLOT NO 3 AND 4  PANCH MAUKHA PULIA  RAILWAY STATION ROAD PALI RAJAST", "manager": "Vidhita Jain 0", "remarks": "", "ref": "741722"}, {"mode": "ATM", "account": "19510100103354", "amount": 10000.0, "disputed": 4972.9, "date": "05/05/2026 13:39:PM", "location": "Place of ATM :-TAJMAHAL SHOPPING COMPLEX KOLLAM", "manager": "", "remarks": "TO ATM/7923/FBL-BHARANIKKAVU      \\TAJMAHAL SHOPPI", "ref": "ATM ID :-RH195101"}, {"mode": "ATM", "account": "19510100103354", "amount": 10000.0, "disputed": 10000.0, "date": "05/05/2026 13:38:PM", "location": "Place of ATM :-TAJMAHAL SHOPPING COMPLEX KOLLAM", "manager": "", "remarks": "TO ATM/7922/FBL-BHARANIKKAVU      \\TAJMAHAL SHOPPI", "ref": "ATM ID :-RH195101"}, {"mode": "ATM", "account": "3321721140096", "amount": 10000.0, "disputed": 10000.0, "date": "04/04/2026 17:36:PM", "location": "Place of ATM :-SBI CINEMA CHAURAHA  HARDOI  UPIN", "manager": "", "remarks": "Transaction ID: 609417005640", "ref": "ATM ID :-00649004"}, {"mode": "ATM", "account": "3321721140096", "amount": 10000.0, "disputed": 10000.0, "date": "04/04/2026 20:04:PM", "location": "Place of ATM :-HARDOI MAIN BRANCH ADW HARDOI  UPIN", "manager": "", "remarks": "Transaction ID: 609420028003", "ref": "ATM ID :-00649621"}, {"mode": "ATM", "account": "3321721140096", "amount": 10000.0, "disputed": 10000.0, "date": "04/04/2026 15:33:PM", "location": "Place of ATM :-PIHANI BRANCH   HARDOI  UPIN", "manager": "", "remarks": "Transaction ID: 609415031621", "ref": "ATM ID :-S1ANUA27"}, {"mode": "ATM", "account": "3321721134136", "amount": 10000.0, "disputed": 10000.0, "date": "04/04/2026 18:34:PM", "location": "Place of ATM :-AVAS VIKAS COLONY HAR HARDOI  UPIN", "manager": "", "remarks": "Transaction ID: 609418015728", "ref": "ATM ID :-00649018"}, {"mode": "ATM", "account": "3321721134136", "amount": 10000.0, "disputed": 10000.0, "date": "04/04/2026 14:48:PM", "location": "Place of ATM :-PIHANI BRANCH   HARDOI  UPIN", "manager": "", "remarks": "Transaction ID: 609414005641", "ref": "ATM ID :-S1ANUA27"}, {"mode": "ATM", "account": "3321721134136", "amount": 10000.0, "disputed": 10000.0, "date": "04/04/2026 16:48:PM", "location": "Place of ATM :-HARDOI 2ND BRANCH HARDOI  UPIN", "manager": "", "remarks": "Transaction ID: 609416012750", "ref": "ATM ID :-S1ANYX66"}, {"mode": "ATM", "account": "3321721138363", "amount": 10000.0, "disputed": 10000.0, "date": "04/04/2026 17:35:PM", "location": "Place of ATM :-SBI CINEMA CHAURAHA  HARDOI  UPIN", "manager": "", "remarks": "Transaction ID: 609417027252", "ref": "ATM ID :-00649004"}, {"mode": "ATM", "account": "3321721138363", "amount": 10000.0, "disputed": 10000.0, "date": "04/04/2026 20:05:PM", "location": "Place of ATM :-HARDOI MAIN BRANCH ADW HARDOI  UPIN", "manager": "", "remarks": "Transaction ID: 609420019024", "ref": "ATM ID :-00649621"}, {"mode": "ATM", "account": "3321721138363", "amount": 10000.0, "disputed": 10000.0, "date": "04/04/2026 15:31:PM", "location": "Place of ATM :-PIHANI BRANCH   HARDOI  UPIN", "manager": "", "remarks": "Transaction ID: 609415030208", "ref": "ATM ID :-S1ANUA27"}, {"mode": "ATM", "account": "3321721140021", "amount": 9000.0, "disputed": 9000.0, "date": "04/04/2026 20:06:PM", "location": "Place of ATM :-HARDOI MAIN BRANCH ADW HARDOI  UPIN", "manager": "", "remarks": "Transaction ID: 609420022477", "ref": "ATM ID :-00649621"}, {"mode": "ATM", "account": "3321721140021", "amount": 10000.0, "disputed": 10000.0, "date": "04/04/2026 15:32:PM", "location": "Place of ATM :-PIHANI BRANCH   HARDOI  UPIN", "manager": "", "remarks": "Transaction ID: 609415031083", "ref": "ATM ID :-S1ANUA27"}, {"mode": "ATM", "account": "3321721140021", "amount": 10000.0, "disputed": 10000.0, "date": "04/04/2026 17:34:PM", "location": "Place of ATM :-SBI CINEMA CHAURAHA  HARDOI  UPIN", "manager": "", "remarks": "Transaction ID: 609417006727", "ref": "ATM ID :-00649004"}, {"mode": "ATM", "account": "3321721140033", "amount": 10000.0, "disputed": 10000.0, "date": "04/04/2026 16:49:PM", "location": "Place of ATM :-HARDOI 2ND BRANCH HARDOI  UPIN", "manager": "", "remarks": "Transaction ID: 609416013468", "ref": "ATM ID :-S1ANYX66"}, {"mode": "ATM", "account": "3321721140033", "amount": 10000.0, "disputed": 10000.0, "date": "04/04/2026 18:44:PM", "location": "Place of ATM :-ATM ADB HARDOI   HARDOI  UPIN", "manager": "", "remarks": "Transaction ID: 609418007975", "ref": "ATM ID :-05304001"}, {"mode": "ATM", "account": "3321721140033", "amount": 10000.0, "disputed": 10000.0, "date": "04/04/2026 14:49:PM", "location": "Place of ATM :-PIHANI BRANCH   HARDOI  UPIN", "manager": "", "remarks": "Transaction ID: 609414006138", "ref": "ATM ID :-S1ANUA27"}, {"mode": "ATM", "account": "3321721138346", "amount": 10000.0, "disputed": 10000.0, "date": "04/04/2026 14:47:PM", "location": "Place of ATM :-PIHANI BRANCH   HARDOI  UPIN", "manager": "", "remarks": "Transaction ID: 609414005091", "ref": "ATM ID :-S1ANUA27"}, {"mode": "ATM", "account": "3321721138346", "amount": 10000.0, "disputed": 10000.0, "date": "04/04/2026 18:43:PM", "location": "Place of ATM :-ATM ADB HARDOI   HARDOI  UPIN", "manager": "", "remarks": "Transaction ID: 609418006213", "ref": "ATM ID :-05304001"}, {"mode": "ATM", "account": "3321721138346", "amount": 10000.0, "disputed": 10000.0, "date": "04/04/2026 16:50:PM", "location": "Place of ATM :-HARDOI 2ND BRANCH HARDOI  UPIN", "manager": "", "remarks": "Transaction ID: 609416014132", "ref": "ATM ID :-S1ANYX66"}], "holds": [{"account": "5922170355", "amount": 0.12, "bank": "Central Bank of India", "date": "09/05/2026 03:31:54 PM", "layer": 2}, {"account": "619006900008289", "amount": 0.27, "bank": "Punjab National Bank (including Oriental Bank of Commerce and United Bank of India)", "date": "09/05/2026 03:33:49 PM", "layer": 2}, {"account": "50100754357846", "amount": 4852.71, "bank": "HDFC Bank", "date": "04/04/2026 12:00:00 PM", "layer": 3}, {"account": "50100754357846", "amount": 5000.0, "bank": "HDFC Bank", "date": "04/04/2026 12:00:00 PM", "layer": 3}, {"account": "619006900000953", "amount": 1200.0, "bank": "Punjab National Bank (including Oriental Bank of Commerce and United Bank of India)", "date": "09/05/2026 03:37:42 PM", "layer": 3}, {"account": "40790100009572", "amount": 20000.0, "bank": "Bank of Baroda (Including Vijaya Bank and Dena Bank)", "date": "09/05/2026 03:43:47 PM", "layer": 4}, {"account": "40790100009572", "amount": 10000.0, "bank": "Bank of Baroda (Including Vijaya Bank and Dena Bank)", "date": "09/05/2026 03:43:48 PM", "layer": 4}, {"account": "19510100103354", "amount": 5027.1, "bank": "Federal Bank", "date": "05/05/2026 01:00:02 PM", "layer": 2}, {"account": "924020047581815", "amount": 85.59, "bank": "Axis Bank", "date": "09/05/2026 12:00:00 AM", "layer": 2}, {"account": "10277396693", "amount": 7.66, "bank": "IDFC First Bank", "date": "09/05/2026 10:21:14 AM", "layer": 2}, {"account": "14001000016615", "amount": 89.0, "bank": "Indian Overseas Bank", "date": "05/05/2026 12:00:00 AM", "layer": 2}, {"account": "64192000002294", "amount": 9857.53, "bank": "Yes Bank", "date": "05/05/2026 01:03:00 PM", "layer": 2}, {"account": "52450700011060", "amount": 660.0, "bank": "Yes Bank", "date": "06/05/2026 11:07:00 AM", "layer": 2}, {"account": "42805607054", "amount": 87.63, "bank": "State Bank of India", "date": "04/04/2026 02:51:00 AM", "layer": 5}]};
+
+/* ---------- helpers ---------- */
+function fmtI(n){return '₹'+Number(n).toLocaleString('en-IN',{maximumFractionDigits:0});}
+function fmtL(n){
+  n=Number(n);
+  if(Math.abs(n)>=10000000) return '₹'+(n/10000000).toFixed(2)+'Cr';
+  if(Math.abs(n)>=100000) return '₹'+(n/100000).toFixed(2)+'L';
+  if(Math.abs(n)>=1000) return '₹'+(n/1000).toFixed(1)+'K';
+  return '₹'+n.toFixed(0);
+}
+function nav(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  btn.classList.add('active');
+  if(id==='moneytrial') setTimeout(initMT,60);
+}
+
+const CS={responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',font:{family:'IBM Plex Sans',size:11}}},tooltip:{backgroundColor:'#0f172a',borderColor:'#1a2640',borderWidth:1,titleColor:'#e2e8f0',bodyColor:'#94a3b8',titleFont:{family:'JetBrains Mono'},bodyFont:{family:'JetBrains Mono',size:11}}},scales:{x:{ticks:{color:'#64748b',font:{family:'JetBrains Mono',size:10}},grid:{color:'rgba(26,38,64,.7)'}},y:{ticks:{color:'#64748b',font:{family:'JetBrains Mono',size:10}},grid:{color:'rgba(26,38,64,.7)'}}}};
+const mCS=JSON.parse(JSON.stringify(CS));delete mCS.scales;
+
+/* ---------- OVERVIEW CHARTS ---------- */
+function buildOverview(){
+  const layerAgg={};
+  DATA.edges.forEach(e=>{layerAgg[e.layer]=(layerAgg[e.layer]||0)+e.amount;});
+  const layers=[1,2,3,4,5];
+  new Chart(document.getElementById('ch-layers'),{type:'bar',data:{labels:layers.map(l=>'Layer '+l),datasets:[{label:'Volume',data:layers.map(l=>layerAgg[l]||0),backgroundColor:['#ff2d55','#ff9500','#00d4ff','#a78bfa','#64748b'],borderRadius:4}]},options:{...CS,plugins:{...CS.plugins,legend:{display:false}},scales:{x:CS.scales.x,y:{...CS.scales.y,ticks:{...CS.scales.y.ticks,callback:v=>fmtL(v)}}}}});
+
+  const bankAgg={};
+  DATA.edges.forEach(e=>{if(e.bank&&e.bank!=='Unresolved')bankAgg[e.bank]=(bankAgg[e.bank]||0)+e.amount;});
+  const bankSorted=Object.entries(bankAgg).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  new Chart(document.getElementById('ch-banks'),{type:'doughnut',data:{labels:bankSorted.map(b=>b[0]),datasets:[{data:bankSorted.map(b=>b[1]),backgroundColor:['#00d4ff','#ff2d55','#ff9500','#30d158','#a78bfa','#ffd60a','#ff6b9d','#64748b','#0099bb','#cc2244'],borderWidth:2,borderColor:'#0b1220'}]},options:{...mCS,plugins:{...mCS.plugins,legend:{position:'right',labels:{color:'#94a3b8',font:{size:10}}}}}});
+
+  const totalLoss=5618206;
+  const cashOut=DATA.cashouts.reduce((s,c)=>s+c.amount,0);
+  const digital=totalLoss-cashOut;
+  new Chart(document.getElementById('ch-disposition'),{type:'doughnut',data:{labels:['Physical Cash-Out','Remains Digital/Layered'],datasets:[{data:[cashOut,digital],backgroundColor:['rgba(255,214,10,.75)','rgba(0,212,255,.55)'],borderWidth:2,borderColor:'#0b1220'}]},options:{...mCS,plugins:{...mCS.plugins,legend:{position:'bottom',labels:{color:'#94a3b8',font:{size:10}}}}}});
+
+  const cheque=DATA.cashouts.filter(c=>c.mode==='Cheque').reduce((s,c)=>s+c.amount,0);
+  const atm=DATA.cashouts.filter(c=>c.mode==='ATM').reduce((s,c)=>s+c.amount,0);
+  new Chart(document.getElementById('ch-withdrawmode'),{type:'doughnut',data:{labels:['Cheque','ATM'],datasets:[{data:[cheque,atm],backgroundColor:['rgba(255,45,85,.7)','rgba(167,139,250,.7)'],borderWidth:2,borderColor:'#0b1220'}]},options:{...mCS,plugins:{...mCS.plugins,legend:{position:'bottom',labels:{color:'#94a3b8',font:{size:10}}}}}});
+
+  new Chart(document.getElementById('ch-hubsplit'),{type:'doughnut',data:{labels:['Axis Hub (...462361)','IndusInd Hub (...9526)'],datasets:[{data:[2218206,3400000],backgroundColor:['rgba(255,45,85,.75)','rgba(255,149,0,.75)'],borderWidth:2,borderColor:'#0b1220'}]},options:{...mCS,plugins:{...mCS.plugins,legend:{position:'bottom',labels:{color:'#94a3b8',font:{size:10}}}}}});
+}
+
+/* ---------- ACCOUNTS TAB ---------- */
+function nodeFlows(id){
+  let inAmt=0,outAmt=0;
+  DATA.edges.forEach(e=>{if(e.to===id)inAmt+=e.amount; if(e.from===id)outAmt+=e.amount;});
+  return {inAmt,outAmt};
+}
+function roleBadge(n){
+  if(n.layer===0) return '<span class="badge b-grn">VICTIM</span>';
+  if(n.layer===1) return '<span class="badge b-red">MULE HUB</span>';
+  if(n.layer===2) return '<span class="badge b-yel">FAN-OUT</span>';
+  if(n.layer===3) return '<span class="badge b-acc">MIXING</span>';
+  return '<span class="badge b-pur">TERMINAL</span>';
+}
+function renderAccounts(){
+  const q=(document.getElementById('acc-q').value||'').toLowerCase();
+  const lyr=document.getElementById('acc-layer').value;
+  let rows=DATA.nodes.filter(n=>n.id);
+  if(lyr!=='') rows=rows.filter(n=>String(n.layer)===lyr);
+  if(q) rows=rows.filter(n=>(n.id+' '+(n.bank||'')+' '+(n.holder||'')).toLowerCase().includes(q));
+  rows=rows.sort((a,b)=>a.layer-b.layer);
+  document.getElementById('acc-count').textContent=rows.length+' accounts';
+  document.getElementById('acc-tbody').innerHTML=rows.map(n=>{
+    const f=nodeFlows(n.id);
+    return `<tr><td><span class="badge b-dim">L${n.layer}</span></td><td style="color:var(--acc)">${n.id}</td><td>${n.bank||'Unresolved'}</td><td>${n.holder||'<span style="color:var(--t3)">— unidentified —</span>'}</td><td class="r" style="color:var(--grn)">${f.inAmt?fmtI(f.inAmt):'—'}</td><td class="r" style="color:var(--red)">${f.outAmt?fmtI(f.outAmt):'—'}</td><td>${roleBadge(n)}</td></tr>`;
+  }).join('');
+}
+
+/* ---------- CASH-OUT TAB ---------- */
+function renderCashouts(){
+  const mode=document.getElementById('co-mode').value;
+  let rows=DATA.cashouts.slice();
+  if(mode) rows=rows.filter(c=>c.mode===mode);
+  rows.sort((a,b)=>b.amount-a.amount);
+  document.getElementById('co-count').textContent=rows.length+' records · '+fmtI(rows.reduce((s,c)=>s+c.amount,0));
+  document.getElementById('co-tbody').innerHTML=rows.map(c=>`<tr><td><span class="badge ${c.mode==='Cheque'?'b-red':'b-pur'}">${c.mode}</span></td><td style="color:var(--acc)">${c.account}</td><td>${c.date}</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis" title="${c.location}">${c.location}</td><td style="font-size:10px">${c.manager||'—'}</td><td class="r" style="font-weight:600">${fmtI(c.amount)}</td><td>${c.ref||'—'}</td></tr>`).join('');
+}
+
+/* ---------- LEDGER TAB ---------- */
+let curPage=1; const PG=25;
+function fLedger(){curPage=1; renderLedger();}
+function renderLedger(){
+  const q=(document.getElementById('l-q').value||'').toLowerCase();
+  const lyr=document.getElementById('l-layer').value;
+  let rows=DATA.edges.slice();
+  if(lyr) rows=rows.filter(e=>String(e.layer)===lyr);
+  if(q) rows=rows.filter(e=>(e.from+' '+e.to+' '+e.bank+' '+e.utr+' '+(e.holder||'')).toLowerCase().includes(q));
+  document.getElementById('l-count').textContent=rows.length+' records';
+  const sl=rows.slice((curPage-1)*PG,curPage*PG);
+  document.getElementById('ledger-body').innerHTML=sl.map((e,i)=>`<tr><td style="color:var(--t3)">${(curPage-1)*PG+i+1}</td><td><span class="badge b-dim">L${e.layer}</span></td><td style="font-size:10px">${e.from}</td><td style="font-size:10px">${e.to}${e.holder?' <span style="color:var(--t3)">('+e.holder+')</span>':''}</td><td>${e.bank}</td><td style="font-size:10px">${e.utr}</td><td>${e.date}</td><td class="r" style="font-weight:600;color:${e.amount>=500000?'var(--red)':e.amount>=100000?'var(--org)':'var(--t1)'}">${fmtI(e.amount)}</td><td class="r" style="color:var(--t3)">${fmtI(e.disputed)}</td></tr>`).join('');
+  buildPagi(rows.length);
+}
+function buildPagi(total){
+  const tot=Math.ceil(total/PG);
+  const p=document.getElementById('l-pagi');
+  if(tot<=1){p.innerHTML='';return;}
+  let h=`<span class="pg-info">Page ${curPage}/${tot} (${total})</span><button class="pb" onclick="gP(1,${tot})">«</button><button class="pb" onclick="gP(${Math.max(1,curPage-1)},${tot})">‹</button>`;
+  for(let i=Math.max(1,curPage-2);i<=Math.min(tot,curPage+2);i++)h+=`<button class="pb ${i===curPage?'act':''}" onclick="gP(${i},${tot})">${i}</button>`;
+  h+=`<button class="pb" onclick="gP(${Math.min(tot,curPage+1)},${tot})">›</button><button class="pb" onclick="gP(${tot},${tot})">»</button>`;
+  p.innerHTML=h;
+}
+function gP(p,tot){curPage=Math.max(1,Math.min(tot,p));renderLedger();}
+
+/* ---------- TOP FLOWS / NODE VOL (money trail tab) ---------- */
+function buildTopFlows(){
+  const sorted=DATA.edges.slice().sort((a,b)=>b.amount-a.amount).slice(0,15);
+  document.getElementById('top-flows-tbody').innerHTML=sorted.map((e,i)=>`<tr><td>${i+1}</td><td style="font-size:10px">${e.from}</td><td style="font-size:10px">${e.to}</td><td>${e.bank}</td><td class="r" style="font-weight:600">${fmtI(e.amount)}</td><td><span class="badge b-dim">L${e.layer}</span></td></tr>`).join('');
+
+  const recv={};
+  DATA.edges.forEach(e=>{recv[e.to]=(recv[e.to]||0)+e.amount;});
+  const top=Object.entries(recv).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  new Chart(document.getElementById('ch-node-vol'),{type:'bar',data:{labels:top.map(t=>t[0].slice(-6))},options:{}}); // placeholder replaced below
+}
+function buildNodeVolChart(){
+  const recv={};
+  DATA.edges.forEach(e=>{recv[e.to]=(recv[e.to]||0)+e.amount;});
+  const top=Object.entries(recv).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  new Chart(document.getElementById('ch-node-vol'),{type:'bar',data:{labels:top.map(t=>'…'+t[0].slice(-6)),datasets:[{label:'Received',data:top.map(t=>t[1]),backgroundColor:'rgba(0,212,255,.6)',borderRadius:4}]},options:{...CS,indexAxis:'y',plugins:{...CS.plugins,legend:{display:false}},scales:{x:{...CS.scales.x,ticks:{...CS.scales.x.ticks,callback:v=>fmtL(v)}},y:CS.scales.y}}});
+}
+
+/* ---------- ANALYTICS ---------- */
+function buildAnalytics(){
+  const layerAgg={};
+  DATA.edges.forEach(e=>{layerAgg[e.layer]=(layerAgg[e.layer]||0)+e.amount;});
+  new Chart(document.getElementById('ch-an-layer'),{type:'bar',data:{labels:[1,2,3,4,5].map(l=>'L'+l),datasets:[{label:'Volume',data:[1,2,3,4,5].map(l=>layerAgg[l]||0),backgroundColor:'rgba(255,45,85,.6)',borderRadius:4}]},options:{...CS,plugins:{...CS.plugins,legend:{display:false}},scales:{x:CS.scales.x,y:{...CS.scales.y,ticks:{...CS.scales.y.ticks,callback:v=>fmtL(v)}}}}});
+
+  const bankAgg={};
+  DATA.edges.forEach(e=>{if(e.bank&&e.bank!=='Unresolved')bankAgg[e.bank]=(bankAgg[e.bank]||0)+e.amount;});
+  const top10=Object.entries(bankAgg).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  new Chart(document.getElementById('ch-an-banktop'),{type:'bar',data:{labels:top10.map(b=>b[0]),datasets:[{label:'Volume',data:top10.map(b=>b[1]),backgroundColor:'rgba(0,212,255,.6)',borderRadius:4}]},options:{...CS,indexAxis:'y',plugins:{...CS.plugins,legend:{display:false}},scales:{x:{...CS.scales.x,ticks:{...CS.scales.x.ticks,callback:v=>fmtL(v)}},y:CS.scales.y}}});
+
+  const frozen=DATA.holds.reduce((s,h)=>s+h.amount,0);
+  const withdrawn=DATA.cashouts.reduce((s,c)=>s+c.amount,0);
+  const transit=5618206-frozen-withdrawn;
+  new Chart(document.getElementById('ch-an-status'),{type:'doughnut',data:{labels:['Frozen / On Hold','Withdrawn (Cash)','Layered / In Digital Transit'],datasets:[{data:[frozen,withdrawn,Math.max(transit,0)],backgroundColor:['rgba(48,209,88,.7)','rgba(255,214,10,.75)','rgba(0,212,255,.55)'],borderWidth:2,borderColor:'#0b1220'}]},options:{...mCS,plugins:{...mCS.plugins,legend:{position:'right',labels:{color:'#94a3b8',font:{size:10}}}}}});
+
+  const stateAgg={'Delhi':550000,'Kerala':400000+20000,'Punjab':360800,'Rajasthan':340000,'Uttar Pradesh':180000};
+  new Chart(document.getElementById('ch-an-state'),{type:'doughnut',data:{labels:Object.keys(stateAgg),datasets:[{data:Object.values(stateAgg),backgroundColor:['#ff2d55','#ff9500','#00d4ff','#a78bfa','#ffd60a'],borderWidth:2,borderColor:'#0b1220'}]},options:{...mCS,plugins:{...mCS.plugins,legend:{position:'right',labels:{color:'#94a3b8',font:{size:10}}}}}});
+}
+
+/* ---------- TIMELINE ---------- */
+function buildTimeline(){
+  const ev=[
+    {d:'Prior to 04 Apr 2026',c:'d-grn',t:'Initial Contact — Fake Mumbai Cyber Police Call',b:'Victim (mobile 9422346199) contacted on unregistered number 7545036749 by a caller impersonating a Mumbai Cyber Police officer. A staged video call followed, showing a fake police uniform, police logo background, fabricated Aadhaar card and a Canara Bank debit card in the victim\'s name.'},
+    {d:'04 Apr 2026',c:'d-red',t:'🚨 Threat Escalation — Alleged ₹2 Cr Money Laundering',b:'Caller alleges the victim\'s Aadhaar/bank card was used to launder ₹2 Cr with a ₹20L "commission" credited to the victim. Victim threatened with immediate arrest, ordered to stay home, send status messages every 2 hours, and not disclose the call to anyone.'},
+    {d:'04 Apr 2026',c:'d-red',t:'Tranche 1 — ₹22,18,206 Transferred to Axis Bank Mule Hub',b:'Victim breaks an FD and transfers ₹22,18,206 (UTR MAHBR52026040423516664) from Bank of Maharashtra A/C ...4519485 to Axis Bank A/C 925020057462361 (Nova Next Mart Pvt Ltd), believing it is for "RBI verification."'},
+    {d:'04 Apr 2026, same day',c:'d-org',t:'Layer-2 Fan-out Begins Within Hours',b:'Axis hub disperses funds same-day to 7 accounts across Central Bank of India, Fino Payments Bank, PNB, Yes Bank (×2), NSDL Payments Bank, and SBI.'},
+    {d:'04 Apr 2026',c:'d-org',t:'Cheque Encashment — Delhi &amp; ATM Withdrawals — Hardoi, UP',b:'₹5,50,000 cheque encashed at PNB, New Rohtak Road, New Delhi. Simultaneously, 18 ATM withdrawals (₹10K each) begin across 4 ATMs in Hardoi district from the Jio Payments Bank wallet cluster.'},
+    {d:'05 May 2026',c:'d-red',t:'Tranche 2 — ₹34,00,000 Transferred to IndusInd Bank Mule Hub',b:'Victim breaks a second FD and pledges gold at a Manipuram Gold branch (Baleli Phata, Pune) to raise additional funds. Total ₹34,00,000 (UTR MAHBR52026050523820802) transferred to IndusInd Bank A/C 258295299526 (Rilex Enterprises).'},
+    {d:'05–06 May 2026',c:'d-org',t:'Layer-2 Fan-out — 8 Accounts Across 8 Banks',b:'IndusInd hub disperses to Kerala Gramin Bank, State Bank of Mauritius, Yes Bank (×2), IDFC First, Federal Bank, Indian Overseas Bank, and Axis Bank (₹11.5L — single largest layer-2 hop).'},
+    {d:'05 May 2026',c:'d-org',t:'Cheque Encashments — Kollam, Jalandhar, Pali',b:'₹4,00,000 cashed at Federal Bank, Bharanikkavu, Kollam (Kerala). ₹3,60,800 cashed at IDFC First, Jalandhar (Punjab). ₹3,40,000 cashed at Yes Bank, Pali (Rajasthan).'},
+    {d:'09–10 May 2026',c:'d-acc',t:'Banks Begin Freeze &amp; Hold Action',b:'Acting banks (Axis, Central Bank of India, PNB, HDFC, Bank of Baroda, Federal Bank, IDFC First, Yes Bank, IndusInd) log freeze/hold actions on residual balances — most accounts already drained to near-zero, confirming rapid pass-through design.'},
+    {d:'14 May 2026',c:'d-pur',t:'Final Traced Hop — Layer 5 Terminal',b:'A residual ₹23,570 settlement at State Bank of India marks the final traceable hop in the dataset before the trail goes cold on remaining digital balances.'},
+  ];
+  document.getElementById('tl-container').innerHTML=ev.map(e=>`<div class="tl-item"><div class="tl-dot ${e.c}"></div><div class="tl-date">${e.d}</div><div class="tl-head">${e.t}</div><div class="tl-body">${e.b}</div></div>`).join('');
+}
+
+/* ---------- MONEY TRAIL NETWORK (layered canvas graph) ---------- */
+let mtNodes=[], mtEdges=[], mtFilter='all', mtDrag=null, mtCanvas, mtCtx;
+function layerColor(l){return l===0?'#30d158':l===1?'#ff2d55':l===2?'#ffd60a':l===3?'#00d4ff':l===4?'#a78bfa':'#64748b';}
+function buildMTGraph(){
+  const W = mtCanvas.width = mtCanvas.clientWidth;
+  const H = mtCanvas.height = 640;
+  const byLayer={};
+  DATA.nodes.forEach(n=>{ if(!n.id) return; (byLayer[n.layer]=byLayer[n.layer]||[]).push(n.id); });
+  const layers=Object.keys(byLayer).map(Number).sort((a,b)=>a-b);
+  const colW = W/(layers.length+0.4);
+  mtNodes=[];
+  const posMap={};
+  layers.forEach((l,li)=>{
+    const ids=byLayer[l];
+    const x = 60 + li*colW;
+    ids.forEach((id,idx)=>{
+      const y = 50 + (idx+0.5)*( (H-100) / ids.length );
+      const node={id,layer:l,x,y,r: l<=1?13:8};
+      mtNodes.push(node);
+      posMap[id]=node;
+    });
+  });
+  mtEdges=DATA.edges.map(e=>({from:posMap[e.from],to:posMap[e.to],amount:e.amount,layer:e.layer})).filter(e=>e.from&&e.to);
+}
+function nodeInfo(n){
+  const data=DATA.nodes.find(x=>x.id===n.id);
+  let inAmt=0,outAmt=0;
+  DATA.edges.forEach(e=>{if(e.to===n.id)inAmt+=e.amount; if(e.from===n.id)outAmt+=e.amount;});
+  document.getElementById('mt-info').innerHTML = `<strong style="color:var(--acc)">${n.id}</strong> &nbsp;|&nbsp; Bank: ${data.bank||'Unresolved'} &nbsp;|&nbsp; Holder: ${data.holder||'unidentified'} &nbsp;|&nbsp; Layer: ${n.layer} &nbsp;|&nbsp; In: ${fmtI(inAmt)} &nbsp;|&nbsp; Out: ${fmtI(outAmt)}`;
+}
+function drawMT(){
+  const ctx=mtCtx, W=mtCanvas.width, H=mtCanvas.height;
+  ctx.clearRect(0,0,W,H);
+  mtEdges.forEach(e=>{
+    let dim = false;
+    if(mtFilter==='hub' && !(e.from.layer<=1 && e.to.layer<=2)) dim=true;
+    if(mtFilter==='l2' && !(e.from.layer===1 || e.to.layer===2)) dim=true;
+    if(mtFilter==='deep' && e.to.layer<3) dim=true;
+    const w = Math.max(0.6, Math.min(7, e.amount/120000));
+    ctx.strokeStyle = dim? 'rgba(100,116,139,.08)' : (e.layer===1?'rgba(255,45,85,.55)':e.layer===2?'rgba(255,149,0,.5)':'rgba(0,212,255,.35)');
+    ctx.lineWidth = dim?0.6:w;
+    ctx.beginPath();
+    const midx=(e.from.x+e.to.x)/2;
+    ctx.moveTo(e.from.x,e.from.y);
+    ctx.bezierCurveTo(midx,e.from.y,midx,e.to.y,e.to.x,e.to.y);
+    ctx.stroke();
+  });
+  mtNodes.forEach(n=>{
+    let dim=false;
+    if(mtFilter==='hub' && n.layer>1) dim=true;
+    if(mtFilter==='l2' && n.layer!==2) dim=true;
+    if(mtFilter==='deep' && n.layer<3) dim=true;
+    ctx.beginPath();
+    ctx.arc(n.x,n.y,n.r,0,7);
+    ctx.fillStyle = dim? 'rgba(100,116,139,.25)' : layerColor(n.layer);
+    ctx.globalAlpha = dim?0.35:1;
+    ctx.fill();
+    ctx.lineWidth=1.5; ctx.strokeStyle='#020408'; ctx.stroke();
+    ctx.globalAlpha=1;
+    if(n.layer<=1){
+      ctx.fillStyle='#e2e8f0'; ctx.font='10px JetBrains Mono'; ctx.textAlign='center';
+      ctx.fillText('…'+n.id.slice(-6), n.x, n.y+n.r+12);
+    }
+  });
+}
+function mtLoop(){ drawMT(); requestAnimationFrame(mtLoop); }
+function initMT(){
+  mtCanvas=document.getElementById('mt-canvas');
+  mtCtx=mtCanvas.getContext('2d');
+  buildMTGraph();
+  document.getElementById('mt-node-count').textContent=mtNodes.length;
+  document.getElementById('mt-edge-count').textContent=mtEdges.length;
+  if(!mtCanvas._wired){
+    mtCanvas._wired=true;
+    mtCanvas.addEventListener('mousedown',ev=>{
+      const r=mtCanvas.getBoundingClientRect();
+      const x=(ev.clientX-r.left)*(mtCanvas.width/r.width), y=(ev.clientY-r.top)*(mtCanvas.height/r.height);
+      for(const n of mtNodes){ if(Math.hypot(n.x-x,n.y-y)<n.r+6){ mtDrag=n; break; } }
+    });
+    mtCanvas.addEventListener('mousemove',ev=>{
+      const r=mtCanvas.getBoundingClientRect();
+      const x=(ev.clientX-r.left)*(mtCanvas.width/r.width), y=(ev.clientY-r.top)*(mtCanvas.height/r.height);
+      if(mtDrag){ mtDrag.y=Math.max(20,Math.min(mtCanvas.height-20,y)); }
+    });
+    window.addEventListener('mouseup',()=>{
+      if(mtDrag){ nodeInfo(mtDrag); }
+      mtDrag=null;
+    });
+    mtCanvas.addEventListener('click',ev=>{
+      const r=mtCanvas.getBoundingClientRect();
+      const x=(ev.clientX-r.left)*(mtCanvas.width/r.width), y=(ev.clientY-r.top)*(mtCanvas.height/r.height);
+      for(const n of mtNodes){ if(Math.hypot(n.x-x,n.y-y)<n.r+6){ nodeInfo(n); break; } }
+    });
+    mtLoop();
+  }
+}
+function mtF(f,btn){ mtFilter=f; document.querySelectorAll('.mt-btn').forEach(b=>b.classList.remove('active-filter')); btn.classList.add('active-filter'); }
+function mtReset(){ buildMTGraph(); }
+
+/* ---------- INIT ---------- */
+window.addEventListener('load',()=>{
+  buildOverview();
+  renderAccounts();
+  renderCashouts();
+  fLedger();
+  buildTopFlows();
+  buildNodeVolChart();
+  buildAnalytics();
+  buildTimeline();
+});
+</script>
+</body>
+</html>

@@ -2,7 +2,9 @@
 // FraudLens Demo Case Registry
 // ═══════════════════════════════════════════════════════════════════
 // Centralized asset mapping for demo case flows.
-// Structured for extensibility — Case 2 can be added here later.
+// Structured for extensibility — add cases here.
+
+import { DEMO_CASE_2 } from './demoCase2';
 
 // ──── Types ──────────────────────────────────────────────────────
 
@@ -253,8 +255,8 @@ export const DEMO_CASE_1: DemoCaseConfig = {
 };
 
 // ──── Demo Case Registry ────────────────────────────────────────
-// Add future cases here (e.g., DEMO_CASE_2)
 
 export const DEMO_CASES: Record<string, DemoCaseConfig> = {
   '1': DEMO_CASE_1,
+  '2': DEMO_CASE_2,
 };
